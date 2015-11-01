@@ -30,7 +30,7 @@
     "sonata-project/admin-bundle": "~2.3",
     "fxp/composer-asset-plugin": "~1.0.3",
     "bower-asset/bootstrap": "~3.3",
-    "knplabs/knp-paginator-bundle": "2.4.*@dev",
+    "knplabs/knp-paginator-bundle": "~2.5",
     "hautelook/alice-bundle": "~0.2",
     "knplabs/knp-menu-bundle": "~2.0",
     "whiteoctober/breadcrumbs-bundle": "~1.1.0",
