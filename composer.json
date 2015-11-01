@@ -50,5 +50,19 @@
     "eko/feedbundle": "~1.2.6",
     "bower-asset/js-cookie": "~2.0.3",
     "sonata-project/translation-bundle": "1.0.0"
+  },
+  "extra": {
+    "asset-repositories": [
+      {
+        "type": "bower-vcs",
+        "url": "https://github.com/zionsg/CKEditor-More-plugin.git",
+        "name": "bower-asset/ckeditor-readmore-plugin"
+      },
+      {
+        "type": "bower-vcs",
+        "url": "https://github.com/w8tcha/CKEditor-WordCount-Plugin.git",
+        "name": "bower-asset/ckeditor-wordcount-plugin"
+      }
+    ]
   }
 }
