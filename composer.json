@@ -5,6 +5,7 @@
   "keywords": ["Symfony blog cms"],
   "homepage": "https://github.com/harentius/blog-bundle",
   "license": "MIT",
+  "minimum-stability": "dev",
   "authors": [
     {
       "name": "Yaroslav Osypenko",
