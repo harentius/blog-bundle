@@ -1,0 +1,144 @@
+services:
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }
+
+    harentius_blog.menu.menu_builder:
+        class:  Harentius\BlogBundle\Menu\MenuBuilder
+        arguments:
+            - @knp_menu.factory
+            - @doctrine.orm.entity_manager
+            - %harentius_blog.homepage.page_slug%
+
+    harentius_blog.menu.main:
+        class: Knp\Menu\MenuItem
+        factory: [@harentius_blog.menu.menu_builder, createMainMenu]
+        tags:
+            - { name: knp_menu.menu, alias: main }
+
+    harentius_blog.array_cache:
+        class: Doctrine\Common\Cache\ArrayCache
+
+    harentius_blog.twig.blog_extension:
+        class: Harentius\BlogBundle\Twig\BlogExtension
+        arguments:
+            - @fragment.handler
+            - ~
+            - @harentius_blog.rating
+            - @harentius_blog.settings_provider
+            - %sidebar_cache_lifetime%
+        tags:
+            - { name: twig.extension }
+
+    harentius_blog.sidebar.categories:
+        class: Harentius\BlogBundle\Sidebar\Categories
+        arguments:
+            - @harentius_blog.entity.category_repository
+
+    harentius_blog.sidebar.tags:
+        class: Harentius\BlogBundle\Sidebar\Tags
+        arguments:
+            - @harentius_blog.entity.tag_repository
+            - %harentius_blog.sidebar.tags_limit%
+            - %harentius_blog.sidebar.tag_sizes%
+
+    harentius_blog.sidebar.archive:
+        class: Harentius\BlogBundle\Sidebar\Archive
+        arguments:
+            - @harentius_blog.entity.article_repository
+
+    harentius_blog.homepage:
+        class: Harentius\BlogBundle\Homepage
+        arguments:
+            - @harentius_blog.entity.article_repository
+            - @harentius_blog.entity.page_repository
+            - %harentius_blog.homepage.feed.category%
+            - %harentius_blog.homepage.page_slug%
+
+    harentius_blog.rating:
+        class: Harentius\BlogBundle\Rating
+        arguments:
+            - @request_stack
+            - @doctrine.orm.entity_manager
+
+    harentius_blog.assets.resolver:
+        class: Harentius\BlogBundle\Assets\Resolver
+        arguments:
+             - "%kernel.root_dir%/../web"
+
+    harentius_blog.assets.manager:
+        class: Harentius\BlogBundle\Assets\Manager
+        arguments:
+            - @harentius_blog.assets.resolver
+
+    harentius_blog.settings_provider:
+        class: Harentius\BlogBundle\SettingsProvider
+        arguments:
+             - @harentius_blog.entity.setting_repository
+             - @harentius_blog.settings.cache
+
+    harentius_blog.event_listener.sitemap_listener:
+        class: Harentius\BlogBundle\EventListener\SitemapListener
+        arguments:
+            - @router
+            - @harentius_blog.homepage
+            - @harentius_blog.sidebar.archive
+            - @harentius_blog.entity.article_repository
+            - @harentius_blog.entity.page_repository
+            - @harentius_blog.entity.category_repository
+            - %homepage_page_slug%
+        tags:
+            - { name: presta.sitemap.listener }
+
+    harentius_blog.router.category_slug_provider:
+          class: Harentius\BlogBundle\Router\CategorySlugProvider
+          arguments:
+              - @harentius_blog.entity.category_repository
+              - @harentius_blog.router.category_slug_provider_cache
+
+    harentius_blog.router.route_provider:
+          class: Harentius\BlogBundle\Router\RouteProvider
+          arguments:
+              - @service_container
+
+    harentius_blog.feed:
+        class: Harentius\BlogBundle\Feed
+        arguments:
+            - @harentius_blog.entity.article_repository
+            - @eko_feed.feed.manager
+            - @harentius_blog.controller.feed_cache
+
+    harentius_blog.statistics:
+        class: Harentius\BlogBundle\Statistics
+        arguments:
+            - @harentius_blog.statistics_cache
+            - %harentius_blog.cache.statistics_cache_lifetime%
+            - @harentius_blog.entity.article_repository
+
+
+    # Cache
+    harentius_blog.sidebar.cache:
+        class: Doctrine\Common\Cache\ApcCache
+        calls:
+            - [ setNamespace, [ %harentius_blog.cache.apc_global_prefix%_sidebar ] ]
+
+    harentius_blog.settings.cache:
+        class: Doctrine\Common\Cache\ApcCache
+        calls:
+            - [ setNamespace, [ %harentius_blog.cache.apc_global_prefix%_settings ] ]
+
+    harentius_blog.router.category_slug_provider_cache:
+        class: Doctrine\Common\Cache\ApcCache
+        calls:
+            - [ setNamespace, [ %harentius_blog.cache.apc_global_prefix%_router_category ] ]
+
+    harentius_blog.controller.feed_cache:
+        class: Doctrine\Common\Cache\ApcCache
+        calls:
+            - [ setNamespace, [ %harentius_blog.cache.apc_global_prefix%_feed ] ]
+
+    harentius_blog.statistics_cache:
+        class: Doctrine\Common\Cache\ApcCache
+        calls:
+            - [ setNamespace, [ %harentius_blog.cache.apc_global_prefix%_statistics ] ]

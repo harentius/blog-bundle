@@ -1,0 +1,35 @@
+services:
+    harentius_blog.entity.article_repository:
+        public: false
+        class: Harentius\BlogBundle\Entity\Article
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments: [ HarentiusBlogBundle:Article ]
+
+    harentius_blog.entity.page_repository:
+        public: false
+        class: Harentius\BlogBundle\Entity\Page
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments: [ HarentiusBlogBundle:Page ]
+
+    harentius_blog.entity.category_repository:
+        public: false
+        class: Harentius\BlogBundle\Entity\Category
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments: [ HarentiusBlogBundle:Category ]
+
+    harentius_blog.entity.tag_repository:
+        public: false
+        class: Harentius\BlogBundle\Entity\Tag
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments: [ HarentiusBlogBundle:Tag ]
+
+    harentius_blog.entity.setting_repository:
+        public: false
+        class: Harentius\BlogBundle\Entity\Setting
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments: [ HarentiusBlogBundle:Setting ]

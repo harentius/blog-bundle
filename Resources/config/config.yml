@@ -1,0 +1,11 @@
+sonata_block:
+    default_contexts: [sonata_page_bundle]
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+
+sonata_translation:
+    locales: [en, ru]
+    default_locale: ru
+    gedmo:
+        enabled: true

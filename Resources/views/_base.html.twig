@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            {%- block raw_title -%}
+                {% if block('page_title') is not empty %}{% block page_title %}{% endblock %} | {% endif %}{{ get_setting('project_name') }}
+            {%- endblock -%}
+        </title>
+
+        {% if block('page_meta_description') is not empty -%}
+        <meta name="description" content="{% block page_meta_description %}{% endblock %}" />
+        {%- endif %}
+
+        {% if block('page_meta_keywords') is not empty -%}
+            <meta name="keywords" content="{% block page_meta_keywords %}{% endblock %}" />
+        {%- endif %}
+
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width" />
+        {% block meta_extra %}{% endblock %}
+        {% block common_stylesheets %}
+            {% stylesheets
+                'assets/vendor/bootstrap/dist/css/bootstrap.min.css'
+                'assets/vendor/ckeditor/plugins/codesnippet/lib/highlight/styles/default.css'
+                'assets/vendor/components-font-awesome/css/font-awesome.min.css'
+                'bundles/harentiusblog/css/common.less'
+                'bundles/harentiusblog/css/twbs-extension.less'
+                'bundles/harentiusblog/css/main.less'
+            %}
+            <link href="{{ asset_url }}" media="all" rel="stylesheet" type="text/css" />
+            {% endstylesheets %}
+        {% endblock %}
+
+        {% block stylesheets %}{% endblock %}
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% if app.environment != 'dev' %}
+            {{ include('HarentiusBlogBundle::_google_analytics.html.twig') }}
+        {% endif %}
+        {% block head_extra %}{% endblock %}
+    </head>
+
+    <body>
+        <div class="container">
+            {% block menu %}
+            <div class="padded-content main-menu-wrapper">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="clearfix">
+                        <div class="navbar-header">
+                            <a class="logo" href="{{ path('harentius_blog_homepage') }}"></a>
+                        </div>
+                        {{ knp_menu_render('main', {'currentClass': 'active', 'template': 'HarentiusBlogBundle:Menu:knp_menu.html.twig'}) }}
+                        <button type="button" class="main-menu-button glyphicon glyphicon-menu-hamburger hidden-lg hidden-md categories-menu-button" data-toggle="collapse" data-target="#categories-menu"></button>
+                        <a href="{{ path('harentius_blog_feed') }}" class="main-menu-button rss-feed"><i class="fa-feed"></i></a>
+                    </div>
+                    <div class="clearfix">
+                        <div class="collapse out categories-menu" id="categories-menu">
+                        {{ render_cached(controller('HarentiusBlogBundle:Sidebar:categories', { showNumber: false })) }}
+                        </div>
+                    </div>
+               </nav>
+            </div>
+            {% endblock %}
+
+            <div class="row">
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 page-content">
+                    {{ wo_render_breadcrumbs() }}
+                    {% block content %}{% endblock %}
+                </div>
+
+                <div class="col-lg-3 col-md-3 hidden-sm hidden-xs sidebar">
+                    {% block sidebar %}
+                        {{ include('HarentiusBlogBundle:Sidebar:index.html.twig') }}
+                    {% endblock %}
+                    {% block sidebar_after_content %}{% endblock %}
+                </div>
+            </div>
+
+            {% block footer %}
+            <footer class="padded-content footer clearfix">
+                {% block footer_content %}All right reserved. {% endblock %}
+                {% block footer_after_content %}{% endblock %}
+            </footer>
+            {% endblock %}
+            {% block last_container_content %}{% endblock %}
+        </div>
+        {% block last_body_content %}{% endblock %}
+        {% block common_javascripts %}
+            {% javascripts
+                'assets/vendor/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js'
+                'assets/vendor/jquery/dist/jquery.min.js'
+                'assets/vendor/bootstrap/js/collapse.js'
+                'assets/vendor/js-cookie/src/js.cookie.js'
+                '@HarentiusBlogBundle/Resources/public/js/common.coffee'
+            %}
+            <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
+
+    {% block javascripts %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,17 @@
+{% block content%}{% endblock %}
+
+<script>
+    function ckEditorChoose(funcNum, uri) {
+        window.opener.CKEDITOR.tools.callFunction(funcNum, uri);
+        window.close();
+    }
+</script>
+
+{% block common_stylesheets %}
+    {% stylesheets
+        'assets/vendor/bootstrap/dist/css/bootstrap.min.css'
+        'bundles/harentiusblog/css/common.less'
+    %}
+    <link href="{{ asset_url }}" media="all" rel="stylesheet" type="text/css" />
+    {% endstylesheets %}
+{% endblock %}

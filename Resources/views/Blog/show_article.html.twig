@@ -1,0 +1,54 @@
+{% extends 'HarentiusBlogBundle:Blog:show_page.html.twig' %}
+
+{% block after_post_content%}
+    {% include 'HarentiusBlogBundle:Blog:_post_info.html.twig' with {'article': entity} %}
+    <div class="row social-and-shares-wrapper" data-id="{{ entity.id }}">
+        <div class="pull-left social-wrapper col-lg-9 col-md-9 col-sm-9 col-xs-9">
+            {{ include('HarentiusBlogBundle:Blog:_socials.html.twig') }}
+            <div id="vk-like" class="vk-like"></div>
+        </div>
+
+        <div class="pull-right text-right col-lg-3 col-md-3 col-sm-3 col-xs-3 likes-wrapper">
+            <span class="like">
+                <i
+                    class="{% if is_article_liked(entity) %}fa-thumbs-up{% else %}fa-thumbs-o-up{% endif %}{% if(is_article_rated(entity)) %} disabled{% endif %}"
+                    id="like-action"
+                >
+                </i>
+                <span class="value">{{ entity.likesCount }}</span>
+            </span>
+
+            <span class="dislike">
+                <i
+                    class="{% if is_article_disliked(entity) %}fa-thumbs-down{% else %}fa-thumbs-o-down{% endif %}{% if(is_article_rated(entity)) %} disabled{% endif %}"
+                    id="dislike-action"
+                >
+                </i>
+                <span class="value">{{ entity.disLikesCount }}</span>
+            </span>
+        </div>
+    </div>
+
+    <div class="vk-comments" id="vk-comments"></div>
+{% endblock %}
+
+{% block head_extra %}
+    {{ parent() }}
+    <script type="text/javascript" src="//vk.com/js/api/openapi.js?116"></script>
+    <script type="text/javascript">VK.init({apiId: {{ vk_appi_id }}});</script>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+    <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        {# TODO: move to other (not core blog) bundle #}
+        VK.Widgets.Like("vk-like", {type: "full", width: '100%', height: 24});
+        VK.Widgets.Comments(
+            "vk-comments",
+            { limit: 20, attach: "*", pageUrl: "{{ url('harentius_blog_show', {'slug': entity.slug}) }}" }
+            {% if entity.attributes.original_id is defined %}, {{ entity.attributes.original_id }}{% endif %}
+        );
+    </script>
+{% endblock javascripts %}
