@@ -21,7 +21,7 @@
     "symfony/framework-bundle": ">=2.7",
     "stof/doctrine-extensions-bundle": ">=1.1",
     "sonata-project/admin-bundle": ">=2.3",
-    "fxp/composer-asset-plugin": ">=1.0.3",
+    "fxp/composer-asset-plugin": ">=1.0.0",
     "bower-asset/bootstrap": ">3.3",
     "knplabs/knp-paginator-bundle": ">=2.4",
     "hautelook/alice-bundle": ">=0.2",
@@ -48,7 +48,7 @@
       {
         "type": "bower-vcs",
         "url": "https://github.com/zionsg/CKEditor-More-plugin.git",
-        "name": "bower-asset/ckeditor-readmore-plugin"
+        "name": "bower-asset/ckeditor-more-plugin"
       },
       {
         "type": "bower-vcs",
