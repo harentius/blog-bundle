@@ -32,11 +32,8 @@ harentius_blog_list:
         filtrationType: category|tag
 
 harentius_blog_show:
-    path:     /{_locale}/{slug}/
-    defaults: { _controller: HarentiusBlogBundle:Blog:show, _locale: %locale% }
-    requirements:
-        _locale: ru|en
-
+    path:     /{slug}/
+    defaults: { _controller: HarentiusBlogBundle:Blog:show }
 
 harentius_blog_rate:
     path:     /like/{article}/{type}
