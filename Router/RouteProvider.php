@@ -13,14 +13,14 @@ class RouteProvider implements RouteProviderInterface
     /**
      * @var RouteCollection
      */
-    private $routes;
+    protected $routes;
 
     /**
      * Container uses for avoiding crashes while rebuilding
      *
      * @var ContainerInterface
      */
-    private $container;
+    protected $container;
 
     /**
      * @param ContainerInterface $container
@@ -43,7 +43,6 @@ class RouteProvider implements RouteProviderInterface
                 "/category{$fullSlug}",
                 ['_controller' => 'HarentiusBlogBundle:Blog:list', 'filtrationType' => 'category', 'criteria' => $categoryId]
             ));
-
         }
 
         return $this->routes;
