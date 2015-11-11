@@ -9,9 +9,9 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(indexes={
  *      @ORM\Index(name="article_translation_idx", columns={"locale", "object_class", "field", "foreign_key"})
  * })
- * @ORM\Entity(repositoryClass="Gedmo\Translatable\Entity\Repository\TranslationRepository")
+ * @ORM\Entity(repositoryClass="Harentius\BlogBundle\Entity\AbstractPostTranslationRepository")
  */
-class ArticleTranslation extends AbstractTranslation
+class AbstractPostTranslation extends AbstractTranslation
 {
     /**
      * @param string $locale

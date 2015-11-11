@@ -3,6 +3,8 @@
 namespace Harentius\BlogBundle\Twig;
 
 use Doctrine\Common\Cache\CacheProvider;
+use Harentius\BlogBundle\Entity\AbstractPostTranslationRepository;
+use Harentius\BlogBundle\Entity\Base\AbstractPost;
 use Harentius\BlogBundle\Rating;
 use Harentius\BlogBundle\SettingsProvider;
 use Symfony\Bridge\Twig\Extension\HttpKernelExtension;
@@ -33,24 +35,32 @@ class BlogExtension extends HttpKernelExtension
     private $settingsProvider;
 
     /**
+     * @var AbstractPostTranslationRepository
+     */
+    private $abstractPostTranslationRepository;
+
+    /**
      * @param FragmentHandler $handler A FragmentHandler instance
      * @param CacheProvider $cache
      * @param Rating $rating
      * @param SettingsProvider $settingsProvider
      * @param int $sidebarCacheLifeTime
+     * @param AbstractPostTranslationRepository $abstractPostTranslationRepository
      */
     public function __construct(
         FragmentHandler $handler,
         CacheProvider $cache,
         Rating $rating,
         SettingsProvider $settingsProvider,
-        $sidebarCacheLifeTime
+        $sidebarCacheLifeTime,
+        AbstractPostTranslationRepository $abstractPostTranslationRepository
     ) {
         parent::__construct($handler);
         $this->cache = $cache;
         $this->rating = $rating;
         $this->settingsProvider = $settingsProvider;
         $this->sidebarCacheLifeTime = $sidebarCacheLifeTime;
+        $this->abstractPostTranslationRepository = $abstractPostTranslationRepository;
     }
 
     /**
@@ -64,6 +74,7 @@ class BlogExtension extends HttpKernelExtension
             new \Twig_SimpleFunction('is_article_liked', [$this, 'isArticleLiked']),
             new \Twig_SimpleFunction('is_article_disliked', [$this, 'isArticleDisLiked']),
             new \Twig_SimpleFunction('is_article_rated', [$this, 'isArticleRated']),
+            new \Twig_SimpleFunction('translations_list', [$this, 'translationsList']),
         );
     }
 
@@ -156,6 +167,15 @@ class BlogExtension extends HttpKernelExtension
     public function isArticleRated(Article $article)
     {
         return $this->rating->isRated($article);
+    }
+
+    /**
+     * @param AbstractPost $article
+     * @return array
+     */
+    public function translationsList(AbstractPost $article)
+    {
+        return array_keys($this->abstractPostTranslationRepository->findTranslations($article));
     }
 
     /**

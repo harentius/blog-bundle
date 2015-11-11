@@ -11,7 +11,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="Harentius\BlogBundle\Entity\PageRepository")
- * @Gedmo\TranslationEntity(class="Harentius\BlogBundle\Entity\ArticleTranslation")
+ * @Gedmo\TranslationEntity(class="Harentius\BlogBundle\Entity\AbstractPostTranslation")
  */
 class Page extends AbstractPost
 {

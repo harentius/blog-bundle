@@ -33,3 +33,10 @@ services:
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
         arguments: [ HarentiusBlogBundle:Setting ]
+
+    harentius_blog.entity.abstract_post_translation:
+        public: false
+        class: Harentius\BlogBundle\Entity\AbstractPostTranslation
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments: [ HarentiusBlogBundle:AbstractPostTranslation ]
