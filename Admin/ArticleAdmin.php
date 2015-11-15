@@ -3,7 +3,6 @@
 namespace Harentius\BlogBundle\Admin;
 
 use Doctrine\Common\Cache\CacheProvider;
-use Harentius\BlogBundle\Router\CategorySlugProvider;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
