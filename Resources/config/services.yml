@@ -28,7 +28,7 @@ services:
             - @harentius_blog.rating
             - @harentius_blog.settings_provider
             - %sidebar_cache_lifetime%
-            - @harentius_blog.entity.abstract_post_translation
+            - @harentius_blog.entity.translation
             - %locale%
         tags:
             - { name: twig.extension }

@@ -37,7 +37,7 @@ class BlogExtension extends HttpKernelExtension
     /**
      * @var TranslationRepository
      */
-    private $abstractPostTranslationRepository;
+    private $translationRepository;
 
     /**
      * @var string
@@ -50,7 +50,7 @@ class BlogExtension extends HttpKernelExtension
      * @param Rating $rating
      * @param SettingsProvider $settingsProvider
      * @param int $sidebarCacheLifeTime
-     * @param TranslationRepository $abstractPostTranslationRepository
+     * @param TranslationRepository $translationRepository
      * @param string $locale
      */
     public function __construct(
@@ -59,7 +59,7 @@ class BlogExtension extends HttpKernelExtension
         Rating $rating,
         SettingsProvider $settingsProvider,
         $sidebarCacheLifeTime,
-        TranslationRepository $abstractPostTranslationRepository,
+        TranslationRepository $translationRepository,
         $locale
     ) {
         parent::__construct($handler);
@@ -67,7 +67,7 @@ class BlogExtension extends HttpKernelExtension
         $this->rating = $rating;
         $this->settingsProvider = $settingsProvider;
         $this->sidebarCacheLifeTime = $sidebarCacheLifeTime;
-        $this->abstractPostTranslationRepository = $abstractPostTranslationRepository;
+        $this->translationRepository = $translationRepository;
         $this->locale = $locale;
     }
 
@@ -185,7 +185,7 @@ class BlogExtension extends HttpKernelExtension
     {
         return array_merge(
             [$this->locale],
-            array_keys($this->abstractPostTranslationRepository->findTranslations($article))
+            array_keys($this->translationRepository->findTranslations($article))
         );
     }
 
