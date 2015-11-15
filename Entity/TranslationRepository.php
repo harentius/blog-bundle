@@ -4,10 +4,10 @@ namespace Harentius\BlogBundle\Entity;
 
 use Doctrine\ORM\Query;
 use Gedmo\Tool\Wrapper\EntityWrapper;
-use Gedmo\Translatable\Entity\Repository\TranslationRepository;
+use Gedmo\Translatable\Entity\Repository\TranslationRepository as BaseTranslationRepository;
 use Gedmo\Translatable\TranslatableListener;
 
-class AbstractPostTranslationRepository extends TranslationRepository
+class TranslationRepository extends BaseTranslationRepository
 {
     /**
      * Current TranslatableListener instance used

@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @Gedmo\Tree(type="nested")
+ * @Gedmo\TranslationEntity(class="Harentius\BlogBundle\Entity\Translation")
  * @ORM\Entity(repositoryClass="Harentius\BlogBundle\Entity\CategoryRepository")
  */
 class Category

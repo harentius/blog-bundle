@@ -14,7 +14,7 @@ use Sonata\TranslationBundle\Traits\Gedmo\PersonalTranslatable;
 
 /**
  * @ORM\Entity(repositoryClass="Harentius\BlogBundle\Entity\ArticleRepository")
- * @Gedmo\TranslationEntity(class="Harentius\BlogBundle\Entity\AbstractPostTranslation")
+ * @Gedmo\TranslationEntity(class="Harentius\BlogBundle\Entity\Translation")
  */
 class Article extends AbstractPost implements ItemInterface, TranslatableInterface
 {
@@ -64,7 +64,7 @@ class Article extends AbstractPost implements ItemInterface, TranslatableInterfa
      * @var array
      *
      * @ORM\OneToMany(
-     *     targetEntity="Harentius\BlogBundle\Entity\AbstractPostTranslation",
+     *     targetEntity="Harentius\BlogBundle\Entity\Translation",
      *     mappedBy="object",
      *     cascade={"persist", "remove"}
      * )

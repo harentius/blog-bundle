@@ -3,7 +3,7 @@
 namespace Harentius\BlogBundle\Twig;
 
 use Doctrine\Common\Cache\CacheProvider;
-use Harentius\BlogBundle\Entity\AbstractPostTranslationRepository;
+use Harentius\BlogBundle\Entity\TranslationRepository;
 use Harentius\BlogBundle\Entity\Base\AbstractPost;
 use Harentius\BlogBundle\Rating;
 use Harentius\BlogBundle\SettingsProvider;
@@ -35,7 +35,7 @@ class BlogExtension extends HttpKernelExtension
     private $settingsProvider;
 
     /**
-     * @var AbstractPostTranslationRepository
+     * @var TranslationRepository
      */
     private $abstractPostTranslationRepository;
 
@@ -50,7 +50,7 @@ class BlogExtension extends HttpKernelExtension
      * @param Rating $rating
      * @param SettingsProvider $settingsProvider
      * @param int $sidebarCacheLifeTime
-     * @param AbstractPostTranslationRepository $abstractPostTranslationRepository
+     * @param TranslationRepository $abstractPostTranslationRepository
      * @param string $locale
      */
     public function __construct(
@@ -59,7 +59,7 @@ class BlogExtension extends HttpKernelExtension
         Rating $rating,
         SettingsProvider $settingsProvider,
         $sidebarCacheLifeTime,
-        AbstractPostTranslationRepository $abstractPostTranslationRepository,
+        TranslationRepository $abstractPostTranslationRepository,
         $locale
     ) {
         parent::__construct($handler);

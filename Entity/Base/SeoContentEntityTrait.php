@@ -4,6 +4,7 @@ namespace Harentius\BlogBundle\Entity\Base;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 trait SeoContentEntityTrait
 {
@@ -11,6 +12,7 @@ trait SeoContentEntityTrait
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Gedmo\Translatable()
      * @SymfonyConstraints\Type(type="string")
      * @SymfonyConstraints\Length(max=255)
      */
@@ -20,6 +22,7 @@ trait SeoContentEntityTrait
      * @var string
      *
      * @ORM\Column(type="string", length=1000, nullable=true)
+     * @Gedmo\Translatable()
      * @SymfonyConstraints\Type(type="string")
      * @SymfonyConstraints\Length(max=1000)
      */
