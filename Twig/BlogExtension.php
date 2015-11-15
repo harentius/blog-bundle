@@ -40,12 +40,18 @@ class BlogExtension extends HttpKernelExtension
     private $abstractPostTranslationRepository;
 
     /**
+     * @var string
+     */
+    private $locale;
+
+    /**
      * @param FragmentHandler $handler A FragmentHandler instance
      * @param CacheProvider $cache
      * @param Rating $rating
      * @param SettingsProvider $settingsProvider
      * @param int $sidebarCacheLifeTime
      * @param AbstractPostTranslationRepository $abstractPostTranslationRepository
+     * @param string $locale
      */
     public function __construct(
         FragmentHandler $handler,
@@ -53,7 +59,8 @@ class BlogExtension extends HttpKernelExtension
         Rating $rating,
         SettingsProvider $settingsProvider,
         $sidebarCacheLifeTime,
-        AbstractPostTranslationRepository $abstractPostTranslationRepository
+        AbstractPostTranslationRepository $abstractPostTranslationRepository,
+        $locale
     ) {
         parent::__construct($handler);
         $this->cache = $cache;
@@ -61,6 +68,7 @@ class BlogExtension extends HttpKernelExtension
         $this->settingsProvider = $settingsProvider;
         $this->sidebarCacheLifeTime = $sidebarCacheLifeTime;
         $this->abstractPostTranslationRepository = $abstractPostTranslationRepository;
+        $this->locale = $locale;
     }
 
     /**
@@ -175,7 +183,10 @@ class BlogExtension extends HttpKernelExtension
      */
     public function translationsList(AbstractPost $article)
     {
-        return array_keys($this->abstractPostTranslationRepository->findTranslations($article));
+        return array_merge(
+            [$this->locale],
+            array_keys($this->abstractPostTranslationRepository->findTranslations($article))
+        );
     }
 
     /**

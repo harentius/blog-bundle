@@ -4,8 +4,9 @@ sonata_block:
         sonata.admin.block.admin_list:
             contexts: [admin]
 
+# TODO: configuration
 sonata_translation:
     locales: [en, ru]
-    default_locale: ru
+    default_locale: %locale%
     gedmo:
         enabled: true
