@@ -4,6 +4,9 @@
         <h2><a href="{{ path('harentius_blog_show', {'slug': article.slug}) }}">{{ article.title }}</a></h2>
         <div>{{ article.text|read_more }}</div>
     </article>
-    {% include 'HarentiusBlogBundle:Blog:_post_info.html.twig' %}
+
+    {% block post_info %}
+        {% include 'HarentiusBlogBundle:Blog:_post_info.html.twig' %}
+    {% endblock %}
 </div>
 {% endfor %}
