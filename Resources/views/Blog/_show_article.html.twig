@@ -2,7 +2,7 @@
 
 {% block after_post_content%}
     {% block post_info %}
-        {% include 'HarentiusBlogBundle:Blog:_post_info.html.twig' with {'article': entity} %}
+        {% include 'HarentiusBlogBundle:Blog:_post_info_article.html.twig' with {'article': entity} %}
     {% endblock %}
 
     <div class="row social-and-shares-wrapper" data-id="{{ entity.id }}">
