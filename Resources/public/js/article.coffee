@@ -23,7 +23,6 @@
             (d.head || d.body).appendChild(s)
           )()
         when '#vk-comments'
-          VK.Widgets.Like("vk-like", {type: "full", width: '100%', height: 24});
           VK.Widgets.Comments(
             "vk-comments",
             { limit: 5, attach: "*", pageUrl: Blog.crate.get('article_url') }
