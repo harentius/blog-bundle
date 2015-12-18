@@ -12,3 +12,7 @@ sonata_admin:
 _sonata_admin:
     resource: .
     type: sonata_admin
+
+harentius_blog_admin_home:
+    path:     /admin
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: admin_harentius_blog_dashboard, permanent: true }
