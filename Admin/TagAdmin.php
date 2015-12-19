@@ -3,6 +3,7 @@
 namespace Harentius\BlogBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
@@ -32,7 +33,19 @@ class TagAdmin extends Admin
     {
         $formMapper
             ->add('name')
-            ->add('slug')
+            ->add('slug', null, [
+                'required' => false,
+            ])
+        ;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function configureDatagridFilters(DatagridMapper $filter)
+    {
+        $filter
+            ->add('name')
         ;
     }
 }
