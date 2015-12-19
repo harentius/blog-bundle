@@ -72,10 +72,15 @@ class ArticleAdmin extends AbstractPostAdmin
                 'required' => false,
             ])
             ->add('category')
-//            ->add('tags', 'sonata_type_model_autocomplete', array(
-//                'property' => 'name',
-//                'multiple' => 'true',
-//            ))
+            ->add('tags', 'sonata_type_model_autocomplete', [
+                'attr' => [
+                    'class' => 'tags',
+                ],
+                'minimum_input_length' => 2,
+                'required' => false,
+                'property' => 'name',
+                'multiple' => 'true',
+            ])
             ->add('text', 'textarea', [
                 'attr' => ['class' => 'blog-page-edit'],
             ])
