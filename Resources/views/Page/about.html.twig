@@ -14,8 +14,10 @@
             total <span class="stat-value">{{ stats.viewsCount|localizednumber }}</span> page views,
             <span class="stat-value">{{ stats.likesCount|localizednumber }}</span> likes and
             <span class="stat-value">{{ stats.disLikesCount|localizednumber }}</span> dislikes{% if stats.disLikesCount > 0 %} (sorry about that){% endif %}
-            Most popular article: <a href="{{ path('harentius_blog_show', {'slug': stats.mostPopularArticleData.slug}) }}">{{ stats.mostPopularArticleData.title }}</a>
-            (<span class="stat-value">{{ stats.mostPopularArticleData.viewsCount }}</span> views)
+            {% if stats.mostPopularArticleData|default() %}
+                Most popular article: <a href="{{ path('harentius_blog_show', {'slug': stats.mostPopularArticleData.slug}) }}">{{ stats.mostPopularArticleData.title }}</a>
+                (<span class="stat-value">{{ stats.mostPopularArticleData.viewsCount }}</span> views)
+            {% endif %}
         </p>
     </div>
 {% endblock %}
