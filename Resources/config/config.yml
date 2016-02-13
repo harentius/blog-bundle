@@ -1,3 +1,17 @@
+framework:
+    #esi:             ~
+    translator:      { fallbacks: ["%locale%"] }
+
+stof_doctrine_extensions:
+    default_locale: %locale%
+    orm:
+        default:
+            timestampable: true
+            sluggable: true
+            tree: true
+            translatable: true
+    translation_fallback: true
+
 sonata_block:
     default_contexts: [sonata_page_bundle]
     blocks:
