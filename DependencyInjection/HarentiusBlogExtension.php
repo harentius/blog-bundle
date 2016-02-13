@@ -42,5 +42,7 @@ class HarentiusBlogExtension extends Extension
         $container->setParameter('harentius_blog.list.posts_per_page', $config['list']['posts_per_page']);
         $container->setParameter('harentius_blog.cache.apc_global_prefix', $config['cache']['apc_global_prefix']);
         $container->setParameter('harentius_blog.cache.statistics_cache_lifetime', $config['cache']['statistics_cache_lifetime']);
+        $container->setParameter('harentius_blog.sidebar.cache_lifetime', $config['sidebar']['cache_lifetime']);
+        $container->setParameter('harentius_blog.homepage.page_slug', $config['homepage']['page_slug']);
     }
 }
