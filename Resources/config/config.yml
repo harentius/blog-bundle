@@ -37,3 +37,10 @@ sonata_translation:
     default_locale: %locale%
     gedmo:
         enabled: true
+
+knp_paginator:
+    template:
+        pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig
+
+white_october_breadcrumbs:
+    separator: ~

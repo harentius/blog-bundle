@@ -2,10 +2,11 @@
   "name" : "harentius/blog-bundle",
   "type": "symfony-bundle",
   "description": "Symfony simple blog/cms",
-  "keywords": ["Symfony blog cms"],
+  "keywords": ["harentius blog bundle Symfony cms"],
   "homepage": "https://github.com/harentius/blog-bundle",
   "license": "MIT",
   "minimum-stability": "dev",
+  "prefer-stable": true,
   "authors": [
     {
       "name": "Yaroslav Osypenko",
