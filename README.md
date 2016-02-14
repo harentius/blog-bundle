@@ -15,7 +15,7 @@ Theoretically you can use it in existing project.
 For stand-alone installation, install symfony 2.7 first:
 
 ```bash
-composer create-project symfony/framework-standard-edition test "2.7.*"
+composer.phar create-project symfony/framework-standard-edition test "2.7.*"
 ```
 
 For using in existing project skip this step.
@@ -24,6 +24,7 @@ Because of using bower-asset/ckeditor-more-plugin in admin section with dev-mast
 
 ```json
    "minimum-stability": "dev",
+   "prefer-stable": true,
 ```
 
 in your composer.json. (Should be corrected in future.)
