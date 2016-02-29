@@ -64,6 +64,12 @@ services:
             - @request_stack
             - @doctrine.orm.entity_manager
 
+    harentius_blog.views_counter:
+        class: Harentius\BlogBundle\ViewsCounter
+        arguments:
+            - @request_stack
+            - @doctrine.orm.entity_manager
+
     harentius_blog.assets.resolver:
         class: Harentius\BlogBundle\Assets\Resolver
         arguments:

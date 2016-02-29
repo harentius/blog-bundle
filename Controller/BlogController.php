@@ -139,7 +139,7 @@ class BlogController extends Controller
 
         if ($entity) {
             $this->addCategoryHierarchyToBreadcrumbs($entity->getCategory(), $breadcrumbs);
-            $entity->increaseViewsCount();
+            $this->get('harentius_blog.views_counter')->processArticle($entity);
             /** @var EntityManager $em */
             $em = $this->getDoctrine()->getManager();
             $em->flush($entity);
