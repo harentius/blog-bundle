@@ -36,12 +36,16 @@ class ArticleRepository extends EntityRepository
      * @param Tag $tag
      * @return Query
      */
-    public function findByTagQuery(Tag $tag)
+    public function findPublishedByTagQuery(Tag $tag)
     {
         return $this->createQueryBuilder('a')
             ->join('a.tags', 't')
             ->where('t = :tag')
-            ->setParameter(':tag', $tag)
+            ->andWhere('a.isPublished = :isPublished')
+            ->setParameters([
+                ':tag' => $tag,
+                ':isPublished' => true,
+            ])
             ->orderBy('a.publishedAt', 'DESC')
             ->getQuery()
         ;

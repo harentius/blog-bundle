@@ -73,7 +73,7 @@ class BlogController extends Controller
 
                 $parent = $tag;
                 $breadcrumbs->addItem($tag->getName());
-                $articlesQuery = $articlesRepository->findByTagQuery($tag);
+                $articlesQuery = $articlesRepository->findPublishedByTagQuery($tag);
                 $noIndex = true;
                 break;
             default:
