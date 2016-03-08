@@ -1,6 +1,7 @@
 1.0.5
 =====
 - Optimized login page
+- Added csrf protection for admin login page
 
 
 1.0.4

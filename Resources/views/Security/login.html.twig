@@ -30,7 +30,7 @@
                         <div class="input-group submit-wrapper">
                             <button class="btn btn-success" id="_submit" name="_submit" type="submit">Log in</button>
                         </div>
-                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
                     </form>
                 </div>
             </div>
