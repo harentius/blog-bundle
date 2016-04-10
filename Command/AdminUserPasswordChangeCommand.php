@@ -2,7 +2,6 @@
 
 namespace Harentius\BlogBundle\Command;
 
-use Harentius\BlogBundle\Entity\AdminUser;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;

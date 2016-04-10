@@ -118,7 +118,7 @@ class BlogExtension extends HttpKernelExtension
         }
 
         $renderedContent = $this->renderFragment($controllerReference, $options);
-        $this->cache->save($key, $renderedContent);
+        $this->cache->save($key, $renderedContent, $this->sidebarCacheLifeTime);
 
         return $renderedContent;
     }
