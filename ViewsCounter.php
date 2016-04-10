@@ -42,6 +42,7 @@ class ViewsCounter
             $viewedArticles[$articleId] = true;
             $article->increaseViewsCount();
             $session->set('viewedArticles', $viewedArticles);
+            $this->em->flush($article);
         }
     }
 }

@@ -140,9 +140,6 @@ class BlogController extends Controller
         if ($entity) {
             $this->addCategoryHierarchyToBreadcrumbs($entity->getCategory(), $breadcrumbs);
             $this->get('harentius_blog.views_counter')->processArticle($entity);
-            /** @var EntityManager $em */
-            $em = $this->getDoctrine()->getManager();
-            $em->flush($entity);
         } else {
             $entity = $this->getDoctrine()->getRepository('HarentiusBlogBundle:Page')
                 ->findOneBy(['slug' => $slug, 'isPublished' => true])
