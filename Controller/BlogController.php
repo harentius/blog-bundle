@@ -2,10 +2,8 @@
 
 namespace Harentius\BlogBundle\Controller;
 
-use Doctrine\ORM\EntityManager;
 use Harentius\BlogBundle\Entity\Article;
 use Harentius\BlogBundle\Entity\Category;
-use Harentius\BlogBundle\Entity\Page;
 use Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
