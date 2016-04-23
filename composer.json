@@ -15,7 +15,7 @@
     }
   ],
   "autoload" : {
-    "psr-4": { "Harentius\\BlogBundle\\": "" }
+    "psr-4": { "Harentius\\BlogBundle\\": "src/" }
   },
   "require": {
     "php": ">=5.4",
@@ -34,7 +34,7 @@
     "sensio/distribution-bundle": "~4.0",
     "sensio/framework-extra-bundle": "~3.0,>=3.0.2",
     "incenteev/composer-parameter-handler": "~2.0",
-    "fxp/composer-asset-plugin": ">=1.0.0",
+    "fxp/composer-asset-plugin": "~1.1",
     "bower-asset/bootstrap": ">3.3",
     "knplabs/knp-paginator-bundle": ">=2.4",
     "hautelook/alice-bundle": ">=0.2",

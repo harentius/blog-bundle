@@ -1,3 +1,8 @@
+1.0.6
+=====
+- Moved sources to src/ directory
+
+
 1.0.5
 =====
 - Optimized login page
