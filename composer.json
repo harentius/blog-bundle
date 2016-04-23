@@ -52,6 +52,7 @@
     "bower-asset/ckeditor-wordcount-plugin": ">=1.1",
     "symfony-cmf/routing-bundle": ">=1.3.5",
     "eko/feedbundle": ">=1.2.6",
-    "bower-asset/js-cookie": ">=2.0.3"
+    "bower-asset/js-cookie": ">=2.0.3",
+    "liip/imagine-bundle": "~1.5"
   }
 }
