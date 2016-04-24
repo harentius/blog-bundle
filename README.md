@@ -71,6 +71,7 @@ public function registerBundles()
         new Presta\SitemapBundle\PrestaSitemapBundle(),
         new Symfony\Cmf\Bundle\RoutingBundle\CmfRoutingBundle(),
         new Eko\FeedBundle\EkoFeedBundle(),
+        new Liip\ImagineBundle\LiipImagineBundle(),
 
         new Harentius\BlogBundle\HarentiusBlogBundle(),
     );
@@ -127,6 +128,11 @@ bundles:        [ ]
 
 ```yml
 harentius_blog:
+    articles:
+        # Is generate preview when resize images in CKEditor
+        generate_image_previews: true
+        # Path where previews stored
+        image_previews_base_uri: /assets/images/preview/
     sidebar:
         # ~ - no cache, 0 - unlimited cache
         cache_lifetime: 3600
