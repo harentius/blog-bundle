@@ -183,7 +183,10 @@ class BlogController extends Controller
     private function addCategoryHierarchyToBreadcrumbs(Category $category, Breadcrumbs $breadcrumbs)
     {
         do {
-            $breadcrumbs->prependItem($category->getName(), $this->generateUrl("harentius_blog_category_{$category->getId()}"));
+            $breadcrumbs->prependItem(
+                $category->getName(),
+                $this->generateUrl("harentius_blog_category_{$category->getId()}")
+            );
         } while ($category = $category->getParent());
     }
 

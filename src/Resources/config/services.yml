@@ -150,3 +150,13 @@ services:
         class: Doctrine\Common\Cache\ApcCache
         calls:
             - [ setNamespace, [ %harentius_blog.cache.apc_global_prefix%_statistics ] ]
+
+    harentius_blog.image_optimizer:
+        class: Harentius\BlogBundle\ImageOptimizer
+        arguments:
+            - "@liip_imagine.cache.manager"
+            - "@liip_imagine.filter.manager"
+            - "@liip_imagine.data.manager"
+            - "@harentius_blog.assets.resolver"
+#            TODO: move to configuration
+            - "%image_previews_base_uri%"

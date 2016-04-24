@@ -11,13 +11,13 @@
     targetDir = Blog.crate.get('image_previews_base_uri')
 
     $(editor.document.$).on('mousedown', '.cke_image_resizer', () ->
-      $resizingImage = $(this).parent().find('img.cke_widget_element')
+      $resizingImage = $(this).closest('.cke_widget_wrapper').find('img[data-cke-saved-src]')
     )
 
     $(editor.document.$).on('mouseup', () ->
       return if not $resizingImage
 
-      urlParts = $resizingImage.attr('src').match(/\/([^/]*?)(_\d+x\d+)?(\.[0-9a-z]+)$/i)
+      urlParts = $resizingImage.attr('src').match(/\/([^\/]*?)(_\d+x\d+)?(\.[0-9a-z]+)$/i)
 
       return if not urlParts[1] || not urlParts[3]
 
