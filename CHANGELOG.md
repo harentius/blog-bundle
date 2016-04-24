@@ -1,3 +1,8 @@
+1.1.0
+=====
+- Added image optimization functionality
+
+
 1.0.6
 =====
 - Moved sources to src/ directory

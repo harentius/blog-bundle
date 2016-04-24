@@ -43,3 +43,10 @@ harentius_blog_rate:
         type: like|dislike
     options:
         expose: true
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"
+
+harentius_blog_resize:
+    path:     %image_previews_base_uri%{imageName}
+    defaults: { _controller: HarentiusBlogBundle:ImageOptimization:resize }

@@ -49,6 +49,12 @@ class Configuration implements ConfigurationInterface
                     ->integerNode('statistics_cache_lifetime')->defaultValue(86400)->end()
                 ->end()
             ->end()
+            ->arrayNode('articles')
+                ->children()
+                    ->booleanNode('generate_image_previews')->defaultValue(false)->end()
+                    ->scalarNode('image_previews_base_uri')->defaultValue('/assets/images/preview/')->end()
+                ->end()
+            ->end()
         ;
 
         return $treeBuilder;

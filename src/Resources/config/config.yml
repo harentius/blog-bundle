@@ -46,3 +46,12 @@ knp_paginator:
 
 white_october_breadcrumbs:
     separator: ~
+
+liip_imagine:
+    resolvers:
+        default:
+            web_path:
+                cache_prefix: assets/images
+    filter_sets:
+        preview:
+            filters: []

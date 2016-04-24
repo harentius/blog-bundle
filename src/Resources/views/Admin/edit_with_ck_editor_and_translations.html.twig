@@ -5,8 +5,18 @@
     <script src="{{ asset('assets/vendor/ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('assets/vendor/ckeditor/adapters/jquery.js') }}"></script>
 
+    {% if generate_image_previews %}
+        {% javascripts
+            '@HarentiusBlogBundle/Resources/public/js/crate.coffee'
+            '@HarentiusBlogBundle/Resources/public/js/ckeditor-image-resize-attributes-to-url.coffee'
+        %}
+        <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    {% endif %}
+
     <script>
         'use strict';
+        Blog.crate.set('image_previews_base_uri', '{{ image_previews_base_uri  }}');
 
         jQuery(function ($) {
             CKEDITOR.plugins.addExternal("youtube", "{{ asset('assets/vendor/ckeditor-youtube-plugin/youtube/plugin.js') }}");
@@ -41,7 +51,7 @@
                 filebrowserBrowseUrl: "{{ admin.generateUrl('browse', {'type': 'image'}) }}",
                 filebrowserAudioBrowseUrl: "{{ admin.generateUrl('browse', {'type': 'audio'}) }}"
             });
-        })
+        });
     </script>
 {% endblock %}
 
