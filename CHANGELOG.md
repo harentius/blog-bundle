@@ -1,3 +1,8 @@
+1.1.2
+=====
+improved image optimization controller: 5xx errors now become 404
+
+
 1.1.1
 =====
 Fixed bug, which allowed rate multiple times
