@@ -13,9 +13,9 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 class Rating
 {
     /**
-     * @var Request
+     * @var RequestStack
      */
-    private $request;
+    private $requestStack;
 
     /**
      * @var EntityManager
@@ -28,7 +28,7 @@ class Rating
      */
     public function __construct(RequestStack $requestStack, EntityManager $em)
     {
-        $this->request = $requestStack->getCurrentRequest();
+        $this->requestStack = $requestStack;
         $this->em = $em;
     }
 
@@ -60,7 +60,7 @@ class Rating
      */
     public function isLiked(Article $article)
     {
-        return in_array($article->getId(), json_decode($this->request->cookies->get('harentius_blog_articles_like', '[]')));
+        return in_array($article->getId(), json_decode($this->getRequest()->cookies->get('harentius_blog_articles_like', '[]')));
     }
 
     /**
@@ -69,7 +69,7 @@ class Rating
      */
     public function isDisLiked(Article $article)
     {
-        return in_array($article->getId(), json_decode($this->request->cookies->get('harentius_blog_articles_dislike', '[]')));
+        return in_array($article->getId(), json_decode($this->getRequest()->cookies->get('harentius_blog_articles_dislike', '[]')));
     }
 
     /**
@@ -100,11 +100,19 @@ class Rating
     {
         $articleId = $article->getId();
         $key = "harentius_blog_articles_{$type}";
-        $rated = json_decode($this->request->cookies->get($key, '[]'));
+        $rated = json_decode($this->getRequest()->cookies->get($key, '[]'));
 
         if (!in_array($articleId, $rated)) {
             $rated[] = $articleId;
             $response->headers->setCookie(new Cookie($key, json_encode($rated)));
         }
+    }
+
+    /**
+     * @return Request|null
+     */
+    private function getRequest()
+    {
+        return $this->requestStack->getCurrentRequest();
     }
 }
