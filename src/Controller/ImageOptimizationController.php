@@ -5,6 +5,7 @@ namespace Harentius\BlogBundle\Controller;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ImageOptimizationController extends Controller
 {
@@ -17,9 +18,13 @@ class ImageOptimizationController extends Controller
      */
     public function resizeAction($imageName)
     {
-        $imageOptimizer = $this->get('harentius_blog.image_optimizer');
-        $imagePath = $imageOptimizer->createPreviewIfNotExists($imageName);
+        try {
+            $imageOptimizer = $this->get('harentius_blog.image_optimizer');
+            $imagePath = $imageOptimizer->createPreviewIfNotExists($imageName);
 
-        return new BinaryFileResponse($imagePath);
+            return new BinaryFileResponse($imagePath);
+        } catch (\Exception $e) {
+            throw new NotFoundHttpException(sprintf("File %s not found", $imageName));
+        }
     }
 }
