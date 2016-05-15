@@ -63,6 +63,7 @@ services:
         arguments:
             - @request_stack
             - @doctrine.orm.entity_manager
+            - @harentius_blog.rating_cache
 
     harentius_blog.views_counter:
         class: Harentius\BlogBundle\ViewsCounter
@@ -124,6 +125,16 @@ services:
             - %harentius_blog.cache.statistics_cache_lifetime%
             - @harentius_blog.entity.article_repository
 
+    harentius_blog.image_optimizer:
+        class: Harentius\BlogBundle\ImageOptimizer
+        arguments:
+            - "@liip_imagine.cache.manager"
+            - "@liip_imagine.filter.manager"
+            - "@liip_imagine.data.manager"
+            - "@harentius_blog.assets.resolver"
+#            TODO: move to configuration
+            - "%image_previews_base_uri%"
+
 
     # Cache
     harentius_blog.sidebar.cache:
@@ -151,12 +162,7 @@ services:
         calls:
             - [ setNamespace, [ %harentius_blog.cache.apc_global_prefix%_statistics ] ]
 
-    harentius_blog.image_optimizer:
-        class: Harentius\BlogBundle\ImageOptimizer
-        arguments:
-            - "@liip_imagine.cache.manager"
-            - "@liip_imagine.filter.manager"
-            - "@liip_imagine.data.manager"
-            - "@harentius_blog.assets.resolver"
-#            TODO: move to configuration
-            - "%image_previews_base_uri%"
+    harentius_blog.rating_cache:
+        class: Doctrine\Common\Cache\ApcCache
+        calls:
+            - [ setNamespace, [ %harentius_blog.cache.apc_global_prefix%_rating ] ]

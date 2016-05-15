@@ -2,6 +2,7 @@
 
 namespace Harentius\BlogBundle;
 
+use Doctrine\Common\Cache\CacheProvider;
 use Doctrine\ORM\EntityManager;
 use Harentius\BlogBundle\Entity\Article;
 use Symfony\Component\HttpFoundation\Cookie;
@@ -12,6 +13,8 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class Rating
 {
+    const TIME_TO_REMEMBER_IP = 60;
+
     /**
      * @var RequestStack
      */
@@ -23,13 +26,20 @@ class Rating
     private $em;
 
     /**
+     * @var CacheProvider
+     */
+    private $cache;
+
+    /**
      * @param RequestStack $requestStack
      * @param EntityManager $em
+     * @param CacheProvider $cache
      */
-    public function __construct(RequestStack $requestStack, EntityManager $em)
+    public function __construct(RequestStack $requestStack, EntityManager $em, CacheProvider $cache)
     {
         $this->requestStack = $requestStack;
         $this->em = $em;
+        $this->cache = $cache;
     }
 
     /**
@@ -48,8 +58,8 @@ class Rating
             $article->increaseDisLikesCount();
         }
 
-        $this->em->flush($article);
         $this->addToRated($response, $article, $type);
+        $this->em->flush($article);
 
         return $response;
     }
@@ -78,6 +88,12 @@ class Rating
      */
     public function isRated(Article $article)
     {
+        $ip = $this->getRequest()->getClientIp();
+
+        if ($this->cache->contains($ip)) {
+            return true;
+        }
+
         return $this->isLiked($article) || $this->isDisLiked($article);
     }
 
@@ -105,6 +121,7 @@ class Rating
         if (!in_array($articleId, $rated)) {
             $rated[] = $articleId;
             $response->headers->setCookie(new Cookie($key, json_encode($rated)));
+            $this->cache->save($ip = $this->getRequest()->getClientIp(), true, self::TIME_TO_REMEMBER_IP);
         }
     }
 
