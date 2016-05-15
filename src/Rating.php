@@ -2,6 +2,7 @@
 
 namespace Harentius\BlogBundle;
 
+use Doctrine\Common\Cache\CacheProvider;
 use Doctrine\ORM\EntityManager;
 use Harentius\BlogBundle\Entity\Article;
 use Symfony\Component\HttpFoundation\Cookie;
@@ -12,10 +13,12 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class Rating
 {
+    const TIME_TO_REMEMBER_IP = 60;
+
     /**
-     * @var Request
+     * @var RequestStack
      */
-    private $request;
+    private $requestStack;
 
     /**
      * @var EntityManager
@@ -23,13 +26,20 @@ class Rating
     private $em;
 
     /**
+     * @var CacheProvider
+     */
+    private $cache;
+
+    /**
      * @param RequestStack $requestStack
      * @param EntityManager $em
+     * @param CacheProvider $cache
      */
-    public function __construct(RequestStack $requestStack, EntityManager $em)
+    public function __construct(RequestStack $requestStack, EntityManager $em, CacheProvider $cache)
     {
-        $this->request = $requestStack->getCurrentRequest();
+        $this->requestStack = $requestStack;
         $this->em = $em;
+        $this->cache = $cache;
     }
 
     /**
@@ -48,8 +58,8 @@ class Rating
             $article->increaseDisLikesCount();
         }
 
-        $this->em->flush($article);
         $this->addToRated($response, $article, $type);
+        $this->em->flush($article);
 
         return $response;
     }
@@ -60,7 +70,7 @@ class Rating
      */
     public function isLiked(Article $article)
     {
-        return in_array($article->getId(), json_decode($this->request->cookies->get('harentius_blog_articles_like', '[]')));
+        return in_array($article->getId(), json_decode($this->getRequest()->cookies->get('harentius_blog_articles_like', '[]')));
     }
 
     /**
@@ -69,7 +79,7 @@ class Rating
      */
     public function isDisLiked(Article $article)
     {
-        return in_array($article->getId(), json_decode($this->request->cookies->get('harentius_blog_articles_dislike', '[]')));
+        return in_array($article->getId(), json_decode($this->getRequest()->cookies->get('harentius_blog_articles_dislike', '[]')));
     }
 
     /**
@@ -78,6 +88,12 @@ class Rating
      */
     public function isRated(Article $article)
     {
+        $ip = $this->getRequest()->getClientIp();
+
+        if ($this->cache->contains($ip)) {
+            return true;
+        }
+
         return $this->isLiked($article) || $this->isDisLiked($article);
     }
 
@@ -100,11 +116,20 @@ class Rating
     {
         $articleId = $article->getId();
         $key = "harentius_blog_articles_{$type}";
-        $rated = json_decode($this->request->cookies->get($key, '[]'));
+        $rated = json_decode($this->getRequest()->cookies->get($key, '[]'));
 
         if (!in_array($articleId, $rated)) {
             $rated[] = $articleId;
             $response->headers->setCookie(new Cookie($key, json_encode($rated)));
+            $this->cache->save($ip = $this->getRequest()->getClientIp(), true, self::TIME_TO_REMEMBER_IP);
         }
+    }
+
+    /**
+     * @return Request|null
+     */
+    private function getRequest()
+    {
+        return $this->requestStack->getCurrentRequest();
     }
 }
