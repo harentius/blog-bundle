@@ -1,3 +1,8 @@
+1.1.1
+=====
+Fixed bug, which allowed rate multiple times
+
+
 1.1.0
 =====
 - Added image optimization functionality
