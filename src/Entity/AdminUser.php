@@ -31,9 +31,17 @@ class AdminUser implements UserInterface, \Serializable
      * @SymfonyConstraints\NotBlank()
      * @SymfonyConstraints\Length(max=255)
      * @SymfonyConstraints\Type("string")
-
      */
     private $password;
+
+    /**
+     * @var string
+     *
+     * @SymfonyConstraints\NotBlank()
+     * @SymfonyConstraints\Length(max=255)
+     * @SymfonyConstraints\Type("string")
+     */
+    private $plainPassword;
 
     /**
      * @var string
@@ -89,14 +97,6 @@ class AdminUser implements UserInterface, \Serializable
     }
 
     /**
-     * @return string
-     */
-    public function getSalt()
-    {
-        return $this->salt;
-    }
-
-    /**
      * @param string $value
      * @return $this
      */
@@ -105,6 +105,33 @@ class AdminUser implements UserInterface, \Serializable
         $this->password = $value;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @param string $value
+     * @return $this
+     */
+    public function setPlainPassword($value)
+    {
+        $this->plainPassword = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSalt()
+    {
+        return $this->salt;
     }
 
     /**
@@ -131,7 +158,7 @@ class AdminUser implements UserInterface, \Serializable
      */
     public function eraseCredentials()
     {
-
+        $this->plainPassword = null;
     }
 
 // TODO: implement
