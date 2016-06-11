@@ -1,6 +1,11 @@
+1.1.3
+=====
+Improved and updates fixtures
+
+
 1.1.2
 =====
-improved image optimization controller: 5xx errors now become 404
+Improved image optimization controller: 5xx errors now become 404
 
 
 1.1.1

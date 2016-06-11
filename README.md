@@ -192,7 +192,7 @@ app/console doctrine:schema:update
 6) Populate initial DB values (admin user default credentials: admin/admin, homepage data, etc)
 
 ```bash
-app/console blog:database:populate
+app/console hautelook_alice:doctrine:fixtures:load
 ```
 
 
