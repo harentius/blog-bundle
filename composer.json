@@ -3,7 +3,7 @@
   "type": "symfony-bundle",
   "description": "Simple Symfony blog/cms",
   "keywords": ["harentius blog bundle Symfony cms"],
-  "homepage": "https://github.com/harentius/blog-bundle",
+  "homepage": "http://folkprog.net/symfony-blog-bundle/",
   "license": "MIT",
   "minimum-stability": "dev",
   "prefer-stable": true,
