@@ -166,3 +166,11 @@ services:
         class: Doctrine\Common\Cache\ApcCache
         calls:
             - [ setNamespace, [ %harentius_blog.cache.apc_global_prefix%_rating ] ]
+
+    harentius_blog.event_listener.admin_user_listener:
+        class: Harentius\BlogBundle\EventListener\AdminUserListener
+        arguments:
+            - @security.password_encoder
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }

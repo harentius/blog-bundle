@@ -1,0 +1,4 @@
+Harentius\BlogBundle\Entity\Tag:
+    tag_{1..6}:
+        name: Tag <current()>
+        slug: tag-<current()>

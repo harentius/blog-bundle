@@ -26,10 +26,9 @@ class AdminUserPasswordChangeCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $em = $this->getContainer()->get('doctrine.orm.entity_manager');
-        $encoder = $this->getContainer()->get('security.password_encoder');
 
         if ($adminUser = $em->getRepository('HarentiusBlogBundle:AdminUser')->findOneBy(['username' => 'admin'])) {
-            $adminUser->setPassword($encoder->encodePassword($adminUser, $input->getArgument('password')));
+            $adminUser->setPlainPassword($input->getArgument('password'));
             $em->flush();
         }
 
