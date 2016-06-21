@@ -32,7 +32,7 @@ harentius_blog_list:
         filtrationType: category|tag
 
 harentius_blog_show:
-    path:     /{slug}/
+    path:     /{slug}
     defaults: { _controller: HarentiusBlogBundle:Blog:show }
 
 harentius_blog_rate:
