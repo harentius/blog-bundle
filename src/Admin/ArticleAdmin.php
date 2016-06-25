@@ -3,6 +3,7 @@
 namespace Harentius\BlogBundle\Admin;
 
 use Doctrine\Common\Cache\CacheProvider;
+use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
@@ -98,6 +99,18 @@ class ArticleAdmin extends AbstractPostAdmin
             ->add('metaKeywords', 'text', [
                 'required' => false,
             ])
+        ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    {
+        $datagridMapper
+            ->add('title')
+            ->add('text')
+            ->add('category')
         ;
     }
 
