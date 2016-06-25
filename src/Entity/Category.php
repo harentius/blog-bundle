@@ -53,7 +53,7 @@ class Category
     private $articles;
 
     /**
-     * @var Tag
+     * @var Category
      *
      * @Gedmo\TreeParent
      * @ORM\ManyToOne(
@@ -65,7 +65,7 @@ class Category
     private $parent;
 
     /**
-     * @var Tag[]
+     * @var Category[]
      *
      * @ORM\OneToMany(
      *      targetEntity="Harentius\BlogBundle\Entity\Category",
