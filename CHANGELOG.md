@@ -1,3 +1,12 @@
+1.1.4
+=====
+ - Improved dependencies and tested with symfony 2.8
+ - Changed default routes pattern (removed trailing slash for articles)
+ - Added filters for article admin
+ - Added redirect from dashboard to arlicles list (because dashboard is empty and not implemented by the moment)
+ - HTML5 fixes
+
+
 1.1.3
 =====
 Improved and updates fixtures
