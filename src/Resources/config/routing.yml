@@ -1,3 +1,14 @@
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+PrestaSitemapBundle:
+    resource: "@PrestaSitemapBundle/Resources/config/routing.yml"
+    prefix:   /
+
+admin:
+    resource: "@HarentiusBlogBundle/Resources/config/routing-admin.yml"
+    prefix:   /admin
+
 harentius_blog_homepage:
     path:     /
     defaults: { _controller: HarentiusBlogBundle:Blog:index }
