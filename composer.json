@@ -49,7 +49,7 @@
     "bower-asset/jquery": "~2.1|~3.0",
     "friendsofsymfony/jsrouting-bundle": "~1.5",
     "bower-asset/components-font-awesome": "~4.4",
-    "presta/sitemap-bundle": "~1.4",
+    "presta/sitemap-bundle": "~1.4.2",
     "bower-asset/ckeditor-wordcount-plugin": "~1.1",
     "symfony-cmf/routing-bundle": "~1.3",
     "eko/feedbundle": "~1.2",
