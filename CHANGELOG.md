@@ -1,3 +1,8 @@
+1.1.5
+=====
+Dependency fixes
+
+
 1.1.4
 =====
  - Improved dependencies and tested with symfony 2.8
