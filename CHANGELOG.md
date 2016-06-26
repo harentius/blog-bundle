@@ -1,3 +1,8 @@
+1.1.6
+=====
+Optimized routes
+
+
 1.1.5
 =====
 Dependency fixes
