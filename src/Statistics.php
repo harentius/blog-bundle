@@ -33,7 +33,6 @@ class Statistics
         $this->cache = $cache;
         $this->cacheLifetime = $cacheLifetime;
         $this->articleRepository = $articleRepository;
-        $this->getAll();
     }
 
     /**
