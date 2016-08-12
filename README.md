@@ -1,9 +1,11 @@
 Just another Symfony blog bundle
 ================================
 
-Symfony Bundle for simple blog.
+Symfony Bundle for simple blog. In progress now.
 
-In progress now.
+This doc explains integration in existing project, which requires a lot of work. Currently I working on improvement and simplification of this process. You're welcome to report issues
+
+For quick and easy stand-alone installation please check [https://github.com/harentius/blog](https://github.com/harentius/blog)
 
 
 Installation
