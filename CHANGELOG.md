@@ -1,3 +1,8 @@
+1.1.7
+=====
+ - Added lang attribute
+
+
 1.1.6
 =====
 Optimized routes
