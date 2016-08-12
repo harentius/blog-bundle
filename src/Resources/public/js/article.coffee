@@ -11,6 +11,7 @@
 
       switch type
         when '#disqus_thread'
+          # Disqus API needs this variable. So please don't warn of unused variable
           disqus_config = () ->
             @.page.url = Blog.crate.get('article_url')
             @.page.identifier = Blog.crate.get('page_identifier')

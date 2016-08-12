@@ -8,9 +8,9 @@ services:
             - Harentius\BlogBundle\Entity\Article
             - HarentiusBlogBundle:CRUD
         calls:
-            - [ setTranslationDomain, [ HarentiusBlogBundle ] ]
-            - [ setTemplate, [ edit, HarentiusBlogBundle:Admin:edit_with_ck_editor_and_translations.html.twig ] ]
-            - [ setEntityManager, [ @doctrine.orm.entity_manager ] ]
+            - [ setTranslationDomain, [ 'HarentiusBlogBundle' ] ]
+            - [ setTemplate, [ 'edit', 'HarentiusBlogBundle:Admin/CRUD:edit_post.html.twig'] ]
+            - [ setEntityManager, [ '@doctrine.orm.entity_manager' ] ]
 
     harentius_blog.admin.page:
         class: Harentius\BlogBundle\Admin\PageAdmin
@@ -21,9 +21,9 @@ services:
             - Harentius\BlogBundle\Entity\Page
             - HarentiusBlogBundle:CRUD
         calls:
-            - [ setTranslationDomain, [ HarentiusBlogBundle ] ]
-            - [ setTemplate, [ edit, HarentiusBlogBundle:Admin:edit_with_ck_editor_and_translations.html.twig ] ]
-            - [ setEntityManager, [ @doctrine.orm.entity_manager ] ]
+            - [ setTranslationDomain, [ 'HarentiusBlogBundle' ] ]
+            - [ setTemplate, [ 'edit', 'HarentiusBlogBundle:Admin:edit_with_ck_editor_and_translations.html.twig' ] ]
+            - [ setEntityManager, [ '@doctrine.orm.entity_manager' ] ]
 
     harentius_blog.admin.category:
         class: Harentius\BlogBundle\Admin\CategoryAdmin
@@ -34,7 +34,7 @@ services:
             - Harentius\BlogBundle\Entity\Category
             - null
         calls:
-            - [ setTranslationDomain, [ HarentiusBlogBundle ] ]
+            - [ setTranslationDomain, [ 'HarentiusBlogBundle' ] ]
 
     harentius_blog.admin.tag:
         class: Harentius\BlogBundle\Admin\TagAdmin
@@ -45,4 +45,4 @@ services:
             - Harentius\BlogBundle\Entity\Tag
             - null
         calls:
-            - [ setTranslationDomain, [ HarentiusBlogBundle ] ]
+            - [ setTranslationDomain, [ 'HarentiusBlogBundle' ] ]

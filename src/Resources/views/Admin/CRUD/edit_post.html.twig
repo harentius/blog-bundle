@@ -1,0 +1,11 @@
+{% extends 'HarentiusBlogBundle:Admin:edit_with_ck_editor_and_translations.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {% javascripts
+        '@HarentiusBlogBundle/Resources/public/js/admin/edit/post.coffee'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

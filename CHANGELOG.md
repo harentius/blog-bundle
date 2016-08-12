@@ -1,6 +1,8 @@
 1.1.7
 =====
  - Added lang attribute
+ - Added auto setting publishedAt in admin section when switching status to 'isPublished'
+ - Tiny new Symfony Yaml component deprecations refactoring (services configurations)
 
 
 1.1.6
