@@ -2,6 +2,7 @@
 =====
  - Added support of Sonata Admin 3.*
 
+
 1.1.7
 =====
  - Added lang attribute
