@@ -4,7 +4,7 @@
   Blog = global.Blog
 
   $(() ->
-    initialized = { '#vk-comments': false, '#disqus_thread':false }
+    initialized = { '#vk-comments': false, '#disqus_thread': false }
 
     initComments = (type) ->
       return if initialized[type]
@@ -26,7 +26,7 @@
         when '#vk-comments'
           VK.Widgets.Comments(
             "vk-comments",
-            { limit: 5, attach: "*", pageUrl: Blog.crate.get('article_url') }
+            { limit: 5, attach: "*", pageUrl: Blog.crate.get('article_url') },
             Blog.crate.get('article_original_id')
           )
         else return
