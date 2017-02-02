@@ -70,12 +70,12 @@
                     {% block content %}{% endblock %}
                 </div>
 
-                <div class="col-lg-3 col-md-3 hidden-sm hidden-xs sidebar">
+                <aside class="col-lg-3 col-md-3 hidden-sm hidden-xs sidebar">
                     {% block sidebar %}
                         {{ include('HarentiusBlogBundle:Sidebar:index.html.twig') }}
                     {% endblock %}
                     {% block sidebar_after_content %}{% endblock %}
-                </div>
+                </aside>
             </div>
 
             {% block footer %}

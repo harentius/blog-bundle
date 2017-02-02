@@ -5,7 +5,6 @@ namespace Harentius\BlogBundle\Controller;
 use Sonata\AdminBundle\Controller\CRUDController as BaseCRUDController;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 

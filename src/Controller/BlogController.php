@@ -119,6 +119,7 @@ class BlogController extends Controller
             'articles' => $paginator,
             'year' => $year,
             'month' => $month,
+            'noIndex' => true,
             'hasToPaginate' => $paginator->getPageCount() > 1,
         ]);
     }

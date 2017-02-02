@@ -1,3 +1,7 @@
+1.1.9
+=====
+ - Different SEO improvements
+
 1.1.8
 =====
  - Added support of Sonata Admin 3.*
