@@ -16,8 +16,7 @@ class RouteProvider implements RouteProviderInterface
     protected $routes;
 
     /**
-     * Container uses for avoiding crashes while rebuilding
-     *
+     * Container used for avoiding crashes while rebuilding
      * @var ContainerInterface
      */
     protected $container;
@@ -32,7 +31,7 @@ class RouteProvider implements RouteProviderInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getRouteCollectionForRequest(Request $request)
     {
@@ -49,7 +48,7 @@ class RouteProvider implements RouteProviderInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getRouteByName($name, $params = [])
     {
@@ -61,7 +60,7 @@ class RouteProvider implements RouteProviderInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getRoutesByNames($names)
     {

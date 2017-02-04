@@ -4,15 +4,14 @@ namespace Harentius\BlogBundle;
 
 use Doctrine\ORM\EntityManager;
 use Harentius\BlogBundle\Entity\Article;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class ViewsCounter
 {
     /**
-     * @var Request
+     * @var SessionInterface
      */
-    private $request;
+    private $session;
 
     /**
      * @var EntityManager
@@ -20,12 +19,12 @@ class ViewsCounter
     private $em;
 
     /**
-     * @param RequestStack $requestStack
+     * @param SessionInterface $session
      * @param EntityManager $em
      */
-    public function __construct(RequestStack $requestStack, EntityManager $em)
+    public function __construct(SessionInterface $session, EntityManager $em)
     {
-        $this->request = $requestStack->getCurrentRequest();
+        $this->session = $session;
         $this->em = $em;
     }
 
@@ -34,15 +33,16 @@ class ViewsCounter
      */
     public function processArticle(Article $article)
     {
-        $session = $this->request->getSession();
-        $viewedArticles = $session->get('viewedArticles', []);
+        $viewedArticles = $this->session->get('viewedArticles', []);
         $articleId = $article->getId();
 
-        if (!isset($viewedArticles[$articleId] )) {
-            $viewedArticles[$articleId] = true;
-            $article->increaseViewsCount();
-            $session->set('viewedArticles', $viewedArticles);
-            $this->em->flush($article);
+        if (isset($viewedArticles[$articleId] )) {
+            return;
         }
+
+        $viewedArticles[$articleId] = true;
+        $article->increaseViewsCount();
+        $this->session->set('viewedArticles', $viewedArticles);
+        $this->em->flush($article);
     }
 }

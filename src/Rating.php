@@ -15,6 +15,9 @@ class Rating
 {
     const TIME_TO_REMEMBER_IP = 60;
 
+    const TYPE_LIKE = 'like';
+    const TYPE_DISLIKE = 'dislike';
+
     /**
      * @var RequestStack
      */
@@ -48,13 +51,13 @@ class Rating
      * @param string $type
      * @return Response
      */
-    public function rate(Response $response, Article $article, $type = 'like')
+    public function rate(Response $response, Article $article, $type = self::TYPE_LIKE)
     {
         $this->accessDeniedIfRated($article);
 
-        if ($type === 'like') {
+        if ($type === self::TYPE_LIKE) {
             $article->increaseLikesCount();
-        } elseif ($type === 'dislike') {
+        } elseif ($type === self::TYPE_DISLIKE) {
             $article->increaseDisLikesCount();
         }
 

@@ -68,7 +68,7 @@ services:
     harentius_blog.views_counter:
         class: Harentius\BlogBundle\ViewsCounter
         arguments:
-            - '@request_stack'
+            - '@session'
             - '@doctrine.orm.entity_manager'
 
     harentius_blog.assets.resolver:
