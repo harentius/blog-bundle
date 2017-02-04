@@ -140,30 +140,5 @@ class SitemapListener implements SitemapListenerInterface
         };
 
         $addCategoriesRoutes($this->categoryRepository->notEmptyChildrenHierarchy());
-
-        // Archives
-        foreach ($this->archive->getList() as $year => $months) {
-            foreach ($months as $number => $name) {
-                $event->getGenerator()->addUrl(
-                    new UrlConcrete(
-                        $this->router->generate('harentius_blog_archive_month', ['year' => $year, 'month' => $number], true),
-                        null,
-                        UrlConcrete::CHANGEFREQ_MONTHLY,
-                        0.6
-                    ),
-                    'archive'
-                );
-            }
-
-            $event->getGenerator()->addUrl(
-                new UrlConcrete(
-                    $this->router->generate('harentius_blog_archive_year', ['year' => $year], true),
-                    null,
-                    UrlConcrete::CHANGEFREQ_MONTHLY,
-                    0.6
-                ),
-                'archive'
-            );
-        }
     }
 }
