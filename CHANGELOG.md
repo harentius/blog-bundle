@@ -1,3 +1,9 @@
+1.1.10
+=====
+ - More SEO improvements:
+    - Noindex for homepage pagination (if page > 1)
+    - Removed Sitemap generation for archives
+
 1.1.9
 =====
  - Different SEO improvements
