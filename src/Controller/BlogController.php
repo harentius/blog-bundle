@@ -25,11 +25,13 @@ class BlogController extends Controller
             $homepage->getFeed(),
             $this->getParameter('harentius_blog.homepage.feed.number')
         );
+        $currentPageNumber = $paginator->getCurrentPageNumber();
 
         return $this->render('HarentiusBlogBundle:Blog:index.html.twig', [
-            'page' => $paginator->getCurrentPageNumber() === 1 ? $homepage->getPage() : null,
+            'page' => $currentPageNumber === 1 ? $homepage->getPage() : null,
             'articles' => $paginator,
             'hasToPaginate' => $paginator->getPageCount() > 1,
+            'noIndex' => $currentPageNumber > 1,
         ]);
     }
 

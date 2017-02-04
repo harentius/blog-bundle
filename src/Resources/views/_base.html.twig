@@ -11,13 +11,16 @@
         <meta name="description" content="{% block page_meta_description %}{% endblock %}" />
         {%- endif %}
 
-        {% if block('page_meta_keywords') is not empty -%}
-            <meta name="keywords" content="{% block page_meta_keywords %}{% endblock %}" />
-        {%- endif %}
+    {% if block('page_meta_keywords') is not empty -%}
+        <meta name="keywords" content="{% block page_meta_keywords %}{% endblock %}" />
+    {%- endif %}
 
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width" />
+    {% if noIndex is defined and noIndex %}
+        <meta name="robots" content="noindex,follow">
+    {% endif %}
         {% block meta_extra %}{% endblock %}
         {% block common_stylesheets %}
             {% stylesheets
