@@ -19,6 +19,7 @@ class ArticleAdmin extends AbstractPostAdmin
      */
     public function prePersist($object)
     {
+        parent::prePersist($object);
         $this->clearCache();
     }
 
@@ -27,6 +28,7 @@ class ArticleAdmin extends AbstractPostAdmin
      */
     public function preUpdate($object)
     {
+        parent::preUpdate($object);
         $this->clearCache();
     }
 
