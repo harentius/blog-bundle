@@ -121,9 +121,9 @@ class ArticleAdmin extends AbstractPostAdmin
      */
     private function clearCache()
     {
+        $this->controllersCache->deleteAll();
         $container = $this->getConfigurationPool()->getContainer();
         $container->get('harentius_blog.router.category_slug_provider')->clearAll();
-        $this->controllersCache->deleteAll();
         $container->get('harentius_blog.controller.feed_cache')->deleteAll();
     }
 }
