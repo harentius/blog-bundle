@@ -50,7 +50,7 @@ class SettingsProvider
     }
 
     /**
-     * @return array
+     *
      */
     private function loadSettings()
     {
