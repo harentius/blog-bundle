@@ -4,25 +4,11 @@ namespace Harentius\BlogBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Harentius\BlogBundle\Entity\Article;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\QueryBuilder;
 use Sonata\AdminBundle\Route\RouteCollection;
 
 class AbstractPostAdmin extends Admin
 {
-    /**
-     * @var EntityManager
-     */
-    private $em;
-
-    /**
-     * @param EntityManager $em
-     */
-    public function setEntityManager($em)
-    {
-        $this->em = $em;
-    }
-
     /**
      * {@inheritDoc}
      */
@@ -39,9 +25,12 @@ class AbstractPostAdmin extends Admin
      */
     public function preUpdate($object)
     {
+        $container = $this->getConfigurationPool()->getContainer();
         // TODO: refactor to entity listener with changeset
-        /** @var Article $object*/
-        $article = $this->em->getRepository('HarentiusBlogBundle:Article')->find($object->getId());
+        /** @var Article $article */
+        $article = $container->get('doctrine.orm.entity_manager')->getRepository('HarentiusBlogBundle:Article')
+            ->find($object->getId())
+        ;
 
         if ((!$article || !$article->getIsPublished()) && $object->getIsPublished() && !$object->getPublishedAt()) {
             $object->setPublishedAt(new \DateTime());
