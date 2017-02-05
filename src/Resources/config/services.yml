@@ -135,38 +135,6 @@ services:
 #            TODO: move to configuration
             - '%image_previews_base_uri%'
 
-
-    # Cache
-    harentius_blog.sidebar.cache:
-        class: Doctrine\Common\Cache\ApcCache
-        calls:
-            - [ setNamespace, [ '%harentius_blog.cache.apc_global_prefix%_sidebar' ] ]
-
-    harentius_blog.settings.cache:
-        class: Doctrine\Common\Cache\ApcCache
-        calls:
-            - [ setNamespace, [ '%harentius_blog.cache.apc_global_prefix%_settings' ] ]
-
-    harentius_blog.router.category_slug_provider_cache:
-        class: Doctrine\Common\Cache\ApcCache
-        calls:
-            - [ setNamespace, [ '%harentius_blog.cache.apc_global_prefix%_router_category' ] ]
-
-    harentius_blog.controller.feed_cache:
-        class: Doctrine\Common\Cache\ApcCache
-        calls:
-            - [ setNamespace, [ '%harentius_blog.cache.apc_global_prefix%_feed' ] ]
-
-    harentius_blog.statistics_cache:
-        class: Doctrine\Common\Cache\ApcCache
-        calls:
-            - [ setNamespace, [ '%harentius_blog.cache.apc_global_prefix%_statistics' ] ]
-
-    harentius_blog.rating_cache:
-        class: Doctrine\Common\Cache\ApcCache
-        calls:
-            - [ setNamespace, [ '%harentius_blog.cache.apc_global_prefix%_rating' ] ]
-
     harentius_blog.event_listener.admin_user_listener:
         class: Harentius\BlogBundle\EventListener\AdminUserListener
         arguments:

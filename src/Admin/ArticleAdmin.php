@@ -12,7 +12,7 @@ class ArticleAdmin extends AbstractPostAdmin
     /**
      * @var CacheProvider
      */
-    private $cache;
+    private $controllersCache;
 
     /**
      * {@inheritDoc}
@@ -33,11 +33,11 @@ class ArticleAdmin extends AbstractPostAdmin
     }
 
     /**
-     * @param CacheProvider $cache
+     * @param CacheProvider $controllersCache
      */
-    public function setControllerCache(CacheProvider $cache)
+    public function setControllerCache(CacheProvider $controllersCache)
     {
-        $this->cache = $cache;
+        $this->controllersCache = $controllersCache;
     }
 
     /**
@@ -123,7 +123,7 @@ class ArticleAdmin extends AbstractPostAdmin
     {
         $container = $this->getConfigurationPool()->getContainer();
         $container->get('harentius_blog.router.category_slug_provider')->clearAll();
-        $this->cache->deleteAll();
+        $this->controllersCache->deleteAll();
         $container->get('harentius_blog.controller.feed_cache')->deleteAll();
     }
 }

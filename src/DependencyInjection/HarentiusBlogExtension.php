@@ -21,6 +21,7 @@ class HarentiusBlogExtension extends Extension
         $loader->load('services.yml');
         $loader->load('services-repositories.yml');
         $loader->load('services-admin.yml');
+        $loader->load('services-cache.yml');
 
         $twigExtensionDefinition = $container->getDefinition('harentius_blog.twig.blog_extension');
         $cacheService = ($config['sidebar']['cache_lifetime'] === null)
