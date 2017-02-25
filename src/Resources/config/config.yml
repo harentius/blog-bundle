@@ -30,6 +30,8 @@ sonata_block:
     blocks: []
 
 sonata_admin:
+    templates:
+        layout: HarentiusBlogBundle:Admin:layout.html.twig
     dashboard:
         blocks: []
 
