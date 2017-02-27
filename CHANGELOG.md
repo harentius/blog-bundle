@@ -1,3 +1,7 @@
+1.1.11
+=====
+ - Added translations for categories 
+
 1.1.10
 =====
  - More SEO improvements:
