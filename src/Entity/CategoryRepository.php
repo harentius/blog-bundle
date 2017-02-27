@@ -2,10 +2,9 @@
 
 namespace Harentius\BlogBundle\Entity;
 
-use Harentius\BlogBundle\Entity\Base\NestedTreeRepository;
 use Gedmo\Translatable\Query\TreeWalker\TranslationWalker;
 use Doctrine\ORM\Query;
-use Doctrine\ORM\Query\Expr;
+use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 
 class CategoryRepository extends NestedTreeRepository
 {
@@ -32,7 +31,7 @@ class CategoryRepository extends NestedTreeRepository
             ->andWhere('a.isPublished = :isPublished')
         ;
 
-        $q3 = $this->createQueryBuilder('c')
+        $q2 = $this->createQueryBuilder('c')
             ->select('c.slug, c.name, c.level, c.id')
             ->addSelect('(' . $qb->getDQL() . ') AS articles_number')
             ->orderBy('c.root, c.left', 'ASC')
@@ -46,7 +45,7 @@ class CategoryRepository extends NestedTreeRepository
             )
         ;
 
-        return $this->buildTree($q3->getArrayResult(), $options);
+        return $this->buildTree($q2->getArrayResult(), $options);
     }
 
     /**
