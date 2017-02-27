@@ -2,7 +2,10 @@
 
 namespace Harentius\BlogBundle\Entity;
 
-use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
+use Harentius\BlogBundle\Entity\Base\NestedTreeRepository;
+use Gedmo\Translatable\Query\TreeWalker\TranslationWalker;
+use Doctrine\ORM\Query;
+use Doctrine\ORM\Query\Expr;
 
 class CategoryRepository extends NestedTreeRepository
 {
@@ -12,22 +15,38 @@ class CategoryRepository extends NestedTreeRepository
      */
     public function notEmptyChildrenHierarchy(array $options = [])
     {
-        $qb = $this->createQueryBuilder('c')
-            ->select('c.slug, c.name, c.level', 'c.id')
-            ->addSelect('COUNT(a) AS articles_number')
-                ->from('HarentiusBlogBundle:Article', 'a')
-                ->where('a.category IN
-                    (SELECT cc FROM HarentiusBlogBundle:Category cc
-                     WHERE cc.left >= c.left AND cc.right <= c.right AND cc.root = c.root)'
-                )
-                ->andWhere('a.isPublished = :isPublished')
-            ->setParameter('isPublished', true)
-            ->orderBy('c.root, c.left', 'ASC')
-            ->groupBy('c')
+        /** @var Query $q1 */
+        $q1 = $this->createQueryBuilder('cc')
+            ->where('cc.left >= c.left')
+            ->andWhere('cc.right <= c.right')
+            ->andWhere('cc.root = c.root')
             ->getQuery()
         ;
 
-        return $this->buildTree($qb->getArrayResult(), $options);
+        $qb = $this->_em->getRepository('HarentiusBlogBundle:Article')
+            ->createQueryBuilder('a')
+        ;
+        $qb
+            ->select('COUNT(a)')
+            ->where($qb->expr()->in('a.category', $q1->getDQL()))
+            ->andWhere('a.isPublished = :isPublished')
+        ;
+
+        $q3 = $this->createQueryBuilder('c')
+            ->select('c.slug, c.name, c.level, c.id')
+            ->addSelect('(' . $qb->getDQL() . ') AS articles_number')
+            ->orderBy('c.root, c.left', 'ASC')
+            ->groupBy('c')
+            ->having('articles_number > 0')
+            ->setParameter(':isPublished', true)
+            ->getQuery()
+            ->setHint(
+                Query::HINT_CUSTOM_OUTPUT_WALKER,
+                TranslationWalker::class
+            )
+        ;
+
+        return $this->buildTree($q3->getArrayResult(), $options);
     }
 
     /**

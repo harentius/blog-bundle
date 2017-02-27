@@ -7,24 +7,27 @@ use Harentius\BlogBundle\Entity\Base\SeoContentEntityTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Tree\Traits\NestedSetEntity;
+use Sonata\TranslationBundle\Traits\Translatable;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 use Doctrine\ORM\Mapping as ORM;
+use Sonata\TranslationBundle\Model\Gedmo\TranslatableInterface;
 
 /**
  * @Gedmo\Tree(type="nested")
- * @Gedmo\TranslationEntity(class="Harentius\BlogBundle\Entity\Translation")
  * @ORM\Entity(repositoryClass="Harentius\BlogBundle\Entity\CategoryRepository")
  */
-class Category
+class Category implements TranslatableInterface
 {
     use IdentifiableEntityTrait;
     use NestedSetEntity;
     use SeoContentEntityTrait;
+    use Translatable;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=255)
+     * @Gedmo\Translatable()
      * @SymfonyConstraints\Type(type="string")
      * @SymfonyConstraints\Length(max=255)
      * @SymfonyConstraints\NotBlank()
