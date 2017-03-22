@@ -13,6 +13,9 @@ use WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs;
 
 class BlogController extends Controller
 {
+    const FILTRATION_TYPE_CATEGORY = 'category';
+    const FILTRATION_TYPE_TAG = 'tag';
+
     /**
      * @param Request $request
      * @return Response
@@ -49,7 +52,7 @@ class BlogController extends Controller
         $noIndex = false;
 
         switch ($filtrationType) {
-            case 'category':
+            case self::FILTRATION_TYPE_CATEGORY:
                 $category = $this->getDoctrine()->getRepository('HarentiusBlogBundle:Category')
                     ->find($criteria)
                 ;
@@ -62,7 +65,7 @@ class BlogController extends Controller
                 $this->addCategoryHierarchyToBreadcrumbs($category, $breadcrumbs);
                 $articlesQuery = $articlesRepository->findPublishedByCategoryQuery($category);
                 break;
-            case 'tag':
+            case self::FILTRATION_TYPE_TAG:
                 $tag = $this->getDoctrine()->getRepository('HarentiusBlogBundle:Tag')
                     ->findOneBy(['slug' => $criteria])
                 ;
@@ -107,10 +110,6 @@ class BlogController extends Controller
 
         $articlesQuery = $articlesRepository->findPublishedByYearMonthQuery($year, $month);
         $paginator = $this->knpPaginate($request, $articlesQuery);
-
-        if ($paginator->count() === 0) {
-            throw $this->createNotFoundException('Page not found');
-        }
 
         if ($month) {
             $month = $this->numberToMonth($month, $request->getLocale());
