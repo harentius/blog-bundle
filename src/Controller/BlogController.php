@@ -223,8 +223,10 @@ class BlogController extends Controller
         /** @var PaginatorInterface $paginator */
         $paginator = $this->get('knp_paginator');
         $page = max(1, (int) $request->query->get($options['pageParameterName'], 1));
+        /** @var SlidingPagination $pagination */
+        $pagination = $paginator->paginate($target, $page, $maxResults, $options);
 
-        return $paginator->paginate($target, $page, $maxResults, $options);
+        return $pagination;
     }
 
     /**
