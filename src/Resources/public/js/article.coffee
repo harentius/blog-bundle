@@ -24,6 +24,8 @@
             (d.head || d.body).appendChild(s)
           )()
         when '#vk-comments'
+          return if not VK
+
           VK.Widgets.Comments(
             "vk-comments",
             { limit: 5, attach: "*", pageUrl: Blog.crate.get('article_url') },
