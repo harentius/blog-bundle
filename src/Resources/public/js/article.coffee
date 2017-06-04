@@ -24,7 +24,7 @@
             (d.head || d.body).appendChild(s)
           )()
         when '#vk-comments'
-          return if not VK
+          return if typeof VK is 'undefined'
 
           VK.Widgets.Comments(
             "vk-comments",

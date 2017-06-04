@@ -206,4 +206,7 @@ Resources
 [https://github.com/harentius/folkprog](https://github.com/harentius/folkprog) - repository of this project
 
 
-TODO: remove/improve dependency bower-asset/ckeditor-more-plugin to avoid requirement of "minimum-stability": "dev"
+TODO:
+    1) Remove/improve dependency bower-asset/ckeditor-more-plugin to avoid requirement of "minimum-stability": "dev"
+    2) Remove VK dependency/make it optional, same for sharing buttons
+    3) Improve file uploading
