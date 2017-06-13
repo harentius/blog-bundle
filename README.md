@@ -45,6 +45,12 @@ Also configure assets installing path:
     }
 ```
 
+Install composer assets plugins:
+
+```bash
+$ composer.phar require fxp/composer-asset-plugin
+```
+
 Than install bundle:
 
 ```bash
