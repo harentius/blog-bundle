@@ -2,9 +2,9 @@ Harentius\BlogBundle\Entity\Article:
     article1:
         title: Title 1
         slug: title-1
-        category: @category_1
-        tags: [@tag_1, @tag_2]
-        author: @admin_user
+        category: '@category_1'
+        tags: ['@tag_1', '@tag_2']
+        author: '@admin_user'
         isPublished: true
         metaDescription: Meta description for 'Title 1' articte
         metaKeywords: Meta keywords for 'Title 1' articte
@@ -18,9 +18,9 @@ Harentius\BlogBundle\Entity\Article:
     article2:
         title: Title 2
         slug: title-2
-        category: @category_child_3rd_level
-        tags: [@tag_1, @tag_3]
-        author: @admin_user
+        category: '@category_child_3rd_level'
+        tags: ['@tag_1', '@tag_3']
+        author: '@admin_user'
         isPublished: false
         metaDescription: Meta description for 'Title 2' articte
         metaKeywords: Meta keywords for 'Title 2' articte
@@ -35,9 +35,9 @@ Harentius\BlogBundle\Entity\Article:
     article{3..5}:
         title: Title <current()>
         slug: title-<current()>
-        category: @category_2
-        tags: [@tag_1, @tag_4]
-        author: @admin_user
+        category: '@category_2'
+        tags: ['@tag_1', '@tag_4']
+        author: '@admin_user'
         isPublished: true
         metaDescription: Meta description for 'Title <current()>' articte
         metaKeywords: Meta keywords for 'Title <current()>' articte
@@ -52,9 +52,9 @@ Harentius\BlogBundle\Entity\Article:
     article6:
         title: Title 6
         slug: title-6
-        category: @category_2
-        tags: [@tag_1, @tag_3]
-        author: @admin_user
+        category: '@category_2'
+        tags: ['@tag_1', '@tag_3']
+        author: '@admin_user'
         isPublished: true
         metaDescription: Meta description for 'Title 6' articte
         metaKeywords: Meta keywords for 'Title 6' articte
@@ -69,9 +69,9 @@ Harentius\BlogBundle\Entity\Article:
     article7:
         title: Title 7
         slug: title-7
-        category: @category_child_2
-        tags: [@tag_2, @tag_5]
-        author: @admin_user
+        category: '@category_child_2'
+        tags: ['@tag_2', '@tag_5']
+        author: '@admin_user'
         isPublished: true
         metaDescription: Meta description for 'Title 7' articte
         metaKeywords: Meta keywords for 'Title 7' articte

@@ -10,8 +10,8 @@ Harentius\BlogBundle\Entity\Category:
     category_child_{1..3}:
         name: Child category <current()>
         slug: category-child-<current()>
-        parent: @category_with_children_1
+        parent: '@category_with_children_1'
     category_child_3rd_level:
         name: Child category 3rd level
         slug: category-child-3rd-level
-        parent: @category_child_3
+        parent: '@category_child_3'

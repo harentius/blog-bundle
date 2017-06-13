@@ -70,6 +70,7 @@ public function registerBundles()
 {
     $bundles = array(
         // ...
+        new Symfony\Bundle\AsseticBundle\AsseticBundle(),
         new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
         new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
         new Knp\Bundle\MenuBundle\KnpMenuBundle(),
@@ -84,6 +85,7 @@ public function registerBundles()
         new Symfony\Cmf\Bundle\RoutingBundle\CmfRoutingBundle(),
         new Eko\FeedBundle\EkoFeedBundle(),
         new Liip\ImagineBundle\LiipImagineBundle(),
+        new Hautelook\AliceBundle\HautelookAliceBundle(),
 
         new Harentius\BlogBundle\HarentiusBlogBundle(),
     );
@@ -130,12 +132,6 @@ admin:
     prefix:   /admin
 ```
 
-Add HarentiusBlogBundle to assetic.bundles config, or allow all by removing line
-
-```yml
-bundles:        [ ]
-```
-
 4) Configure:
 
 ```yml
@@ -173,40 +169,47 @@ Configure assetic in following way (need less filter and coffee):
 
 ```yml
 assetic:
-    debug:          "%kernel.debug%"
+    debug:          '%kernel.debug%'
     use_controller: false
     filters:
         cssrewrite:
-            apply_to: "\.css$"
+            apply_to: '.css$'
         less:
-            node: %nodejs.path%
-            node_paths: [%nodejs.modules_path%]
-            apply_to: "\.less$"
+            node: '%nodejs.path%'
+            node_paths: ['%nodejs.modules_path%']
+            apply_to: '.less$'
         coffee:
-            bin:       %bin_coffee%
-            apply_to:  "\.coffee$"
+            bin:       '%bin_coffee%'
+            apply_to:  '.coffee$'
 ```
 
 
 5) Create/Update your DB according to chosen installation type
 
 ```bash
-app/console doctrine:schema:create
+bin/console doctrine:database:create
+bin/console doctrine:schema:create
 ```
 
 or
 
 ```bash
-app/console doctrine:schema:update
+bin/console doctrine:schema:update
 ```
 
 
 6) Populate initial DB values (admin user default credentials: admin/admin, homepage data, etc)
 
 ```bash
-app/console hautelook_alice:doctrine:fixtures:load
+bin/console hautelook_alice:doctrine:fixtures:load
 ```
 
+7) Install Assets
+
+```bash
+bin/console assets:dump
+bin/console assets:install
+```
 
 Resources
 ---------

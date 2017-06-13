@@ -2,7 +2,7 @@ Harentius\BlogBundle\Entity\Page:
     page{2..3}:
         title: Page <current()>
         slug: page-<current()>
-        author: @admin_user
+        author: '@admin_user'
         isPublished: true
         publishedAt: <dateTime('now')>
         order: <current()>
@@ -16,7 +16,7 @@ Harentius\BlogBundle\Entity\Page:
     page4:
         title: Page 4
         slug: page-4
-        author: @admin_user
+        author: '@admin_user'
         isPublished: false
         publishedAt: <dateTime('now')>
         order: 4
@@ -30,7 +30,7 @@ Harentius\BlogBundle\Entity\Page:
     page5:
         title: Index page
         slug: index
-        author: @admin_user
+        author: '@admin_user'
         isPublished: true
         publishedAt: <dateTime('now')>
         order: 1
