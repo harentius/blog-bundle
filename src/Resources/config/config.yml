@@ -3,7 +3,7 @@ framework:
     translator:      { fallbacks: ["%locale%"] }
 
 stof_doctrine_extensions:
-    default_locale: %locale%
+    default_locale: '%locale%'
     orm:
         default:
             timestampable: true
@@ -14,7 +14,7 @@ stof_doctrine_extensions:
 
 twig:
     globals:
-        statistics: @harentius_blog.statistics
+        statistics: '@harentius_blog.statistics'
 
 cmf_routing:
     chain:
@@ -23,28 +23,28 @@ cmf_routing:
             router.default:             100
     dynamic:
         enabled: true
-        route_provider_service_id: harentius_blog.router.route_provider
+        route_provider_service_id: 'harentius_blog.router.route_provider'
 
 sonata_block:
-    default_contexts: [sonata_page_bundle]
+    default_contexts: ['sonata_page_bundle']
     blocks: []
 
 sonata_admin:
     templates:
-        layout: HarentiusBlogBundle:Admin:layout.html.twig
+        layout: 'HarentiusBlogBundle:Admin:layout.html.twig'
     dashboard:
         blocks: []
 
 # TODO: configuration
 sonata_translation:
-    locales: [en, ru]
-    default_locale: %locale%
+    locales: ['en', 'ru']
+    default_locale: '%locale%'
     gedmo:
         enabled: true
 
 knp_paginator:
     template:
-        pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig
+        pagination: 'KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig'
 
 white_october_breadcrumbs:
     separator: ~
@@ -53,32 +53,32 @@ liip_imagine:
     resolvers:
         default:
             web_path:
-                cache_prefix: assets/images
+                cache_prefix: 'assets/images'
     filter_sets:
         preview:
             filters: []
 
 doctrine:
     dbal:
-        driver:   pdo_mysql
+        driver:   'pdo_mysql'
         host:     "%database_host%"
         port:     "%database_port%"
         dbname:   "%database_name%"
         user:     "%database_user%"
         password: "%database_password%"
-        charset:  UTF8
+        charset:  'UTF8'
     orm:
         auto_generate_proxy_classes: true
-        naming_strategy: doctrine.orm.naming_strategy.underscore
+        naming_strategy: 'doctrine.orm.naming_strategy.underscore'
         auto_mapping: true
         dql:
             datetime_functions:
-                year: DoctrineExtensions\Query\Mysql\Year
-                month: DoctrineExtensions\Query\Mysql\Month
+                year: 'DoctrineExtensions\Query\Mysql\Year'
+                month: 'DoctrineExtensions\Query\Mysql\Month'
         mappings:
             translatable:
-                type: annotation
+                type: 'annotation'
                 is_bundle: false
-                prefix: Gedmo\Translatable\Entity
+                prefix: 'Gedmo\Translatable\Entity'
                 dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
-                alias: GedmoTranslatable
+                alias: 'GedmoTranslatable'

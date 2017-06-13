@@ -11,13 +11,15 @@ For quick and easy stand-alone installation please check [https://github.com/har
 Installation
 ------------
 
-1) Tested using with Symfony 2.7 (and written using this version).
-Theoretically you can use it in existing project.
+Version <= v1.1.9 tested on symfony 2.7 and 2.8.
+Version >= 2.0.0 supports symfony >= 3.0
+Can be used it in existing project, but depends of complexity of project integration/dependency problems can happen.
+Fill free to create issue/pull request with problem description
 
-For stand-alone installation, install symfony 2.7 first:
+For stand-alone installation, install symfony >= 3.0 first:
 
 ```bash
-composer.phar create-project symfony/framework-standard-edition test "2.7.*"
+composer.phar create-project symfony/framework-standard-edition test
 ```
 
 For using in existing project skip this step.
@@ -201,7 +203,7 @@ app/console hautelook_alice:doctrine:fixtures:load
 Resources
 ---------
 
-[http://folkprog.net](http://folkprog.net) - example of blog (currently working project that uses this bundle)
+[http://folkprog.net](https://folkprog.net) - example of blog (currently working project that uses this bundle)
 
 [https://github.com/harentius/folkprog](https://github.com/harentius/folkprog) - repository of this project
 

@@ -20,14 +20,13 @@ security:
                 login_path: login
                 check_path: login_check
                 default_target_path: sonata_admin_dashboard
-                csrf_provider: security.csrf.token_manager
             logout:
                 path:   viosk_frontend_admin_logout
                 invalidate_session: false
                 target: homepage
             anonymous:    true
             remember_me:
-                key:      %secret%
+                secret: '%secret%'
                 lifetime: 31556926 # 1 year
                 path:     /
 

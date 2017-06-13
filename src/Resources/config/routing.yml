@@ -1,54 +1,54 @@
 fos_js_routing:
-    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+    resource: '@FOSJsRoutingBundle/Resources/config/routing/routing.xml'
 
 PrestaSitemapBundle:
-    resource: "@PrestaSitemapBundle/Resources/config/routing.yml"
+    resource: '@PrestaSitemapBundle/Resources/config/routing.yml'
     prefix:   /
 
 admin:
-    resource: "@HarentiusBlogBundle/Resources/config/routing-admin.yml"
+    resource: '@HarentiusBlogBundle/Resources/config/routing-admin.yml'
     prefix:   /admin
 
 harentius_blog_homepage:
     path:     /
-    defaults: { _controller: HarentiusBlogBundle:Blog:index }
+    defaults: { _controller: 'HarentiusBlogBundle:Blog:index' }
 
 harentius_blog_feed:
     path:     /feed
-    defaults: { _controller: HarentiusBlogBundle:Blog:feed }
+    defaults: { _controller: 'HarentiusBlogBundle:Blog:feed' }
 
 harentius_blog_page_about:
     path:     /about
-    defaults: { _controller: HarentiusBlogBundle:Page:about }
+    defaults: { _controller: 'HarentiusBlogBundle:Page:about' }
 
 # So terrible way for compability with my old wp site ...(
 # (need closing slashes, but symfony router doesn't pass optional parameters with closing slash)
 harentius_blog_archive_year:
     path:     /{year}/
-    defaults: { _controller: HarentiusBlogBundle:Blog:archive }
+    defaults: { _controller: 'HarentiusBlogBundle:Blog:archive' }
     requirements:
-        year: \d+
+        year: '\d+'
 
 harentius_blog_archive_month:
     path:     /{year}/{month}/
-    defaults: { _controller: HarentiusBlogBundle:Blog:archive }
+    defaults: { _controller: 'HarentiusBlogBundle:Blog:archive' }
     requirements:
-        year: \d+
-        month: \d+
+        year: '\d+'
+        month: '\d+'
 
 harentius_blog_list:
     path:     /{filtrationType}/{criteria}/
-    defaults: { _controller: HarentiusBlogBundle:Blog:list }
+    defaults: { _controller: 'HarentiusBlogBundle:Blog:list' }
     requirements:
         filtrationType: category|tag
 
 harentius_blog_show:
     path:     /{slug}
-    defaults: { _controller: HarentiusBlogBundle:Blog:show }
+    defaults: { _controller: 'HarentiusBlogBundle:Blog:show' }
 
 harentius_blog_rate:
     path:     /like/{article}/{type}
-    defaults: { _controller: HarentiusBlogBundle:Blog:rate, type = 'like' }
+    defaults: { _controller: 'HarentiusBlogBundle:Blog:rate', type: 'like' }
     methods:  [POST]
     requirements:
         type: like|dislike
@@ -56,8 +56,8 @@ harentius_blog_rate:
         expose: true
 
 _liip_imagine:
-    resource: "@LiipImagineBundle/Resources/config/routing.xml"
+    resource: '@LiipImagineBundle/Resources/config/routing.xml'
 
 harentius_blog_resize:
-    path:     %image_previews_base_uri%{imageName}
-    defaults: { _controller: HarentiusBlogBundle:ImageOptimization:resize }
+    path:     '%image_previews_base_uri%{imageName}'
+    defaults: { _controller: 'HarentiusBlogBundle:ImageOptimization:resize' }

@@ -7,12 +7,12 @@ use Harentius\BlogBundle\Entity\TranslationRepository;
 use Harentius\BlogBundle\Entity\Base\AbstractPost;
 use Harentius\BlogBundle\Rating;
 use Harentius\BlogBundle\SettingsProvider;
-use Symfony\Bridge\Twig\Extension\HttpKernelExtension;
+use Symfony\Bridge\Twig\Extension\HttpKernelRuntime;
 use Symfony\Component\HttpKernel\Controller\ControllerReference;
-use Symfony\Component\HttpKernel\Fragment\FragmentHandler;
 use Harentius\BlogBundle\Entity\Article;
+use Twig\Extension\AbstractExtension;
 
-class BlogExtension extends HttpKernelExtension
+class BlogExtension extends AbstractExtension
 {
     /**
      * @var CacheProvider
@@ -43,9 +43,13 @@ class BlogExtension extends HttpKernelExtension
      * @var string
      */
     private $locale;
+    /**
+     * @var HttpKernelRuntime
+     */
+    private $httpKernelRuntime;
 
     /**
-     * @param FragmentHandler $handler A FragmentHandler instance
+     * @param HttpKernelRuntime $httpKernelRuntime
      * @param CacheProvider $cache
      * @param Rating $rating
      * @param SettingsProvider $settingsProvider
@@ -54,7 +58,7 @@ class BlogExtension extends HttpKernelExtension
      * @param string $locale
      */
     public function __construct(
-        FragmentHandler $handler,
+        HttpKernelRuntime $httpKernelRuntime,
         CacheProvider $cache,
         Rating $rating,
         SettingsProvider $settingsProvider,
@@ -62,13 +66,13 @@ class BlogExtension extends HttpKernelExtension
         TranslationRepository $translationRepository,
         $locale
     ) {
-        parent::__construct($handler);
         $this->cache = $cache;
         $this->rating = $rating;
         $this->settingsProvider = $settingsProvider;
         $this->sidebarCacheLifeTime = $sidebarCacheLifeTime;
         $this->translationRepository = $translationRepository;
         $this->locale = $locale;
+        $this->httpKernelRuntime = $httpKernelRuntime;
     }
 
     /**
@@ -117,7 +121,7 @@ class BlogExtension extends HttpKernelExtension
             return $this->cache->fetch($key);
         }
 
-        $renderedContent = $this->renderFragment($controllerReference, $options);
+        $renderedContent = $this->httpKernelRuntime->renderFragment($controllerReference, $options);
         $this->cache->save($key, $renderedContent, $this->sidebarCacheLifeTime);
 
         return $renderedContent;

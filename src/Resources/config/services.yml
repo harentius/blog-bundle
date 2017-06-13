@@ -23,7 +23,7 @@ services:
     harentius_blog.twig.blog_extension:
         class: Harentius\BlogBundle\Twig\BlogExtension
         arguments:
-            - '@fragment.handler'
+            - '@twig.runtime.httpkernel'
             - ~
             - '@harentius_blog.rating'
             - '@harentius_blog.settings_provider'

@@ -1,3 +1,7 @@
+2.0.0
+=====
+ - Migrated to the Symfony >= 3.0
+
 1.1.11
 =====
  - Added translations for categories 
