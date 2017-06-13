@@ -47,6 +47,8 @@ Also configure assets installing path:
 
 Install composer assets plugins:
 
+(This is temporary solution, I want to avoid using assetic plugin in future)
+
 ```bash
 $ composer.phar require fxp/composer-asset-plugin
 ```
