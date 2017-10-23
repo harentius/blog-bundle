@@ -31,9 +31,11 @@ class AdminUserPasswordChangeCommand extends ContainerAwareCommand
         $adminUser = $em->getRepository('HarentiusBlogBundle:AdminUser')->findOneBy(['username' => 'admin']);
 
         if ($adminUser) {
-            $adminUser->setPlainPassword($input->getArgument('password'));
-            $em->flush();
+            throw new \RuntimeException('Admin User not found');
         }
+
+        $adminUser->setPlainPassword($input->getArgument('password'));
+        $em->flush();
 
         $output->writeln('Password successfully changed');
     }

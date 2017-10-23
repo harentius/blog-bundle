@@ -3,12 +3,12 @@
 namespace Harentius\BlogBundle\Admin;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Sonata\AdminBundle\Admin\Admin;
+use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Harentius\BlogBundle\Entity\Article;
 use Doctrine\ORM\QueryBuilder;
 use Sonata\AdminBundle\Route\RouteCollection;
 
-class AbstractPostAdmin extends Admin
+class AbstractPostAdmin extends AbstractAdmin
 {
     /**
      * {@inheritDoc}
@@ -26,6 +26,7 @@ class AbstractPostAdmin extends Admin
      */
     public function preUpdate($object)
     {
+        /** @var Article $object*/
         /** @var EntityManagerInterface $em */
         $em = $this->getConfigurationPool()->getContainer()->get('doctrine.orm.entity_manager');
         /** @var array $storedArticle */
