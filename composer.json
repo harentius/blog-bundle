@@ -17,6 +17,11 @@
   "autoload" : {
     "psr-4": { "Harentius\\BlogBundle\\": "src/" }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "BlogBundle\\Tests\\": "tests/"
+    }
+  },
   "require": {
     "php": ">=5.4",
     "symfony/symfony": "~3.0",
@@ -55,8 +60,5 @@
     "eko/feedbundle": "~1.2",
     "bower-asset/js-cookie": "~2.0",
     "liip/imagine-bundle": "~1.5"
-  },
-  "require-dev": {
-    "friendsofphp/php-cs-fixer": "^2.7"
   }
 }
