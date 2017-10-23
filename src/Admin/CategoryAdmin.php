@@ -2,11 +2,11 @@
 
 namespace Harentius\BlogBundle\Admin;
 
-use Sonata\AdminBundle\Admin\Admin;
+use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class CategoryAdmin extends Admin
+class CategoryAdmin extends AbstractAdmin
 {
     /**
      * {@inheritDoc}
