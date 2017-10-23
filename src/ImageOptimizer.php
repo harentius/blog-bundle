@@ -82,9 +82,9 @@ class ImageOptimizer
             $filteredBinary = $this->filterManager->applyFilter($binary, $filter, [
                 'filters' => [
                     'thumbnail' => [
-                        'size' => [$imagePreviewData->getWidth(), $imagePreviewData->getHeight()]
-                    ]
-                ]
+                        'size' => [$imagePreviewData->getWidth(), $imagePreviewData->getHeight()],
+                    ],
+                ],
             ]);
 
             $this->cacheManager->store($filteredBinary, $imagePreviewData->getTargetName(), $filter);

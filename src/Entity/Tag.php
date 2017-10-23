@@ -2,11 +2,11 @@
 
 namespace Harentius\BlogBundle\Entity;
 
-use Harentius\BlogBundle\Entity\Base\IdentifiableEntityTrait;
 use Doctrine\Common\Collections\ArrayCollection;
-use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Harentius\BlogBundle\Entity\Base\IdentifiableEntityTrait;
+use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
 /**
  * @ORM\Entity(repositoryClass="Harentius\BlogBundle\Entity\TagRepository")
@@ -39,8 +39,8 @@ class Tag
      * @var Article[]
      *
      * @ORM\ManyToMany(
-     *      targetEntity="Harentius\BlogBundle\Entity\Article",
-     *      mappedBy="tags",
+     *     targetEntity="Harentius\BlogBundle\Entity\Article",
+     *     mappedBy="tags",
      * )
      */
     private $articles;

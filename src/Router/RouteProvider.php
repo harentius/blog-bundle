@@ -5,8 +5,8 @@ namespace Harentius\BlogBundle\Router;
 use Symfony\Cmf\Component\Routing\RouteProviderInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\Routing\Route;
+use Symfony\Component\Routing\RouteCollection;
 
 class RouteProvider implements RouteProviderInterface
 {
@@ -16,7 +16,7 @@ class RouteProvider implements RouteProviderInterface
     protected $routes;
 
     /**
-     * Container used for avoiding crashes while rebuilding
+     * Container used for avoiding crashes while rebuilding.
      * @var ContainerInterface
      */
     protected $container;

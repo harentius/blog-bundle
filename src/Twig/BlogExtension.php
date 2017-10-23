@@ -3,13 +3,13 @@
 namespace Harentius\BlogBundle\Twig;
 
 use Doctrine\Common\Cache\CacheProvider;
-use Harentius\BlogBundle\Entity\TranslationRepository;
+use Harentius\BlogBundle\Entity\Article;
 use Harentius\BlogBundle\Entity\Base\AbstractPost;
+use Harentius\BlogBundle\Entity\TranslationRepository;
 use Harentius\BlogBundle\Rating;
 use Harentius\BlogBundle\SettingsProvider;
 use Symfony\Bridge\Twig\Extension\HttpKernelRuntime;
 use Symfony\Component\HttpKernel\Controller\ControllerReference;
-use Harentius\BlogBundle\Entity\Article;
 use Twig\Extension\AbstractExtension;
 
 class BlogExtension extends AbstractExtension
@@ -80,18 +80,18 @@ class BlogExtension extends AbstractExtension
      */
     public function getFunctions()
     {
-        return array(
+        return [
             new \Twig_SimpleFunction('render_cached', [$this, 'renderCached'], ['is_safe' => ['html']]),
             new \Twig_SimpleFunction('get_setting', [$this, 'getSetting']),
             new \Twig_SimpleFunction('is_article_liked', [$this, 'isArticleLiked']),
             new \Twig_SimpleFunction('is_article_disliked', [$this, 'isArticleDisLiked']),
             new \Twig_SimpleFunction('is_article_rated', [$this, 'isArticleRated']),
             new \Twig_SimpleFunction('translations_list', [$this, 'translationsList']),
-        );
+        ];
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getFilters()
     {

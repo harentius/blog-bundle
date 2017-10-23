@@ -15,7 +15,7 @@ class ArticleAdmin extends AbstractPostAdmin
     private $controllersCache;
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function prePersist($object)
     {
@@ -24,7 +24,7 @@ class ArticleAdmin extends AbstractPostAdmin
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function preUpdate($object)
     {
@@ -41,7 +41,7 @@ class ArticleAdmin extends AbstractPostAdmin
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function configureListFields(ListMapper $listMapper)
     {
@@ -59,13 +59,13 @@ class ArticleAdmin extends AbstractPostAdmin
                 'actions' => [
                     'edit' => [],
                     'delete' => [],
-                ]
+                ],
             ])
         ;
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function configureFormFields(FormMapper $formMapper)
     {

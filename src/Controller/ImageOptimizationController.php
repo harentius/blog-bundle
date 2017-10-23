@@ -2,16 +2,16 @@
 
 namespace Harentius\BlogBundle\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ImageOptimizationController extends Controller
 {
     /**
      * For optimization, try_files should be set in nginx
-     * Then BinaryFileResponse only once, when crete cache preview
+     * Then BinaryFileResponse only once, when crete cache preview.
      *
      * @param string $imageName
      * @return Response
@@ -24,7 +24,7 @@ class ImageOptimizationController extends Controller
 
             return new BinaryFileResponse($imagePath);
         } catch (\Exception $e) {
-            throw new NotFoundHttpException(sprintf("File %s not found", $imageName));
+            throw new NotFoundHttpException(sprintf('File %s not found', $imageName));
         }
     }
 }

@@ -73,7 +73,7 @@ class Rating
      */
     public function isLiked(Article $article)
     {
-        return in_array($article->getId(), json_decode($this->getRequest()->cookies->get('harentius_blog_articles_like', '[]')));
+        return in_array($article->getId(), json_decode($this->getRequest()->cookies->get('harentius_blog_articles_like', '[]')), true);
     }
 
     /**
@@ -82,7 +82,7 @@ class Rating
      */
     public function isDisLiked(Article $article)
     {
-        return in_array($article->getId(), json_decode($this->getRequest()->cookies->get('harentius_blog_articles_dislike', '[]')));
+        return in_array($article->getId(), json_decode($this->getRequest()->cookies->get('harentius_blog_articles_dislike', '[]')), true);
     }
 
     /**
@@ -121,7 +121,7 @@ class Rating
         $key = "harentius_blog_articles_{$type}";
         $rated = json_decode($this->getRequest()->cookies->get($key, '[]'));
 
-        if (!in_array($articleId, $rated)) {
+        if (!in_array($articleId, $rated, true)) {
             $rated[] = $articleId;
             $response->headers->setCookie(new Cookie($key, json_encode($rated)));
             $this->cache->save($ip = $this->getRequest()->getClientIp(), true, self::TIME_TO_REMEMBER_IP);

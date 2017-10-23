@@ -215,7 +215,6 @@ class BlogController extends Controller
     private function knpPaginateCustomPerPage(Request $request, $target, $maxResults, array $options = [])
     {
         /** @var Controller $this */
-
         if (!isset($options['pageParameterName'])) {
             $options['pageParameterName'] = 'page';
         }
@@ -246,6 +245,6 @@ class BlogController extends Controller
             'LLLL'
         );
 
-        return mb_convert_case($formatter->format($dateTime), MB_CASE_TITLE, "UTF-8");
+        return mb_convert_case($formatter->format($dateTime), MB_CASE_TITLE, 'UTF-8');
     }
 }

@@ -70,7 +70,6 @@ class Manager
             $uploadsDir = $this->assetsResolver->assetPath($assetFile->getType());
         }
 
-
         $tempFile = $uploadedFile->move(
             $uploadsDir,
             $this->getTargetFileName($uploadedFile->getClientOriginalName(), $uploadsDir)

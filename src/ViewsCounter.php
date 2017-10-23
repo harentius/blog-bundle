@@ -36,7 +36,7 @@ class ViewsCounter
         $viewedArticles = $this->session->get('viewedArticles', []);
         $articleId = $article->getId();
 
-        if (isset($viewedArticles[$articleId] )) {
+        if (isset($viewedArticles[$articleId])) {
             return;
         }
 

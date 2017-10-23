@@ -2,8 +2,8 @@
 
 namespace Harentius\BlogBundle\Entity\Base;
 
-use Harentius\BlogBundle\Entity\AdminUser;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Harentius\BlogBundle\Entity\AdminUser;
 
 trait CommonChangeableFieldsEntityTrait
 {
@@ -45,7 +45,7 @@ trait CommonChangeableFieldsEntityTrait
      * @var AdminUser
      *
      * @ORM\ManyToOne(
-     *      targetEntity="Harentius\BlogBundle\Entity\AdminUser"
+     *     targetEntity="Harentius\BlogBundle\Entity\AdminUser"
      * )
      * @SymfonyConstraints\NotNull()
      */
@@ -151,7 +151,7 @@ trait CommonChangeableFieldsEntityTrait
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getIsPublished()
     {
@@ -159,7 +159,7 @@ trait CommonChangeableFieldsEntityTrait
     }
 
     /**
-     * @param boolean $value
+     * @param bool $value
      * @return $this
      */
     public function setIsPublished($value)

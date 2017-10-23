@@ -11,7 +11,7 @@ class TranslationRepository extends BaseTranslationRepository
 {
     /**
      * Current TranslatableListener instance used
-     * in EntityManager
+     * in EntityManager.
      *
      * @var TranslatableListener
      */
@@ -23,7 +23,7 @@ class TranslationRepository extends BaseTranslationRepository
      */
     public function findTranslations($entity)
     {
-        $result = array();
+        $result = [];
         $wrapped = new EntityWrapper($entity, $this->_em);
         if ($wrapped->hasValidIdentifier()) {
             $entityId = $wrapped->getIdentifier();

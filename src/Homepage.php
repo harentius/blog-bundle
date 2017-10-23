@@ -59,7 +59,7 @@ class Homepage
     {
         return $this->pageRepository->findOneBy([
             'slug' => $this->homepageSlug,
-            'isPublished' => true
+            'isPublished' => true,
         ]);
     }
 

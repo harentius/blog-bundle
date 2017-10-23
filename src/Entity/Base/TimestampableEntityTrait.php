@@ -3,8 +3,8 @@
 namespace Harentius\BlogBundle\Entity\Base;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
 trait TimestampableEntityTrait
 {

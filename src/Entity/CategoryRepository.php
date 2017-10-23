@@ -2,8 +2,8 @@
 
 namespace Harentius\BlogBundle\Entity;
 
-use Gedmo\Translatable\Query\TreeWalker\TranslationWalker;
 use Doctrine\ORM\Query;
+use Gedmo\Translatable\Query\TreeWalker\TranslationWalker;
 use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 
 class CategoryRepository extends NestedTreeRepository

@@ -2,15 +2,15 @@
 
 namespace Harentius\BlogBundle\Entity;
 
-use Harentius\BlogBundle\Entity\Base\IdentifiableEntityTrait;
-use Harentius\BlogBundle\Entity\Base\SeoContentEntityTrait;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Tree\Traits\NestedSetEntity;
+use Harentius\BlogBundle\Entity\Base\IdentifiableEntityTrait;
+use Harentius\BlogBundle\Entity\Base\SeoContentEntityTrait;
+use Sonata\TranslationBundle\Model\Gedmo\TranslatableInterface;
 use Sonata\TranslationBundle\Traits\Translatable;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
-use Doctrine\ORM\Mapping as ORM;
-use Sonata\TranslationBundle\Model\Gedmo\TranslatableInterface;
 
 /**
  * @Gedmo\Tree(type="nested")
@@ -48,9 +48,9 @@ class Category implements TranslatableInterface
      * @var Article[]
      *
      * @ORM\OneToMany(
-     *      targetEntity="Harentius\BlogBundle\Entity\Article",
-     *      mappedBy="category",
-     *      cascade={"remove"},
+     *     targetEntity="Harentius\BlogBundle\Entity\Article",
+     *     mappedBy="category",
+     *     cascade={"remove"},
      * )
      */
     private $articles;
@@ -60,8 +60,8 @@ class Category implements TranslatableInterface
      *
      * @Gedmo\TreeParent
      * @ORM\ManyToOne(
-     *      targetEntity="Harentius\BlogBundle\Entity\Category",
-     *      inversedBy="children"
+     *     targetEntity="Harentius\BlogBundle\Entity\Category",
+     *     inversedBy="children"
      * )
      * @ORM\JoinColumn(referencedColumnName="id", onDelete="CASCADE")
      */
@@ -71,8 +71,8 @@ class Category implements TranslatableInterface
      * @var Category[]
      *
      * @ORM\OneToMany(
-     *      targetEntity="Harentius\BlogBundle\Entity\Category",
-     *      mappedBy="parent"
+     *     targetEntity="Harentius\BlogBundle\Entity\Category",
+     *     mappedBy="parent"
      * )
      * @ORM\OrderBy({"left" = "ASC"})
      */
@@ -151,7 +151,6 @@ class Category implements TranslatableInterface
 
         return $this;
     }
-
 
     /**
      * @return mixed

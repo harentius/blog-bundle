@@ -9,7 +9,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 class CategoryAdmin extends AbstractAdmin
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function configureListFields(ListMapper $listMapper)
     {
@@ -24,13 +24,13 @@ class CategoryAdmin extends AbstractAdmin
                 'actions' => [
                     'edit' => [],
                     'delete' => [],
-                ]
+                ],
             ])
         ;
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function configureFormFields(FormMapper $formMapper)
     {

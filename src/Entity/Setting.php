@@ -2,8 +2,8 @@
 
 namespace Harentius\BlogBundle\Entity;
 
-use Harentius\BlogBundle\Entity\Base\IdentifiableEntityTrait;
 use Doctrine\ORM\Mapping as ORM;
+use Harentius\BlogBundle\Entity\Base\IdentifiableEntityTrait;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
 /**
@@ -16,7 +16,7 @@ class Setting
     /**
      * @var string
      *
-     * @ORM\Column(type="text", name="_key" )
+     * @ORM\Column(type="text", name="_key")
      * @SymfonyConstraints\Type(type="string")
      * @SymfonyConstraints\Length(max=255)
      * @SymfonyConstraints\NotBlank()

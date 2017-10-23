@@ -14,8 +14,8 @@ trait ArticleChangeableFieldsEntityTrait
      * @var Category
      *
      * @ORM\ManyToOne(
-     *      targetEntity="Harentius\BlogBundle\Entity\Category",
-     *      inversedBy="articles"
+     *     targetEntity="Harentius\BlogBundle\Entity\Category",
+     *     inversedBy="articles"
      * )
      * @SymfonyConstraints\NotNull()
      */
@@ -25,8 +25,8 @@ trait ArticleChangeableFieldsEntityTrait
      * @var Tag[]
      *
      * @ORM\ManyToMany(
-     *      targetEntity="Harentius\BlogBundle\Entity\Tag",
-     *      inversedBy="articles"
+     *     targetEntity="Harentius\BlogBundle\Entity\Tag",
+     *     inversedBy="articles"
      * )
      */
     private $tags;

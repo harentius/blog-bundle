@@ -2,10 +2,10 @@
 
 namespace Harentius\BlogBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use Harentius\BlogBundle\Entity\Base\IdentifiableEntityTrait;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="Harentius\BlogBundle\Entity\AdminUserRepository")
@@ -146,7 +146,7 @@ class AdminUser implements UserInterface, \Serializable
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getRoles()
     {
@@ -161,23 +161,24 @@ class AdminUser implements UserInterface, \Serializable
         $this->plainPassword = null;
     }
 
-// TODO: implement
+    // TODO: implement
+
     /** @see \Serializable::serialize() */
     public function serialize()
     {
-        return serialize(array(
+        return serialize([
             $this->id,
             $this->username,
             $this->password,
             // see section on salt below
             // $this->salt,
-        ));
+        ]);
     }
 
     /** @see \Serializable::unserialize() */
     public function unserialize($serialized)
     {
-        list (
+        list(
             $this->id,
             $this->username,
             $this->password,

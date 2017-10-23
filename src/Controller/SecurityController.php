@@ -3,7 +3,7 @@
 namespace Harentius\BlogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use \Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Response;
 
 class SecurityController extends Controller
 {
@@ -17,13 +17,13 @@ class SecurityController extends Controller
         return $this->render(
             'HarentiusBlogBundle:Security:login.html.twig', [
                 'last_username' => $authenticationUtils->getLastUsername(),
-                'error'         => $authenticationUtils->getLastAuthenticationError(),
+                'error' => $authenticationUtils->getLastAuthenticationError(),
             ]
         );
     }
 
     /**
-     * This controller will not be executed, as the route is handled by the Security system
+     * This controller will not be executed, as the route is handled by the Security system.
      */
     public function loginCheckAction()
     {

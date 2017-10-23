@@ -37,7 +37,7 @@ class AssetFile
         self::TYPE_IMAGE => [
             'image/jpeg' => ['jpeg', 'jpg', 'jpe'],
             'image/png' => ['png'],
-            'image/gif' =>	['gif'],
+            'image/gif' => ['gif'],
             'image/tiff' => ['tiff', 'tif'],
         ],
         self::TYPE_AUDIO => [
@@ -156,7 +156,8 @@ class AssetFile
     {
         return $this->file && in_array(
             $this->file->getExtension(),
-            self::$assetsTypesMap[$this->type][$this->file->getMimeType()]
+            self::$assetsTypesMap[$this->type][$this->file->getMimeType()],
+            true
         );
     }
 }

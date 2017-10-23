@@ -32,7 +32,7 @@ class CRUDController extends BaseCRUDController
      */
     public function browseAction(Request $request, $type = 'image')
     {
-        if (!in_array($type, ['image', 'audio'])) {
+        if (!in_array($type, ['image', 'audio'], true)) {
             throw new \InvalidArgumentException(sprintf("Unknown files type '%s", $type));
         }
 
@@ -55,7 +55,7 @@ class CRUDController extends BaseCRUDController
             }
         }
 
-        return $this->render(sprintf("HarentiusBlogBundle:Admin:ck_browse_%ss.html.twig", $type), [
+        return $this->render(sprintf('HarentiusBlogBundle:Admin:ck_browse_%ss.html.twig', $type), [
             'func_num' => $request->query->get('CKEditorFuncNum'),
             'files' => $files,
         ]);

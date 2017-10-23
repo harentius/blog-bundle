@@ -2,17 +2,26 @@
 
 namespace Harentius\BlogBundle\Entity;
 
-use Gedmo\Translatable\Entity\MappedSuperclass\AbstractTranslation;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Translatable\Entity\MappedSuperclass\AbstractTranslation;
 
 /**
  * @ORM\Table(indexes={
- *      @ORM\Index(name="article_translation_idx", columns={"locale", "object_class", "field", "foreign_key"})
+ *     @ORM\Index(name="article_translation_idx", columns={"locale", "object_class", "field", "foreign_key"})
  * })
  * @ORM\Entity(repositoryClass="Harentius\BlogBundle\Entity\TranslationRepository")
  */
 class Translation extends AbstractTranslation
 {
+    /**
+     * @ORM\ManyToOne(
+     *     targetEntity="Harentius\BlogBundle\Entity\Article",
+     *     inversedBy="translations"
+     * )
+     * @ORM\JoinColumn(onDelete="CASCADE")
+     */
+    protected $object;
+
     /**
      * @param string $locale
      * @param string $field
@@ -24,13 +33,4 @@ class Translation extends AbstractTranslation
         $this->setField($field);
         $this->setContent($value);
     }
-
-    /**
-     * @ORM\ManyToOne(
-     *     targetEntity="Harentius\BlogBundle\Entity\Article",
-     *      inversedBy="translations"
-     * )
-     * @ORM\JoinColumn(onDelete="CASCADE")
-     */
-    protected $object;
 }

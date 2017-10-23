@@ -3,14 +3,14 @@
 namespace Harentius\BlogBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
 use Eko\FeedBundle\Item\Writer\ItemInterface;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Harentius\BlogBundle\Entity\Base\AbstractPost;
 use Harentius\BlogBundle\Entity\Base\ArticleChangeableFieldsEntityTrait;
-use Symfony\Component\Validator\Constraints as SymfonyConstraints;
-use Gedmo\Mapping\Annotation as Gedmo;
-use Doctrine\ORM\Mapping as ORM;
 use Sonata\TranslationBundle\Model\Gedmo\TranslatableInterface;
 use Sonata\TranslationBundle\Traits\Gedmo\PersonalTranslatable;
+use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
 /**
  * @ORM\Entity(repositoryClass="Harentius\BlogBundle\Entity\ArticleRepository")
@@ -185,8 +185,9 @@ class Article extends AbstractPost implements ItemInterface, TranslatableInterfa
     }
 
     // RSS
+
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getFeedItemTitle()
     {
@@ -194,7 +195,7 @@ class Article extends AbstractPost implements ItemInterface, TranslatableInterfa
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getFeedItemDescription()
     {
@@ -202,7 +203,7 @@ class Article extends AbstractPost implements ItemInterface, TranslatableInterfa
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getFeedItemLink()
     {
@@ -210,7 +211,7 @@ class Article extends AbstractPost implements ItemInterface, TranslatableInterfa
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getFeedItemPubDate()
     {

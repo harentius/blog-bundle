@@ -10,7 +10,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 class TagAdmin extends AbstractAdmin
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function configureListFields(ListMapper $listMapper)
     {
@@ -21,13 +21,13 @@ class TagAdmin extends AbstractAdmin
                 'actions' => [
                     'edit' => [],
                     'delete' => [],
-                ]
+                ],
             ])
         ;
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
@@ -40,7 +40,7 @@ class TagAdmin extends AbstractAdmin
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function configureDatagridFilters(DatagridMapper $filter)
     {

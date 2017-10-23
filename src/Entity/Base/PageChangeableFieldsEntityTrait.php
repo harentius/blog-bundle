@@ -16,7 +16,7 @@ trait PageChangeableFieldsEntityTrait
     private $showInMainMenu;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(type="integer", nullable=true, name="_order")
      * @SymfonyConstraints\Type(type="integer")

@@ -51,7 +51,7 @@ class Tags
             $minDiff = 1;
 
             foreach ($this->sidebarTagSizes as $tagPercent) {
-                if (($diff = abs($tag['weight']/$maxWeight - $tagPercent/100)) < $minDiff) {
+                if (($diff = abs($tag['weight'] / $maxWeight - $tagPercent / 100)) < $minDiff) {
                     $minDiff = $diff;
                     $percentage = $tagPercent;
                 }

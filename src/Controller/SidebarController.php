@@ -18,14 +18,14 @@ class SidebarController extends Controller
                 'decorate' => true,
                 'representationField' => 'slug',
                 'html' => true,
-                'nodeDecorator' => function($node) use ($showNumber) {
+                'nodeDecorator' => function ($node) use ($showNumber) {
                     // Silent missing IDE warning
-                    return sprintf('<a href=' . '"%s">%s</a>' . ($showNumber ? ' (%d)': ''),
+                    return sprintf('<a href=' . '"%s">%s</a>' . ($showNumber ? ' (%d)' : ''),
                         $this->generateUrl("harentius_blog_category_{$node['id']}"),
                         $node['name'],
                         $node['articles_number']
                     );
-                }
+                },
             ]),
         ]);
     }

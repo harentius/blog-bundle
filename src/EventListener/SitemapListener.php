@@ -8,10 +8,10 @@ use Harentius\BlogBundle\Entity\CategoryRepository;
 use Harentius\BlogBundle\Entity\PageRepository;
 use Harentius\BlogBundle\Homepage;
 use Harentius\BlogBundle\Sidebar\Archive;
-use Symfony\Component\Routing\RouterInterface;
-use Presta\SitemapBundle\Service\SitemapListenerInterface;
 use Presta\SitemapBundle\Event\SitemapPopulateEvent;
+use Presta\SitemapBundle\Service\SitemapListenerInterface;
 use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;
+use Symfony\Component\Routing\RouterInterface;
 
 class SitemapListener implements SitemapListenerInterface
 {
@@ -78,7 +78,7 @@ class SitemapListener implements SitemapListenerInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function populateSitemap(SitemapPopulateEvent $event)
     {

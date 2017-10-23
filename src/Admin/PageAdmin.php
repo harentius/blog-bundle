@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 class PageAdmin extends AbstractPostAdmin
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function configureListFields(ListMapper $listMapper)
     {
@@ -24,13 +24,13 @@ class PageAdmin extends AbstractPostAdmin
                 'actions' => [
                     'edit' => [],
                     'delete' => [],
-                ]
+                ],
             ])
         ;
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
