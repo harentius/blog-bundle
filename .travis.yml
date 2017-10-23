@@ -7,6 +7,4 @@ before_script:
     - composer global require friendsofphp/php-cs-fixer
 
 script:
-  - CHANGED_FILES=$(git diff --name-only --diff-filter=ACMRTUXB "${TRAVIS_COMMIT_RANGE}") ;\
-    if ! echo "${CHANGED_FILES}" | grep -qE "^(\\.php_cs(\\.dist)?|composer\\.lock)$"; then IFS=$'\n' EXTRA_ARGS=('--path-mode=intersection' '--' ${CHANGED_FILES[@]}); fi ;\
-    $HOME/.composer/vendor/bin/php-cs-fixer fix --config=.php_cs.dist -v --dry-run --stop-on-violation --using-cache=no "${EXTRA_ARGS[@]}" ./src
+  - $HOME/.composer/vendor/bin/php-cs-fixer --diff --dry-run --verbose fix ./src
