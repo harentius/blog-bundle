@@ -1,6 +1,10 @@
 Just another Symfony blog bundle
 ================================
-Just another Symfony blog bundle [![Build Status](https://travis-ci.org/harentius/blog-bundle.svg?branch=master)](https://travis-ci.org/harentius/blog-bundle)
+
+[![Build Status](https://travis-ci.org/harentius/blog-bundle.svg?branch=master)](https://travis-ci.org/harentius/blog-bundle)
+
+
+Just another Symfony blog bundle
 
 
 Symfony Bundle for simple blog. In progress now.
