@@ -2,6 +2,8 @@
 
 namespace Harentius\BlogBundle\Entity\Base;
 
+use Symfony\Component\Validator\Constraints as SymfonyConstraints;
+
 trait PageChangeableFieldsEntityTrait
 {
     use CommonChangeableFieldsEntityTrait;
