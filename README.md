@@ -2,7 +2,7 @@ Just another Symfony blog bundle
 ================================
 
 [![Build Status](https://travis-ci.org/harentius/blog-bundle.svg?branch=master)](https://travis-ci.org/harentius/blog-bundle)
-
+[![Maintainability](https://api.codeclimate.com/v1/badges/8a118f94722e7ac4dc70/maintainability)](https://codeclimate.com/github/harentius/blog-bundle/maintainability)
 
 Just another Symfony blog bundle
 
