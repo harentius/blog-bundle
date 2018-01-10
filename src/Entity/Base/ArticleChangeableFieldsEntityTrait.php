@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Harentius\BlogBundle\Entity\Category;
 use Harentius\BlogBundle\Entity\Tag;
+use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
 trait ArticleChangeableFieldsEntityTrait
 {
