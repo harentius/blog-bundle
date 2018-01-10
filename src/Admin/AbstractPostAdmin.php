@@ -58,7 +58,11 @@ class AbstractPostAdmin extends AbstractAdmin
      */
     protected function configureRoutes(RouteCollection $collection)
     {
-        $collection->add('upload', 'upload');
-        $collection->add('browse', 'browse/{type}');
+        $collection->add('upload', 'upload', [], [], [
+            'expose' => true,
+        ]);
+        $collection->add('browse', 'browse/{type}', [], [], [
+            'expose' => true,
+        ]);
     }
 }

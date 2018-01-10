@@ -1,0 +1,25 @@
+{
+  "name": "blog-bundle",
+  "version": "2.0.0",
+  "repository": "git@github.com:harentius/blog-bundle.git",
+  "author": "Yaroslav Osypenko <yaroslav.osypenko@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.17.0",
+    "file-loader": "^1.1.6",
+    "less-loader": "^4.0.5",
+    "script-loader": "^0.7.2",
+    "CKEditor-More-plugin": "https://github.com/zionsg/CKEditor-More-plugin",
+    "CKEditor-WordCount-Plugin": "https://github.com/w8tcha/CKEditor-WordCount-Plugin",
+    "bootstrap": "^3.3.7",
+    "ckeditor": "^4.8.0",
+    "ckeditor-audio-plugin": "https://github.com/harentius/ckeditor-audio-plugin",
+    "ckeditor-youtube-plugin": "^2.1.6",
+    "ckeditor5": "^0.0.1-security",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1",
+    "js-cookie": "^2.2.0"
+  },
+  "dependencies": {
+  }
+}

@@ -2,9 +2,5 @@
 
 {% block stylesheets %}
     {{  parent() }}
-    {% stylesheets
-        '@SonataTranslationBundle/Resources/public/less/sonata-translation.less'
-    %}
-    <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/sonatatranslation/css/sonata-translation.css') }}" />
 {% endblock %}

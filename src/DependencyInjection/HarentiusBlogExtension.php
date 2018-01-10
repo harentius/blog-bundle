@@ -34,7 +34,6 @@ class HarentiusBlogExtension extends Extension
         $articleAdminDefinition = $container->getDefinition('harentius_blog.admin.article');
         $articleAdminDefinition->addMethodCall('setControllerCache', [$cacheServiceDefinition]);
 
-        // TODO: find way to escape following hell
         $container->setParameter('harentius_blog.sidebar.tags_limit', $config['sidebar']['tags_limit']);
         $container->setParameter('harentius_blog.sidebar.tag_sizes', $config['sidebar']['tag_sizes']);
         $container->setParameter('harentius_blog.homepage.page_slug', $config['homepage']['page_slug']);

@@ -23,16 +23,7 @@
     {% endif %}
         {% block meta_extra %}{% endblock %}
         {% block common_stylesheets %}
-            {% stylesheets
-                'assets/vendor/bootstrap/dist/css/bootstrap.min.css'
-                'assets/vendor/ckeditor/plugins/codesnippet/lib/highlight/styles/default.css'
-                'assets/vendor/components-font-awesome/css/font-awesome.min.css'
-                'bundles/harentiusblog/css/common.less'
-                'bundles/harentiusblog/css/twbs-extension.less'
-                'bundles/harentiusblog/css/main.less'
-            %}
-            <link href="{{ asset_url }}" media="all" rel="stylesheet" type="text/css" />
-            {% endstylesheets %}
+            <link href="{{ asset('bundles/harentiusblog/common.css', 'harentius_blog') }}" media="all" rel="stylesheet" type="text/css" />
         {% endblock %}
 
         {% block stylesheets %}{% endblock %}
@@ -91,15 +82,8 @@
         </div>
         {% block last_body_content %}{% endblock %}
         {% block common_javascripts %}
-            {% javascripts
-                'assets/vendor/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js'
-                'assets/vendor/jquery/dist/jquery.min.js'
-                'assets/vendor/bootstrap/js/collapse.js'
-                'assets/vendor/js-cookie/src/js.cookie.js'
-                '@HarentiusBlogBundle/Resources/public/js/common.coffee'
-            %}
-            <script src="{{ asset_url }}"></script>
-            {% endjavascripts %}
+            <script src="{{ asset('bundles/harentiusblog/manifest.js', 'harentius_blog') }}"></script>
+            <script src="{{ asset('bundles/harentiusblog/common.js', 'harentius_blog') }}"></script>
         {% endblock %}
 
     {% block javascripts %}{% endblock %}

@@ -21,7 +21,7 @@ services:
             - HarentiusBlogBundle:CRUD
         calls:
             - [ setTranslationDomain, [ 'HarentiusBlogBundle' ] ]
-            - [ setTemplate, [ 'edit', 'HarentiusBlogBundle:Admin:edit_with_ck_editor.html.twig' ] ]
+            - [ setTemplate, [ 'edit', 'HarentiusBlogBundle:Admin/CRUD:edit_post.html.twig' ] ]
 
     harentius_blog.admin.category:
         class: Harentius\BlogBundle\Admin\CategoryAdmin
