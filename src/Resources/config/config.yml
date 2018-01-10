@@ -39,7 +39,6 @@ sonata_admin:
     dashboard:
         blocks: []
 
-# TODO: configuration
 sonata_translation:
     locales: ['en', 'ru']
     default_locale: '%locale%'
