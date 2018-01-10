@@ -27,9 +27,6 @@
   "bundles/harentiusblog/node_modules/ckeditor/plugins/codesnippet/icons/hidpi/codesnippet.png": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/codesnippet/icons/hidpi/codesnippet.png",
   "bundles/harentiusblog/node_modules/ckeditor/plugins/codesnippet/lang/en.js": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/codesnippet/lang/en.js",
   "bundles/harentiusblog/node_modules/ckeditor/plugins/codesnippet/lang/ru.js": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/codesnippet/lang/ru.js",
-  "bundles/harentiusblog/node_modules/ckeditor/plugins/codesnippet/lib/highlight/CHANGES.md": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/codesnippet/lib/highlight/CHANGES.md",
-  "bundles/harentiusblog/node_modules/ckeditor/plugins/codesnippet/lib/highlight/LICENSE": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/codesnippet/lib/highlight/LICENSE.bin",
-  "bundles/harentiusblog/node_modules/ckeditor/plugins/codesnippet/lib/highlight/README.ru.md": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/codesnippet/lib/highlight/README.ru.md",
   "bundles/harentiusblog/node_modules/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js",
   "bundles/harentiusblog/node_modules/ckeditor/plugins/codesnippet/lib/highlight/styles/arta.css": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/codesnippet/lib/highlight/styles/arta.css",
   "bundles/harentiusblog/node_modules/ckeditor/plugins/codesnippet/lib/highlight/styles/ascetic.css": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/codesnippet/lib/highlight/styles/ascetic.css",
@@ -104,8 +101,6 @@
   "bundles/harentiusblog/node_modules/ckeditor/plugins/justify/lang/en.js": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/justify/lang/en.js",
   "bundles/harentiusblog/node_modules/ckeditor/plugins/justify/lang/ru.js": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/justify/lang/ru.js",
   "bundles/harentiusblog/node_modules/ckeditor/plugins/justify/plugin.js": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/justify/plugin.js",
-  "bundles/harentiusblog/node_modules/ckeditor/plugins/scayt/CHANGELOG.md": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/scayt/CHANGELOG.md",
-  "bundles/harentiusblog/node_modules/ckeditor/plugins/scayt/LICENSE.md": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/scayt/LICENSE.md",
   "bundles/harentiusblog/node_modules/ckeditor/plugins/scayt/dialogs/dialog.css": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/scayt/dialogs/dialog.css",
   "bundles/harentiusblog/node_modules/ckeditor/plugins/scayt/dialogs/options.js": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/scayt/dialogs/options.js",
   "bundles/harentiusblog/node_modules/ckeditor/plugins/scayt/dialogs/toolbar.css": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/scayt/dialogs/toolbar.css",
@@ -115,7 +110,6 @@
   "bundles/harentiusblog/node_modules/ckeditor/plugins/wordcount/css/wordcount.css": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/wordcount/css/wordcount.css",
   "bundles/harentiusblog/node_modules/ckeditor/plugins/wpmore/images/more.gif": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/wpmore/images/more.gif",
   "bundles/harentiusblog/node_modules/ckeditor/plugins/wpmore/images/more_bug.gif": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/wpmore/images/more_bug.gif",
-  "bundles/harentiusblog/node_modules/ckeditor/plugins/wsc/LICENSE.md": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/wsc/LICENSE.md",
   "bundles/harentiusblog/node_modules/ckeditor/plugins/wsc/dialogs/ciframe.html": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/wsc/dialogs/ciframe.html",
   "bundles/harentiusblog/node_modules/ckeditor/plugins/wsc/dialogs/tmpFrameset.html": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/wsc/dialogs/tmpFrameset.html",
   "bundles/harentiusblog/node_modules/ckeditor/plugins/wsc/dialogs/wsc.css": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/wsc/dialogs/wsc.css",
@@ -146,5 +140,5 @@
   "bundles/harentiusblog/node_modules/ckeditor/skins/moono-lisa/images/spinner.gif": "/bundles/harentiusblog/build/node_modules/ckeditor/skins/moono-lisa/images/spinner.gif",
   "bundles/harentiusblog/node_modules/ckeditor/skins/moono-lisa/readme.md": "/bundles/harentiusblog/build/node_modules/ckeditor/skins/moono-lisa/readme.md",
   "bundles/harentiusblog/node_modules/ckeditor/styles.js": "/bundles/harentiusblog/build/node_modules/ckeditor/styles.js",
-  "bundles/harentiusblog/post-admin.js": "/bundles/harentiusblog/build/post-admin.a8f0703e311794421347.js"
+  "bundles/harentiusblog/post-admin.js": "/bundles/harentiusblog/build/post-admin.5f789207a1f94faaec97.js"
 }

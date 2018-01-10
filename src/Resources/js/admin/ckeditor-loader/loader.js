@@ -7,7 +7,7 @@ require(`!file-loader?context=${__dirname}&outputPath=node_modules/ckeditor/&nam
 require.context(
   '!file-loader?name=[path][name].[ext]!ckeditor/plugins/',
   true,
-  /^\.\/((scayt|tableselection|wsc|justify|div|codesnippet|image2|widget)(\/(?!lang\/)[^/]+)*)?[^/]*$/
+  /^\.\/((scayt|tableselection|wsc|justify|div|codesnippet|image2|widget)(\/(?!lang\/)[^/]+)*)?[^/]*\.((?!md).)*$/i
 );
 require.context(
   '!file-loader?name=[path][name].[ext]!ckeditor/plugins/',
