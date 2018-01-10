@@ -1,7 +1,7 @@
 window.CKEDITOR_BASEPATH = `${__webpack_public_path__}node_modules/ckeditor/`;
 
 require(`!file-loader?context=${__dirname}&outputPath=node_modules/ckeditor/&name=[path][name].[ext]!./config.js`);
-require(`!file-loader?context=${__dirname}&outputPath=node_modules/ckeditor/&name=[path][name].[ext]!./contents.css`);
+require(`!file-loader?context=${__dirname}&outputPath=node_modules/ckeditor/&name=[name].[ext]!ckeditor/contents.css`);
 require(`!file-loader?context=${__dirname}&outputPath=node_modules/ckeditor/&name=[path][name].[ext]!./styles.js`);
 
 require.context(
