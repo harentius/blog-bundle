@@ -16,7 +16,7 @@ class AbstractPostAdmin extends AbstractAdmin
     public function prePersist($object)
     {
         /** @var Article $object */
-        if ($object->getIsPublished() && !$object->getPublishedAt()) {
+        if ($object->isPublished() && !$object->getPublishedAt()) {
             $object->setPublishedAt(new \DateTime());
         }
     }
@@ -32,7 +32,7 @@ class AbstractPostAdmin extends AbstractAdmin
         /** @var array $storedArticle */
         $originalArticleData = $em->getUnitOfWork()->getOriginalEntityData($object);
 
-        if (!$originalArticleData['isPublished'] && $object->getIsPublished() && !$object->getPublishedAt()) {
+        if (!$originalArticleData['isPublished'] && $object->isPublished() && !$object->getPublishedAt()) {
             $object->setPublishedAt(new \DateTime());
         }
     }
