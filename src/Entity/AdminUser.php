@@ -161,8 +161,6 @@ class AdminUser implements UserInterface, \Serializable
         $this->plainPassword = null;
     }
 
-    // TODO: implement
-
     /** @see \Serializable::serialize() */
     public function serialize()
     {
