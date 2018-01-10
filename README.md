@@ -39,26 +39,6 @@ Because of using bower-asset/ckeditor-more-plugin in admin section with dev-mast
 
 in your composer.json. (Should be corrected in future.)
 
-Also configure assets installing path:
-
-```json
-    "extra": {
-        ...
-        "asset-installer-paths": {
-            "npm-asset-library": "web/assets/vendor",
-            "bower-asset-library": "web/assets/vendor"
-        }
-    }
-```
-
-Install composer assets plugins:
-
-(This is temporary solution, I want to avoid using assetic plugin in future)
-
-```bash
-$ composer.phar require fxp/composer-asset-plugin
-```
-
 Than install bundle:
 
 ```bash
