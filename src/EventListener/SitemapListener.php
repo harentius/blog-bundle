@@ -7,7 +7,6 @@ use Harentius\BlogBundle\Entity\ArticleRepository;
 use Harentius\BlogBundle\Entity\CategoryRepository;
 use Harentius\BlogBundle\Entity\PageRepository;
 use Harentius\BlogBundle\Homepage;
-use Harentius\BlogBundle\Sidebar\Archive;
 use Presta\SitemapBundle\Event\SitemapPopulateEvent;
 use Presta\SitemapBundle\Service\SitemapListenerInterface;
 use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;
@@ -24,11 +23,6 @@ class SitemapListener implements SitemapListenerInterface
      * @var Homepage
      */
     private $homepage;
-
-    /**
-     * @var Archive
-     */
-    private $archive;
 
     /**
      * @var ArticleRepository
@@ -53,7 +47,6 @@ class SitemapListener implements SitemapListenerInterface
     /**
      * @param RouterInterface $router
      * @param Homepage $homepage
-     * @param Archive $archive
      * @param ArticleRepository $articleRepository
      * @param PageRepository $pageRepository
      * @param CategoryRepository $categoryRepository
@@ -62,7 +55,6 @@ class SitemapListener implements SitemapListenerInterface
     public function __construct(
         RouterInterface $router,
         Homepage $homepage,
-        Archive $archive,
         ArticleRepository $articleRepository,
         PageRepository $pageRepository,
         CategoryRepository $categoryRepository,
@@ -70,7 +62,6 @@ class SitemapListener implements SitemapListenerInterface
     ) {
         $this->router = $router;
         $this->homepage = $homepage;
-        $this->archive = $archive;
         $this->articleRepository = $articleRepository;
         $this->pageRepository = $pageRepository;
         $this->categoryRepository = $categoryRepository;

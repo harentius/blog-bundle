@@ -92,7 +92,6 @@ services:
         arguments:
             - '@router'
             - '@harentius_blog.homepage'
-            - '@harentius_blog.sidebar.archive'
             - '@harentius_blog.entity.article_repository'
             - '@harentius_blog.entity.page_repository'
             - '@harentius_blog.entity.category_repository'
