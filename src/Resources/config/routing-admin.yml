@@ -2,7 +2,6 @@ harentius_blog_admin_home:
     path:     /admin
     defaults: { _controller: FrameworkBundle:Redirect:redirect, route: admin_harentius_blog_dashboard, permanent: true }
 
-#TODO: implement dashboard and remove
 harentius_blog_admin_dashboard_redirect:
     path:     /dashboard
     defaults: { _controller: FrameworkBundle:Redirect:redirect, route: admin_harentius_blog_article_list, permanent: true }
