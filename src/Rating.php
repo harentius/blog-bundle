@@ -124,7 +124,7 @@ class Rating
         if (!in_array($articleId, $rated, true)) {
             $rated[] = $articleId;
             $response->headers->setCookie(new Cookie($key, json_encode($rated)));
-            $this->cache->save($ip = $this->getRequest()->getClientIp(), true, self::TIME_TO_REMEMBER_IP);
+            $this->cache->save($this->getRequest()->getClientIp(), true, self::TIME_TO_REMEMBER_IP);
         }
     }
 
