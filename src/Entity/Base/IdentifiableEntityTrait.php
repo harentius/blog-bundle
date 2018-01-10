@@ -2,6 +2,8 @@
 
 namespace Harentius\BlogBundle\Entity\Base;
 
+use Doctrine\ORM\Mapping as ORM;
+
 trait IdentifiableEntityTrait
 {
     /**

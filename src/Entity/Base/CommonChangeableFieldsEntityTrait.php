@@ -4,6 +4,7 @@ namespace Harentius\BlogBundle\Entity\Base;
 
 use Gedmo\Mapping\Annotation as Gedmo;
 use Harentius\BlogBundle\Entity\AdminUser;
+use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
 trait CommonChangeableFieldsEntityTrait
 {
