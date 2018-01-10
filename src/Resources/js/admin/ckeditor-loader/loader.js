@@ -23,5 +23,5 @@ require.context(
 require.context(
   '!file-loader?name=[path][name].[ext]!ckeditor/skins/moono-lisa',
   true,
-  /.*/
+  /\.((?!md).)*$/i
 );
