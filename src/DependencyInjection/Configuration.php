@@ -51,7 +51,6 @@ class Configuration implements ConfigurationInterface
             ->end()
             ->arrayNode('articles')
                 ->children()
-                    ->booleanNode('generate_image_previews')->defaultValue(false)->end()
                     ->scalarNode('image_previews_base_uri')->defaultValue('/assets/images/preview/')->end()
                 ->end()
             ->end()

@@ -123,8 +123,6 @@ admin:
 ```yml
 harentius_blog:
     articles:
-        # Is generate preview when resize images in CKEditor
-        generate_image_previews: true
         # Path where previews stored
         image_previews_base_uri: /assets/images/preview/
     sidebar:
