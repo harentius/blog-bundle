@@ -5,7 +5,6 @@
   "keywords": ["blog", "bundle", "symfony", "cms"],
   "homepage": "https://folkprog.net/symfony-blog-bundle/",
   "license": "MIT",
-  "minimum-stability": "dev",
   "prefer-stable": true,
   "authors": [
     {
@@ -29,7 +28,7 @@
     "sonata-project/admin-bundle": "~3.4",
     "sonata-project/doctrine-orm-admin-bundle": "~3.0",
     "sonata-project/block-bundle": "~3.1",
-    "sonata-project/translation-bundle": "dev-master",
+    "sonata-project/translation-bundle": "~2.2",
     "doctrine/orm": "~2.5",
     "doctrine/dbal": "~2.4",
     "doctrine/doctrine-bundle": "~1.4",
