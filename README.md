@@ -171,7 +171,7 @@ bin/console assets:install
 Resources
 ---------
 
-[http://folkprog.net](https://folkprog.net) - example of blog (currently working project that uses this bundle)
+[https://folkprog.net](https://folkprog.net) - example of blog (currently working project that uses this bundle)
 
 [https://github.com/harentius/folkprog](https://github.com/harentius/folkprog) - repository of this project
 
