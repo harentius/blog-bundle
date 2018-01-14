@@ -3,7 +3,6 @@
 namespace Harentius\BlogBundle\Router;
 
 use Symfony\Cmf\Component\Routing\RouteProviderInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
@@ -16,18 +15,17 @@ class RouteProvider implements RouteProviderInterface
     protected $routes;
 
     /**
-     * Container used for avoiding crashes while rebuilding.
-     * @var ContainerInterface
+     * @var CategorySlugProvider
      */
-    protected $container;
+    private $categorySlugProvider;
 
     /**
-     * @param ContainerInterface $container
+     * @param CategorySlugProvider $categorySlugProvider
      */
-    public function __construct(ContainerInterface $container)
+    public function __construct(CategorySlugProvider $categorySlugProvider)
     {
         $this->routes = new RouteCollection();
-        $this->container = $container;
+        $this->categorySlugProvider = $categorySlugProvider;
     }
 
     /**
@@ -35,9 +33,7 @@ class RouteProvider implements RouteProviderInterface
      */
     public function getRouteCollectionForRequest(Request $request)
     {
-        $slugProvider = $this->container->get('harentius_blog.router.category_slug_provider');
-
-        foreach ($slugProvider->getAll() as $categoryId => $fullSlug) {
+        foreach ($this->categorySlugProvider->getAll() as $categoryId => $fullSlug) {
             $this->routes->add("harentius_blog_category_{$categoryId}", new Route(
                 "/category{$fullSlug}",
                 ['_controller' => 'HarentiusBlogBundle:Blog:list', 'filtrationType' => 'category', 'criteria' => $categoryId]

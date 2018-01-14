@@ -108,7 +108,7 @@ services:
     harentius_blog.router.route_provider:
           class: Harentius\BlogBundle\Router\RouteProvider
           arguments:
-              - '@service_container'
+              - '@harentius_blog.router.category_slug_provider'
 
     harentius_blog.feed:
         class: Harentius\BlogBundle\Feed
