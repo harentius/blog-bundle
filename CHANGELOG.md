@@ -1,3 +1,8 @@
+3.0.0
+=====
+ - Migrated to the Webpack encore with assets prebuilt
+ - Minor corrections to increase code quality
+
 2.0.0
 =====
  - Migrated to the Symfony >= 3.0
