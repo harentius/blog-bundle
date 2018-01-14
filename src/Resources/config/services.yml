@@ -131,8 +131,7 @@ services:
             - '@liip_imagine.filter.manager'
             - '@liip_imagine.data.manager'
             - '@harentius_blog.assets.resolver'
-#            TODO: move to configuration
-            - '%image_previews_base_uri%'
+            - '%harentius_blog.articles.image_previews_base_uri%'
 
     harentius_blog.event_listener.admin_user_listener:
         class: Harentius\BlogBundle\EventListener\AdminUserListener
