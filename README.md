@@ -31,15 +31,6 @@ composer.phar create-project symfony/framework-standard-edition test
 
 For using in existing project skip this step.
 
-Because of using bower-asset/ckeditor-more-plugin in admin section with dev-master, for installing HarentiusBlogBundle you should set
-
-```json
-   "minimum-stability": "dev",
-   "prefer-stable": true,
-```
-
-in your composer.json. (Should be corrected in future.)
-
 Than install bundle:
 
 ```bash
@@ -149,24 +140,6 @@ harentius_blog:
         statistics_cache_lifetime: 3600
 ```
 
-Configure assetic in following way (need less filter and coffee):
-
-```yml
-assetic:
-    debug:          '%kernel.debug%'
-    use_controller: false
-    filters:
-        cssrewrite:
-            apply_to: '.css$'
-        less:
-            node: '%nodejs.path%'
-            node_paths: ['%nodejs.modules_path%']
-            apply_to: '.less$'
-        coffee:
-            bin:       '%bin_coffee%'
-            apply_to:  '.coffee$'
-```
-
 
 5) Create/Update your DB according to chosen installation type
 
@@ -204,6 +177,6 @@ Resources
 
 
 TODO:
-    1) Remove/improve dependency bower-asset/ckeditor-more-plugin to avoid requirement of "minimum-stability": "dev"
-    2) Remove VK dependency/make it optional, same for sharing buttons
-    3) Improve file uploading
+    1) Remove VK dependency/make it optional, same for sharing buttons
+    2) Improve file uploading
+    3) Write tests
