@@ -13,9 +13,14 @@ class SetTwigVariablesPass implements CompilerPassInterface
     public function process(ContainerBuilder $container)
     {
         $definition = $container->getDefinition('twig');
-        $definition->addMethodCall(
-            'addGlobal',
-            ['image_previews_base_uri', $container->getParameter('harentius_blog.articles.image_previews_base_uri')]
-        );
+        $definition
+            ->addMethodCall(
+                'addGlobal',
+                ['image_previews_base_uri', $container->getParameter('harentius_blog.articles.image_previews_base_uri')]
+            )->addMethodCall(
+                'addGlobal',
+                ['default_locale', $container->getParameter('kernel.default_locale')]
+            )
+        ;
     }
 }

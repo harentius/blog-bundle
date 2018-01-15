@@ -1,0 +1,16 @@
+<div class="languages-wrapper pull-right">
+    {% set translations = translations_list(entity) %}
+    {% set currentLocale = app.request.locale %}
+
+    {% if translations|length > 1 %}
+        {% for locale in translations %}
+            {% if currentLocale == locale %}
+                <span>{{ locale }}</span>
+            {% elseif locale == default_locale %}
+                <a href="{{ path('harentius_blog_show_default', {'slug': entity.slug}) }}">{{ locale }}</a>
+            {% else %}
+                <a href="{{ path('harentius_blog_show', {'slug': entity.slug, '_locale': locale}) }}">{{ locale }}</a>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</div>
