@@ -164,7 +164,7 @@ trait CommonChangeableFieldsEntityTrait
      * @param bool $value
      * @return $this
      */
-    public function setPublished($value)
+    public function setIsPublished($value)
     {
         $this->isPublished = $value;
 

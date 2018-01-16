@@ -51,7 +51,7 @@ class ArticleAdmin extends AbstractPostAdmin
             ->add('category')
             ->add('tags')
             ->add('author')
-            ->add('isPublished')
+            ->add('published')
             ->add('publishedAt')
             ->add('metaDescription')
             ->add('metaKeywords')
