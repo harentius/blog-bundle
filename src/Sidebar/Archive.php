@@ -26,7 +26,7 @@ class Archive
     public function getList()
     {
         /** @var Article[] $articles */
-        $articles = $this->articleRepository->findBy(['isPublished' => true], ['publishedAt' => 'DESC']);
+        $articles = $this->articleRepository->findBy(['published' => true], ['publishedAt' => 'DESC']);
         $list = [];
 
         foreach ($articles as $article) {

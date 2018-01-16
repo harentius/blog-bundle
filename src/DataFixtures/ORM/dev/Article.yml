@@ -5,7 +5,7 @@ Harentius\BlogBundle\Entity\Article:
         category: '@category_1'
         tags: ['@tag_1', '@tag_2']
         author: '@admin_user'
-        isPublished: true
+        published: true
         metaDescription: Meta description for 'Title 1' articte
         metaKeywords: Meta keywords for 'Title 1' articte
         publishedAt: <dateTimeBetween('-30 days', 'now')>
@@ -21,7 +21,7 @@ Harentius\BlogBundle\Entity\Article:
         category: '@category_child_3rd_level'
         tags: ['@tag_1', '@tag_3']
         author: '@admin_user'
-        isPublished: false
+        published: false
         metaDescription: Meta description for 'Title 2' articte
         metaKeywords: Meta keywords for 'Title 2' articte
         publishedAt: <dateTimeBetween('-60 days', 'now')>
@@ -38,7 +38,7 @@ Harentius\BlogBundle\Entity\Article:
         category: '@category_2'
         tags: ['@tag_1', '@tag_4']
         author: '@admin_user'
-        isPublished: true
+        published: true
         metaDescription: Meta description for 'Title <current()>' articte
         metaKeywords: Meta keywords for 'Title <current()>' articte
         publishedAt: <dateTimeBetween('-90 days', 'now')>
@@ -55,7 +55,7 @@ Harentius\BlogBundle\Entity\Article:
         category: '@category_2'
         tags: ['@tag_1', '@tag_3']
         author: '@admin_user'
-        isPublished: true
+        published: true
         metaDescription: Meta description for 'Title 6' articte
         metaKeywords: Meta keywords for 'Title 6' articte
         publishedAt: <dateTimeBetween('-120 days', 'now')>
@@ -72,7 +72,7 @@ Harentius\BlogBundle\Entity\Article:
         category: '@category_child_2'
         tags: ['@tag_2', '@tag_5']
         author: '@admin_user'
-        isPublished: true
+        published: true
         metaDescription: Meta description for 'Title 7' articte
         metaKeywords: Meta keywords for 'Title 7' articte
         publishedAt: <dateTimeBetween('-120 days', 'now')>

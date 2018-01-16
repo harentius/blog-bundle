@@ -100,7 +100,7 @@ class SitemapListener implements SitemapListenerInterface
 
         // Articles
         /** @var Article[] $articles */
-        $articles = $this->articleRepository->findBy(['isPublished' => true], ['publishedAt' => 'DESC']);
+        $articles = $this->articleRepository->findBy(['published' => true], ['publishedAt' => 'DESC']);
 
         foreach ($articles as $article) {
             $event->getGenerator()->addUrl(

@@ -13,7 +13,7 @@ class PageRepository extends EntityRepository
     public function findPublishedNotSlugOrdered($slug)
     {
         return $this->createQueryBuilder('p')
-            ->where('p.isPublished = :isPublished')
+            ->where('p.published = :isPublished')
             ->andWhere('p.slug <> :slug')
             ->setParameters([
                 ':isPublished' => true,

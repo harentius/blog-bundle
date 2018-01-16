@@ -1,3 +1,7 @@
+3.0.1
+=====
+ - Added translations list to the templates
+
 3.0.0
 =====
  - Migrated to the Webpack encore with assets prebuilt

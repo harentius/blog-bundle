@@ -16,7 +16,7 @@ class PageAdmin extends AbstractPostAdmin
             ->add('title')
             ->add('slug')
             ->add('author')
-            ->add('isPublished')
+            ->add('published')
             ->add('publishedAt')
             ->add('metaDescription')
             ->add('metaKeywords')
@@ -42,7 +42,7 @@ class PageAdmin extends AbstractPostAdmin
             ->add('text', 'textarea', [
                 'attr' => ['class' => 'blog-page-edit'],
             ])
-            ->add('isPublished', null, [
+            ->add('published', null, [
                 'required' => false,
             ])
             ->add('showInMainMenu', null, [

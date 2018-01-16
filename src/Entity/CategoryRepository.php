@@ -28,7 +28,7 @@ class CategoryRepository extends NestedTreeRepository
         $qb
             ->select('COUNT(a)')
             ->where($qb->expr()->in('a.category', $q1->getDQL()))
-            ->andWhere('a.isPublished = :isPublished')
+            ->andWhere('a.published = :isPublished')
         ;
 
         $q2 = $this->createQueryBuilder('c')
@@ -59,7 +59,7 @@ class CategoryRepository extends NestedTreeRepository
                     (SELECT cc FROM HarentiusBlogBundle:Category cc
                      WHERE cc.left >= c.left AND cc.right <= c.right AND cc.root = c.root)'
             )
-            ->andWhere('a.isPublished = :isPublished')
+            ->andWhere('a.published = :isPublished')
             ->setParameter('isPublished', true)
             ->groupBy('c')
             ->getQuery()

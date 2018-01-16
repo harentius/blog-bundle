@@ -32,7 +32,7 @@ class AbstractPostAdmin extends AbstractAdmin
         /** @var array $storedArticle */
         $originalArticleData = $em->getUnitOfWork()->getOriginalEntityData($object);
 
-        if (!$originalArticleData['isPublished'] && $object->isPublished() && !$object->getPublishedAt()) {
+        if (!$originalArticleData['published'] && $object->isPublished() && !$object->getPublishedAt()) {
             $object->setPublishedAt(new \DateTime());
         }
     }
@@ -46,7 +46,7 @@ class AbstractPostAdmin extends AbstractAdmin
         $query = parent::createQuery($context);
         $alias = $query->getRootAliases()[0];
         $query
-            ->orderBy($alias . '.isPublished', 'ASC')
+            ->orderBy($alias . '.published', 'ASC')
             ->addOrderBy($alias . '.publishedAt', 'DESC')
         ;
 
