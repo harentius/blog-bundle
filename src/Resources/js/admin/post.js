@@ -5,7 +5,7 @@ import './ckeditor-image-resize-attributes-to-url';
 let $ = window.$;
 
 $(() => {
-  $('[name$="[isPublished]"]').on('ifChecked', function() {
+  $('[name$="[published]"]').on('ifChecked', function() {
     let $publishedAtInput;
     $publishedAtInput = $('[name$="[publishedAt]"]');
 

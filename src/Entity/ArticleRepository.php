@@ -20,7 +20,7 @@ class ArticleRepository extends EntityRepository
                 (SELECT c FROM HarentiusBlogBundle:Category c
                  WHERE c.left >= :left AND c.right <= :right AND c.root = :root)'
             )
-            ->andWhere('a.isPublished = :isPublished')
+            ->andWhere('a.published = :isPublished')
             ->setParameters([
                 ':left' => $category->getLeft(),
                 ':right' => $category->getRight(),
@@ -41,7 +41,7 @@ class ArticleRepository extends EntityRepository
         return $this->createQueryBuilder('a')
             ->join('a.tags', 't')
             ->where('t = :tag')
-            ->andWhere('a.isPublished = :isPublished')
+            ->andWhere('a.published = :isPublished')
             ->setParameters([
                 ':tag' => $tag,
                 ':isPublished' => true,
@@ -62,7 +62,7 @@ class ArticleRepository extends EntityRepository
 
         $qb
             ->where('YEAR(a.publishedAt) = :year')
-            ->andWhere('a.isPublished = :isPublished')
+            ->andWhere('a.published = :isPublished')
             ->setParameters([
                 ':year' => $year,
                 ':isPublished' => true,
@@ -89,7 +89,7 @@ class ArticleRepository extends EntityRepository
         $qb = $this->createQueryBuilder('a');
 
         $qb
-            ->where('a.isPublished = :isPublished')
+            ->where('a.published = :isPublished')
             ->setParameter(':isPublished', true)
             ->orderBy('a.publishedAt', 'DESC')
         ;
@@ -111,7 +111,7 @@ class ArticleRepository extends EntityRepository
     public function findPublishedOrderedByPublishDate()
     {
         return $this->createQueryBuilder('a')
-            ->where('a.isPublished = :isPublished')
+            ->where('a.published = :isPublished')
             ->setParameter(':isPublished', true)
             ->orderBy('a.publishedAt', 'DESC')
             ->getQuery()
@@ -126,7 +126,7 @@ class ArticleRepository extends EntityRepository
     {
         return $this->createQueryBuilder('a')
             ->select('a.publishedAt')
-            ->where('a.isPublished = :isPublished')
+            ->where('a.published = :isPublished')
             ->setParameter(':isPublished', true)
             ->orderBy('a.publishedAt', 'ASC')
             ->setMaxResults(1)
@@ -153,14 +153,14 @@ class ArticleRepository extends EntityRepository
             ->addSelect('(' .
                 $q1
                     ->select('MIN(ap.publishedAt)')
-                    ->where('ap.isPublished = :isPublished')
+                    ->where('ap.published = :isPublished')
                     ->setParameter(':isPublished', true)
                     ->orderBy('ap.publishedAt', 'ASC')
                     ->setMaxResults(1)
                     ->getDQL()
                 . ')' . 'AS firstArticlePublicationDate'
             )
-            ->where('a.isPublished = :isPublished')
+            ->where('a.published = :isPublished')
             ->setParameter(':isPublished', true)
             ->getQuery()
             ->getSingleResult()
@@ -173,7 +173,7 @@ class ArticleRepository extends EntityRepository
     public function findMostPopular()
     {
         return $this->createQueryBuilder('a')
-            ->where('a.isPublished = :isPublished')
+            ->where('a.published = :isPublished')
             ->setParameter(':isPublished', true)
             ->orderBy('a.viewsCount', 'DESC')
             ->setMaxResults(1)

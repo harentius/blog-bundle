@@ -22,6 +22,6 @@ class Page extends AbstractPost
      */
     public function __construct()
     {
-        $this->isPublished = false;
+        $this->published = false;
     }
 }

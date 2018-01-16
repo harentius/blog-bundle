@@ -76,7 +76,7 @@ class Article extends AbstractPost implements ItemInterface, TranslatableInterfa
      */
     public function __construct()
     {
-        $this->isPublished = false;
+        $this->published = false;
         $this->viewsCount = 0;
         $this->likesCount = 0;
         $this->disLikesCount = 0;

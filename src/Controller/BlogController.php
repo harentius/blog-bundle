@@ -132,7 +132,7 @@ class BlogController extends Controller
     public function showAction($slug)
     {
         $entity = $this->getDoctrine()->getRepository('HarentiusBlogBundle:Article')
-            ->findOneBy(['slug' => $slug, 'isPublished' => true])
+            ->findOneBy(['slug' => $slug, 'published' => true])
         ;
 
         $breadcrumbs = $this->get('white_october_breadcrumbs');
@@ -142,7 +142,7 @@ class BlogController extends Controller
             $this->get('harentius_blog.views_counter')->processArticle($entity);
         } else {
             $entity = $this->getDoctrine()->getRepository('HarentiusBlogBundle:Page')
-                ->findOneBy(['slug' => $slug, 'isPublished' => true])
+                ->findOneBy(['slug' => $slug, 'published' => true])
             ;
 
             if (!$entity) {
