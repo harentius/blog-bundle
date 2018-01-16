@@ -1,6 +1,7 @@
 3.0.1
 =====
  - Added translations list to the templates
+ - Minor corrections to increase code quality
 
 3.0.0
 =====
