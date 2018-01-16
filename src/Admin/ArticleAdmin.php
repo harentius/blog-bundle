@@ -87,7 +87,7 @@ class ArticleAdmin extends AbstractPostAdmin
             ->add('text', 'textarea', [
                 'attr' => ['class' => 'blog-page-edit'],
             ])
-            ->add('isPublished', null, [
+            ->add('published', null, [
                 'required' => false,
             ])
             ->add('publishedAt', 'sonata_type_date_picker', [

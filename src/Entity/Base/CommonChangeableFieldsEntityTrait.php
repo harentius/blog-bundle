@@ -58,7 +58,7 @@ trait CommonChangeableFieldsEntityTrait
      *
      * @ORM\Column(type="boolean"))
      */
-    protected $isPublished;
+    protected $published;
 
     /**
      * @var \DateTime
@@ -157,16 +157,16 @@ trait CommonChangeableFieldsEntityTrait
      */
     public function isPublished()
     {
-        return $this->isPublished;
+        return $this->published;
     }
 
     /**
      * @param bool $value
      * @return $this
      */
-    public function setIsPublished($value)
+    public function setPublished($value)
     {
-        $this->isPublished = $value;
+        $this->published = $value;
 
         return $this;
     }
