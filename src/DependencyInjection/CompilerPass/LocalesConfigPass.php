@@ -16,7 +16,7 @@ class LocalesConfigPass implements CompilerPassInterface
         $locales = $container->getParameter('harentius_blog.locales');
         $supportedLocalesWithoutDefault = $locales;
 
-        if (($key = array_search($defaultLocale, $supportedLocalesWithoutDefault)) !== false) {
+        if (($key = array_search($defaultLocale, $supportedLocalesWithoutDefault, true)) !== false) {
             unset($supportedLocalesWithoutDefault[$key]);
         }
 
