@@ -49,6 +49,8 @@ harentius_blog_show_default:
 harentius_blog_show:
     path:     /{_locale}/{slug}
     defaults: { _controller: 'HarentiusBlogBundle:Blog:show', _locale: '%kernel.default_locale%' }
+    requirements:
+        _locale: "%harentius_blog.supported_locales_without_default%"
 
 harentius_blog_rate:
     path:     /like/{article}/{type}

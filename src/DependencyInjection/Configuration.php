@@ -16,6 +16,9 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('harentius_blog');
 
         $rootNode->children()
+            ->arrayNode('locales')
+                ->prototype('scalar')->end()
+            ->end()
             ->arrayNode('sidebar')
                 ->children()
                     ->scalarNode('cache_lifetime')->defaultValue(0)->end()

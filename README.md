@@ -113,6 +113,8 @@ admin:
 
 ```yml
 harentius_blog:
+    # Localizations to be used by blog
+    locales: ['en', 'ua']
     articles:
         # Path where previews stored
         image_previews_base_uri: /assets/images/preview/
