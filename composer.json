@@ -48,5 +48,10 @@
     "symfony-cmf/routing-bundle": "~2.0",
     "eko/feedbundle": "~1.2",
     "liip/imagine-bundle": "~1.5"
+  },
+  "require-dev": {
+    "behat/behat": "^3.4",
+    "behat/mink-extension": "^2.3",
+    "behat/mink-selenium2-driver": "^1.3"
   }
 }
