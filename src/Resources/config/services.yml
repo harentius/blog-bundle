@@ -9,6 +9,7 @@ services:
         arguments:
             - '@knp_menu.factory'
             - '@doctrine.orm.entity_manager'
+            - '@harentius_blog.router.publication_url_generator'
             - '%harentius_blog.homepage.page_slug%'
 
     harentius_blog.menu.main:
@@ -30,6 +31,14 @@ services:
             - '%harentius_blog.sidebar.cache_lifetime%'
             - '@harentius_blog.entity.translation'
             - '%locale%'
+        tags:
+            - { name: twig.extension }
+
+    harentius_blog.twig.publication_url_generator_extension:
+        public: false
+        class: Harentius\BlogBundle\Twig\PublicationUrlGeneratorExtension
+        arguments:
+            - '@harentius_blog.router.publication_url_generator'
         tags:
             - { name: twig.extension }
 
@@ -140,3 +149,9 @@ services:
         tags:
             - { name: doctrine.event_listener, event: prePersist }
             - { name: doctrine.event_listener, event: preUpdate }
+
+    harentius_blog.router.publication_url_generator:
+        class: Harentius\BlogBundle\Router\PublicationUrlGenerator
+        arguments:
+            - '@request_stack'
+            - '@router'

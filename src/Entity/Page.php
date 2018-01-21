@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Harentius\BlogBundle\Entity\Base\AbstractPost;
 use Harentius\BlogBundle\Entity\Base\PageChangeableFieldsEntityTrait;
-use Sonata\TranslationBundle\Traits\Gedmo\PersonalTranslatable;
+use Sonata\TranslationBundle\Traits\Gedmo\PersonalTranslatableTrait;
 
 /**
  * @ORM\Entity(repositoryClass="Harentius\BlogBundle\Entity\PageRepository")
@@ -15,7 +15,7 @@ use Sonata\TranslationBundle\Traits\Gedmo\PersonalTranslatable;
 class Page extends AbstractPost
 {
     use PageChangeableFieldsEntityTrait;
-    use PersonalTranslatable;
+    use PersonalTranslatableTrait;
 
     /**
      *

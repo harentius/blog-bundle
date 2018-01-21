@@ -66,7 +66,7 @@
     <script type="application/json" id="js-config">
         {{
             {
-                "article_url": url('harentius_blog_show', {'slug': entity.slug}),
+                "article_url": publication_path(entity),
                 "page_identifier": app.request.locale ~ '/' ~ entity.slug,
                 "discuss_user_name": discuss_user_name,
                 "article_original_id": entity.attributes.original_id is defined ?: null

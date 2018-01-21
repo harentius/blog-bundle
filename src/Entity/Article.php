@@ -9,7 +9,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Harentius\BlogBundle\Entity\Base\AbstractPost;
 use Harentius\BlogBundle\Entity\Base\ArticleChangeableFieldsEntityTrait;
 use Sonata\TranslationBundle\Model\Gedmo\TranslatableInterface;
-use Sonata\TranslationBundle\Traits\Gedmo\PersonalTranslatable;
+use Sonata\TranslationBundle\Traits\Gedmo\PersonalTranslatableTrait;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
 /**
@@ -19,7 +19,7 @@ use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 class Article extends AbstractPost implements ItemInterface, TranslatableInterface
 {
     use ArticleChangeableFieldsEntityTrait;
-    use PersonalTranslatable;
+    use PersonalTranslatableTrait;
 
     /**
      * @var int
