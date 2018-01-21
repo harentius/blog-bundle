@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     1 = "Harentius\BlogBundle\Entity\Page",
  * })
  */
-abstract class AbstractPost
+abstract class AbstractPost implements PublicationInterface
 {
     use IdentifiableEntityTrait;
 }

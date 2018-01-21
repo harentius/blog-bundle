@@ -43,6 +43,7 @@ class BlogExtension extends AbstractExtension
      * @var string
      */
     private $locale;
+
     /**
      * @var HttpKernelRuntime
      */
