@@ -1,3 +1,9 @@
+3.0.2
+=====
+ - Minor bug fixes
+ - Add extra templates extension ability
+ - Temporary fix for social services issue
+
 3.0.1
 =====
  - Added translations list to the templates

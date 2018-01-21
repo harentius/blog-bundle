@@ -50,11 +50,14 @@
 
     <script type="text/javascript" src="https://vk.com/js/api/openapi.js?116"></script>
     {# Init has to be here for Like button #}
+    {% if vk_appi_id is defined %}
     <script type="text/javascript">
         if (typeof(VK) !== 'undefined') {
             VK.init({apiId: {{ vk_appi_id }}});
         }
     </script>
+    {% endif %}
+
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
     <script type="text/javascript" src="https://yastatic.net/share/share.js" charset="utf-8"></script>
@@ -63,6 +66,8 @@
             VK.Widgets.Like("vk-like", {type: "full", width: '100%', height: 24});
         }
     </script>
+
+    {% if discuss_user_name is defined %}
     <script type="application/json" id="js-config">
         {{
             {
@@ -73,5 +78,6 @@
             }|json_encode|raw
         }}
     </script>
+    {% endif %}
 
 {% endblock javascripts %}
