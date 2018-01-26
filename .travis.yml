@@ -1,10 +1,23 @@
 language: php
+php: '7.2'
 
-php:
-  - '7.2'
+jobs:
+  include:
+    - stage: codestyle-check
+      before_script:
+        - composer global require friendsofphp/php-cs-fixer
+      script:
+        - $HOME/.composer/vendor/bin/php-cs-fixer --diff --dry-run --verbose fix ./src
 
-before_script:
-    - composer global require friendsofphp/php-cs-fixer
-
-script:
-  - $HOME/.composer/vendor/bin/php-cs-fixer --diff --dry-run --verbose fix ./src
+    - stage: behavioral-tests
+      sudo: required
+      services:
+        - docker
+      before_script:
+        - mkdir ./tests/app/var/screens
+        - composer install --no-interaction
+        - docker-compose -f support/ci/docker-compose.yml --project-directory=. up --build -d
+        - sleep 25 # wait for MySQL server to be fully set up, TODO: ping to check wake up
+        - docker exec -it blogbundle_app /app/tests/app/bin/install
+      script:
+        - docker exec -it blogbundle_app /app/vendor/bin/behat -c /app/behat.yml.dist

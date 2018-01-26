@@ -1,0 +1,22 @@
+bin_dir=$(cd $(dirname $0) && pwd)
+base_dir=$(cd "$bin_dir/.." && pwd)
+web_dir="$base_dir/web"
+console="bin/console"
+
+cd $base_dir
+
+exec_console() {
+    cmd=$1
+    shift
+    $console $cmd "$@"
+}
+
+exec_bin() {
+    bin=$1
+    shift
+    "$bin_dir/$bin" "$@"
+}
+
+write_title() {
+    echo "======= $@"
+}

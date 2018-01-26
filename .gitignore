@@ -3,3 +3,5 @@
 /.php_cs.cache
 /composer.lock
 /node_modules/
+/tests/app/var
+/tests/app/web/bundles
