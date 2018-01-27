@@ -1,6 +1,10 @@
 language: php
 php: '7.2'
 
+cache:
+  directories:
+    - $HOME/.composer/cache
+
 jobs:
   include:
     - stage: codestyle-check
@@ -17,7 +21,13 @@ jobs:
         - mkdir ./tests/app/var/screens
         - composer install --no-interaction
         - docker-compose -f support/ci/docker-compose.yml --project-directory=. up --build -d
-        - sleep 25 # wait for MySQL server to be fully set up, TODO: ping to check wake up
+        # Even after mysql fully started (it can be pinged by 'mysqladmin ping'),
+        # there is still some time during which mysql for some reason is inaccessible by PDO.
+        # Following workaround fixes that
+        - |
+          while ! docker exec -it blogbundle_app php -r "new PDO('mysql:host=mysql', 'root', '1111');" ; do
+            sleep 1;
+          done
         - docker exec -it blogbundle_app /app/tests/app/bin/install
       script:
         - docker exec -it blogbundle_app /app/vendor/bin/behat -c /app/behat.yml.dist

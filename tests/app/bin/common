@@ -1,3 +1,5 @@
+#!/bin/sh
+
 bin_dir=$(cd $(dirname $0) && pwd)
 base_dir=$(cd "$bin_dir/.." && pwd)
 web_dir="$base_dir/web"

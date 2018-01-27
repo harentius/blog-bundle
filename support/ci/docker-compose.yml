@@ -3,18 +3,19 @@ version: '3.4'
 services:
     app:
         build:
-          context: .
-          dockerfile: ./support/ci/Dockerfile
+            context: .
+            dockerfile: ./support/ci/Dockerfile
+        container_name: blogbundle_app
         links:
             - mysql
         volumes:
             - ./:/app
-        container_name: blogbundle_app
         links:
             - mysql
 
     mysql:
         image: mysql
+        container_name: blogbundle_mysql
         environment:
             MYSQL_ROOT_PASSWORD: 1111
             MYSQL_PASSWORD: 1111
