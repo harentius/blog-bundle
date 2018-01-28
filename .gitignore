@@ -5,3 +5,4 @@
 /node_modules/
 /tests/app/var
 /tests/app/web/bundles
+/behat.yml

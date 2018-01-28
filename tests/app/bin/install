@@ -10,7 +10,7 @@ write_title "Updating database schema"
 exec_console doctrine:schema:update --force "$@"
 
 write_title "Loading fixtures"
-exec_console hautelook_alice:doctrine:fixtures:load --no-interaction --append "$@"
+exec_console hautelook_alice:doctrine:fixtures:load --no-interaction "$@"
 
 write_title "Install assets"
 exec_console assets:install --symlink web

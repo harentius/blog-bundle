@@ -7,5 +7,5 @@ import './plugins/audio';
 import './plugins/wpmore';
 
 window.onload = function() {
-  window.CKEDITOR.replace(document.getElementsByClassName('blog-page-edit')[0], {});
+  window.CKEDITOR.replace(document.getElementsByClassName('ckeditor')[0], {});
 };

@@ -40,7 +40,7 @@ class PageAdmin extends AbstractPostAdmin
                 'required' => false,
             ])
             ->add('text', 'textarea', [
-                'attr' => ['class' => 'blog-page-edit'],
+                'attr' => ['class' => 'ckeditor'],
             ])
             ->add('published', null, [
                 'required' => false,

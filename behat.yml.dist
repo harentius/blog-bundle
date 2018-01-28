@@ -10,8 +10,11 @@ default:
             paths:
                 - '/tests/features/'
             contexts:
-                - FeatureContext
-                - ScreenShotAfterFailContext
+                - MinkContext
+                - AuthContext
+                - BackUpContext:
+                    - '%paths.base%/tests/app'
+
     extensions:
         Behat\MinkExtension:
             default_session: selenium2

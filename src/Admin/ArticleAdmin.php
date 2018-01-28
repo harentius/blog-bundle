@@ -85,7 +85,7 @@ class ArticleAdmin extends AbstractPostAdmin
                 'multiple' => 'true',
             ])
             ->add('text', 'textarea', [
-                'attr' => ['class' => 'blog-page-edit'],
+                'attr' => ['class' => 'ckeditor'],
             ])
             ->add('published', null, [
                 'required' => false,
