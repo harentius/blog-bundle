@@ -1,5 +1,5 @@
-Feature: Create Post
-  Scenario: Admin creates post which is accessible by non authorized users
+Feature: Create Article
+  Scenario: Admin creates article which is accessible by non authorized users
     Given I login as admin
     And I am on "/admin/harentius/blog/article/create"
     And I fill in the following:

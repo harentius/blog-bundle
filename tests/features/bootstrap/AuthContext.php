@@ -1,10 +1,10 @@
 <?php
 
+use Behat\Behat\Context\Context;
 use Behat\Behat\Context\Environment\InitializedContextEnvironment;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
-use Behat\MinkExtension\Context\RawMinkContext;
 
-class AuthContext extends RawMinkContext
+class AuthContext implements Context
 {
     /**
      * @var MinkContext
