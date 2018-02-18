@@ -9,7 +9,4 @@ parameters:
     mailer_user: null
     mailer_password: null
     secret: ThisTokenIsNotSoSecretChangeIt
-    nodejs.path: /home/yaros/.nvm/versions/node/v4.4.4/bin/node
-    nodejs.modules_path: /home/yaros/.nvm/versions/node/v4.4.4/lib/node_modules/
-    bin_coffee: /home/yaros/.nvm/versions/node/v4.4.4/bin/coffee
     image_previews_base_uri: /assets/images/preview/
