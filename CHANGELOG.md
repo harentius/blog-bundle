@@ -1,3 +1,7 @@
+3.0.6
+=====
+ - fix __toString fail becouse strict type
+ 
 3.0.5
 =====
  - Fix assets upload after symfony upgrade 
