@@ -35,14 +35,10 @@ class Manager
                 'fallbackType' => null,
                 'targetUri' => null,
             ])
-            ->setAllowedTypes([
-                'type' => ['string', 'null'],
-                'fallbackType' => ['int', 'null'],
-                'targetUri' => ['string', 'null'],
-            ])
-            ->setAllowedValues([
-                'type' => ['image', 'audio', 'file', null],
-            ])
+            ->setAllowedTypes('type', ['string', 'null'])
+            ->setAllowedTypes('fallbackType', ['int', 'null'])
+            ->setAllowedTypes('targetUri', ['string', 'null'])
+            ->setAllowedValues('type', ['image', 'audio', 'file', null])
         ;
         $options = $resolver->resolve($options);
 
