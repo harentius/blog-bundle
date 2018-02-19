@@ -1,3 +1,7 @@
+3.0.4
+=====
+ - Fix assets upload after symfony upgrade 
+
 3.0.2
 =====
  - Minor bug fixes
