@@ -92,7 +92,7 @@ class Category implements TranslatableInterface
      */
     public function __toString()
     {
-        return $this->name;
+        return (string) $this->name;
     }
 
     /**
