@@ -1,6 +1,6 @@
 3.0.6
 =====
- - fix __toString fail becouse strict type
+ - fix __toString fail because strict type
  
 3.0.5
 =====
