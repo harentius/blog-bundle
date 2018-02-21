@@ -1,3 +1,7 @@
+3.0.7
+=====
+ - translations improvements
+
 3.0.6
 =====
  - fix __toString fail because strict type
