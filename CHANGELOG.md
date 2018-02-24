@@ -1,3 +1,7 @@
+3.0.8
+=====
+ - add some behavioral tests
+ 
 3.0.7
 =====
  - translations improvements
