@@ -12,6 +12,7 @@ default:
             contexts:
                 - MinkContext
                 - AuthContext
+                - SonataListContext
                 - BackUpContext:
                     - '%paths.base%/tests/app'
 
