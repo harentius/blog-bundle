@@ -19,7 +19,7 @@ $(function() {
         };
 
         (function() {
-          const d = document;
+          const d = window.document;
           const s = d.createElement('script');
           s.src = `//${configReader.get('discuss_user_name')}.disqus.com/embed.js`;
           s.setAttribute('data-timestamp', +new Date());
@@ -44,5 +44,5 @@ $(function() {
   const $tabToggler = $('.comments-wrapper a[data-toggle="tab"]');
   $tabToggler.on('shown.bs.tab', e => initComments($(e.target).attr("href")));
 
-  return initComments($tabToggler.closest('.active').find('a[data-toggle="tab"]').attr('href'));
+  initComments($tabToggler.closest('.active').find('a[data-toggle="tab"]').attr('href'));
 });

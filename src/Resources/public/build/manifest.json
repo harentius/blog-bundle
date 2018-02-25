@@ -1,6 +1,6 @@
 {
   "bundles/harentiusblog/admin.css": "/bundles/harentiusblog/build/admin.dc651c84ff6cab9d3248cdbe2ef5a462.css",
-  "bundles/harentiusblog/article-view.js": "/bundles/harentiusblog/build/article-view.268b4d80b157919273ba.js",
+  "bundles/harentiusblog/article-view.js": "/bundles/harentiusblog/build/article-view.f0dbf91e9763d7578050.js",
   "bundles/harentiusblog/common.css": "/bundles/harentiusblog/build/common.0edcc90483b3c639e73fb5bce7498c4e.css",
   "bundles/harentiusblog/common.js": "/bundles/harentiusblog/build/common.3e07e30431dcec5268ae.js",
   "bundles/harentiusblog/fonts/fontawesome-webfont.eot": "/bundles/harentiusblog/build/fonts/fontawesome-webfont.674f50d2.eot",
@@ -139,5 +139,5 @@
   "bundles/harentiusblog/node_modules/ckeditor/skins/moono-lisa/images/refresh.png": "/bundles/harentiusblog/build/node_modules/ckeditor/skins/moono-lisa/images/refresh.png",
   "bundles/harentiusblog/node_modules/ckeditor/skins/moono-lisa/images/spinner.gif": "/bundles/harentiusblog/build/node_modules/ckeditor/skins/moono-lisa/images/spinner.gif",
   "bundles/harentiusblog/node_modules/ckeditor/styles.js": "/bundles/harentiusblog/build/node_modules/ckeditor/styles.js",
-  "bundles/harentiusblog/post-admin.js": "/bundles/harentiusblog/build/post-admin.1eef3fca042b473c2a83.js"
+  "bundles/harentiusblog/post-admin.js": "/bundles/harentiusblog/build/post-admin.e980efaf8b3695699944.js"
 }
