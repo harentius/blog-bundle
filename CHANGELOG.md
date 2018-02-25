@@ -1,3 +1,8 @@
+3.0.9
+=====
+ - Fix config reader
+ - Add more tests 
+
 3.0.8
 =====
  - add some behavioral tests
