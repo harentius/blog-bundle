@@ -13,7 +13,6 @@ default:
                 - MinkContext
                 - AuthContext
                 - SonataListContext
-                - SonataEditContext
                 - CleanContext
                 - BackUpContext:
                     rootDir: '%paths.base%/tests/app'
