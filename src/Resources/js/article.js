@@ -15,7 +15,7 @@ $(function() {
         // Disqus API needs this variable. So please don't warn of unused variable
         window.disqus_config = function() {
           this.page.url = configReader.get('article_url');
-          return this.page.identifier = configReader.get('page_identifier');
+          this.page.identifier = configReader.get('page_identifier');
         };
 
         (function() {
@@ -23,7 +23,7 @@ $(function() {
           const s = d.createElement('script');
           s.src = `//${configReader.get('discuss_user_name')}.disqus.com/embed.js`;
           s.setAttribute('data-timestamp', +new Date());
-          return (d.head || d.body).appendChild(s);
+          (d.head || d.body).appendChild(s);
         })();
         break;
       case '#vk-comments':
