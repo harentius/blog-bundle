@@ -55,6 +55,12 @@ class Configuration implements ConfigurationInterface
             ->arrayNode('articles')
                 ->children()
                     ->scalarNode('image_previews_base_uri')->defaultValue('/assets/images/preview/')->end()
+                    ->arrayNode('sharethis')
+                        ->children()
+                            ->scalarNode('property')->defaultValue(null)->end()
+                            ->scalarNode('product')->defaultValue('inline-share-buttons')->end()
+                        ->end()
+                    ->end()
                 ->end()
             ->end()
         ;
