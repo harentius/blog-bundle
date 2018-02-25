@@ -1,3 +1,8 @@
+3.0.10
+=====
+ - Fix discuss article url
+ - Add configurable ShareThis social icons  
+ 
 3.0.9
 =====
  - Fix config reader
