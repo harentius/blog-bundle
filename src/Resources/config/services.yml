@@ -42,11 +42,6 @@ services:
         tags:
             - { name: twig.extension }
 
-    harentius_blog.sidebar.categories:
-        class: Harentius\BlogBundle\Sidebar\Categories
-        arguments:
-            - '@harentius_blog.entity.category_repository'
-
     harentius_blog.sidebar.tags:
         class: Harentius\BlogBundle\Sidebar\Tags
         arguments:
@@ -56,11 +51,13 @@ services:
 
     harentius_blog.sidebar.archive:
         class: Harentius\BlogBundle\Sidebar\Archive
+        public: true
         arguments:
             - '@harentius_blog.entity.article_repository'
 
     harentius_blog.homepage:
         class: Harentius\BlogBundle\Homepage
+        public: true
         arguments:
             - '@harentius_blog.entity.article_repository'
             - '@harentius_blog.entity.page_repository'

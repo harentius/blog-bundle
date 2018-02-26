@@ -9,7 +9,7 @@ use Gedmo\Tree\Traits\NestedSetEntity;
 use Harentius\BlogBundle\Entity\Base\IdentifiableEntityTrait;
 use Harentius\BlogBundle\Entity\Base\SeoContentEntityTrait;
 use Sonata\TranslationBundle\Model\Gedmo\TranslatableInterface;
-use Sonata\TranslationBundle\Traits\Translatable;
+use Sonata\TranslationBundle\Traits\TranslatableTrait;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
 /**
@@ -21,7 +21,7 @@ class Category implements TranslatableInterface
     use IdentifiableEntityTrait;
     use NestedSetEntity;
     use SeoContentEntityTrait;
-    use Translatable;
+    use TranslatableTrait;
 
     /**
      * @var string

@@ -2,6 +2,7 @@
 
 namespace Harentius\BlogBundle\Controller;
 
+use Harentius\BlogBundle\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -14,7 +15,7 @@ class SidebarController extends Controller
     public function categoriesAction($showNumber = true)
     {
         return $this->render('HarentiusBlogBundle:Sidebar:categories.html.twig', [
-            'categories' => $this->get('harentius_blog.sidebar.categories')->getList([
+            'categories' => $this->getDoctrine()->getRepository(Category::class)->notEmptyChildrenHierarchy([
                 'decorate' => true,
                 'representationField' => 'slug',
                 'html' => true,
