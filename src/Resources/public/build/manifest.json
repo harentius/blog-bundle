@@ -101,6 +101,10 @@
   "bundles/harentiusblog/node_modules/ckeditor/plugins/justify/lang/en.js": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/justify/lang/en.js",
   "bundles/harentiusblog/node_modules/ckeditor/plugins/justify/lang/ru.js": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/justify/lang/ru.js",
   "bundles/harentiusblog/node_modules/ckeditor/plugins/justify/plugin.js": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/justify/plugin.js",
+  "bundles/harentiusblog/node_modules/ckeditor/plugins/link/dialogs/anchor.js": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/link/dialogs/anchor.js",
+  "bundles/harentiusblog/node_modules/ckeditor/plugins/link/dialogs/link.js": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/link/dialogs/link.js",
+  "bundles/harentiusblog/node_modules/ckeditor/plugins/link/images/anchor.png": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/link/images/anchor.png",
+  "bundles/harentiusblog/node_modules/ckeditor/plugins/link/images/hidpi/anchor.png": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/link/images/hidpi/anchor.png",
   "bundles/harentiusblog/node_modules/ckeditor/plugins/scayt/dialogs/dialog.css": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/scayt/dialogs/dialog.css",
   "bundles/harentiusblog/node_modules/ckeditor/plugins/scayt/dialogs/options.js": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/scayt/dialogs/options.js",
   "bundles/harentiusblog/node_modules/ckeditor/plugins/scayt/dialogs/toolbar.css": "/bundles/harentiusblog/build/node_modules/ckeditor/plugins/scayt/dialogs/toolbar.css",
@@ -139,5 +143,5 @@
   "bundles/harentiusblog/node_modules/ckeditor/skins/moono-lisa/images/refresh.png": "/bundles/harentiusblog/build/node_modules/ckeditor/skins/moono-lisa/images/refresh.png",
   "bundles/harentiusblog/node_modules/ckeditor/skins/moono-lisa/images/spinner.gif": "/bundles/harentiusblog/build/node_modules/ckeditor/skins/moono-lisa/images/spinner.gif",
   "bundles/harentiusblog/node_modules/ckeditor/styles.js": "/bundles/harentiusblog/build/node_modules/ckeditor/styles.js",
-  "bundles/harentiusblog/post-admin.js": "/bundles/harentiusblog/build/post-admin.e980efaf8b3695699944.js"
+  "bundles/harentiusblog/post-admin.js": "/bundles/harentiusblog/build/post-admin.0b0944ab29885238981d.js"
 }
