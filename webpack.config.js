@@ -18,7 +18,10 @@ Encore
     './src/Resources/css/main.less',
   ])
   .addStyleEntry('login', './src/Resources/css/login.less')
-  .addEntry('article-view', './src/Resources/js/article.js')
+  .addEntry('article-view', [
+    'bootstrap/js/tab.js',
+    './src/Resources/js/article.js'
+  ])
   .addEntry('post-admin', './src/Resources/js/admin/post.js')
   .addStyleEntry('admin', './src/Resources/css/admin.less')
   .enableLessLoader()
