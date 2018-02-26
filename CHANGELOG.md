@@ -1,5 +1,12 @@
+3.0.11
+======
+ - Fix bug caused by missed dependency (bootstrap tab plugin)
+ - Fix bug caused by missed ckeditor plugin (link plugin)
+ - Refactor js
+ - Clean some code deprecations
+
 3.0.10
-=====
+======
  - Fix discuss article url
  - Add configurable ShareThis social icons  
 
