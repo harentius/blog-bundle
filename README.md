@@ -1,15 +1,15 @@
-Just another Symfony blog bundle
-================================
+Symfony Blog Bundle
+===================
 
 [![Build Status](https://travis-ci.org/harentius/blog-bundle.svg?branch=master)](https://travis-ci.org/harentius/blog-bundle)
 [![Maintainability](https://api.codeclimate.com/v1/badges/8a118f94722e7ac4dc70/maintainability)](https://codeclimate.com/github/harentius/blog-bundle/maintainability)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/a92cb57e-8b8f-4edc-b12f-06f5e9911d7b/mini.png)](https://insight.sensiolabs.com/projects/a92cb57e-8b8f-4edc-b12f-06f5e9911d7b)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/harentius/blog-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/harentius/blog-bundle/?branch=master)
 
-Just another Symfony blog bundle
+Engine for creating simple blog or adding one to the existing project
 
 
-Symfony Bundle for simple blog. In progress now.
+Symfony Bundle for simple blog. In active development now.
 
 This doc explains integration in existing project, which requires a lot of work. Currently I working on improvement and simplification of this process. You're welcome to report issues
 
