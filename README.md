@@ -181,5 +181,7 @@ Resources
 
 TODO:
     1) Remove VK dependency/make it optional, same for sharing buttons
+    
     2) Improve file uploading
+    
     3) Write tests
