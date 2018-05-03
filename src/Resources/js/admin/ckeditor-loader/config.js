@@ -4,6 +4,8 @@ window.CKEDITOR.editorConfig = function(config) {
     height: 700,
     removePlugins: 'image,forms',
     extraPlugins: "youtube,justify,div,wpmore,codesnippet,audio,image2,wordcount",
+    // TODO: read from symfony parameter at runtime
+    language: "en",
     toolbarGroups: [
       {name: "basicstyles", groups: ["basicstyles", "cleanup"]},
       {name: "editing", groups: ["find", "selection"]},
