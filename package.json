@@ -17,7 +17,7 @@
     "ckeditor-youtube-plugin": "^2.1.6",
     "ckeditor5": "^0.0.1-security",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.2.1",
+    "jquery": "^3.4.0",
     "js-cookie": "^2.2.0"
   },
   "dependencies": {
