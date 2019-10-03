@@ -12,7 +12,7 @@
     "CKEditor-More-plugin": "https://github.com/zionsg/CKEditor-More-plugin",
     "CKEditor-WordCount-Plugin": "https://github.com/w8tcha/CKEditor-WordCount-Plugin",
     "bootstrap": "^3.3.7",
-    "ckeditor": "^4.8.0",
+    "ckeditor": "^4.12.1",
     "ckeditor-audio-plugin": "https://github.com/harentius/ckeditor-audio-plugin",
     "ckeditor-youtube-plugin": "^2.1.6",
     "ckeditor5": "^0.0.1-security",
