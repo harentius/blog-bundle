@@ -1,3 +1,7 @@
+3.0.12
+======
+ - Fix bug with auto detect ckeditor locale (hardcoded English for now)
+ 
 3.0.11
 ======
  - Fix bug caused by missed dependency (bootstrap tab plugin)
