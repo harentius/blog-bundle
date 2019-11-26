@@ -1,6 +1,6 @@
 <?php
 
-namespace Harentius\BlogBundle\EventListener;
+namespace Harentius\BlogBundle\Sitemap;
 
 use Harentius\BlogBundle\Entity\Article;
 use Harentius\BlogBundle\Entity\ArticleRepository;
@@ -12,7 +12,7 @@ use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Routing\RouterInterface;
 
-class SitemapListener implements EventSubscriberInterface
+class SitemapSubscriber implements EventSubscriberInterface
 {
     /**
      * @var RouterInterface
@@ -71,7 +71,7 @@ class SitemapListener implements EventSubscriberInterface
     /**
      * {@inheritdoc}
      */
-    public function populateSitemap(SitemapPopulateEvent $event)
+    public function populate(SitemapPopulateEvent $event)
     {
         $event->getGenerator()->addUrl(
             new UrlConcrete(

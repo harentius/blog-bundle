@@ -1,4 +1,8 @@
 services:
+    # default configuration for services in *this* file
+    _defaults:
+        public: false
+
     harentius_blog.admin.article:
         class: Harentius\BlogBundle\Admin\ArticleAdmin
         tags:

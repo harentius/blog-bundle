@@ -1,4 +1,8 @@
 services:
+    # default configuration for services in *this* file
+    _defaults:
+        public: false
+
     twig.extension.intl:
         class: Twig_Extensions_Extension_Intl
         tags:
@@ -72,6 +76,7 @@ services:
             - '@harentius_blog.rating_cache'
 
     harentius_blog.views_counter:
+        public: true
         class: Harentius\BlogBundle\ViewsCounter
         arguments:
             - '@session'
@@ -94,7 +99,7 @@ services:
              - '@harentius_blog.settings.cache'
 
     harentius_blog.event_listener.sitemap_listener:
-        class: Harentius\BlogBundle\EventListener\SitemapListener
+        class: Harentius\BlogBundle\Sitemap\SitemapSubscriber
         arguments:
             - '@router'
             - '@harentius_blog.homepage'
@@ -103,7 +108,7 @@ services:
             - '@harentius_blog.entity.category_repository'
             - '%harentius_blog.homepage.page_slug%'
         tags:
-            - { name: presta.sitemap.listener }
+            - { name: "kernel.event_subscriber", priority: 100 }
 
     harentius_blog.router.category_slug_provider:
           class: Harentius\BlogBundle\Router\CategorySlugProvider

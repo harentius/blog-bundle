@@ -61,8 +61,8 @@ harentius_blog_rate:
     options:
         expose: true
 
-#_liip_imagine:
-#    resource: '@LiipImagineBundle/Resources/config/routing.xml'
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.yaml"
 
 harentius_blog_resize:
     path:     '%harentius_blog.articles.image_previews_base_uri%{imageName}'
