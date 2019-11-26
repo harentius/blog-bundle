@@ -1,6 +1,6 @@
 <?php
 
-namespace Harentius\BlogBundle\EventListener;
+namespace Harentius\BlogBundle\Sitemap;
 
 use Harentius\BlogBundle\Entity\Article;
 use Harentius\BlogBundle\Entity\ArticleRepository;
@@ -8,11 +8,11 @@ use Harentius\BlogBundle\Entity\CategoryRepository;
 use Harentius\BlogBundle\Entity\PageRepository;
 use Harentius\BlogBundle\Homepage;
 use Presta\SitemapBundle\Event\SitemapPopulateEvent;
-use Presta\SitemapBundle\Service\SitemapListenerInterface;
 use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Routing\RouterInterface;
 
-class SitemapListener implements SitemapListenerInterface
+class SitemapSubscriber implements EventSubscriberInterface
 {
     /**
      * @var RouterInterface
@@ -71,7 +71,7 @@ class SitemapListener implements SitemapListenerInterface
     /**
      * {@inheritdoc}
      */
-    public function populateSitemap(SitemapPopulateEvent $event)
+    public function populate(SitemapPopulateEvent $event)
     {
         $event->getGenerator()->addUrl(
             new UrlConcrete(
@@ -131,5 +131,15 @@ class SitemapListener implements SitemapListenerInterface
         };
 
         $addCategoriesRoutes($this->categoryRepository->notEmptyChildrenHierarchy());
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function getSubscribedEvents()
+    {
+        return [
+            SitemapPopulateEvent::ON_SITEMAP_POPULATE => 'populate',
+        ];
     }
 }

@@ -1,7 +1,11 @@
 <?php
 
+$finder = PhpCsFixer\Finder::create()
+    ->in(__DIR__ . '/src')
+;
 return PhpCsFixer\Config::create()
     ->setRiskyAllowed(true)
+    ->setFinder($finder)
     ->setCacheFile(__DIR__ . '/.php_cs.cache')
     ->setRules([
         '@Symfony' => true,
@@ -32,5 +36,11 @@ return PhpCsFixer\Config::create()
         'doctrine_annotation_spaces' => ['around_array_assignments' => false],
         'pre_increment' => false,
         'yoda_style' => false,
-    ])
-;
+        'self_accessor' => false,
+        'increment_style' => false,
+        'fopen_flags' => false,
+        'native_function_invocation' => false,
+        'phpdoc_types_order' => false,
+        'no_superfluous_phpdoc_tags' => false,
+        'single_line_throw' => false,
+    ]);
