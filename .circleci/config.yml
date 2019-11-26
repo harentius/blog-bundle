@@ -1,0 +1,25 @@
+version: 2
+
+jobs:
+  lint:
+    docker:
+      - image: circleci/php:7.3-cli
+    steps:
+      - checkout
+      - run: sudo composer self-update
+      - restore_cache:
+          keys:
+            - composer-bin-cs-fixer-v2-{{ checksum "vendor-bin/php-cs-fixer/composer.lock" }}
+            - composer-bin-cs-fixer-v2-
+      - run: (cd vendor-bin/php-cs-fixer && composer install --no-interaction)
+      - save_cache:
+          key: composer-bin-cs-fixer-v2-{{ checksum "vendor-bin/php-cs-fixer/composer.lock" }}
+          paths:
+            - vendor-bin/php-cs-fixer/vendor
+      - run: composer cs-check
+
+workflows:
+  version: 2
+  lint:
+    jobs:
+      - lint
