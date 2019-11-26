@@ -35,7 +35,6 @@ services:
             - { name: twig.extension }
 
     harentius_blog.twig.publication_url_generator_extension:
-        public: false
         class: Harentius\BlogBundle\Twig\PublicationUrlGeneratorExtension
         arguments:
             - '@harentius_blog.router.publication_url_generator'
@@ -43,6 +42,7 @@ services:
             - { name: twig.extension }
 
     harentius_blog.sidebar.tags:
+        public: true
         class: Harentius\BlogBundle\Sidebar\Tags
         arguments:
             - '@harentius_blog.entity.tag_repository'

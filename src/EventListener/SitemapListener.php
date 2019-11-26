@@ -8,11 +8,11 @@ use Harentius\BlogBundle\Entity\CategoryRepository;
 use Harentius\BlogBundle\Entity\PageRepository;
 use Harentius\BlogBundle\Homepage;
 use Presta\SitemapBundle\Event\SitemapPopulateEvent;
-use Presta\SitemapBundle\Service\SitemapListenerInterface;
 use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Routing\RouterInterface;
 
-class SitemapListener implements SitemapListenerInterface
+class SitemapListener implements EventSubscriberInterface
 {
     /**
      * @var RouterInterface
@@ -131,5 +131,15 @@ class SitemapListener implements SitemapListenerInterface
         };
 
         $addCategoriesRoutes($this->categoryRepository->notEmptyChildrenHierarchy());
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function getSubscribedEvents()
+    {
+        return [
+            SitemapPopulateEvent::ON_SITEMAP_POPULATE => 'populate',
+        ];
     }
 }
