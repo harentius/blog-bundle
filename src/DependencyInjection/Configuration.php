@@ -19,6 +19,7 @@ class Configuration implements ConfigurationInterface
             ->arrayNode('locales')
                 ->prototype('scalar')->end()
             ->end()
+            ->scalarNode('primary_locale')->isRequired()->end()
             ->arrayNode('sidebar')
                 ->children()
                     ->scalarNode('cache_lifetime')->defaultValue(0)->end()
