@@ -55,6 +55,7 @@
     }
   },
   "scripts": {
-    "start": "docker-compose -f support/ci/docker-compose.yml -f support/dev/docker-compose.yml --project-directory=. up --build"
+    "cs-check": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix --dry-run --diff -v --diff-format=udiff --ansi",
+    "cs-fix": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix --diff -v --diff-format=udiff --ansi"
   }
 }
