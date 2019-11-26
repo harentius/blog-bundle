@@ -38,7 +38,7 @@
     "sonata-project/doctrine-orm-admin-bundle": "^3.12",
     "sonata-project/translation-bundle": "^2.4",
     "doctrine/orm": "^2.7",
-    "doctrine/doctrine-bundle": "^1.4",
+    "doctrine/doctrine-bundle": "^1.12",
     "sensio/framework-extra-bundle": "^5.5",
     "knplabs/knp-paginator-bundle": "^4.1",
     "hautelook/alice-bundle": "^2.5",
