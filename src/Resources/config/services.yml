@@ -34,7 +34,7 @@ services:
             - '@harentius_blog.settings_provider'
             - '%harentius_blog.sidebar.cache_lifetime%'
             - '@harentius_blog.entity.translation'
-            - '%locale%'
+            - '%harentius_blog.primary_locale%'
         tags:
             - { name: twig.extension }
 
