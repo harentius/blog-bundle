@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light p-3">
+    <a class="navbar-brand" href="{{ path('harentius_blog_homepage') }}"></a>
+
+    {{ knp_menu_render('main') }}
+
+    <button
+        type="button"
+        class="main-menu-button glyphicon glyphicon-menu-hamburger d-none-lg categories-menu-button"
+        data-toggle="collapse" data-target="#categories-menu"
+    ></button>
+
+    <a href="{{ path('harentius_blog_feed') }}" class="main-menu-button rss-feed"><i class="fa-feed"></i></a>
+
+    <div class="collapse out categories-menu" id="categories-menu">
+        {{ render_cached(controller('HarentiusBlogBundle:Sidebar:categories', { showNumber: false })) }}
+    </div>
+</nav>

@@ -1,0 +1,17 @@
+Harentius\BlogBundle\Entity\Category:
+    category_{1..3}:
+        name: Category <current()>
+        slug: category-<current()>
+        metaDescription: Meta description for 'Title <current()>' category
+        metaKeywords: Meta keywords for 'Title <current()>' category
+    category_with_children_1:
+        name: Category with children 1
+        slug: category_with_children-1
+    category_child_{1..3}:
+        name: Child category <current()>
+        slug: category-child-<current()>
+        parent: '@category_with_children_1'
+    category_child_3rd_level:
+        name: Child category 3rd level
+        slug: category-child-3rd-level
+        parent: '@category_child_3'

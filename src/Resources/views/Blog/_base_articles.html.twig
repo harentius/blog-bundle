@@ -1,0 +1,15 @@
+{% for article in articles %}
+    <div class="padded-content post-preview-wrapper{% if not loop.last or hasToPaginate %} bordered{% endif %}">
+        <article class="clearfix">
+            {%  include 'HarentiusBlogBundle:Blog:_translations_list.html.twig' with { 'entity': article } %}
+            <h2><a href="{{ publication_path(article) }}">{{ article.title }}</a></h2>
+            <div>{{ article.text|read_more }}</div>
+        </article>
+
+        {% block post_info %}
+            {% include 'HarentiusBlogBundle:Blog:_post_info.html.twig' %}
+        {% endblock %}
+    </div>
+
+    {% block loop_end %}{% endblock %}
+{% endfor %}

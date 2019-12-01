@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+<head>
+    <title>
+        {%- block raw_title -%}
+            {% if block('page_title') is not empty %}{% block page_title %}{% endblock %} | {% endif %}{{ get_setting('project_name') }}
+        {%- endblock -%}
+    </title>
+
+    {% if block('page_meta_description') is not empty -%}
+        <meta name="description" content="{% block page_meta_description %}{% endblock %}" />
+    {%- endif %}
+
+    {% if block('page_meta_keywords') is not empty -%}
+        <meta name="keywords" content="{% block page_meta_keywords %}{% endblock %}" />
+    {%- endif %}
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width" />
+    {% if noIndex is defined and noIndex %}
+        <meta name="robots" content="noindex,follow">
+    {% endif %}
+    {% block meta_extra %}{% endblock %}
+    {% block common_stylesheets %}
+        <link href="{{ asset('bundles/harentiusblog/common.css', 'harentius_blog') }}" media="all" rel="stylesheet" type="text/css" />
+    {% endblock %}
+
+    {% block stylesheets %}{% endblock %}
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    {% if app.environment != 'dev' %}
+        {{ include('HarentiusBlogBundle::_google_analytics.html.twig') }}
+    {% endif %}
+    {% block head_extra %}{% endblock %}
+</head>
+
+<body>
+<div class="container">
+    {% block menu %}
+        {{ include('@HarentiusBlog/navbar.html.twig') }}
+    {% endblock %}
+
+    <div class="row">
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 page-content">
+            <div>
+                {{ wo_render_breadcrumbs() }}{% block after_breadcrumbs_content %}{% endblock %}
+            </div>
+            {% block content %}{% endblock %}
+        </div>
+
+        <aside class="col-lg-3 d-none-sm sidebar">
+            {% block sidebar %}
+                {{ include('HarentiusBlogBundle:Sidebar:index.html.twig') }}
+            {% endblock %}
+            {% block sidebar_after_content %}{% endblock %}
+        </aside>
+    </div>
+
+    {% block footer %}
+        <footer class="padded-content footer clearfix">
+            {% block footer_content %}All right reserved. {% endblock %}
+            {% block footer_after_content %}{% endblock %}
+        </footer>
+    {% endblock %}
+    {% block last_container_content %}{% endblock %}
+</div>
+
+{% block last_body_content %}{% endblock %}
+
+{% block common_javascripts %}
+    <script src="{{ asset('bundles/harentiusblog/runtime.js', 'harentius_blog') }}"></script>
+    <script src="{{ asset('bundles/harentiusblog/manifest.js', 'harentius_blog') }}"></script>
+    <script src="{{ asset('bundles/harentiusblog/common.js', 'harentius_blog') }}"></script>
+{% endblock %}
+
+{% block javascripts %}{% endblock %}
+</body>
+</html>

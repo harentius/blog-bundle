@@ -1,0 +1,27 @@
+{% extends 'HarentiusBlogBundle::base.html.twig' %}
+
+{% block page_title %}
+    {% if parent is defined %}
+        {{- parent.name -}}
+    {% elseif month is defined and month is not null and year is defined %}
+        {{- month }} {{ year -}}
+    {% elseif year is defined %}
+        {{- year -}}
+    {% endif %}
+{% endblock %}
+
+{% block page_meta_description %}
+    {%- if parent is defined and parent.metaDescription is defined %}{{ parent.metaDescription }}{% endif -%}
+{% endblock %}
+
+{% block page_meta_keywords %}
+    {%- if parent is defined and parent.metaKeywords is defined %}{{ parent.metaKeywords }}{% endif -%}
+{% endblock %}
+
+{% block content %}
+    {% include('HarentiusBlogBundle:Blog:_articles.html.twig') %}
+
+    <div class="paginator">
+        {{ knp_pagination_render(articles) }}
+    </div>
+{% endblock %}

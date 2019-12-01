@@ -1,0 +1,34 @@
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        public: false
+
+    harentius_blog.sidebar.cache:
+          class: Doctrine\Common\Cache\ApcuCache
+          calls:
+              - [ setNamespace, [ '%harentius_blog.cache.apc_global_prefix%_sidebar' ] ]
+
+    harentius_blog.settings.cache:
+        class: Doctrine\Common\Cache\ApcuCache
+        calls:
+            - [ setNamespace, [ '%harentius_blog.cache.apc_global_prefix%_settings' ] ]
+
+    harentius_blog.router.category_slug_provider_cache:
+        class: Doctrine\Common\Cache\ApcuCache
+        calls:
+            - [ setNamespace, [ '%harentius_blog.cache.apc_global_prefix%_router_category' ] ]
+
+    harentius_blog.controller.feed_cache:
+        class: Doctrine\Common\Cache\ApcuCache
+        calls:
+            - [ setNamespace, [ '%harentius_blog.cache.apc_global_prefix%_feed' ] ]
+
+    harentius_blog.statistics_cache:
+        class: Doctrine\Common\Cache\ApcuCache
+        calls:
+            - [ setNamespace, [ '%harentius_blog.cache.apc_global_prefix%_statistics' ] ]
+
+    harentius_blog.rating_cache:
+        class: Doctrine\Common\Cache\ApcuCache
+        calls:
+            - [ setNamespace, [ '%harentius_blog.cache.apc_global_prefix%_rating' ] ]

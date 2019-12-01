@@ -1,0 +1,8 @@
+services:
+    _defaults:
+        public: true
+
+    Harentius\BlogBundle\Admin\Controller\FileUploadController:
+        arguments:
+            - '@harentius_blog.assets.manager'
+

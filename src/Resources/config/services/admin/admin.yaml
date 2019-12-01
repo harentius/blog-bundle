@@ -1,0 +1,49 @@
+services:
+    _defaults:
+        public: false
+
+    harentius_blog.admin.article:
+        class: Harentius\BlogBundle\Admin\Admin\ArticleAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Content, label: Articles, show_in_dashboard: true }
+        arguments:
+            - null
+            - Harentius\BlogBundle\Entity\Article
+            - HarentiusBlogBundle:CRUD
+        calls:
+            - [ setTranslationDomain, [ 'HarentiusBlogBundle' ] ]
+            - [ setTemplate, [ 'edit', 'HarentiusBlogBundle:Admin/CRUD:edit_post.html.twig'] ]
+
+    harentius_blog.admin.page:
+        class: Harentius\BlogBundle\Admin\Admin\PageAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Content, label: Pages, show_in_dashboard: true }
+        arguments:
+            - null
+            - Harentius\BlogBundle\Entity\Page
+            - HarentiusBlogBundle:CRUD
+        calls:
+            - [ setTranslationDomain, [ 'HarentiusBlogBundle' ] ]
+            - [ setTemplate, [ 'edit', 'HarentiusBlogBundle:Admin/CRUD:edit_post.html.twig' ] ]
+
+    harentius_blog.admin.category:
+        class: Harentius\BlogBundle\Admin\Admin\CategoryAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Content, label: Categories, show_in_dashboard: true }
+        arguments:
+            - null
+            - Harentius\BlogBundle\Entity\Category
+            - null
+        calls:
+            - [ setTranslationDomain, [ 'HarentiusBlogBundle' ] ]
+
+    harentius_blog.admin.tag:
+        class: Harentius\BlogBundle\Admin\Admin\TagAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Content, label: Tags, show_in_dashboard: true }
+        arguments:
+            - null
+            - Harentius\BlogBundle\Entity\Tag
+            - null
+        calls:
+            - [ setTranslationDomain, [ 'HarentiusBlogBundle' ] ]

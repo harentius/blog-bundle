@@ -1,0 +1,23 @@
+{% extends 'HarentiusBlogBundle::base.html.twig' %}
+
+{% block page_title %}About this awesome blog{% endblock %}
+
+{% block content %}
+    {% set stats = statistics.getAll %}
+    <div class="padded-content article-wrapper">
+        <h1>About this awesome blog</h1>
+        <p>This is just demonstration of features, that can be achieved, using Statistic service</p>
+        <p>Please, rewrite this template</p>
+        <p>
+            Project was launched on <span class="stat-value">{{ stats.firstArticlePublicationDate|localizeddate('long', 'none') }}</span>
+            Since that time <span class="stat-value">{{ stats.countPublished|localizednumber }}</span> articles was published,
+            total <span class="stat-value">{{ stats.viewsCount|localizednumber }}</span> page views,
+            <span class="stat-value">{{ stats.likesCount|localizednumber }}</span> likes and
+            <span class="stat-value">{{ stats.disLikesCount|localizednumber }}</span> dislikes{% if stats.disLikesCount > 0 %} (sorry about that){% endif %}
+            {% if stats.mostPopularArticleData|default() %}
+                Most popular article: <a href="{{ path('harentius_blog_show', {'slug': stats.mostPopularArticleData.slug}) }}">{{ stats.mostPopularArticleData.title }}</a>
+                (<span class="stat-value">{{ stats.mostPopularArticleData.viewsCount }}</span> views)
+            {% endif %}
+        </p>
+    </div>
+{% endblock %}

@@ -1,0 +1,55 @@
+imports:
+    - { resource: '@HarentiusBlogBundle/Resources/config/packages/*' }
+
+framework:
+    #esi:             ~
+    translator:      { fallbacks: ["%locale%"] }
+    assets:
+        packages:
+            harentius_blog:
+                json_manifest_path: '%kernel.project_dir%/public/bundles/harentiusblog/build/manifest.json'
+
+stof_doctrine_extensions:
+    default_locale: '%locale%'
+    orm:
+        default:
+            timestampable: true
+            sluggable: true
+            tree: true
+            translatable: true
+    translation_fallback: true
+
+twig:
+    globals:
+        statistics: '@harentius_blog.statistics'
+
+cmf_routing:
+    chain:
+        routers_by_id:
+            cmf_routing.dynamic_router: 200
+            router.default:             100
+    dynamic:
+        enabled: true
+        route_provider_service_id: 'harentius_blog.router.route_provider'
+
+sonata_block:
+    default_contexts: ['sonata_page_bundle']
+    blocks: []
+
+sonata_translation:
+    locales: ['en', 'ru']
+    default_locale: '%locale%'
+    gedmo:
+        enabled: true
+
+white_october_breadcrumbs:
+    separator: ~
+
+liip_imagine:
+    resolvers:
+        default:
+            web_path:
+                cache_prefix: 'assets/images'
+    filter_sets:
+        preview:
+            filters: []
