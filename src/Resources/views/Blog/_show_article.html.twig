@@ -13,7 +13,7 @@
         <div class="pull-right text-right col-lg-3 col-md-3 col-sm-3 col-xs-3 likes-wrapper">
             <span class="like">
                 <i
-                        class="{% if is_article_liked(entity) %}fa-thumbs-up{% else %}fa-thumbs-o-up{% endif %}{% if(is_article_rated(entity)) %} disabled{% endif %}"
+                        class="fa {% if is_article_liked(entity) %}fa-thumbs-up{% else %}fa-thumbs-o-up{% endif %}{% if(is_article_rated(entity)) %} disabled{% endif %}"
                         id="like-action"
                 >
                 </i>
@@ -22,7 +22,7 @@
 
             <span class="dislike">
                 <i
-                        class="{% if is_article_disliked(entity) %}fa-thumbs-down{% else %}fa-thumbs-o-down{% endif %}{% if(is_article_rated(entity)) %} disabled{% endif %}"
+                        class="fa {% if is_article_disliked(entity) %}fa-thumbs-down{% else %}fa-thumbs-o-down{% endif %}{% if(is_article_rated(entity)) %} disabled{% endif %}"
                         id="dislike-action"
                 >
                 </i>

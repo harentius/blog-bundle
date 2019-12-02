@@ -8,12 +8,11 @@ const config = Encore
   .setManifestKeyPrefix('bundles/harentiusblog/')
   .cleanupOutputBeforeBuild()
   .addEntry('common', './src/Resources/js/common.js')
-  .addStyleEntry('login', './src/Resources/css/login.less')
+  .addStyleEntry('login', './src/Resources/css/admin.scss')
   .addEntry('article-view', [
     './src/Resources/js/article.js',
   ])
   .addEntry('admin-article', './src/Resources/js/admin/article/index.js')
-  .enableLessLoader()
   .enableSassLoader()
   .enableVersioning()
   .enableSingleRuntimeChunk()

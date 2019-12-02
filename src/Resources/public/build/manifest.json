@@ -1,10 +1,15 @@
 {
-  "bundles/harentiusblog/admin-article.css": "/bundles/harentiusblog/build/admin-article.aa635208.css",
-  "bundles/harentiusblog/admin-article.js": "/bundles/harentiusblog/build/admin-article.b181c43e.js",
+  "bundles/harentiusblog/admin-article.css": "/bundles/harentiusblog/build/admin-article.f436f032.css",
+  "bundles/harentiusblog/admin-article.js": "/bundles/harentiusblog/build/admin-article.7ea9db41.js",
   "bundles/harentiusblog/article-view.js": "/bundles/harentiusblog/build/article-view.cfacf3a5.js",
-  "bundles/harentiusblog/common.css": "/bundles/harentiusblog/build/common.f4179595.css",
-  "bundles/harentiusblog/common.js": "/bundles/harentiusblog/build/common.998d8d12.js",
-  "bundles/harentiusblog/login.css": "/bundles/harentiusblog/build/login.2f5da58c.css",
+  "bundles/harentiusblog/common.css": "/bundles/harentiusblog/build/common.e192cddc.css",
+  "bundles/harentiusblog/common.js": "/bundles/harentiusblog/build/common.0f167030.js",
+  "bundles/harentiusblog/login.css": "/bundles/harentiusblog/build/login.75fb380e.css",
   "bundles/harentiusblog/runtime.js": "/bundles/harentiusblog/build/runtime.6c1a13d3.js",
+  "bundles/harentiusblog/fonts/fontawesome-webfont.eot": "/bundles/harentiusblog/build/fonts/fontawesome-webfont.674f50d2.eot",
+  "bundles/harentiusblog/fonts/fontawesome-webfont.woff2?v=4.7.0": "/bundles/harentiusblog/build/fonts/fontawesome-webfont.af7ae505.woff2",
+  "bundles/harentiusblog/fonts/fontawesome-webfont.ttf?v=4.7.0": "/bundles/harentiusblog/build/fonts/fontawesome-webfont.b06871f2.ttf",
+  "bundles/harentiusblog/fonts/fontawesome-webfont.woff?v=4.7.0": "/bundles/harentiusblog/build/fonts/fontawesome-webfont.fee66e71.woff",
+  "bundles/harentiusblog/images/fontawesome-webfont.svg?v=4.7.0": "/bundles/harentiusblog/build/images/fontawesome-webfont.912ec66d.svg",
   "bundles/harentiusblog/images/images_frontend.png": "/bundles/harentiusblog/build/images/images_frontend.7c1b5bae.png"
 }

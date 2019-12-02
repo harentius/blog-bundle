@@ -4,7 +4,7 @@ import BlotFormatter from 'quill-blot-formatter';
 import Routing from 'Routing';
 import hljs from '../../hljs';
 import 'quill/dist/quill.snow.css';
-import '../../../css/admin.less';
+import '../../../css/admin.scss';
 
 const toolbarOptions = [
   ['bold', 'italic', 'underline', 'strike'],

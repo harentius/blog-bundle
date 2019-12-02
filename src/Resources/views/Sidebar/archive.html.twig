@@ -2,7 +2,7 @@
     <ul>
     {% for year, months in archivesList %}
         <li class="year-content-wrapper">
-            <i class="glyphicon glyphicon-menu-down months-expander"></i>
+            <i class="fa fa-chevron-down months-expander"></i>
             <a href="{{ path('harentius_blog_archive_year', {'year': year}) }}">{{ year }}</a>
             <ul class="months-list display-none">
         {% for month, monthName in months %}

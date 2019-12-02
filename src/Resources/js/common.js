@@ -1,8 +1,6 @@
 import Cookies from 'js-cookie';
 import hljs from './hljs';
 import '../css/common.scss';
-import '../css/twbs-extension.less';
-import '../css/main.less';
 
 hljs.initHighlightingOnLoad();
 $(function() {

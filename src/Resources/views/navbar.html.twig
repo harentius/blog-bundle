@@ -3,15 +3,17 @@
 
     {{ knp_menu_render('main') }}
 
-    <button
-        type="button"
-        class="main-menu-button glyphicon glyphicon-menu-hamburger d-none-lg categories-menu-button"
-        data-toggle="collapse" data-target="#categories-menu"
-    ></button>
+    <div class="navbar-nav">
+        <button
+            type="button"
+            class="main-menu-button fa fa-bars d-none-lg categories-menu-button"
+            data-toggle="collapse" data-target="#categories-menu"
+        ></button>
 
-    <a href="{{ path('harentius_blog_feed') }}" class="main-menu-button rss-feed"><i class="fa-feed"></i></a>
+        <a href="{{ path('harentius_blog_feed') }}" class="nav-link main-menu-button rss-feed"><i class="fa fa-feed"></i></a>
 
-    <div class="collapse out categories-menu" id="categories-menu">
-        {{ render_cached(controller('HarentiusBlogBundle:Sidebar:categories', { showNumber: false })) }}
+        <div class="collapse out categories-menu" id="categories-menu">
+            {{ render_cached(controller('HarentiusBlogBundle:Sidebar:categories', { showNumber: false })) }}
+        </div>
     </div>
 </nav>

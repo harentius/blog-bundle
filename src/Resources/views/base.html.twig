@@ -21,7 +21,9 @@
     {% if noIndex is defined and noIndex %}
         <meta name="robots" content="noindex,follow">
     {% endif %}
+
     {% block meta_extra %}{% endblock %}
+
     {% block common_stylesheets %}
         <link href="{{ asset('bundles/harentiusblog/common.css', 'harentius_blog') }}" media="all" rel="stylesheet" type="text/css" />
     {% endblock %}

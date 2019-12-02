@@ -1,26 +1,26 @@
 <div class="post-info row">
     <div class="pull-left col-lg-8 col-md-8 col-sm-12 col-xs-12 post-stats">
         <span>
-            <i class="glyphicon glyphicon-calendar"></i>
+            <i class="fa fa-calendar"></i>
             {{ article.publishedAt|date('d/m/Y') }}
         </span>
 
         {% block author_name %}
         <span>
-            <i class="glyphicon glyphicon-user"></i>
+            <i class="fa fa-user"></i>
             {{ article.author.username }}
         </span>
         {% endblock %}
 
         <span>
-            <i class="glyphicon glyphicon-folder-close"></i>
+            <i class="fa fa-folder"></i>
             <a href="{{ path('harentius_blog_category_' ~ article.category.id) }}">
                 {{ article.category.name }}
             </a>
         </span>
 
         <span>
-            <i class="glyphicon glyphicon-stats"></i>
+            <i class="fa fa-bar-chart"></i>
             {{ article.viewsCount }}
         </span>
 
@@ -30,7 +30,7 @@
         {% for tag in article.tags %}
             {% spaceless %}
         <span>
-            <i class="glyphicon glyphicon-tag"></i>
+            <i class="fa fa-tag"></i>
             <a href="{{ path('harentius_blog_tag', { 'slug': tag.slug }) }}" rel="tag">{{ tag.name }}</a>
         </span>
             {% endspaceless %}
