@@ -18,11 +18,6 @@ services:
         calls:
             - [ setNamespace, [ '%harentius_blog.cache.apc_global_prefix%_router_category' ] ]
 
-    harentius_blog.controller.feed_cache:
-        class: Doctrine\Common\Cache\ApcuCache
-        calls:
-            - [ setNamespace, [ '%harentius_blog.cache.apc_global_prefix%_feed' ] ]
-
     harentius_blog.statistics_cache:
         class: Doctrine\Common\Cache\ApcuCache
         calls:

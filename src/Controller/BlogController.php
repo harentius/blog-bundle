@@ -41,33 +41,19 @@ class BlogController extends Controller
     /**
      * @param Request $request
      * @param string $filtrationType
-     * @param string $criteria
+     * @param string $slug
      * @return Response
      */
-    public function listAction(Request $request, $filtrationType, $criteria)
+    public function listAction(Request $request, $filtrationType, $slug)
     {
         $articlesRepository = $this->getDoctrine()->getRepository('HarentiusBlogBundle:Article');
 
         $breadcrumbs = $this->get('white_october_breadcrumbs');
-        $noIndex = false;
 
         switch ($filtrationType) {
-            case self::FILTRATION_TYPE_CATEGORY:
-                $category = $this->getDoctrine()->getRepository('HarentiusBlogBundle:Category')
-                    ->find($criteria)
-                ;
-
-                if (!$category) {
-                    throw $this->createNotFoundException('Category not found');
-                }
-
-                $parent = $category;
-                $this->addCategoryHierarchyToBreadcrumbs($category, $breadcrumbs);
-                $articlesQuery = $articlesRepository->findPublishedByCategoryQuery($category);
-                break;
             case self::FILTRATION_TYPE_TAG:
                 $tag = $this->getDoctrine()->getRepository('HarentiusBlogBundle:Tag')
-                    ->findOneBy(['slug' => $criteria])
+                    ->findOneBy(['slug' => $slug])
                 ;
 
                 if (!$tag) {
@@ -171,14 +157,6 @@ class BlogController extends Controller
     }
 
     /**
-     * @return Response
-     */
-    public function feedAction()
-    {
-        return new Response($this->get('harentius_blog.feed')->get());
-    }
-
-    /**
      * @param Category $category
      * @param Breadcrumbs $breadcrumbs
      */
@@ -187,7 +165,7 @@ class BlogController extends Controller
         do {
             $breadcrumbs->prependItem(
                 $category->getName(),
-                $this->generateUrl("harentius_blog_category_{$category->getId()}")
+                $this->generateUrl('harentius_blog_category', ['slug' => $category->getSlugWithParents()])
             );
         } while ($category = $category->getParent());
     }

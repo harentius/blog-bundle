@@ -1,10 +1,12 @@
 imports:
     - { resource: 'admin/*' }
+    - { resource: 'controller.yaml' }
 
 services:
     # default configuration for services in *this* file
     _defaults:
         public: false
+        autowire: true
 
     twig.extension.intl:
         class: Twig_Extensions_Extension_Intl
@@ -124,13 +126,6 @@ services:
           arguments:
               - '@harentius_blog.router.category_slug_provider'
 
-    harentius_blog.feed:
-        class: Harentius\BlogBundle\Feed
-        arguments:
-            - '@harentius_blog.entity.article_repository'
-            - '@eko_feed.feed.manager'
-            - '@harentius_blog.controller.feed_cache'
-
     harentius_blog.statistics:
         class: Harentius\BlogBundle\Statistics
         arguments:
@@ -160,3 +155,9 @@ services:
         arguments:
             - '@request_stack'
             - '@router'
+
+    Harentius\BlogBundle\BreadCrumbsManager: ~
+
+    Harentius\BlogBundle\Paginator:
+        arguments:
+            $postsPerPage: '%harentius_blog.list.posts_per_page%'

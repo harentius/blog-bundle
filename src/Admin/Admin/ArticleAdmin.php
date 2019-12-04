@@ -89,7 +89,7 @@ class ArticleAdmin extends AbstractPostAdmin
                 'multiple' => 'true',
             ])
             ->add('text', TextareaType::class, [
-                'attr' => ['class' => 'wysiwyg']
+                'attr' => ['class' => 'wysiwyg'],
             ])
             ->add('published', null, [
                 'required' => false,

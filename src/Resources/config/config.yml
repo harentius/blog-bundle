@@ -23,15 +23,6 @@ twig:
     globals:
         statistics: '@harentius_blog.statistics'
 
-cmf_routing:
-    chain:
-        routers_by_id:
-            cmf_routing.dynamic_router: 200
-            router.default:             100
-    dynamic:
-        enabled: true
-        route_provider_service_id: 'harentius_blog.router.route_provider'
-
 sonata_block:
     default_contexts: ['sonata_page_bundle']
     blocks: []
@@ -41,9 +32,6 @@ sonata_translation:
     default_locale: '%locale%'
     gedmo:
         enabled: true
-
-white_october_breadcrumbs:
-    separator: ~
 
 liip_imagine:
     resolvers:

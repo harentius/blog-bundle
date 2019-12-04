@@ -20,10 +20,12 @@ class SidebarController extends Controller
                 'representationField' => 'slug',
                 'html' => true,
                 'nodeDecorator' => function ($node) use ($showNumber) {
-                    // Silent missing IDE warning
-                    return sprintf('<a href=' . '"%s">%s</a>' . ($showNumber ? ' (%d)' : ''),
-                        $this->generateUrl('harentius_blog_category', ['slug' => $node['slug']]),
-                        $node['name'],
+                    /** @var Category $category */
+                    $category = $node[0];
+
+                    return sprintf('<a href="%s">%s</a>' . ($showNumber ? ' (%d)' : ''),
+                        $this->generateUrl('harentius_blog_category', ['slug' => $category->getSlugWithParents()]),
+                        $category->getName(),
                         $node['articles_number']
                     );
                 },

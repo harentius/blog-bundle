@@ -4,7 +4,7 @@ harentius_blog_homepage:
 
 harentius_blog_feed:
     path: /feed
-    defaults: { _controller: 'HarentiusBlogBundle:Blog:feed' }
+    defaults: { _controller: 'Harentius\BlogBundle\Controller\FeedController::feed' }
 
 harentius_blog_page_about:
     path: /about
@@ -12,13 +12,13 @@ harentius_blog_page_about:
 
 harentius_blog_category:
     path: /category/{slug}/
-    defaults: { _controller: 'HarentiusBlogBundle:Blog:list' }
+    defaults: { _controller: 'Harentius\BlogBundle\Controller\CategoryController::category' }
     requirements:
         slug: '.*'
 
 harentius_blog_tag:
     path: /tag/{slug}/
-    defaults: { _controller: 'HarentiusBlogBundle:Blog:list' }
+    defaults: { _controller: 'HarentiusBlogBundle:Blog:list', filtrationType: 'tag' }
 
 harentius_blog_archive_year:
     path: /{year}/

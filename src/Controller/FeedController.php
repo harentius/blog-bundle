@@ -1,12 +1,14 @@
 <?php
 
-namespace Harentius\BlogBundle;
+declare(strict_types=1);
 
-use Doctrine\Common\Cache\CacheProvider;
+namespace Harentius\BlogBundle\Controller;
+
 use Eko\FeedBundle\Feed\FeedManager;
 use Harentius\BlogBundle\Entity\ArticleRepository;
+use Symfony\Component\HttpFoundation\Response;
 
-class Feed
+class FeedController
 {
     /**
      * @var ArticleRepository
@@ -19,42 +21,26 @@ class Feed
     private $feedManager;
 
     /**
-     * @var CacheProvider
-     */
-    private $cache;
-
-    /**
      * @param ArticleRepository $articleRepository
      * @param FeedManager $feedManager
-     * @param CacheProvider $cache
      */
     public function __construct(
         ArticleRepository $articleRepository,
-        FeedManager $feedManager,
-        CacheProvider $cache
+        FeedManager $feedManager
     ) {
         $this->articleRepository = $articleRepository;
         $this->feedManager = $feedManager;
-        $this->cache = $cache;
     }
 
     /**
-     * @return string
+     * @return Response
      */
-    public function get()
+    public function feed(): Response
     {
-        $key = 'feed';
-
-        if ($this->cache->contains($key)) {
-            return $this->cache->fetch($key);
-        }
-
         $articles = $this->articleRepository->findPublishedOrderedByPublishDate();
         $feed = $this->feedManager->get('article');
         $feed->addFromArray($articles);
-        $renderedFeed = $feed->render('rss');
-        $this->cache->save($key, $renderedFeed);
 
-        return $renderedFeed;
+        return new Response($feed->render('rss'));
     }
 }

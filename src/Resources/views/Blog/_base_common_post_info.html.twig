@@ -14,7 +14,7 @@
 
         <span>
             <i class="fa fa-folder"></i>
-            <a href="{{ path('harentius_blog_category_' ~ article.category.id) }}">
+            <a href="{{ path('harentius_blog_category', { 'slug': article.category.slugWithParents }) }}">
                 {{ article.category.name }}
             </a>
         </span>

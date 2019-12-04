@@ -2,6 +2,8 @@
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
 
+$breadcrumb-bg: $white;
+
 @import "~bootstrap/scss/bootstrap-reboot";
 @import "~bootstrap/scss/grid";
 @import "~bootstrap/scss/pagination";
@@ -121,13 +123,6 @@ figcaption {
       text-decoration: none;
     }
   }
-}
-
-.breadcrumb {
-  display: inline-block;
-  background: none;
-  margin-bottom: 0;
-  padding: 10px 0 5px 5px;
 }
 
 .sidebar {
@@ -308,10 +303,6 @@ figcaption {
 @media (max-width: 768px){
   .container {
     padding: 0;
-  }
-
-  .breadcrumb {
-    padding: 10px;
   }
 
   .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2,

@@ -1,0 +1,14 @@
+services:
+    _defaults:
+        public: true
+        autowire: true
+
+    Harentius\BlogBundle\Controller\FeedController:
+        arguments:
+            $articleRepository: '@harentius_blog.entity.article_repository'
+
+
+    Harentius\BlogBundle\Controller\CategoryController:
+        arguments:
+            $articleRepository: '@harentius_blog.entity.article_repository'
+            $categoryRepository: '@harentius_blog.entity.category_repository'

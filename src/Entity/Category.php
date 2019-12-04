@@ -246,4 +246,19 @@ class Category implements TranslatableInterface
 
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getSlugWithParents(): string
+    {
+        $slugs = [];
+        $category = $this;
+
+        do {
+            array_unshift($slugs, $category->getSlug());
+        } while ($category = $category->getParent());
+
+        return implode('/', $slugs);
+    }
 }
