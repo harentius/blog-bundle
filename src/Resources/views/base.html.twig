@@ -31,7 +31,7 @@
     {% block stylesheets %}{% endblock %}
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     {% if app.environment != 'dev' %}
-        {{ include('HarentiusBlogBundle::_google_analytics.html.twig') }}
+        {{ include('@HarentiusBlog/_google_analytics.html.twig') }}
     {% endif %}
     {% block head_extra %}{% endblock %}
 </head>
@@ -53,7 +53,7 @@
 
         <aside class="col-lg-3 d-none-sm sidebar">
             {% block sidebar %}
-                {{ include('HarentiusBlogBundle:Sidebar:index.html.twig') }}
+                {{ include('@HarentiusBlog/Sidebar/index.html.twig') }}
             {% endblock %}
             {% block sidebar_after_content %}{% endblock %}
         </aside>

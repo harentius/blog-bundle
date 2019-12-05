@@ -115,17 +115,6 @@ services:
         tags:
             - { name: "kernel.event_subscriber", priority: 100 }
 
-    harentius_blog.router.category_slug_provider:
-          class: Harentius\BlogBundle\Router\CategorySlugProvider
-          arguments:
-              - '@harentius_blog.entity.category_repository'
-              - '@harentius_blog.router.category_slug_provider_cache'
-
-    harentius_blog.router.route_provider:
-          class: Harentius\BlogBundle\Router\RouteProvider
-          arguments:
-              - '@harentius_blog.router.category_slug_provider'
-
     harentius_blog.statistics:
         class: Harentius\BlogBundle\Statistics
         arguments:

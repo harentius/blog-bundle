@@ -1,4 +1,4 @@
-{% extends 'HarentiusBlogBundle::base.html.twig' %}
+{% extends '@HarentiusBlog/base.html.twig' %}
 
 {% block page_title %}
     {% if parent is defined %}
@@ -19,7 +19,7 @@
 {% endblock %}
 
 {% block content %}
-    {% include('HarentiusBlogBundle:Blog:_articles.html.twig') %}
+    {% include('@HarentiusBlog/Blog/_articles.html.twig') %}
 
     <div class="paginator">
         {{ knp_pagination_render(articles) }}

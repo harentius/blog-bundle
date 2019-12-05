@@ -1,13 +1,13 @@
-{% extends 'HarentiusBlogBundle:Blog:show_page.html.twig' %}
+{% extends '@HarentiusBlog/Blog/show_page.html.twig' %}
 
 {% block after_post_content%}
     {% block post_info %}
-        {% include 'HarentiusBlogBundle:Blog:_post_info_article.html.twig' with {'article': entity} %}
+        {% include '@HarentiusBlog/Blog/_post_info_article.html.twig' with {'article': entity} %}
     {% endblock %}
 
     <div class="row social-and-shares-wrapper" data-id="{{ entity.id }}">
         <div class="pull-left social-wrapper col-lg-9 col-md-9 col-sm-9 col-xs-9">
-            {{ include('HarentiusBlogBundle:Blog:_socials.html.twig') }}
+            {{ include('@HarentiusBlog/Blog/_socials.html.twig') }}
         </div>
 
         <div class="pull-right text-right col-lg-3 col-md-3 col-sm-3 col-xs-3 likes-wrapper">

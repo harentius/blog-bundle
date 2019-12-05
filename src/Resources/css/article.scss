@@ -1,0 +1,30 @@
+.post-info {
+  font-size: 0.9rem;
+  color: #9c9c9c;
+
+  span {
+    margin-right: 2px;
+    white-space: nowrap;
+  }
+
+  .post-stats, .post-tags {
+    margin-top: 5px;
+  }
+
+  .post-stats {
+    span:not(:last-child):after {
+      content: '|';
+      margin-left: 4px;
+    }
+  }
+
+  .post-tags {
+    a {
+      margin-left: 2px;
+    }
+
+    span:not(:last-child):after {
+      content: ',';
+    }
+  }
+}
