@@ -1,5 +1,5 @@
 <nav class="main-menu navbar navbar-expand-lg navbar-light bg-light p-2">
-    <a class="navbar-brand" href="{{ path('harentius_blog_homepage') }}"></a>
+    {% block brand %}{% endblock %}
 
     {{ knp_menu_render('main') }}
 
