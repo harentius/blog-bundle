@@ -1,7 +1,6 @@
 import Quill from 'quill';
 import { ImageUpload } from 'quill-image-upload';
 import BlotFormatter from 'quill-blot-formatter';
-import Routing from 'Routing';
 import hljs from '../../hljs';
 import 'quill/dist/quill.snow.css';
 import '../../../css/admin.scss';
@@ -38,7 +37,7 @@ const initWysiwyg = (selector, options = { height: 400 }) => {
         },
         toolbar: toolbarOptions,
         imageUpload: {
-          url: Routing.generate('harentius_blog_admin_file_upload'),
+          url: window.Routing.generate('harentius_blog_admin_file_upload'),
           method: 'POST',
           name: 'file',
           withCredentials: true,

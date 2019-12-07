@@ -43,25 +43,23 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('bundles/harentiusblog/article-view.js', 'harentius_blog') }}"></script>
+    <script type="application/json" id="js-config">
+    {{
+        {
+            "article_id": entity.id,
+            "article_url": publication_path(entity, constant('Symfony\\Component\\Routing\\Generator\\UrlGeneratorInterface::ABSOLUTE_URL')),
+            "page_identifier": app.request.locale ~ '/' ~ entity.slug,
+            "discuss_user_name": discuss_user_name|default,
+            "article_original_id": entity.attributes.original_id is defined ?: null
+        }|json_encode|raw
+        }}
+    </script>
+
+    <script src="{{ asset('bundles/harentiusblog/article.js', 'harentius_blog') }}"></script>
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
 
     {% if sharethis_property %}
     <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property={{ sharethis_property }}&product={{ sharethis_product }}"></script>
     {% endif %}
-
-    {% if discuss_user_name is defined %}
-    <script type="application/json" id="js-config">
-        {{
-            {
-                "article_url": publication_path(entity, constant('Symfony\\Component\\Routing\\Generator\\UrlGeneratorInterface::ABSOLUTE_URL')),
-                "page_identifier": app.request.locale ~ '/' ~ entity.slug,
-                "discuss_user_name": discuss_user_name,
-                "article_original_id": entity.attributes.original_id is defined ?: null
-            }|json_encode|raw
-        }}
-    </script>
-    {% endif %}
-
 {% endblock javascripts %}

@@ -12,3 +12,5 @@ services:
         arguments:
             $articleRepository: '@harentius_blog.entity.article_repository'
             $categoryRepository: '@harentius_blog.entity.category_repository'
+
+    Harentius\BlogBundle\Controller\RateController: ~

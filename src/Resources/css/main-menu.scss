@@ -1,4 +1,4 @@
-.main-menu {
+.navbar-wrapper {
   .categories-menu {
     ul {
       list-style: none;
@@ -42,5 +42,9 @@
     height: 36px;
     line-height: 20px;
     font-size: 24px;
+  }
+
+  .navbar-nav {
+    flex-direction: row;
   }
 }

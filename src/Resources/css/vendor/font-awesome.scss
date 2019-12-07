@@ -1,0 +1,17 @@
+@import "../../../../node_modules/font-awesome/scss/variables";
+@import "../../../../node_modules/font-awesome/scss/core";
+@import "../../../../node_modules/font-awesome/scss/path";
+
+.#{$fa-css-prefix}-calendar:before { content: $fa-var-calendar; }
+.#{$fa-css-prefix}-folder:before { content: $fa-var-folder; }
+.#{$fa-css-prefix}-bar-chart:before { content: $fa-var-bar-chart; }
+.#{$fa-css-prefix}-tag:before { content: $fa-var-tag; }
+.#{$fa-css-prefix}-chevron-down:before { content: $fa-var-chevron-down; }
+.#{$fa-css-prefix}-user:before { content: $fa-var-user; }
+.#{$fa-css-prefix}-lock:before { content: $fa-var-lock; }
+.#{$fa-css-prefix}-thumbs-up:before { content: $fa-var-thumbs-up; }
+.#{$fa-css-prefix}-thumbs-down:before { content: $fa-var-thumbs-down; }
+.#{$fa-css-prefix}-thumbs-o-up:before { content: $fa-var-thumbs-o-up; }
+.#{$fa-css-prefix}-thumbs-o-down:before { content: $fa-var-thumbs-o-down; }
+.#{$fa-css-prefix}-feed:before { content: $fa-var-feed; }
+.#{$fa-css-prefix}-bars:before { content: $fa-var-bars; }

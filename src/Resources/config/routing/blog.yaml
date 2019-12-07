@@ -45,7 +45,7 @@ harentius_blog_show:
 
 harentius_blog_rate:
     path: /like/{article}/{type}
-    defaults: { _controller: 'HarentiusBlogBundle:Blog:rate', type: 'like' }
+    defaults: { _controller: 'Harentius\BlogBundle\Controller\RateController::rate', type: 'like' }
     methods:  [POST]
     requirements:
         type: like|dislike

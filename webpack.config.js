@@ -7,24 +7,14 @@ const config = Encore
   .setPublicPath('/bundles/harentiusblog/build/')
   .setManifestKeyPrefix('bundles/harentiusblog/')
   .cleanupOutputBeforeBuild()
-  .addEntry('common', './src/Resources/js/common.js')
+  .addEntry('common', './src/Resources/js/common/index.js')
   .addStyleEntry('login', './src/Resources/css/admin.scss')
-  .addEntry('article-view', [
-    './src/Resources/js/article.js',
-  ])
+  .addEntry('article', './src/Resources/js/article/index.js')
   .addEntry('admin-article', './src/Resources/js/admin/article/index.js')
   .enableSassLoader()
   .enableVersioning()
   .enableSingleRuntimeChunk()
   .getWebpackConfig()
 ;
-
-if (!config.externals || (Array.isArray(config.externals) && config.externals.length === 0)) {
-  config.externals = {};
-}
-
-Object.assign(config.externals, {
-  Routing: 'Routing',
-});
 
 module.exports = config;

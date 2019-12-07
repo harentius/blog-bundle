@@ -20,7 +20,7 @@ class ConfigReader {
       this.initialize();
     }
 
-    if (typeof(this.config[key]) === 'undefined' || this.config[key] === null) {
+    if (typeof this.config[key] === 'undefined' || this.config[key] === null) {
       return def;
     }
 
@@ -30,4 +30,4 @@ class ConfigReader {
 
 const configReader = new ConfigReader();
 
-export { configReader };
+export default configReader;

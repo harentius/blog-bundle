@@ -35,7 +35,7 @@ services:
         arguments:
             - '@twig.runtime.httpkernel'
             - ~
-            - '@harentius_blog.rating'
+            - '@Harentius\BlogBundle\Rating'
             - '@harentius_blog.settings_provider'
             - '%harentius_blog.sidebar.cache_lifetime%'
             - '@harentius_blog.entity.translation'
@@ -73,8 +73,7 @@ services:
             - '%harentius_blog.homepage.feed.category%'
             - '%harentius_blog.homepage.page_slug%'
 
-    harentius_blog.rating:
-        class: Harentius\BlogBundle\Rating
+    Harentius\BlogBundle\Rating:
         arguments:
             - '@request_stack'
             - '@doctrine.orm.entity_manager'

@@ -3,25 +3,25 @@
     "common": {
       "js": [
         "/bundles/harentiusblog/build/runtime.6c1a13d3.js",
-        "/bundles/harentiusblog/build/common.0f167030.js"
+        "/bundles/harentiusblog/build/common.d8549121.js"
       ],
       "css": [
-        "/bundles/harentiusblog/build/common.6d1f4481.css"
+        "/bundles/harentiusblog/build/common.6a655312.css"
       ]
     },
-    "article-view": {
+    "article": {
       "js": [
         "/bundles/harentiusblog/build/runtime.6c1a13d3.js",
-        "/bundles/harentiusblog/build/article-view.cfacf3a5.js"
+        "/bundles/harentiusblog/build/article.53d2499d.js"
       ]
     },
     "admin-article": {
       "js": [
         "/bundles/harentiusblog/build/runtime.6c1a13d3.js",
-        "/bundles/harentiusblog/build/admin-article.7ea9db41.js"
+        "/bundles/harentiusblog/build/admin-article.c674fc60.js"
       ],
       "css": [
-        "/bundles/harentiusblog/build/admin-article.f436f032.css"
+        "/bundles/harentiusblog/build/admin-article.306507a4.css"
       ]
     },
     "login": {
