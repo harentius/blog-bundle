@@ -21,7 +21,5 @@
 {% block content %}
     {% include('@HarentiusBlog/Blog/_articles.html.twig') %}
 
-    <div class="paginator">
-        {{ knp_pagination_render(articles) }}
-    </div>
+    {{ knp_pagination_render(articles) }}
 {% endblock %}

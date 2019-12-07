@@ -47,14 +47,10 @@ figcaption {
   padding: 5px;
 }
 
-.paginator {
-  margin: 0 10px;
-  text-align: center;
-
-  .pagination {
-    margin: 0;
-  }
+.pagination {
+  justify-content: center;
 }
+
 .page-content {
   img, figure {
     max-width: 100%;

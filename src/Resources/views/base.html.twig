@@ -43,7 +43,7 @@
     {% endblock %}
 
     <div class="row">
-        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 page-content">
+        <div class="col-lg-9 col-xs-12 page-content">
             <div>
                 {{ wo_render_breadcrumbs() }}{% block after_breadcrumbs_content %}{% endblock %}
             </div>
@@ -51,7 +51,7 @@
             {% block content %}{% endblock %}
         </div>
 
-        <aside class="col-lg-3 d-none-sm sidebar">
+        <aside class="col-lg-3 d-lg-block d-none sidebar">
             {% block sidebar %}
                 {{ include('@HarentiusBlog/Sidebar/index.html.twig') }}
             {% endblock %}
