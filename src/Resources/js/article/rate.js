@@ -8,7 +8,7 @@ const increaseValue = (selector) => {
 };
 
 const processRateChange = (button, type, changeClassFrom, changeClassTo) => {
-  if (button.hasAttribute('.disabled')) {
+  if (button.classList.contains('disabled')) {
     return;
   }
 
@@ -25,7 +25,7 @@ const processRateChange = (button, type, changeClassFrom, changeClassTo) => {
 
     icon.classList.remove(changeClassFrom);
     icon.classList.add(changeClassTo);
-    wrapper.closest('.likes-wrapper').querySelectorAll('i').forEach(e => e.addClass('disabled'));
+    wrapper.closest('.likes-wrapper').querySelectorAll('i').forEach(e => e.classList.add('disabled'));
   });
 };
 

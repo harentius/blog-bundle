@@ -75,9 +75,7 @@ services:
 
     Harentius\BlogBundle\Rating:
         arguments:
-            - '@request_stack'
-            - '@doctrine.orm.entity_manager'
-            - '@harentius_blog.rating_cache'
+            $cache: '@harentius_blog.rating_cache'
 
     harentius_blog.views_counter:
         public: true
