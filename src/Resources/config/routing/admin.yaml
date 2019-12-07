@@ -14,11 +14,11 @@ harentius_blog_admin_file_upload:
 
 login:
     path: login
-    defaults: { _controller: HarentiusBlogBundle:Security:login }
+    defaults: { _controller: 'Harentius\BlogBundle\Admin\Controller\SecurityController::login' }
 
 login_check:
     path: login-check
-    defaults: { _controller: HarentiusBlogBundle:Security:loginCheck }
+    defaults: { _controller: 'Harentius\BlogBundle\Admin\Controller\SecurityController::loginCheck' }
 
 sonata_admin:
     resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'

@@ -6,3 +6,4 @@ services:
         arguments:
             - '@harentius_blog.assets.manager'
 
+    Harentius\BlogBundle\Admin\Controller\SecurityController: ~

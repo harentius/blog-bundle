@@ -1,16 +1,16 @@
 <?php
 
-namespace Harentius\BlogBundle\Controller;
+namespace Harentius\BlogBundle\Admin\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
-class SecurityController extends Controller
+class SecurityController extends AbstractController
 {
     /**
      * @return Response
      */
-    public function loginAction()
+    public function login()
     {
         $authenticationUtils = $this->get('security.authentication_utils');
 
@@ -24,7 +24,7 @@ class SecurityController extends Controller
     /**
      * This controller will not be executed, as the route is handled by the Security system.
      */
-    public function loginCheckAction()
+    public function loginCheck()
     {
     }
 }
