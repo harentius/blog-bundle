@@ -1,10 +1,9 @@
-harentius_blog_admin_home:
-    path:     /admin
-    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: admin_harentius_blog_dashboard, permanent: true }
+sonata_admin:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
 
-harentius_blog_admin_dashboard_redirect:
-    path:     /dashboard
-    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: admin_harentius_blog_article_list, permanent: true }
+_sonata_admin:
+    resource: .
+    type: sonata_admin
 
 harentius_blog_admin_file_upload:
     path: /file-upload
@@ -12,17 +11,14 @@ harentius_blog_admin_file_upload:
     options:
         expose: true
 
-login:
-    path: login
+harentius_blog_admin_login:
+    path: /login
     defaults: { _controller: 'Harentius\BlogBundle\Admin\Controller\SecurityController::login' }
 
-login_check:
-    path: login-check
+harentius_blog_admin_login_check:
+    path: /login-check
     defaults: { _controller: 'Harentius\BlogBundle\Admin\Controller\SecurityController::loginCheck' }
 
-sonata_admin:
-    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
-
-_sonata_admin:
-    resource: .
-    type: sonata_admin
+harentius_blog_admin_logout:
+    path: /logout
+    defaults: { _controller: 'Harentius\BlogBundle\Admin\Controller\SecurityController::logout' }

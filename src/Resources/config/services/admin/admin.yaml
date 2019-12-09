@@ -1,6 +1,9 @@
 services:
     _defaults:
         public: false
+        autowire: true
+
+    Harentius\BlogBundle\Admin\Security\LoginFormAuthenticator: ~
 
     harentius_blog.admin.article:
         class: Harentius\BlogBundle\Admin\Admin\ArticleAdmin

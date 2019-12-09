@@ -161,27 +161,29 @@ class AdminUser implements UserInterface, \Serializable
         $this->plainPassword = null;
     }
 
-    /** @see \Serializable::serialize() */
+    /**
+     * {@inheritdoc}
+     */
     public function serialize()
     {
         return serialize([
             $this->id,
             $this->username,
             $this->password,
-            // see section on salt below
-            // $this->salt,
+            $this->salt,
         ]);
     }
 
-    /** @see \Serializable::unserialize() */
-    public function unserialize($serialized)
+    /**
+     * {@inheritdoc}
+     */
+    public function unserialize($serialized): void
     {
-        list(
+        [
             $this->id,
             $this->username,
             $this->password,
-            // see section on salt below
-            // $this->salt
-            ) = unserialize($serialized);
+            $this->salt,
+        ] = unserialize($serialized);
     }
 }
