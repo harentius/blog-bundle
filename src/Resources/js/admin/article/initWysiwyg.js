@@ -1,6 +1,7 @@
 import Quill from 'quill';
 import { ImageUpload } from 'quill-image-upload';
 import BlotFormatter from 'quill-blot-formatter';
+import ImageSpec from './quilljs/ImageSpec';
 import hljs from '../../hljs';
 import 'quill/dist/quill.snow.css';
 import '../../../css/admin.scss';
@@ -44,7 +45,9 @@ const initWysiwyg = (selector, options = { height: 400 }) => {
           callbackOK: (serverResponse, next) => next(serverResponse.uri),
           callbackKO: serverError => console.log(serverError),
         },
-        blotFormatter: {},
+        blotFormatter: {
+          specs: [ImageSpec],
+        },
       },
       theme: 'snow',
     });
