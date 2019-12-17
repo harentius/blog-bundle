@@ -13,11 +13,22 @@ module.exports = {
   },
   extends: [
       'airbnb-base',
+      'plugin:react/recommended',
   ],
   settings: {
     'import/core-modules': ['Routing'],
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    },
+    "react": {
+      "version": "detect",
+    },
   },
-
   rules: {
     'lines-between-class-members': 0,
     'operator-linebreak': 0,
@@ -45,5 +56,7 @@ module.exports = {
     ],
     "no-continue": 0,
     "no-console": 0,
+    "react/prop-types": 0,
+    "no-param-reassign": 0,
   },
 };

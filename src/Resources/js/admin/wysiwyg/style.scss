@@ -1,0 +1,39 @@
+.d-none {
+  display: none;
+}
+
+.wysiwyg {
+  height: 400px;
+  border: 1px solid #ccc;
+  padding: 10px;
+
+  .toolbar {
+    position: relative;
+    padding: 1px 10px 10px;
+    border-bottom: 2px solid #eee;
+    margin: 0 -10px 10px;
+
+    & > * {
+      display: inline-block;
+    }
+
+    & > * + * {
+      margin-left: 15px;
+    }
+  }
+
+  .tool-button {
+    cursor: pointer;
+    color: #ccc;
+
+    &.active {
+      color: #000;
+    }
+
+    .tool-icon-text {
+      font-weight: bold;
+      font-size: 18px;
+      vertical-align: bottom;
+    }
+  }
+}
