@@ -18,10 +18,10 @@
     "admin-article": {
       "js": [
         "/bundles/harentiusblog/build/runtime.6c1a13d3.js",
-        "/bundles/harentiusblog/build/admin-article.9ecc4f14.js"
+        "/bundles/harentiusblog/build/admin-article.7f9a0c29.js"
       ],
       "css": [
-        "/bundles/harentiusblog/build/admin-article.7e407981.css"
+        "/bundles/harentiusblog/build/admin-article.71b2b0dd.css"
       ]
     }
   }

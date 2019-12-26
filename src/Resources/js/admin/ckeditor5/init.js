@@ -22,9 +22,10 @@ import MediaEmbed from '@ckeditor/ckeditor5-media-embed/src/mediaembed';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
-import ReadMore from '../ckeditor5/readmore/ReadMore';
+import ReadMore from './readmore/ReadMore';
+import './style.css';
 
-const initWysiwyg = (selector) => {
+const init = (selector) => {
   document.querySelectorAll(selector).forEach((el) => {
     ClassicEditor.create(el, {
       plugins: [
@@ -54,7 +55,6 @@ const initWysiwyg = (selector) => {
         TableToolbar,
       ],
       language: 'en',
-      height: 700,
       toolbar: {
         items: [
           'bold', 'italic', 'underline', 'strikethrough', '|',
@@ -115,4 +115,4 @@ const initWysiwyg = (selector) => {
   });
 };
 
-export default initWysiwyg;
+export default init;

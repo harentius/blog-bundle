@@ -1,5 +1,5 @@
-import initWysiwyg from './initWysiwyg';
+import init from '../ckeditor5/init';
 
 document.addEventListener('DOMContentLoaded', () => {
-  initWysiwyg('.wysiwyg');
+  init('.wysiwyg');
 });
