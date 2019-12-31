@@ -11,6 +11,8 @@ use Harentius\BlogBundle\SettingsProvider;
 use Symfony\Bridge\Twig\Extension\HttpKernelRuntime;
 use Symfony\Component\HttpKernel\Controller\ControllerReference;
 use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
+use Twig\TwigFunction;
 
 class BlogExtension extends AbstractExtension
 {
@@ -82,12 +84,12 @@ class BlogExtension extends AbstractExtension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('render_cached', [$this, 'renderCached'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('get_setting', [$this, 'getSetting']),
-            new \Twig_SimpleFunction('is_article_liked', [$this, 'isArticleLiked']),
-            new \Twig_SimpleFunction('is_article_disliked', [$this, 'isArticleDisLiked']),
-            new \Twig_SimpleFunction('is_article_rated', [$this, 'isArticleRated']),
-            new \Twig_SimpleFunction('translations_list', [$this, 'translationsList']),
+            new TwigFunction('render_cached', [$this, 'renderCached'], ['is_safe' => ['html']]),
+            new TwigFunction('get_setting', [$this, 'getSetting']),
+            new TwigFunction('is_article_liked', [$this, 'isArticleLiked']),
+            new TwigFunction('is_article_disliked', [$this, 'isArticleDisLiked']),
+            new TwigFunction('is_article_rated', [$this, 'isArticleRated']),
+            new TwigFunction('translations_list', [$this, 'translationsList']),
         ];
     }
 
@@ -97,7 +99,7 @@ class BlogExtension extends AbstractExtension
     public function getFilters()
     {
         return [
-            new \Twig_SimpleFilter('read_more', [$this, 'readMore'], ['is_safe' => ['html']]),
+            new TwigFilter('read_more', [$this, 'readMore'], ['is_safe' => ['html']]),
         ];
     }
 
