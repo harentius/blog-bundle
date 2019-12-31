@@ -24,7 +24,7 @@
   "require": {
     "php": "^7.0",
     "ext-json": "*",
-    "ext-apc": "*",
+    "ext-apcu": "*",
     "symfony/monolog-bundle": "^3.5",
     "symfony/asset": "^4.4",
     "symfony/console": "^4.4",
