@@ -10,9 +10,9 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: Content, label: Articles, show_in_dashboard: true }
         arguments:
-            - null
+            - ~
             - Harentius\BlogBundle\Entity\Article
-            - HarentiusBlogBundle:CRUD
+            - ~
         calls:
             - [ setTranslationDomain, [ 'HarentiusBlogBundle' ] ]
             - [ setTemplate, [ 'edit', 'HarentiusBlogBundle:Admin/CRUD:edit_post.html.twig'] ]
@@ -22,9 +22,9 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: Content, label: Pages, show_in_dashboard: true }
         arguments:
-            - null
+            - ~
             - Harentius\BlogBundle\Entity\Page
-            - HarentiusBlogBundle:CRUD
+            - ~
         calls:
             - [ setTranslationDomain, [ 'HarentiusBlogBundle' ] ]
             - [ setTemplate, [ 'edit', 'HarentiusBlogBundle:Admin/CRUD:edit_post.html.twig' ] ]

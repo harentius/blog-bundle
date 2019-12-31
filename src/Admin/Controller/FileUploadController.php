@@ -25,9 +25,9 @@ class FileUploadController
      * @param Request $request
      * @return JsonResponse
      */
-    public function upload(Request $request): JsonResponse
+    public function __invoke(Request $request): JsonResponse
     {
-        $assetFile = $this->assetsManager->handleUpload($request->files->get('file'));
+        $assetFile = $this->assetsManager->handleUpload($request->files->get('upload'));
 
         return new JsonResponse([
             'uri' => $assetFile->getUri(),

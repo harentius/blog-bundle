@@ -1,13 +1,12 @@
-const path = require('path');
 const Encore = require('@symfony/webpack-encore');
-const CKEditorWebpackPlugin = require('@ckeditor/ckeditor5-dev-webpack-plugin');
-const { styles } = require('@ckeditor/ckeditor5-dev-utils');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const outputPath = process.env.OUTPUT_PATH || 'src/Resources/public/build/';
+const publicPath = '/bundles/harentiusblog/build/';
 
 const config = Encore
   .setOutputPath(outputPath)
-  .setPublicPath('/bundles/harentiusblog/build/')
+  .setPublicPath(publicPath)
   .setManifestKeyPrefix('bundles/harentiusblog/')
   .cleanupOutputBeforeBuild()
   .addEntry('common', './src/Resources/js/common/index.js')
@@ -18,38 +17,25 @@ const config = Encore
   .enableVersioning()
   .enableSingleRuntimeChunk()
   .enablePostCssLoader()
-  .addPlugin(new CKEditorWebpackPlugin({
-    language: 'en',
-  }))
-  .addRule({
-    test: /ckeditor5-[^/\\]+[/\\]theme[/\\]icons[/\\][^/\\]+\.svg$/,
-    loader: 'raw-loader',
-  })
-  .addRule({
-    test: /src\/BlogBundle\/src\/Resources\/js\/admin\/ckeditor5\/readmore\/theme\/readmore\.svg$/,
-    loader: 'raw-loader',
-  })
-  .configureLoaderRule('images', loader => {
-    loader.exclude = [
-      /ckeditor5-[^/\\]+[/\\]theme[/\\]icons[/\\][^/\\]+\.svg$/,
-      /src\/BlogBundle\/src\/Resources\/js\/admin\/ckeditor5\/readmore\/theme\/readmore\.svg$/,
-    ];
-  })
-  .configureLoaderRule('javascript', loader => {
-    loader.include = [
-      path.join(__dirname, './src/BlogBundle/src/Resources/js'),
-      /\/node_modules\/@ckeditor/,
-    ];
-  })
-  .addLoader({
-    test: /ckeditor5-[^/\\]+[/\\]theme[/\\].+\.css$/,
-    loader: 'postcss-loader',
-    options: styles.getPostCssConfig({
-      themeImporter: {
-        themePath: require.resolve('@ckeditor/ckeditor5-theme-lark'),
-      },
-    }),
-  })
+  .addPlugin(new CopyWebpackPlugin([
+    { from: './node_modules/ckeditor4/config.js', to: 'ckeditor4/config.js' },
+    { from: './node_modules/ckeditor4/styles.js', to: 'ckeditor4/styles.js' },
+    { from: './node_modules/ckeditor4/contents.css', to: 'ckeditor4/contents.css' },
+    { from: './node_modules/ckeditor4/skins/moono-lisa', to: 'ckeditor4/skins/moono-lisa' },
+    { from: './node_modules/ckeditor4/lang', to: 'ckeditor4/lang' },
+    { from: './node_modules/ckeditor4/plugins/image2', to: 'ckeditor4/plugins/image2' },
+    { from: './node_modules/ckeditor4/plugins/widget', to: 'ckeditor4/plugins/widget' },
+    { from: './node_modules/ckeditor4/plugins/codesnippet', to: 'ckeditor4/plugins/codesnippet' },
+    { from: './node_modules/ckeditor4/plugins/justify', to: 'ckeditor4/plugins/justify' },
+    { from: './node_modules/ckeditor4/plugins/scayt', to: 'ckeditor4/plugins/scayt' },
+    { from: './node_modules/ckeditor4/plugins/tableselection', to: 'ckeditor4/plugins/tableselection' },
+    { from: './node_modules/ckeditor4/plugins/wsc', to: 'ckeditor4/plugins/wsc' },
+    { from: './node_modules/ckeditor4/plugins/dialog', to: 'ckeditor4/plugins/dialog' },
+    { from: './node_modules/ckeditor-youtube-plugin/youtube', to: 'ckeditor4/plugins/youtube' },
+    { from: './node_modules/ckeditor-wordcount-plugin/wordcount', to: 'ckeditor4/plugins/wordcount' },
+    { from: './node_modules/ckeditor-more-plugin/wpmore', to: 'ckeditor4/plugins/wpmore' },
+    { from: './node_modules/ckeditor-audio-plugin/audio', to: 'ckeditor4/plugins/audio' },
+  ]))
   .getWebpackConfig()
 ;
 

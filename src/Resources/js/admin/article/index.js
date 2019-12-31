@@ -1,4 +1,4 @@
-import init from '../ckeditor5/init';
+import init from '../ckeditor/init';
 
 document.addEventListener('DOMContentLoaded', () => {
   init('.wysiwyg');

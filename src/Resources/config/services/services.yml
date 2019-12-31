@@ -84,15 +84,13 @@ services:
             - '@session'
             - '@doctrine.orm.entity_manager'
 
-    harentius_blog.assets.resolver:
-        class: Harentius\BlogBundle\Assets\Resolver
+    Harentius\BlogBundle\Assets\Resolver:
         arguments:
-             - '%kernel.root_dir%/../public'
+             - '%kernel.project_dir%/public'
 
-    harentius_blog.assets.manager:
-        class: Harentius\BlogBundle\Assets\Manager
+    Harentius\BlogBundle\Assets\Manager:
         arguments:
-            - '@harentius_blog.assets.resolver'
+            - '@Harentius\BlogBundle\Assets\Resolver'
 
     harentius_blog.settings_provider:
         class: Harentius\BlogBundle\SettingsProvider
@@ -125,7 +123,7 @@ services:
             - '@liip_imagine.cache.manager'
             - '@liip_imagine.filter.manager'
             - '@liip_imagine.data.manager'
-            - '@harentius_blog.assets.resolver'
+            - '@Harentius\BlogBundle\Assets\Resolver'
             - '%harentius_blog.articles.image_previews_base_uri%'
 
     harentius_blog.event_listener.admin_user_listener:

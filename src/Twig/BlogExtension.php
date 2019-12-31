@@ -135,7 +135,7 @@ class BlogExtension extends AbstractExtension
      */
     public function readMore($content, $url = null)
     {
-        if (($length = strpos($content, '<p class="read-more">&nbsp;</p>')) !== false) {
+        if (($length = strpos($content, '<!--more-->')) !== false) {
             $content = substr($content, 0, $length);
         }
 

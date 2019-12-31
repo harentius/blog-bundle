@@ -6,7 +6,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\QueryBuilder;
 use Harentius\BlogBundle\Entity\Article;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
-use Sonata\AdminBundle\Route\RouteCollection;
 
 class AbstractPostAdmin extends AbstractAdmin
 {
@@ -51,15 +50,5 @@ class AbstractPostAdmin extends AbstractAdmin
         ;
 
         return $query;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function configureRoutes(RouteCollection $collection)
-    {
-        $collection->add('browse', 'browse/{type}', [], [], [
-            'expose' => true,
-        ]);
     }
 }

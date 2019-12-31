@@ -7,7 +7,15 @@ _sonata_admin:
 
 harentius_blog_admin_file_upload:
     path: /file-upload
-    defaults: { _controller: 'Harentius\BlogBundle\Admin\Controller\FileUploadController::upload' }
+    defaults: { _controller: 'Harentius\BlogBundle\Admin\Controller\FileUploadController' }
+    options:
+        expose: true
+
+harentius_blog_admin_file_browse:
+    path: /file-browse/{type}
+    defaults: { _controller: 'Harentius\BlogBundle\Admin\Controller\FileBrowseController' }
+    requirements:
+        type: (image|audio)
     options:
         expose: true
 

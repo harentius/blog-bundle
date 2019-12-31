@@ -1,0 +1,9 @@
+{% extends 'HarentiusBlogBundle:Admin:ck_browser_popup_base.html.twig' %}
+
+{% block content%}
+    {% for uri, name in files %}
+        <div class="clickable pull-left" onclick="ckEditorChoose('{{ func_num }}', '{{ uri }}')">
+            <img width="300px" src="{{ uri }}" />
+        </div>
+    {% endfor %}
+{% endblock %}
