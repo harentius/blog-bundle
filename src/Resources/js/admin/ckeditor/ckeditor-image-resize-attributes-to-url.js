@@ -17,7 +17,7 @@ window.CKEDITOR.on('instanceReady', (ev) => {
   const targetDir = configReader.get('image_previews_base_uri');
 
   $(editor.document.$).on('mousedown', '.cke_image_resizer', function () {
-    return $resizingImage = $(this).closest('.cke_widget_wrapper').find('img[data-cke-saved-src]');
+    $resizingImage = $(this).closest('.cke_widget_wrapper').find('img[data-cke-saved-src]');
   });
 
   $(editor.document.$).on('mouseup', () => {
@@ -37,6 +37,6 @@ window.CKEDITOR.on('instanceReady', (ev) => {
     $resizingImage.attr('data-cke-saved-src', src);
     $resizingImage.attr('src', src);
 
-    return $resizingImage = null;
+    $resizingImage = null;
   });
 });
