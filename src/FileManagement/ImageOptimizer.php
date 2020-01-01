@@ -1,6 +1,6 @@
 <?php
 
-namespace Harentius\BlogBundle;
+namespace Harentius\BlogBundle\FileManagement;
 
 use Harentius\BlogBundle\Assets\AssetFile;
 use Harentius\BlogBundle\Assets\Resolver;

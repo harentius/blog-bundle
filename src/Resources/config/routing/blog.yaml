@@ -54,4 +54,4 @@ harentius_blog_rate:
 
 harentius_blog_resize:
     path: '%harentius_blog.articles.image_previews_base_uri%{imageName}'
-    defaults: { _controller: 'HarentiusBlogBundle:ImageOptimization:resize' }
+    defaults: { _controller: 'Harentius\BlogBundle\Controller\ImageOptimizationController' }

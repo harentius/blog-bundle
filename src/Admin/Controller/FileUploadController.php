@@ -30,7 +30,8 @@ class FileUploadController
         $assetFile = $this->assetsManager->handleUpload($request->files->get('upload'));
 
         return new JsonResponse([
-            'uri' => $assetFile->getUri(),
+            'url' => $assetFile->getUri(),
+            'uploaded' => true,
         ]);
     }
 }

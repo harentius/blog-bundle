@@ -117,8 +117,7 @@ services:
             - '%harentius_blog.cache.statistics_cache_lifetime%'
             - '@harentius_blog.entity.article_repository'
 
-    harentius_blog.image_optimizer:
-        class: Harentius\BlogBundle\ImageOptimizer
+    Harentius\BlogBundle\FileManagement\ImageOptimizer:
         arguments:
             - '@liip_imagine.cache.manager'
             - '@liip_imagine.filter.manager'
