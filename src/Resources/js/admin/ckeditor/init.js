@@ -1,5 +1,6 @@
 import './loader';
 import 'ckeditor4';
+import './ckeditor-image-resize-attributes-to-url';
 
 const init = (selector) => {
   document.querySelectorAll(selector).forEach((el) => {
