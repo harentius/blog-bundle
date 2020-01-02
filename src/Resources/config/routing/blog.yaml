@@ -22,13 +22,13 @@ harentius_blog_tag:
 
 harentius_blog_archive_year:
     path: /{year}/
-    defaults: { _controller: 'HarentiusBlogBundle:Blog:archive' }
+    defaults: { _controller: 'Harentius\BlogBundle\Controller\ArchiveController' }
     requirements:
         year: '\d+'
 
 harentius_blog_archive_month:
     path: /{year}/{month}/
-    defaults: { _controller: 'HarentiusBlogBundle:Blog:archive' }
+    defaults: { _controller: 'Harentius\BlogBundle\Controller\ArchiveController' }
     requirements:
         year: '\d+'
         month: '\d+'

@@ -51,6 +51,21 @@ class BreadCrumbsManager
         $this->prependHomepage();
     }
 
+    /**
+     * @param string $year
+     * @param string|null $month
+     */
+    public function buildArchive(string $year, ?string $month = null): void
+    {
+        $this->breadcrumbs->addItem($year, $this->urlGenerator->generate('harentius_blog_archive_year', ['year' => $year]));
+
+        if ($month) {
+            $this->breadcrumbs->addItem($month);
+        }
+
+        $this->prependHomepage();
+    }
+
     private function prependHomepage(): void
     {
         $this->breadcrumbs->prependItem('Homepage', $this->urlGenerator->generate('harentius_blog_homepage'));

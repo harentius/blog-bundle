@@ -3,10 +3,10 @@
 namespace Harentius\BlogBundle\Controller;
 
 use Harentius\BlogBundle\Entity\Category;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
-class SidebarController extends Controller
+class SidebarController extends AbstractController
 {
     /**
      * @param bool $showNumber

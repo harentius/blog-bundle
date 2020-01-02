@@ -6,5 +6,6 @@ services:
     Harentius\BlogBundle\Controller\FeedController: ~
     Harentius\BlogBundle\Controller\CategoryController: ~
     Harentius\BlogBundle\Controller\TagController: ~
+    Harentius\BlogBundle\Controller\ArchiveController: ~
     Harentius\BlogBundle\Controller\RateController: ~
     Harentius\BlogBundle\Controller\ImageOptimizationController: ~

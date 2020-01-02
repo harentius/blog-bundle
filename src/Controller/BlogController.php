@@ -2,16 +2,15 @@
 
 namespace Harentius\BlogBundle\Controller;
 
-use Harentius\BlogBundle\Entity\Article;
 use Harentius\BlogBundle\Entity\Category;
 use Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination;
 use Knp\Component\Pager\PaginatorInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs;
 
-class BlogController extends Controller
+class BlogController extends AbstractController
 {
     /**
      * @param Request $request
@@ -32,37 +31,6 @@ class BlogController extends Controller
             'articles' => $paginator,
             'hasToPaginate' => $paginator->getPageCount() > 1,
             'noIndex' => $currentPageNumber > 1,
-        ]);
-    }
-
-    /**
-     * @param Request $request
-     * @param string $year
-     * @param null|string $month
-     * @return Response
-     */
-    public function archiveAction(Request $request, $year, $month = null)
-    {
-        $articlesRepository = $this->getDoctrine()->getRepository('HarentiusBlogBundle:Article');
-
-        $breadcrumbs = $this->get('white_october_breadcrumbs');
-        $breadcrumbs->addItem('Homepage', $this->generateUrl('harentius_blog_homepage'));
-        $breadcrumbs->addItem($year, $this->generateUrl('harentius_blog_archive_year', ['year' => $year]));
-
-        $articlesQuery = $articlesRepository->findPublishedByYearMonthQuery($year, $month);
-        $paginator = $this->knpPaginate($request, $articlesQuery);
-
-        if ($month) {
-            $month = $this->numberToMonth($month, $request->getLocale());
-            $breadcrumbs->addItem($month);
-        }
-
-        return $this->render('@HarentiusBlog/Blog/list.html.twig', [
-            'articles' => $paginator,
-            'year' => $year,
-            'month' => $month,
-            'noIndex' => true,
-            'hasToPaginate' => $paginator->getPageCount() > 1,
         ]);
     }
 
@@ -99,16 +67,6 @@ class BlogController extends Controller
         return $this->render(sprintf('@HarentiusBlog/Blog/show_%s.html.twig', $type), [
             'entity' => $entity,
         ]);
-    }
-
-    /**
-     * @param Article $article
-     * @param string $type
-     * @return Response
-     */
-    public function rateAction(Article $article, $type = 'like')
-    {
-        return $this->get('harentius_blog.rating')->rate(new Response(), $article, $type);
     }
 
     /**
@@ -159,25 +117,5 @@ class BlogController extends Controller
         $pagination = $paginator->paginate($target, $page, $maxResults, $options);
 
         return $pagination;
-    }
-
-    /**
-     * @param string $number
-     * @param string $locale
-     * @return string
-     */
-    private function numberToMonth($number, $locale)
-    {
-        $dateTime = \DateTime::createFromFormat('!m', $number);
-        $formatter = \IntlDateFormatter::create(
-            $locale,
-            \IntlDateFormatter::NONE,
-            \IntlDateFormatter::NONE,
-            $dateTime->getTimezone()->getName(),
-            null,
-            'LLLL'
-        );
-
-        return mb_convert_case($formatter->format($dateTime), MB_CASE_TITLE, 'UTF-8');
     }
 }
