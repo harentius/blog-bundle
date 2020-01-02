@@ -1,6 +1,8 @@
 {
   "bundles/harentiusblog/admin-article.js": "/bundles/harentiusblog/build/admin-article.14048c68.js",
   "bundles/harentiusblog/article.js": "/bundles/harentiusblog/build/article.5cb02bd6.js",
+  "bundles/harentiusblog/ckeditor-browse.css": "/bundles/harentiusblog/build/ckeditor-browse.40e350f9.css",
+  "bundles/harentiusblog/ckeditor-browse.js": "/bundles/harentiusblog/build/ckeditor-browse.04bae877.js",
   "bundles/harentiusblog/common.css": "/bundles/harentiusblog/build/common.a612a67c.css",
   "bundles/harentiusblog/common.js": "/bundles/harentiusblog/build/common.162fcb83.js",
   "bundles/harentiusblog/runtime.js": "/bundles/harentiusblog/build/runtime.6c1a13d3.js",
@@ -396,6 +398,7 @@
   "bundles/harentiusblog/fonts/fontawesome-webfont.woff2": "/bundles/harentiusblog/build/fonts/fontawesome-webfont.af7ae505.woff2",
   "bundles/harentiusblog/fonts/fontawesome-webfont.ttf": "/bundles/harentiusblog/build/fonts/fontawesome-webfont.b06871f2.ttf",
   "bundles/harentiusblog/fonts/fontawesome-webfont.woff": "/bundles/harentiusblog/build/fonts/fontawesome-webfont.fee66e71.woff",
+  "bundles/harentiusblog/images/audio.png": "/bundles/harentiusblog/build/images/audio.397f4ea6.png",
   "bundles/harentiusblog/images/fontawesome-webfont.svg": "/bundles/harentiusblog/build/images/fontawesome-webfont.912ec66d.svg",
   "bundles/harentiusblog/images/images_frontend.png": "/bundles/harentiusblog/build/images/images_frontend.7c1b5bae.png"
 }

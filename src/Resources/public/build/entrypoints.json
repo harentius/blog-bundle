@@ -20,6 +20,15 @@
         "/bundles/harentiusblog/build/runtime.6c1a13d3.js",
         "/bundles/harentiusblog/build/admin-article.14048c68.js"
       ]
+    },
+    "ckeditor-browse": {
+      "js": [
+        "/bundles/harentiusblog/build/runtime.6c1a13d3.js",
+        "/bundles/harentiusblog/build/ckeditor-browse.04bae877.js"
+      ],
+      "css": [
+        "/bundles/harentiusblog/build/ckeditor-browse.40e350f9.css"
+      ]
     }
   }
 }

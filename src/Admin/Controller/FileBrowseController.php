@@ -54,7 +54,7 @@ class FileBrowseController extends AbstractController
             }
         }
 
-        return $this->render(sprintf('@HarentiusBlog/Admin/ck_browse_%ss.html.twig', $type), [
+        return $this->render(sprintf('@HarentiusBlog/Admin/ckeditor/ck_browse_%ss.html.twig', $type), [
             'func_num' => $request->query->get('CKEditorFuncNum'),
             'files' => $files,
         ]);

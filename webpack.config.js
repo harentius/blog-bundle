@@ -12,6 +12,7 @@ const config = Encore
   .addEntry('common', './src/Resources/js/common/index.js')
   .addEntry('article', './src/Resources/js/article/index.js')
   .addEntry('admin-article', './src/Resources/js/admin/article/index.js')
+  .addEntry('ckeditor-browse', './src/Resources/css/ckeditor-browse.scss')
   .enableSassLoader()
   .enableReactPreset()
   .enableVersioning()
