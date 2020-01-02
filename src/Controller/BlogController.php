@@ -86,19 +86,6 @@ class BlogController extends AbstractController
     /**
      * @param Request $request
      * @param mixed $target
-     * @param array $options
-     * @return SlidingPagination
-     */
-    private function knpPaginate(Request $request, $target, array $options = [])
-    {
-        $maxResults = $this->getParameter('harentius_blog.list.posts_per_page');
-
-        return $this->knpPaginateCustomPerPage($request, $target, $maxResults, $options);
-    }
-
-    /**
-     * @param Request $request
-     * @param mixed $target
      * @param $maxResults
      * @param array $options
      * @return SlidingPagination
