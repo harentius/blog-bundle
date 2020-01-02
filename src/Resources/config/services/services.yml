@@ -84,13 +84,11 @@ services:
             - '@session'
             - '@doctrine.orm.entity_manager'
 
-    Harentius\BlogBundle\Assets\Resolver:
+    Harentius\BlogBundle\FileManagement\FilePathResolver:
         arguments:
-             - '%kernel.project_dir%/public'
+            $webDir: '%kernel.project_dir%/public'
 
-    Harentius\BlogBundle\Assets\Manager:
-        arguments:
-            - '@Harentius\BlogBundle\Assets\Resolver'
+    Harentius\BlogBundle\FileManagement\FileManager: ~
 
     harentius_blog.settings_provider:
         class: Harentius\BlogBundle\SettingsProvider
@@ -117,12 +115,12 @@ services:
             - '%harentius_blog.cache.statistics_cache_lifetime%'
             - '@harentius_blog.entity.article_repository'
 
-    Harentius\BlogBundle\FileManagement\ImageOptimizer:
+    Harentius\BlogBundle\FileManagement\Image\ImageOptimizer:
         arguments:
             - '@liip_imagine.cache.manager'
             - '@liip_imagine.filter.manager'
             - '@liip_imagine.data.manager'
-            - '@Harentius\BlogBundle\Assets\Resolver'
+            - '@Harentius\BlogBundle\FileManagement\FilePathResolver'
             - '%harentius_blog.articles.image_previews_base_uri%'
 
     harentius_blog.event_listener.admin_user_listener:
