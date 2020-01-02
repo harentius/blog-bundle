@@ -56,7 +56,8 @@
   },
   "require-dev": {
     "phpunit/phpunit": "~6.5",
-    "bamarni/composer-bin-plugin": "^1.3"
+    "bamarni/composer-bin-plugin": "^1.3",
+    "phpstan/phpstan": "^0.12.3"
   },
   "extra": {
     "bamarni-bin": {
@@ -65,6 +66,7 @@
   },
   "scripts": {
     "cs-check": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix --dry-run --diff -v --diff-format=udiff --ansi",
-    "cs-fix": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix --diff -v --diff-format=udiff --ansi"
+    "cs-fix": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix --diff -v --diff-format=udiff --ansi",
+    "phpstan": "vendor/bin/phpstan analyse src --memory-limit=768M --level=1"
   }
 }

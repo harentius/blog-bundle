@@ -2,7 +2,7 @@
 
 namespace Harentius\BlogBundle\Admin\Controller;
 
-use Harentius\BlogBundle\Assets\Resolver;
+use Harentius\BlogBundle\FileManagement\FilePathResolver;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
@@ -12,15 +12,15 @@ use Symfony\Component\HttpFoundation\Response;
 class FileBrowseController extends AbstractController
 {
     /**
-     * @var Resolver
+     * @var FilePathResolver
      */
     private $assetsResolver;
 
     /**
      * FileBrowseController constructor.
-     * @param Resolver $assetsResolver
+     * @param FilePathResolver $assetsResolver
      */
-    public function __construct(Resolver $assetsResolver)
+    public function __construct(FilePathResolver $assetsResolver)
     {
         $this->assetsResolver = $assetsResolver;
     }

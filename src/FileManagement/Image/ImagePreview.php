@@ -1,6 +1,6 @@
 <?php
 
-namespace Harentius\BlogBundle\Data;
+namespace Harentius\BlogBundle\FileManagement\Image;
 
 class ImagePreview
 {

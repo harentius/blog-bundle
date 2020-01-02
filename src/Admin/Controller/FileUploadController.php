@@ -2,21 +2,21 @@
 
 namespace Harentius\BlogBundle\Admin\Controller;
 
-use Harentius\BlogBundle\Assets\Manager;
+use Harentius\BlogBundle\FileManagement\FileManager;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class FileUploadController
 {
     /**
-     * @var Manager
+     * @var FileManager
      */
     private $assetsManager;
 
     /**
-     * @param Manager $assetsManager
+     * @param FileManager $assetsManager
      */
-    public function __construct(Manager $assetsManager)
+    public function __construct(FileManager $assetsManager)
     {
         $this->assetsManager = $assetsManager;
     }

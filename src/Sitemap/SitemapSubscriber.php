@@ -84,7 +84,7 @@ class SitemapSubscriber implements EventSubscriberInterface
         );
 
         // Pages
-        $pages = $this->pageRepository->findPublishedNotSlugOrdered($this->homepageSlug);
+        $pages = $this->pageRepository->findForMainMenu($this->homepageSlug);
 
         foreach ($pages as $page) {
             $event->getGenerator()->addUrl(

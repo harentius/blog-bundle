@@ -28,7 +28,6 @@ class AbstractPostAdmin extends AbstractAdmin
         /** @var Article $object */
         /** @var EntityManagerInterface $em */
         $em = $this->getConfigurationPool()->getContainer()->get('doctrine.orm.entity_manager');
-        /** @var array $storedArticle */
         $originalArticleData = $em->getUnitOfWork()->getOriginalEntityData($object);
 
         if (!$originalArticleData['published'] && $object->isPublished() && !$object->getPublishedAt()) {

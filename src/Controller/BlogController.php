@@ -4,6 +4,7 @@ namespace Harentius\BlogBundle\Controller;
 
 use Harentius\BlogBundle\Entity\Article;
 use Harentius\BlogBundle\Entity\Category;
+use Harentius\BlogBundle\Entity\Tag;
 use Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -52,7 +53,7 @@ class BlogController extends Controller
 
         switch ($filtrationType) {
             case self::FILTRATION_TYPE_TAG:
-                $tag = $this->getDoctrine()->getRepository('HarentiusBlogBundle:Tag')
+                $tag = $this->getDoctrine()->getRepository(Tag::class)
                     ->findOneBy(['slug' => $slug])
                 ;
 

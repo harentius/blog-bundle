@@ -7,6 +7,12 @@ use Gedmo\Tool\Wrapper\EntityWrapper;
 use Gedmo\Translatable\Entity\Repository\TranslationRepository as BaseTranslationRepository;
 use Gedmo\Translatable\TranslatableListener;
 
+/**
+ * @method Translation|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Translation|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Translation[] findAll()
+ * @method Translation[] findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ */
 class TranslationRepository extends BaseTranslationRepository
 {
     /**

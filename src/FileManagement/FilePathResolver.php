@@ -1,8 +1,8 @@
 <?php
 
-namespace Harentius\BlogBundle\Assets;
+namespace Harentius\BlogBundle\FileManagement;
 
-class Resolver
+class FilePathResolver
 {
     /**
      * @var string

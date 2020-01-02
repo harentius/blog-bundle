@@ -2,7 +2,7 @@
 
 namespace Harentius\BlogBundle\Controller;
 
-use Harentius\BlogBundle\FileManagement\ImageOptimizer;
+use Harentius\BlogBundle\FileManagement\Image\ImageOptimizer;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;

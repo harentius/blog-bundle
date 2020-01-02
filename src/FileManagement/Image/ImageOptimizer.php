@@ -1,10 +1,9 @@
 <?php
 
-namespace Harentius\BlogBundle\FileManagement;
+namespace Harentius\BlogBundle\FileManagement\Image;
 
-use Harentius\BlogBundle\Assets\AssetFile;
-use Harentius\BlogBundle\Assets\Resolver;
-use Harentius\BlogBundle\Data\ImagePreview;
+use Harentius\BlogBundle\FileManagement\AssetFile;
+use Harentius\BlogBundle\FileManagement\FilePathResolver;
 use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 use Liip\ImagineBundle\Imagine\Data\DataManager;
 use Liip\ImagineBundle\Imagine\Filter\FilterManager;
@@ -27,7 +26,7 @@ class ImageOptimizer
     private $dataManager;
 
     /**
-     * @var Resolver
+     * @var FilePathResolver
      */
     private $assetsResolver;
 
@@ -40,14 +39,14 @@ class ImageOptimizer
      * @param CacheManager $cacheManager
      * @param FilterManager $filterManager
      * @param DataManager $dataManager
-     * @param Resolver $assetsResolver
+     * @param FilePathResolver $assetsResolver
      * @param string $targetBasePath
      */
     public function __construct(
         CacheManager $cacheManager,
         FilterManager $filterManager,
         DataManager $dataManager,
-        Resolver $assetsResolver,
+        FilePathResolver $assetsResolver,
         $targetBasePath
     ) {
         $this->cacheManager = $cacheManager;

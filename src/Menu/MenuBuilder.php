@@ -62,7 +62,7 @@ class MenuBuilder
 
         /** @var Page[] $pages */
         $pages = $this->em->getRepository('HarentiusBlogBundle:Page')
-            ->findPublishedNotSlugOrdered($this->homepageSlug)
+            ->findForMainMenu($this->homepageSlug)
         ;
 
         foreach ($pages as $page) {

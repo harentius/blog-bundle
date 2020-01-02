@@ -1,6 +1,6 @@
 <?php
 
-namespace Harentius\BlogBundle\Assets;
+namespace Harentius\BlogBundle\FileManagement;
 
 use Symfony\Component\HttpFoundation\File\File;
 

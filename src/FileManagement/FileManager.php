@@ -1,22 +1,22 @@
 <?php
 
-namespace Harentius\BlogBundle\Assets;
+namespace Harentius\BlogBundle\FileManagement;
 
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class Manager
+class FileManager
 {
     /**
-     * @var Resolver
+     * @var FilePathResolver
      */
     private $assetsResolver;
 
     /**
-     * @param Resolver $assetsResolver
+     * @param FilePathResolver $assetsResolver
      */
-    public function __construct(Resolver $assetsResolver)
+    public function __construct(FilePathResolver $assetsResolver)
     {
         $this->assetsResolver = $assetsResolver;
     }
