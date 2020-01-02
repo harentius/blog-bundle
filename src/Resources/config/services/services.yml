@@ -8,22 +8,16 @@ services:
         public: false
         autowire: true
 
-    twig.extension.intl:
-        class: Twig_Extensions_Extension_Intl
+    Twig\Extensions\IntlExtension:
         tags:
             - { name: twig.extension }
 
-    harentius_blog.menu.menu_builder:
-        class:  Harentius\BlogBundle\Menu\MenuBuilder
+    Harentius\BlogBundle\Menu\MenuBuilder:
         arguments:
-            - '@knp_menu.factory'
-            - '@doctrine.orm.entity_manager'
-            - '@harentius_blog.router.publication_url_generator'
-            - '%harentius_blog.homepage.page_slug%'
+            $homepageSlug: '%harentius_blog.homepage.page_slug%'
 
-    harentius_blog.menu.main:
-        class: Knp\Menu\MenuItem
-        factory: ['@harentius_blog.menu.menu_builder', 'createMainMenu']
+    Knp\Menu\MenuItem:
+        factory: ['@Harentius\BlogBundle\Menu\MenuBuilder', 'createMainMenu']
         tags:
             - { name: knp_menu.menu, alias: main }
 
@@ -43,10 +37,7 @@ services:
         tags:
             - { name: twig.extension }
 
-    harentius_blog.twig.publication_url_generator_extension:
-        class: Harentius\BlogBundle\Twig\PublicationUrlGeneratorExtension
-        arguments:
-            - '@harentius_blog.router.publication_url_generator'
+    Harentius\BlogBundle\Twig\PublicationUrlGeneratorExtension:
         tags:
             - { name: twig.extension }
 
@@ -123,19 +114,14 @@ services:
             - '@Harentius\BlogBundle\FileManagement\FilePathResolver'
             - '%harentius_blog.articles.image_previews_base_uri%'
 
-    harentius_blog.event_listener.admin_user_listener:
-        class: Harentius\BlogBundle\EventListener\AdminUserListener
+    Harentius\BlogBundle\EventListener\AdminUserListener:
         arguments:
             - '@security.password_encoder'
         tags:
             - { name: doctrine.event_listener, event: prePersist }
             - { name: doctrine.event_listener, event: preUpdate }
 
-    harentius_blog.router.publication_url_generator:
-        class: Harentius\BlogBundle\Router\PublicationUrlGenerator
-        arguments:
-            - '@request_stack'
-            - '@router'
+    Harentius\BlogBundle\Router\PublicationUrlGenerator: ~
 
     Harentius\BlogBundle\BreadCrumbsManager: ~
 

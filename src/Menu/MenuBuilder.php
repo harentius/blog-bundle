@@ -24,6 +24,7 @@ class MenuBuilder
      * @var string
      */
     private $homepageSlug;
+
     /**
      * @var PublicationUrlGenerator
      */
