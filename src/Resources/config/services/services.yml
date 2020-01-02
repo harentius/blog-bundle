@@ -32,7 +32,7 @@ services:
             - '@Harentius\BlogBundle\Rating'
             - '@harentius_blog.settings_provider'
             - '%harentius_blog.sidebar.cache_lifetime%'
-            - '@harentius_blog.entity.translation'
+            - '@Harentius\BlogBundle\Entity\TranslationRepository'
             - '%harentius_blog.primary_locale%'
         tags:
             - { name: twig.extension }
@@ -45,7 +45,7 @@ services:
         public: true
         class: Harentius\BlogBundle\Sidebar\Tags
         arguments:
-            - '@harentius_blog.entity.tag_repository'
+            - '@Harentius\BlogBundle\Entity\TagRepository'
             - '%harentius_blog.sidebar.tags_limit%'
             - '%harentius_blog.sidebar.tag_sizes%'
 
@@ -53,14 +53,14 @@ services:
         class: Harentius\BlogBundle\Sidebar\Archive
         public: true
         arguments:
-            - '@harentius_blog.entity.article_repository'
+            - '@Harentius\BlogBundle\Entity\ArticleRepository'
 
     harentius_blog.homepage:
         class: Harentius\BlogBundle\Homepage
         public: true
         arguments:
-            - '@harentius_blog.entity.article_repository'
-            - '@harentius_blog.entity.page_repository'
+            - '@Harentius\BlogBundle\Entity\ArticleRepository'
+            - '@Harentius\BlogBundle\Entity\PageRepository'
             - '%harentius_blog.homepage.feed.category%'
             - '%harentius_blog.homepage.page_slug%'
 
@@ -84,7 +84,7 @@ services:
     harentius_blog.settings_provider:
         class: Harentius\BlogBundle\SettingsProvider
         arguments:
-             - '@harentius_blog.entity.setting_repository'
+             - '@Harentius\BlogBundle\Entity\SettingRepository'
              - '@harentius_blog.settings.cache'
 
     harentius_blog.event_listener.sitemap_listener:
@@ -92,9 +92,9 @@ services:
         arguments:
             - '@router'
             - '@harentius_blog.homepage'
-            - '@harentius_blog.entity.article_repository'
-            - '@harentius_blog.entity.page_repository'
-            - '@harentius_blog.entity.category_repository'
+            - '@Harentius\BlogBundle\Entity\ArticleRepository'
+            - '@Harentius\BlogBundle\Entity\PageRepository'
+            - '@Harentius\BlogBundle\Entity\CategoryRepository'
             - '%harentius_blog.homepage.page_slug%'
         tags:
             - { name: "kernel.event_subscriber", priority: 100 }
@@ -104,7 +104,7 @@ services:
         arguments:
             - '@harentius_blog.statistics_cache'
             - '%harentius_blog.cache.statistics_cache_lifetime%'
-            - '@harentius_blog.entity.article_repository'
+            - '@Harentius\BlogBundle\Entity\ArticleRepository'
 
     Harentius\BlogBundle\FileManagement\Image\ImageOptimizer:
         arguments:
@@ -122,7 +122,6 @@ services:
             - { name: doctrine.event_listener, event: preUpdate }
 
     Harentius\BlogBundle\Router\PublicationUrlGenerator: ~
-
     Harentius\BlogBundle\BreadCrumbsManager: ~
 
     Harentius\BlogBundle\Paginator:

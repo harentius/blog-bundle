@@ -12,13 +12,13 @@ harentius_blog_page_about:
 
 harentius_blog_category:
     path: /category/{slug}/
-    defaults: { _controller: 'Harentius\BlogBundle\Controller\CategoryController::category' }
+    defaults: { _controller: 'Harentius\BlogBundle\Controller\CategoryController' }
     requirements:
         slug: '.*'
 
 harentius_blog_tag:
     path: /tag/{slug}/
-    defaults: { _controller: 'HarentiusBlogBundle:Blog:list', filtrationType: 'tag' }
+    defaults: { _controller: 'Harentius\BlogBundle\Controller\TagController' }
 
 harentius_blog_archive_year:
     path: /{year}/

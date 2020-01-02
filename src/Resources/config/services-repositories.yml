@@ -3,32 +3,27 @@ services:
     _defaults:
         public: false
 
-    harentius_blog.entity.article_repository:
-        class: Harentius\BlogBundle\Entity\ArticleRepository
+    Harentius\BlogBundle\Entity\ArticleRepository:
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments: [ HarentiusBlogBundle:Article ]
 
-    harentius_blog.entity.page_repository:
+    Harentius\BlogBundle\Entity\PageRepository:
         class: Harentius\BlogBundle\Entity\PageRepository
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments: [ HarentiusBlogBundle:Page ]
 
-    harentius_blog.entity.category_repository:
-        class: Harentius\BlogBundle\Entity\CategoryRepository
+    Harentius\BlogBundle\Entity\CategoryRepository:
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments: [ HarentiusBlogBundle:Category ]
 
-    harentius_blog.entity.tag_repository:
-        class: Harentius\BlogBundle\Entity\TagRepository
+    Harentius\BlogBundle\Entity\TagRepository:
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments: [ HarentiusBlogBundle:Tag ]
 
-    harentius_blog.entity.setting_repository:
-        class: Harentius\BlogBundle\Entity\SettingRepository
+    Harentius\BlogBundle\Entity\SettingRepository:
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments: [ HarentiusBlogBundle:Setting ]
 
-    harentius_blog.entity.translation:
-        class: Harentius\BlogBundle\Entity\TranslationRepository
+    Harentius\BlogBundle\Entity\TranslationRepository:
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments: [ HarentiusBlogBundle:Translation ]

@@ -3,16 +3,8 @@ services:
         public: true
         autowire: true
 
-    Harentius\BlogBundle\Controller\FeedController:
-        arguments:
-            $articleRepository: '@harentius_blog.entity.article_repository'
-
-
-    Harentius\BlogBundle\Controller\CategoryController:
-        arguments:
-            $articleRepository: '@harentius_blog.entity.article_repository'
-            $categoryRepository: '@harentius_blog.entity.category_repository'
-
+    Harentius\BlogBundle\Controller\FeedController: ~
+    Harentius\BlogBundle\Controller\CategoryController: ~
+    Harentius\BlogBundle\Controller\TagController: ~
     Harentius\BlogBundle\Controller\RateController: ~
-
     Harentius\BlogBundle\Controller\ImageOptimizationController: ~
