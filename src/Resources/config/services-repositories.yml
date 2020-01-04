@@ -31,3 +31,7 @@ services:
     Harentius\BlogBundle\Entity\AbstractPostRepository:
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments: [ HarentiusBlogBundle:AbstractPost ]
+
+    Harentius\BlogBundle\Entity\AdminUserRepository:
+        factory: ['@doctrine.orm.entity_manager', getRepository]
+        arguments: [ HarentiusBlogBundle:AdminUser ]
