@@ -29,7 +29,7 @@ class ImageOptimizationController
      * @param string $imageName
      * @return Response
      */
-    public function __invoke($imageName)
+    public function __invoke($imageName): Response
     {
         try {
             $imagePath = $this->imageOptimizer->createPreviewIfNotExists($imageName);

@@ -49,7 +49,7 @@ class ArchiveController extends AbstractController
      * @param null|string $month
      * @return Response
      */
-    public function __invoke(Request $request, string $year, ?string $month = null)
+    public function __invoke(Request $request, string $year, ?string $month = null): Response
     {
         $humanizedMonth = null;
 

@@ -13,28 +13,6 @@ use WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs;
 class BlogController extends AbstractController
 {
     /**
-     * @param Request $request
-     * @return Response
-     */
-    public function indexAction(Request $request)
-    {
-        $homepage = $this->get('harentius_blog.homepage');
-        $paginator = $this->knpPaginateCustomPerPage(
-            $request,
-            $homepage->getFeed(),
-            $this->getParameter('harentius_blog.homepage.feed.number')
-        );
-        $currentPageNumber = $paginator->getCurrentPageNumber();
-
-        return $this->render('@HarentiusBlog/Blog/index.html.twig', [
-            'page' => $currentPageNumber === 1 ? $homepage->getPage() : null,
-            'articles' => $paginator,
-            'hasToPaginate' => $paginator->getPageCount() > 1,
-            'noIndex' => $currentPageNumber > 1,
-        ]);
-    }
-
-    /**
      * @param string $slug
      * @return Response
      */
@@ -81,28 +59,5 @@ class BlogController extends AbstractController
                 $this->generateUrl('harentius_blog_category', ['slug' => $category->getSlugWithParents()])
             );
         } while ($category = $category->getParent());
-    }
-
-    /**
-     * @param Request $request
-     * @param mixed $target
-     * @param $maxResults
-     * @param array $options
-     * @return SlidingPagination
-     */
-    private function knpPaginateCustomPerPage(Request $request, $target, $maxResults, array $options = [])
-    {
-        /** @var Controller $this */
-        if (!isset($options['pageParameterName'])) {
-            $options['pageParameterName'] = 'page';
-        }
-
-        /** @var PaginatorInterface $paginator */
-        $paginator = $this->get('knp_paginator');
-        $page = max(1, (int) $request->query->get($options['pageParameterName'], 1));
-        /** @var SlidingPagination $pagination */
-        $pagination = $paginator->paginate($target, $page, $maxResults, $options);
-
-        return $pagination;
     }
 }

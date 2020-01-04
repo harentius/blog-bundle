@@ -12,7 +12,7 @@ class SidebarController extends AbstractController
      * @param bool $showNumber
      * @return Response
      */
-    public function categoriesAction($showNumber = true)
+    public function categoriesAction($showNumber = true): Response
     {
         return $this->render('@HarentiusBlog/Sidebar/categories.html.twig', [
             'categories' => $this->getDoctrine()->getRepository(Category::class)->notEmptyChildrenHierarchy([
@@ -36,7 +36,7 @@ class SidebarController extends AbstractController
     /**
      * @return Response
      */
-    public function archiveAction()
+    public function archiveAction(): Response
     {
         return $this->render('@HarentiusBlog/Sidebar/archive.html.twig', [
             'archivesList' => $this->get('harentius_blog.sidebar.archive')->getList(),
@@ -46,7 +46,7 @@ class SidebarController extends AbstractController
     /**
      * @return Response
      */
-    public function tagsAction()
+    public function tagsAction(): Response
     {
         return $this->render('@HarentiusBlog/Sidebar/tags.html.twig', [
             'tags' => $this->get('harentius_blog.sidebar.tags')->getList(),

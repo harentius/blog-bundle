@@ -2,6 +2,7 @@
 
 namespace Harentius\BlogBundle\DependencyInjection;
 
+use Harentius\BlogBundle\Twig\BlogExtension;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
@@ -22,7 +23,7 @@ class HarentiusBlogExtension extends Extension
         $loader->load('services-repositories.yml');
         $loader->load('services-cache.yml');
 
-        $twigExtensionDefinition = $container->getDefinition('harentius_blog.twig.blog_extension');
+        $twigExtensionDefinition = $container->getDefinition(BlogExtension::class);
         $cacheService = ($config['sidebar']['cache_lifetime'] === null)
             ? 'harentius_blog.array_cache'
             : 'harentius_blog.sidebar.cache'

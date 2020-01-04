@@ -1,0 +1,24 @@
+services:
+    _defaults:
+        public: false
+        autowire: true
+
+    Twig\Extensions\IntlExtension:
+        tags:
+            - { name: twig.extension }
+
+    Harentius\BlogBundle\Twig\BlogExtension:
+        arguments:
+            - '@twig.runtime.httpkernel'
+            - ~
+            - '@Harentius\BlogBundle\Rating'
+            - '@harentius_blog.settings_provider'
+            - '%harentius_blog.sidebar.cache_lifetime%'
+            - '@Harentius\BlogBundle\Entity\TranslationRepository'
+            - '%harentius_blog.primary_locale%'
+        tags:
+            - { name: twig.extension }
+
+    Harentius\BlogBundle\Twig\PublicationUrlGeneratorExtension:
+        tags:
+            - { name: twig.extension }

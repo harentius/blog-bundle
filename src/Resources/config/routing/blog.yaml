@@ -1,10 +1,10 @@
 harentius_blog_homepage:
     path: /
-    defaults: { _controller: 'HarentiusBlogBundle:Blog:index' }
+    defaults: { _controller: 'Harentius\BlogBundle\Controller\HomepageController' }
 
 harentius_blog_feed:
     path: /feed
-    defaults: { _controller: 'Harentius\BlogBundle\Controller\FeedController::feed' }
+    defaults: { _controller: 'Harentius\BlogBundle\Controller\FeedController' }
 
 harentius_blog_page_about:
     path: /about
@@ -45,7 +45,7 @@ harentius_blog_show:
 
 harentius_blog_rate:
     path: /like/{article}/{type}
-    defaults: { _controller: 'Harentius\BlogBundle\Controller\RateController::rate', type: 'like' }
+    defaults: { _controller: 'Harentius\BlogBundle\Controller\RateController', type: 'like' }
     methods:  [POST]
     requirements:
         type: like|dislike

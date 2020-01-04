@@ -23,6 +23,10 @@ class RateController extends AbstractController
      */
     private $entityManager;
 
+    /**
+     * @param Rating $rating
+     * @param EntityManagerInterface $entityManager
+     */
     public function __construct(Rating $rating, EntityManagerInterface $entityManager)
     {
         $this->rating = $rating;
@@ -34,7 +38,7 @@ class RateController extends AbstractController
      * @param string $type
      * @return Response
      */
-    public function rate(Article $article, $type = 'like'): Response
+    public function __invoke(Article $article, $type = 'like'): Response
     {
         if ($this->rating->isRated($article)) {
             throw new AccessDeniedHttpException('You already voted for this article');

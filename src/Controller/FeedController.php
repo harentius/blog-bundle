@@ -35,7 +35,7 @@ class FeedController
     /**
      * @return Response
      */
-    public function feed(): Response
+    public function __invoke(): Response
     {
         $articles = $this->articleRepository->findPublishedOrderedByPublishDate();
         $feed = $this->feedManager->get('article');
