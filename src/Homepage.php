@@ -2,8 +2,7 @@
 
 namespace Harentius\BlogBundle;
 
-use Doctrine\ORM\Query;
-use Harentius\BlogBundle\Entity\Article;
+use Doctrine\ORM\QueryBuilder;
 use Harentius\BlogBundle\Entity\ArticleRepository;
 use Harentius\BlogBundle\Entity\Page;
 use Harentius\BlogBundle\Entity\PageRepository;
@@ -23,7 +22,7 @@ class Homepage
     /**
      * @var string
      */
-    private $category;
+    private $categorySlug;
 
     /**
      * @var string
@@ -33,29 +32,33 @@ class Homepage
     /**
      * @param ArticleRepository $articleRepository
      * @param PageRepository $pageRepository
-     * @param string $category
+     * @param string $categorySlug
      * @param string $homepageSlug
      */
-    public function __construct(ArticleRepository $articleRepository, PageRepository $pageRepository, $category, $homepageSlug)
-    {
+    public function __construct(
+        ArticleRepository $articleRepository,
+        PageRepository $pageRepository,
+        ?string $categorySlug = null,
+        ?string $homepageSlug = null
+    ) {
         $this->articleRepository = $articleRepository;
-        $this->category = $category;
+        $this->categorySlug = $categorySlug;
         $this->homepageSlug = $homepageSlug;
         $this->pageRepository = $pageRepository;
     }
 
     /**
-     * @return Query
+     * @return QueryBuilder
      */
-    public function getFeed()
+    public function getFeedQueryBuilder(): QueryBuilder
     {
-        return $this->articleRepository->findPublishedByCategorySlugLimitedQuery($this->category);
+        return $this->articleRepository->findPublishedByCategorySlugQueryBuilder($this->categorySlug);
     }
 
     /**
      * @return Page|null
      */
-    public function getPage()
+    public function getPage(): ?Page
     {
         return $this->pageRepository->findOneBy([
             'slug' => $this->homepageSlug,
@@ -66,7 +69,7 @@ class Homepage
     /**
      * @return \DateTime|null
      */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?\DateTime
     {
         $page = $this->getPage();
         $updatedAt = null;
@@ -75,11 +78,10 @@ class Homepage
             $updatedAt = $page->getUpdatedAt();
         }
 
-        /** @var Article $article */
-        foreach ($this->getFeed()->execute() as $article) {
-            if (($articleUpdatedAt = $article->getUpdatedAt()) > $updatedAt) {
-                $updatedAt = $articleUpdatedAt;
-            }
+        $latestArticle = $this->articleRepository->findLatestPublishedByCategorySlug($this->categorySlug);
+
+        if ($latestArticle->getUpdatedAt() > $updatedAt) {
+            $updatedAt = $latestArticle->getUpdatedAt();
         }
 
         return $updatedAt;

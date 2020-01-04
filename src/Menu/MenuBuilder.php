@@ -4,6 +4,7 @@ namespace Harentius\BlogBundle\Menu;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Harentius\BlogBundle\Entity\Page;
+use Harentius\BlogBundle\Entity\PageRepository;
 use Harentius\BlogBundle\Router\PublicationUrlGenerator;
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
@@ -16,12 +17,12 @@ class MenuBuilder
     private $factory;
 
     /**
-     * @var EntityManagerInterface
+     * @var PageRepository
      */
-    private $em;
+    private $pageRepository;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $homepageSlug;
 
@@ -32,20 +33,20 @@ class MenuBuilder
 
     /**
      * @param FactoryInterface $factory
-     * @param EntityManagerInterface $em
+     * @param PageRepository $pageRepository
      * @param PublicationUrlGenerator $publicationUrlGenerator
-     * @param $homepageSlug
+     * @param string|null $homepageSlug
      */
     public function __construct(
         FactoryInterface $factory,
-        EntityManagerInterface $em,
+        PageRepository $pageRepository,
         PublicationUrlGenerator $publicationUrlGenerator,
-        $homepageSlug
+        ?string $homepageSlug
     ) {
         $this->factory = $factory;
-        $this->em = $em;
         $this->homepageSlug = $homepageSlug;
         $this->publicationUrlGenerator = $publicationUrlGenerator;
+        $this->pageRepository = $pageRepository;
     }
 
     /**
@@ -61,10 +62,7 @@ class MenuBuilder
             ->setLinkAttribute('class', 'nav-link')
         ;
 
-        /** @var Page[] $pages */
-        $pages = $this->em->getRepository('HarentiusBlogBundle:Page')
-            ->findForMainMenu($this->homepageSlug)
-        ;
+        $pages = $this->pageRepository->findForMainMenu($this->homepageSlug);
 
         foreach ($pages as $page) {
             $menu->addChild($page->getTitle(), [

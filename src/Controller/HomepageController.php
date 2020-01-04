@@ -45,7 +45,7 @@ class HomepageController extends AbstractController
      */
     public function __invoke(Request $request): Response
     {
-        $paginator = $this->paginator->paginate($request, $this->homepage->getFeed(), [], $this->homepageFeedPostsCount);
+        $paginator = $this->paginator->paginate($request, $this->homepage->getFeedQueryBuilder(), [], $this->homepageFeedPostsCount);
         $currentPageNumber = $paginator->getCurrentPageNumber();
 
         return $this->render('@HarentiusBlog/Blog/index.html.twig', [

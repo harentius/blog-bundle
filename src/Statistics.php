@@ -25,10 +25,10 @@ class Statistics
     /**
      * Statistics constructor.
      * @param CacheProvider $cache
-     * @param $cacheLifetime
+     * @param int|null $cacheLifetime
      * @param ArticleRepository $articleRepository
      */
-    public function __construct(CacheProvider $cache, $cacheLifetime, ArticleRepository $articleRepository)
+    public function __construct(CacheProvider $cache, ?int $cacheLifetime, ArticleRepository $articleRepository)
     {
         $this->cache = $cache;
         $this->cacheLifetime = $cacheLifetime;

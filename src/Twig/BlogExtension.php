@@ -104,11 +104,11 @@ class BlogExtension extends AbstractExtension
     }
 
     /**
-     * @param $controllerReference
+     * @param ControllerReference $controllerReference
      * @param array $options
      * @return string
      */
-    public function renderCached(ControllerReference $controllerReference, $options = [])
+    public function renderCached(ControllerReference $controllerReference, array $options = [])
     {
         $key = $controllerReference->controller;
 
@@ -131,11 +131,11 @@ class BlogExtension extends AbstractExtension
     }
 
     /**
-     * @param $content
-     * @param null $url
+     * @param string $content
+     * @param string|null $url
      * @return string
      */
-    public function readMore($content, $url = null)
+    public function readMore(string $content, ?string $url = null)
     {
         if (($length = strpos($content, '<!--more-->')) !== false) {
             $content = substr($content, 0, $length);

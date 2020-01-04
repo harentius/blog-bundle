@@ -14,10 +14,10 @@ use Doctrine\ORM\Query;
 class TagRepository extends EntityRepository
 {
     /**
-     * @param $limit
+     * @param int|null $limit
      * @return array
      */
-    public function findMostPopularLimited($limit)
+    public function findMostPopularLimited(?int $limit)
     {
         return $this->createQueryBuilder('t')
             ->select('t.name, t.slug, COUNT(a) as weight')

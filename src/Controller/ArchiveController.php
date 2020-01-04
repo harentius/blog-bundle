@@ -76,7 +76,7 @@ class ArchiveController extends AbstractController
      * @param string $locale
      * @return string
      */
-    private function numberToMonth($number, $locale)
+    private function numberToMonth($number, $locale): string
     {
         $dateTime = \DateTime::createFromFormat('!m', $number);
         $formatter = \IntlDateFormatter::create(

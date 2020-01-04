@@ -28,9 +28,9 @@ class CategoryRepository extends NestedTreeRepository
             ->getQuery()
         ;
 
-        $qb = $this->_em->getRepository('HarentiusBlogBundle:Article')
-            ->createQueryBuilder('a')
-        ;
+        /** @var ArticleRepository $articleRepository */
+        $articleRepository = $this->_em->getRepository('HarentiusBlogBundle:Article');
+        $qb = $articleRepository->createQueryBuilder('a');
         $qb
             ->select('COUNT(a)')
             ->where($qb->expr()->in('a.category', $q1->getDQL()))

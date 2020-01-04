@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Harentius\BlogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

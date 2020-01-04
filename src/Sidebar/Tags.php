@@ -24,13 +24,13 @@ class Tags
     /**
      * @param TagRepository $tagRepository
      * @param int $sidebarTagsLimit
-     * @param array $sidebarTagsSize
+     * @param array $sidebarTagSizes
      */
-    public function __construct(TagRepository $tagRepository, $sidebarTagsLimit, $sidebarTagsSize)
+    public function __construct(TagRepository $tagRepository, int $sidebarTagsLimit, array $sidebarTagSizes)
     {
         $this->tagRepository = $tagRepository;
         $this->sidebarTagsLimit = $sidebarTagsLimit;
-        $this->sidebarTagSizes = $sidebarTagsSize;
+        $this->sidebarTagSizes = $sidebarTagSizes;
     }
 
     /**

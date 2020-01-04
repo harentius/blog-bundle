@@ -4,6 +4,7 @@ namespace Harentius\BlogBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Article|null find($id, $lockMode = null, $lockVersion = null)
@@ -87,10 +88,10 @@ class ArticleRepository extends EntityRepository
     }
 
     /**
-     * @param null $categorySlug
-     * @return Query
+     * @param string|null $categorySlug
+     * @return QueryBuilder
      */
-    public function findPublishedByCategorySlugLimitedQuery($categorySlug = null)
+    public function findPublishedByCategorySlugQueryBuilder(?string $categorySlug = null): QueryBuilder
     {
         $qb = $this->createQueryBuilder('a');
 
@@ -100,15 +101,30 @@ class ArticleRepository extends EntityRepository
             ->orderBy('a.publishedAt', 'DESC')
         ;
 
-        if ($categorySlug !== null) {
+        if ($categorySlug) {
             $qb
                 ->join('a.category', 'c')
-                ->where('c.slug = :slug')
+                ->andWhere('c.slug = :slug')
                 ->setParameter(':slug', $categorySlug)
             ;
         }
 
-        return $qb->getQuery();
+        return $qb;
+    }
+
+    /**
+     * @param string|null $categorySlug
+     * @return Article|null
+     */
+    public function findLatestPublishedByCategorySlug(?string $categorySlug = null): ?Article
+    {
+        return $this
+            ->findPublishedByCategorySlugQueryBuilder($categorySlug)
+            ->orderBy('a.updatedAt', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult()
+        ;
     }
 
     /**

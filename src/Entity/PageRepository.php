@@ -13,10 +13,10 @@ use Doctrine\ORM\EntityRepository;
 class PageRepository extends EntityRepository
 {
     /**
-     * @param $slug
+     * @param string|null $slug
      * @return Page[]
      */
-    public function findForMainMenu($slug)
+    public function findForMainMenu(?string $slug)
     {
         return $this->createQueryBuilder('p')
             ->where('p.published = :isPublished')

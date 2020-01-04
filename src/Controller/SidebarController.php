@@ -1,21 +1,56 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Harentius\BlogBundle\Controller;
 
 use Harentius\BlogBundle\Entity\Category;
+use Harentius\BlogBundle\Entity\CategoryRepository;
+use Harentius\BlogBundle\Sidebar\Archive;
+use Harentius\BlogBundle\Sidebar\Tags;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
 class SidebarController extends AbstractController
 {
     /**
+     * @var CategoryRepository
+     */
+    private $categoryRepository;
+
+    /**
+     * @var Archive
+     */
+    private $archive;
+
+    /**
+     * @var Tags
+     */
+    private $tags;
+
+    /**
+     * @param CategoryRepository $categoryRepository
+     * @param Archive $archive
+     * @param Tags $tags
+     */
+    public function __construct(
+        CategoryRepository $categoryRepository,
+        Archive $archive,
+        Tags $tags
+    ) {
+        $this->categoryRepository = $categoryRepository;
+        $this->archive = $archive;
+        $this->tags = $tags;
+    }
+
+    /**
      * @param bool $showNumber
      * @return Response
      */
-    public function categoriesAction($showNumber = true): Response
+    public function categories($showNumber = true): Response
     {
         return $this->render('@HarentiusBlog/Sidebar/categories.html.twig', [
-            'categories' => $this->getDoctrine()->getRepository(Category::class)->notEmptyChildrenHierarchy([
+            'categories' => $this->categoryRepository->notEmptyChildrenHierarchy([
                 'decorate' => true,
                 'representationField' => 'slug',
                 'html' => true,
@@ -36,20 +71,20 @@ class SidebarController extends AbstractController
     /**
      * @return Response
      */
-    public function archiveAction(): Response
+    public function archive(): Response
     {
         return $this->render('@HarentiusBlog/Sidebar/archive.html.twig', [
-            'archivesList' => $this->get('harentius_blog.sidebar.archive')->getList(),
+            'archivesList' => $this->archive->getList(),
         ]);
     }
 
     /**
      * @return Response
      */
-    public function tagsAction(): Response
+    public function tags(): Response
     {
         return $this->render('@HarentiusBlog/Sidebar/tags.html.twig', [
-            'tags' => $this->get('harentius_blog.sidebar.tags')->getList(),
+            'tags' => $this->tags->getList(),
         ]);
     }
 }
