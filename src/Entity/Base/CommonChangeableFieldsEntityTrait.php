@@ -15,27 +15,6 @@ trait CommonChangeableFieldsEntityTrait
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=1000)
-     * @Gedmo\Translatable()
-     * @SymfonyConstraints\Type(type="string")
-     * @SymfonyConstraints\Length(max=1000)
-     * @SymfonyConstraints\NotBlank()
-     */
-    protected $title;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=1000)
-     * @Gedmo\Slug(fields={"title"}, unique=true, updatable=false)
-     * @SymfonyConstraints\Type(type="string")
-     * @SymfonyConstraints\Length(max=1000)
-     */
-    protected $slug;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(type="text")
      * @Gedmo\Translatable()
      * @SymfonyConstraints\Type(type="string")
@@ -71,33 +50,6 @@ trait CommonChangeableFieldsEntityTrait
     /**
      * @return string
      */
-    public function __toString()
-    {
-        return (string) $this->title;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * @param string $value
-     * @return $this
-     */
-    public function setTitle($value)
-    {
-        $this->title = $value;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
     public function getText()
     {
         return $this->text;
@@ -110,25 +62,6 @@ trait CommonChangeableFieldsEntityTrait
     public function setText($value)
     {
         $this->text = $value;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSlug()
-    {
-        return $this->slug;
-    }
-
-    /**
-     * @param string $value
-     * @return $this
-     */
-    public function setSlug($value)
-    {
-        $this->slug = $value;
 
         return $this;
     }

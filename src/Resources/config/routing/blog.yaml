@@ -35,11 +35,11 @@ harentius_blog_archive_month:
 
 harentius_blog_show_default:
     path: /{slug}
-    defaults: { _controller: 'HarentiusBlogBundle:Blog:show', _locale: '%kernel.default_locale%' }
+    defaults: { _controller: 'Harentius\BlogBundle\Controller\ShowController', _locale: '%kernel.default_locale%' }
 
 harentius_blog_show:
     path: /{_locale}/{slug}
-    defaults: { _controller: 'HarentiusBlogBundle:Blog:show', _locale: '%kernel.default_locale%' }
+    defaults: { _controller: 'Harentius\BlogBundle\Controller\ShowController', _locale: '%kernel.default_locale%' }
     requirements:
         _locale: "%harentius_blog.supported_locales_without_default%"
 

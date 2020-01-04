@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Harentius\BlogBundle;
 
+use Harentius\BlogBundle\Entity\AbstractPost;
+use Harentius\BlogBundle\Entity\Article;
 use Harentius\BlogBundle\Entity\Category;
 use Harentius\BlogBundle\Entity\Tag;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -64,6 +66,17 @@ class BreadCrumbsManager
         }
 
         $this->prependHomepage();
+    }
+
+    public function buildPost(AbstractPost $post)
+    {
+        if ($post instanceof Article && $post->getCategory()) {
+            $this->buildCategory($post->getCategory());
+            $this->breadcrumbs->addItem($post->getTitle());
+        } else {
+            $this->breadcrumbs->addItem($post->getTitle());
+            $this->prependHomepage();
+        }
     }
 
     private function prependHomepage(): void

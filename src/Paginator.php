@@ -40,7 +40,7 @@ class Paginator
      */
     public function paginate(Request $request, $target, array $options = [], ?int $perPage = null): AbstractPagination
     {
-        if ($perPage === 0) {
+        if ($perPage === null) {
             $perPage = $this->defaultPerPage;
         }
 

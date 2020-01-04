@@ -27,3 +27,7 @@ services:
     Harentius\BlogBundle\Entity\TranslationRepository:
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments: [ HarentiusBlogBundle:Translation ]
+
+    Harentius\BlogBundle\Entity\AbstractPostRepository:
+        factory: ['@doctrine.orm.entity_manager', getRepository]
+        arguments: [ HarentiusBlogBundle:AbstractPost ]

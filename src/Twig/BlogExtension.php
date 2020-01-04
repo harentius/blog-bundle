@@ -3,8 +3,8 @@
 namespace Harentius\BlogBundle\Twig;
 
 use Doctrine\Common\Cache\CacheProvider;
+use Harentius\BlogBundle\Entity\AbstractPost;
 use Harentius\BlogBundle\Entity\Article;
-use Harentius\BlogBundle\Entity\Base\AbstractPost;
 use Harentius\BlogBundle\Entity\TranslationRepository;
 use Harentius\BlogBundle\Rating;
 use Harentius\BlogBundle\SettingsProvider;
