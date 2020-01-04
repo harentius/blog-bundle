@@ -25,7 +25,7 @@ window.CKEDITOR.on('instanceReady', (ev) => {
       return;
     }
 
-    const urlParts = $resizingImage.attr('src').match(/\/([^\/]*?)(_\d+x\d+)?(\.[0-9a-z]+)$/i);
+    const urlParts = $resizingImage.attr('src').match(/\/([^/]*?)(_\d+x\d+)?(\.[0-9a-z]+)$/i);
 
     if (!urlParts[1] || !urlParts[3]) {
       return;

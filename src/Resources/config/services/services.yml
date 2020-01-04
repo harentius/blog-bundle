@@ -25,8 +25,6 @@ services:
             $sidebarTagsLimit: '%harentius_blog.sidebar.tags_limit%'
             $sidebarTagSizes: '%harentius_blog.sidebar.tag_sizes%'
 
-    Harentius\BlogBundle\Sidebar\Archive: ~
-
     Harentius\BlogBundle\Homepage:
         arguments:
             $categorySlug: '%harentius_blog.homepage.feed.category%'
@@ -36,18 +34,9 @@ services:
         arguments:
             $cache: '@harentius_blog.rating_cache'
 
-    harentius_blog.views_counter:
-        public: true
-        class: Harentius\BlogBundle\ViewsCounter
-        arguments:
-            - '@session'
-            - '@doctrine.orm.entity_manager'
-
     Harentius\BlogBundle\FileManagement\FilePathResolver:
         arguments:
             $webDir: '%kernel.project_dir%/public'
-
-    Harentius\BlogBundle\FileManagement\FileManager: ~
 
     harentius_blog.settings_provider:
         class: Harentius\BlogBundle\SettingsProvider
@@ -91,6 +80,9 @@ services:
 
     Harentius\BlogBundle\Router\PublicationUrlGenerator: ~
     Harentius\BlogBundle\BreadCrumbsManager: ~
+    Harentius\BlogBundle\ViewsCounter: ~
+    Harentius\BlogBundle\Sidebar\Archive: ~
+    Harentius\BlogBundle\FileManagement\FileManager: ~
 
     Harentius\BlogBundle\Paginator:
         arguments:

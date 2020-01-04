@@ -1,1 +1,59 @@
-{% extends '@HarentiusBlog/Blog/_show_article.html.twig' %}
+{% extends '@HarentiusBlog/Blog/show_page.html.twig' %}
+
+{% block after_post_content%}
+    {% block post_info %}
+        {% include '@HarentiusBlog/Blog/_post_info_article.html.twig' with {'article': entity} %}
+    {% endblock %}
+
+    <div class="row social-and-shares-wrapper" data-id="{{ entity.id }}">
+        <div class="pull-left social-wrapper col-lg-9 col-md-9 col-sm-9 col-xs-9">
+            {{ include('@HarentiusBlog/Blog/_socials.html.twig') }}
+        </div>
+
+        <div class="pull-right text-right col-lg-3 col-md-3 col-sm-3 col-xs-3 likes-wrapper">
+            <span class="like">
+                <i
+                    class="fa {% if is_article_liked(entity) %}fa-thumbs-up{% else %}fa-thumbs-o-up{% endif %}{% if(is_article_rated(entity)) %} disabled{% endif %}"
+                    id="like-action"
+                >
+                </i>
+                <span class="value">{{ entity.likesCount }}</span>
+            </span>
+
+            <span class="dislike">
+                <i
+                    class="fa {% if is_article_disliked(entity) %}fa-thumbs-down{% else %}fa-thumbs-o-down{% endif %}{% if(is_article_rated(entity)) %} disabled{% endif %}"
+                    id="dislike-action"
+                >
+                </i>
+                <span class="value">{{ entity.disLikesCount }}</span>
+            </span>
+        </div>
+    </div>
+
+    <div class="comments-wrapper">
+        <div id="disqus_thread"></div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="application/json" id="js-config">
+    {{
+        {
+            "article_id": entity.id,
+            "article_url": publication_path(entity, constant('Symfony\\Component\\Routing\\Generator\\UrlGeneratorInterface::ABSOLUTE_URL')),
+            "page_identifier": app.request.locale ~ '/' ~ entity.slug,
+            "discuss_user_name": discuss_user_name|default,
+            "article_original_id": entity.attributes.original_id is defined ?: null
+        }|json_encode|raw
+        }}
+    </script>
+
+    <script src="{{ asset('bundles/harentiusblog/article.js', 'harentius_blog') }}"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+
+    {% if sharethis_property %}
+        <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property={{ sharethis_property }}&product={{ sharethis_product }}"></script>
+    {% endif %}
+{% endblock javascripts %}

@@ -2,7 +2,6 @@
 
 namespace Harentius\BlogBundle;
 
-use Doctrine\ORM\EntityManager;
 use Harentius\BlogBundle\Entity\Article;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -14,18 +13,11 @@ class ViewsCounter
     private $session;
 
     /**
-     * @var EntityManager
-     */
-    private $em;
-
-    /**
      * @param SessionInterface $session
-     * @param EntityManager $em
      */
-    public function __construct(SessionInterface $session, EntityManager $em)
+    public function __construct(SessionInterface $session)
     {
         $this->session = $session;
-        $this->em = $em;
     }
 
     /**
@@ -43,6 +35,5 @@ class ViewsCounter
         $viewedArticles[$articleId] = true;
         $article->increaseViewsCount();
         $this->session->set('viewedArticles', $viewedArticles);
-        $this->em->flush($article);
     }
 }

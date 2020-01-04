@@ -12,13 +12,13 @@
     "article": {
       "js": [
         "/bundles/harentiusblog/build/runtime.6c1a13d3.js",
-        "/bundles/harentiusblog/build/article.5cb02bd6.js"
+        "/bundles/harentiusblog/build/article.55e2c48c.js"
       ]
     },
     "admin-article": {
       "js": [
         "/bundles/harentiusblog/build/runtime.6c1a13d3.js",
-        "/bundles/harentiusblog/build/admin-article.14048c68.js"
+        "/bundles/harentiusblog/build/admin-article.cbc41d58.js"
       ]
     },
     "ckeditor-browse": {

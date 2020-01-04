@@ -2,8 +2,6 @@
 
 namespace Harentius\BlogBundle\Menu;
 
-use Doctrine\ORM\EntityManagerInterface;
-use Harentius\BlogBundle\Entity\Page;
 use Harentius\BlogBundle\Entity\PageRepository;
 use Harentius\BlogBundle\Router\PublicationUrlGenerator;
 use Knp\Menu\FactoryInterface;

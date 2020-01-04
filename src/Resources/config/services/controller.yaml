@@ -11,5 +11,6 @@ services:
     Harentius\BlogBundle\Controller\ImageOptimizationController: ~
     Harentius\BlogBundle\Controller\ShowController: ~
     Harentius\BlogBundle\Controller\SidebarController: ~
+    Harentius\BlogBundle\Controller\ViewCountController: ~
     Harentius\BlogBundle\Controller\HomepageController:
         $homepageFeedPostsCount: '%harentius_blog.homepage.feed.number%'

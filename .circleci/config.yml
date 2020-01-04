@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  lint:
+  lint-php:
     docker:
       - image: circleci/php:7.3-cli
     steps:
@@ -17,6 +17,27 @@ jobs:
           paths:
             - vendor-bin/php-cs-fixer/vendor
       - run: composer cs-check
+
+  lint-js:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - run:
+          name: install-npm
+          command: 'sudo npm install -g npm@latest'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install-dependencies
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: lint
+          command: npm run lint
 
   phpstan:
     docker:
@@ -37,7 +58,8 @@ jobs:
 
 workflows:
   version: 2
-  lint:
+  static:
     jobs:
-      - lint
+      - lint-php
+      - lint-js
       - phpstan
