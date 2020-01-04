@@ -15,6 +15,7 @@ class ViewCountController
      * @var ViewsCounter
      */
     private $viewsCounter;
+
     /**
      * @var EntityManagerInterface
      */
