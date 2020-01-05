@@ -8,9 +8,3 @@ twig:
 sonata_block:
     default_contexts: ['sonata_page_bundle']
     blocks: []
-
-sonata_translation:
-    locales: ['en', 'ru']
-    default_locale: '%locale%'
-    gedmo:
-        enabled: true

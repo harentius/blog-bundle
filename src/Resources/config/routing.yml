@@ -1,9 +1,9 @@
-harentius_blog_blog:
-    resource: '@HarentiusBlogBundle/Resources/config/routing/blog.yaml'
-
 harentius_blog_admin:
     resource: '@HarentiusBlogBundle/Resources/config/routing/admin.yaml'
     prefix:   /admin
+
+harentius_blog_blog:
+    resource: '@HarentiusBlogBundle/Resources/config/routing/blog.yaml'
 
 fos_js_routing:
     resource: '@FOSJsRoutingBundle/Resources/config/routing/routing.xml'

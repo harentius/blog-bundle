@@ -1,0 +1,6 @@
+sonata_translation:
+    locales: ['en', 'ru']
+    default_locale: '%locale%'
+    locale_switcher_show_country_flags: false
+    gedmo:
+        enabled: true
