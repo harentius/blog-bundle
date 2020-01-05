@@ -190,10 +190,9 @@ class BlogExtension extends AbstractExtension
      */
     public function translationsList(AbstractPost $article)
     {
-        return array_merge(
-            [$this->locale],
-            array_keys($this->translationRepository->findTranslations($article))
-        );
+        $translations = $this->translationRepository->findTranslations($article);
+
+        return array_merge([$this->locale], array_keys($translations));
     }
 
     /**
