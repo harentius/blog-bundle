@@ -4,6 +4,7 @@ namespace Harentius\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Harentius\BlogBundle\Entity\Base\CommonChangeableFieldsEntityTrait;
 use Harentius\BlogBundle\Entity\Base\IdentifiableEntityTrait;
 use Harentius\BlogBundle\Entity\Base\PublicationInterface;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
@@ -38,6 +39,41 @@ abstract class AbstractPost implements PublicationInterface
      * @Gedmo\Slug(fields={"title"}, unique=true, updatable=false)
      */
     protected $slug;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text")
+     * @Gedmo\Translatable()
+     * @SymfonyConstraints\Type(type="string")
+     * @SymfonyConstraints\NotBlank()
+     */
+    protected $text;
+
+    /**
+     * @var AdminUser
+     *
+     * @ORM\ManyToOne(
+     *     targetEntity="Harentius\BlogBundle\Entity\AdminUser"
+     * )
+     * @SymfonyConstraints\NotNull()
+     */
+    protected $author;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(type="boolean"))
+     */
+    protected $published;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime", nullable=true)
+     * @SymfonyConstraints\DateTime
+     */
+    protected $publishedAt;
 
     /**
      * @return string
@@ -81,6 +117,82 @@ abstract class AbstractPost implements PublicationInterface
     public function setSlug(?string $value): self
     {
         $this->slug = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getText()
+    {
+        return $this->text;
+    }
+
+    /**
+     * @param string $value
+     * @return $this
+     */
+    public function setText($value)
+    {
+        $this->text = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return AdminUser
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param AdminUser $value
+     * @return $this
+     */
+    public function setAuthor($value)
+    {
+        $this->author = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPublished()
+    {
+        return $this->published;
+    }
+
+    /**
+     * @param bool $value
+     * @return $this
+     */
+    public function setPublished($value)
+    {
+        $this->published = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getPublishedAt()
+    {
+        return $this->publishedAt;
+    }
+
+    /**
+     * @param \DateTime $value
+     * @return $this
+     */
+    public function setPublishedAt($value)
+    {
+        $this->publishedAt = $value;
 
         return $this;
     }

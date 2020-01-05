@@ -34,7 +34,7 @@ class ShowController extends AbstractController
         $class = get_class($post);
         $type = strtolower(substr($class, strrpos($class, '\\') + 1));
 
-        return $this->render(sprintf('@HarentiusBlog/Blog/show_%s.html.twig', $type), [
+        return $this->render(sprintf('@HarentiusBlog/Show/%s.html.twig', $type), [
             'entity' => $post,
         ]);
     }

@@ -1,4 +1,8 @@
-{% extends '@HarentiusBlog/Blog/show_page.html.twig' %}
+{% extends '@HarentiusBlog/Show/page.html.twig' %}
+
+{% block after_breadcrumbs_content %}
+    {% include '@HarentiusBlog/Blog/_translations_list.html.twig' %}
+{% endblock %}
 
 {% block after_post_content%}
     {% block post_info %}

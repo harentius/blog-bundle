@@ -21,6 +21,16 @@ class Article extends AbstractPost implements ItemInterface, TranslatableInterfa
     use PersonalTranslatableTrait;
 
     /**
+     * @var string|null
+     *
+     * @ORM\Column(type="string", length=1000)
+     * @Gedmo\Translatable()
+     * @SymfonyConstraints\Length(max=1000)
+     * @SymfonyConstraints\NotBlank()
+     */
+    protected $title;
+
+    /**
      * @var int
      *
      * @ORM\Column(type="integer")
@@ -60,7 +70,7 @@ class Article extends AbstractPost implements ItemInterface, TranslatableInterfa
     protected $attributes;
 
     /**
-     * @var array
+     * @var Translation[]
      *
      * @ORM\OneToMany(
      *     targetEntity="Harentius\BlogBundle\Entity\Translation",
@@ -218,7 +228,7 @@ class Article extends AbstractPost implements ItemInterface, TranslatableInterfa
     }
 
     /**
-     * @return array
+     * @return Translation[]
      */
     public function getTranslations()
     {
@@ -226,7 +236,7 @@ class Article extends AbstractPost implements ItemInterface, TranslatableInterfa
     }
 
     /**
-     * @param array $value
+     * @param Translation[] $value
      * @return $this
      */
     public function setTranslations($value)

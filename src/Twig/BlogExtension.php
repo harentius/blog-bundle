@@ -3,7 +3,6 @@
 namespace Harentius\BlogBundle\Twig;
 
 use Doctrine\Common\Cache\CacheProvider;
-use Harentius\BlogBundle\Entity\AbstractPost;
 use Harentius\BlogBundle\Entity\Article;
 use Harentius\BlogBundle\Entity\TranslationRepository;
 use Harentius\BlogBundle\Rating;
@@ -185,14 +184,14 @@ class BlogExtension extends AbstractExtension
     }
 
     /**
-     * @param AbstractPost $article
+     * @param Article $article
      * @return array
      */
-    public function translationsList(AbstractPost $article)
+    public function translationsList(Article $article)
     {
         $translations = $this->translationRepository->findTranslations($article);
 
-        return array_merge([$this->locale], array_keys($translations));
+        return array_merge([$this->locale], $translations);
     }
 
     /**

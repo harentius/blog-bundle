@@ -3,15 +3,12 @@
 namespace Harentius\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Translatable\Entity\MappedSuperclass\AbstractTranslation;
+use Gedmo\Translatable\Entity\MappedSuperclass\AbstractPersonalTranslation;
 
 /**
- * @ORM\Table(indexes={
- *     @ORM\Index(name="article_translation_idx", columns={"locale", "object_class", "field", "foreign_key"})
- * })
  * @ORM\Entity(repositoryClass="Harentius\BlogBundle\Entity\TranslationRepository")
  */
-class Translation extends AbstractTranslation
+class Translation extends AbstractPersonalTranslation
 {
     /**
      * @ORM\ManyToOne(
