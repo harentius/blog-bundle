@@ -1,16 +1,6 @@
 imports:
     - { resource: '@HarentiusBlogBundle/Resources/config/packages/*' }
 
-stof_doctrine_extensions:
-    default_locale: '%locale%'
-    orm:
-        default:
-            timestampable: true
-            sluggable: true
-            tree: true
-            translatable: true
-    translation_fallback: true
-
 twig:
     globals:
         statistics: '@harentius_blog.statistics'
@@ -24,12 +14,3 @@ sonata_translation:
     default_locale: '%locale%'
     gedmo:
         enabled: true
-
-liip_imagine:
-    resolvers:
-        default:
-            web_path:
-                cache_prefix: 'assets/images'
-    filter_sets:
-        preview:
-            filters: []

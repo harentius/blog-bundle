@@ -3,6 +3,8 @@ imports:
     - { resource: 'twig.yaml' }
     - { resource: 'controller.yaml' }
     - { resource: 'command.yaml' }
+    - { resource: 'cache.yaml' }
+    - { resource: 'repositories.yaml' }
 
 services:
     _defaults:
