@@ -59,5 +59,7 @@ class AdminUserPasswordChangeCommand extends Command
         $this->entityManager->flush();
 
         $output->writeln('Password successfully changed');
+
+        return 0;
     }
 }
