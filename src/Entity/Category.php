@@ -6,8 +6,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Tree\Traits\NestedSetEntity;
-use Harentius\BlogBundle\Entity\Base\IdentifiableEntityTrait;
-use Harentius\BlogBundle\Entity\Base\SeoContentEntityTrait;
 use Sonata\TranslationBundle\Model\Gedmo\TranslatableInterface;
 use Sonata\TranslationBundle\Traits\TranslatableTrait;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;

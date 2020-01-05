@@ -1,6 +1,6 @@
 <?php
 
-namespace Harentius\BlogBundle\Entity\Base;
+namespace Harentius\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;

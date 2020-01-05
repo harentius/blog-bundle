@@ -6,7 +6,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Eko\FeedBundle\Item\Writer\ItemInterface;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Harentius\BlogBundle\Entity\Base\ArticleChangeableFieldsEntityTrait;
 use Sonata\TranslationBundle\Model\Gedmo\TranslatableInterface;
 use Sonata\TranslationBundle\Traits\Gedmo\PersonalTranslatableTrait;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
@@ -17,18 +16,7 @@ use Symfony\Component\Validator\Constraints as SymfonyConstraints;
  */
 class Article extends AbstractPost implements ItemInterface, TranslatableInterface
 {
-    use ArticleChangeableFieldsEntityTrait;
     use PersonalTranslatableTrait;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="string", length=1000)
-     * @Gedmo\Translatable()
-     * @SymfonyConstraints\Length(max=1000)
-     * @SymfonyConstraints\NotBlank()
-     */
-    protected $title;
 
     /**
      * @var int
@@ -79,6 +67,27 @@ class Article extends AbstractPost implements ItemInterface, TranslatableInterfa
      * )
      */
     protected $translations;
+
+    /**
+     * @var Category
+     *
+     * @ORM\ManyToOne(
+     *     targetEntity="Harentius\BlogBundle\Entity\Category",
+     *     inversedBy="articles"
+     * )
+     * @SymfonyConstraints\NotNull()
+     */
+    private $category;
+
+    /**
+     * @var Tag[]
+     *
+     * @ORM\ManyToMany(
+     *     targetEntity="Harentius\BlogBundle\Entity\Tag",
+     *     inversedBy="articles"
+     * )
+     */
+    private $tags;
 
     /**
      *
@@ -242,6 +251,55 @@ class Article extends AbstractPost implements ItemInterface, TranslatableInterfa
     public function setTranslations($value)
     {
         $this->translations = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param Category $value
+     * @return $this
+     */
+    public function setCategory($value)
+    {
+        $this->category = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return Tag[]|ArrayCollection
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * @param Tag[] $value
+     * @return $this
+     */
+    public function setTags($value)
+    {
+        $this->tags = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param Tag $value
+     * @return $this
+     */
+    public function addTag($value)
+    {
+        $this->tags[] = $value;
 
         return $this;
     }

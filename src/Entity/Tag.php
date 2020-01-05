@@ -5,7 +5,6 @@ namespace Harentius\BlogBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Harentius\BlogBundle\Entity\Base\IdentifiableEntityTrait;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
 /**

@@ -2,7 +2,7 @@
 
 namespace Harentius\BlogBundle\Router;
 
-use Harentius\BlogBundle\Entity\Base\PublicationInterface;
+use Harentius\BlogBundle\Entity\AbstractPost;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
@@ -29,13 +29,13 @@ class PublicationUrlGenerator
     }
 
     /**
-     * @param PublicationInterface $publication
+     * @param AbstractPost $post
      * @param int $referenceType
      * @return string
      */
-    public function generateUrl(PublicationInterface $publication, $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH)
+    public function generateUrl(AbstractPost $post, $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH)
     {
-        return $this->generateUrlForSlug($publication->getSlug(), $referenceType);
+        return $this->generateUrlForSlug($post->getSlug(), $referenceType);
     }
 
     /**

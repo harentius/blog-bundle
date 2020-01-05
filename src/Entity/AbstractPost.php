@@ -4,9 +4,6 @@ namespace Harentius\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Harentius\BlogBundle\Entity\Base\CommonChangeableFieldsEntityTrait;
-use Harentius\BlogBundle\Entity\Base\IdentifiableEntityTrait;
-use Harentius\BlogBundle\Entity\Base\PublicationInterface;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
 /**
@@ -18,9 +15,11 @@ use Symfony\Component\Validator\Constraints as SymfonyConstraints;
  *     1 = "Harentius\BlogBundle\Entity\Page",
  * })
  */
-abstract class AbstractPost implements PublicationInterface
+abstract class AbstractPost
 {
     use IdentifiableEntityTrait;
+    use TimestampableEntityTrait;
+    use SeoContentEntityTrait;
 
     /**
      * @var string|null

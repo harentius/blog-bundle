@@ -4,7 +4,6 @@ namespace Harentius\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Harentius\BlogBundle\Entity\Base\CommonChangeableFieldsEntityTrait;
 use Sonata\TranslationBundle\Traits\Gedmo\PersonalTranslatableTrait;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
@@ -15,7 +14,6 @@ use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 class Page extends AbstractPost
 {
     use PersonalTranslatableTrait;
-    use CommonChangeableFieldsEntityTrait;
 
     /**
      * @var bool

@@ -3,7 +3,6 @@
 namespace Harentius\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Harentius\BlogBundle\Entity\Base\IdentifiableEntityTrait;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
 /**
