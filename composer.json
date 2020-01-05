@@ -33,7 +33,6 @@
     "symfony/translation": "^4.4",
     "symfony/twig-bundle": "^4.4",
     "twig/twig": "^2.12|^3.0",
-    "symfony/twig-pack": "*",
     "symfony/dotenv": "^4.4",
     "symfony/yaml": "^4.4",
     "stof/doctrine-extensions-bundle": "^1.3",
