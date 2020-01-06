@@ -1,0 +1,12 @@
+services:
+    _defaults:
+        public: false
+        autowire: true
+        tags:
+            - { name: "kernel.event_subscriber", priority: 100 }
+
+    Harentius\BlogBundle\Sitemap\HomepageSubscriber: ~
+    Harentius\BlogBundle\Sitemap\CategoriesSubscriber: ~
+    Harentius\BlogBundle\Sitemap\PostsSubscriber:
+        arguments:
+            $primaryLocale: '%harentius_blog.primary_locale%'

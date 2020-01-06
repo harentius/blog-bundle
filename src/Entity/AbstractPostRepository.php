@@ -12,4 +12,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class AbstractPostRepository extends EntityRepository
 {
+    /**
+     * @return AbstractPost[]
+     */
+    public function findPublished(): array
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.published = :published')
+            ->setParameter('published', true)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

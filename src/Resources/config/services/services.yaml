@@ -5,6 +5,7 @@ imports:
     - { resource: 'command.yaml' }
     - { resource: 'cache.yaml' }
     - { resource: 'repositories.yaml' }
+    - { resource: 'sitemap.yaml' }
 
 services:
     _defaults:
@@ -46,18 +47,6 @@ services:
         arguments:
              - '@Harentius\BlogBundle\Entity\SettingRepository'
              - '@harentius_blog.settings.cache'
-
-    harentius_blog.event_listener.sitemap_listener:
-        class: Harentius\BlogBundle\Sitemap\SitemapSubscriber
-        arguments:
-            - '@router'
-            - '@Harentius\BlogBundle\Homepage'
-            - '@Harentius\BlogBundle\Entity\ArticleRepository'
-            - '@Harentius\BlogBundle\Entity\PageRepository'
-            - '@Harentius\BlogBundle\Entity\CategoryRepository'
-            - '%harentius_blog.homepage.page_slug%'
-        tags:
-            - { name: "kernel.event_subscriber", priority: 100 }
 
     harentius_blog.statistics:
         class: Harentius\BlogBundle\Statistics
