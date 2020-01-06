@@ -4,6 +4,8 @@ namespace Harentius\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Sonata\TranslationBundle\Model\Gedmo\TranslatableInterface;
+use Sonata\TranslationBundle\Traits\Gedmo\PersonalTranslatableTrait;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
 /**
@@ -14,12 +16,14 @@ use Symfony\Component\Validator\Constraints as SymfonyConstraints;
  *     0 = "Harentius\BlogBundle\Entity\Article",
  *     1 = "Harentius\BlogBundle\Entity\Page",
  * })
+ * @Gedmo\TranslationEntity(class="Harentius\BlogBundle\Entity\Translation")
  */
-abstract class AbstractPost
+abstract class AbstractPost implements TranslatableInterface
 {
     use IdentifiableEntityTrait;
     use TimestampableEntityTrait;
     use SeoContentEntityTrait;
+    use PersonalTranslatableTrait;
 
     /**
      * @var string|null
@@ -73,6 +77,17 @@ abstract class AbstractPost
      * @SymfonyConstraints\DateTime
      */
     protected $publishedAt;
+
+    /**
+     * @var Translation[]
+     *
+     * @ORM\OneToMany(
+     *     targetEntity="Harentius\BlogBundle\Entity\Translation",
+     *     mappedBy="object",
+     *     cascade={"persist", "remove"}
+     * )
+     */
+    protected $translations;
 
     /**
      *
@@ -200,6 +215,25 @@ abstract class AbstractPost
     public function setPublishedAt(?\DateTime $value): self
     {
         $this->publishedAt = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return Translation[]
+     */
+    public function getTranslations()
+    {
+        return $this->translations;
+    }
+
+    /**
+     * @param Translation[] $value
+     * @return $this
+     */
+    public function setTranslations($value): self
+    {
+        $this->translations = $value;
 
         return $this;
     }

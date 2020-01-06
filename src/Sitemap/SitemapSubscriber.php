@@ -121,7 +121,7 @@ class SitemapSubscriber implements EventSubscriberInterface
                     new UrlConcrete(
                         $this->router->generate("harentius_blog_category_{$category['id']}", [], true),
                         null,
-                        UrlConcrete::CHANGEFREQ_MONTHLY,
+                        UrlConcrete::CHANGEFREQ_YEARLY,
                         0.8
                     ),
                     'categories'

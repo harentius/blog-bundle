@@ -123,7 +123,7 @@ class ArticleRepository extends EntityRepository
             ->orderBy('a.updatedAt', 'DESC')
             ->setMaxResults(1)
             ->getQuery()
-            ->getResult()
+            ->getOneOrNullResult()
         ;
     }
 

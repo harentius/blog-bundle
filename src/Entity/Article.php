@@ -5,19 +5,13 @@ namespace Harentius\BlogBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Eko\FeedBundle\Item\Writer\ItemInterface;
-use Gedmo\Mapping\Annotation as Gedmo;
-use Sonata\TranslationBundle\Model\Gedmo\TranslatableInterface;
-use Sonata\TranslationBundle\Traits\Gedmo\PersonalTranslatableTrait;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
 /**
  * @ORM\Entity(repositoryClass="Harentius\BlogBundle\Entity\ArticleRepository")
- * @Gedmo\TranslationEntity(class="Harentius\BlogBundle\Entity\Translation")
  */
-class Article extends AbstractPost implements ItemInterface, TranslatableInterface
+class Article extends AbstractPost implements ItemInterface
 {
-    use PersonalTranslatableTrait;
-
     /**
      * @var int
      *
@@ -56,17 +50,6 @@ class Article extends AbstractPost implements ItemInterface, TranslatableInterfa
      * @SymfonyConstraints\NotNull()
      */
     protected $attributes;
-
-    /**
-     * @var Translation[]
-     *
-     * @ORM\OneToMany(
-     *     targetEntity="Harentius\BlogBundle\Entity\Translation",
-     *     mappedBy="object",
-     *     cascade={"persist", "remove"}
-     * )
-     */
-    protected $translations;
 
     /**
      * @var Category|null
@@ -165,25 +148,6 @@ class Article extends AbstractPost implements ItemInterface, TranslatableInterfa
     public function setAttributes(array $value): self
     {
         $this->attributes = $value;
-
-        return $this;
-    }
-
-    /**
-     * @return Translation[]
-     */
-    public function getTranslations()
-    {
-        return $this->translations;
-    }
-
-    /**
-     * @param Translation[] $value
-     * @return $this
-     */
-    public function setTranslations($value): self
-    {
-        $this->translations = $value;
 
         return $this;
     }

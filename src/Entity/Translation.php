@@ -14,7 +14,7 @@ class Translation extends AbstractPersonalTranslation
      * @var Article
      *
      * @ORM\ManyToOne(
-     *     targetEntity="Harentius\BlogBundle\Entity\Article",
+     *     targetEntity="Harentius\BlogBundle\Entity\AbstractPost",
      *     inversedBy="translations"
      * )
      * @ORM\JoinColumn(onDelete="CASCADE")
