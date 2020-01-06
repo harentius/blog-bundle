@@ -14,7 +14,7 @@ class SecurityController extends AbstractController
     {
         $authenticationUtils = $this->get('security.authentication_utils');
 
-        return $this->render('@HarentiusBlog/Security/login.html.twig', [
+        return $this->render('@HarentiusBlog/Admin/Security/login.html.twig', [
             'last_username' => $authenticationUtils->getLastUsername(),
             'error' => $authenticationUtils->getLastAuthenticationError(),
         ]);
