@@ -11,6 +11,8 @@ use Gedmo\Translatable\Entity\MappedSuperclass\AbstractPersonalTranslation;
 class Translation extends AbstractPersonalTranslation
 {
     /**
+     * @var Article
+     *
      * @ORM\ManyToOne(
      *     targetEntity="Harentius\BlogBundle\Entity\Article",
      *     inversedBy="translations"
@@ -24,7 +26,7 @@ class Translation extends AbstractPersonalTranslation
      * @param string $field
      * @param string $value
      */
-    public function __construct($locale, $field, $value)
+    public function __construct(string $locale, string $field, string $value)
     {
         $this->setLocale($locale);
         $this->setField($field);

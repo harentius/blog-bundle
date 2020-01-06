@@ -22,7 +22,7 @@ class Category implements TranslatableInterface
     use TranslatableTrait;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="string", length=255)
      * @Gedmo\Translatable()
@@ -33,7 +33,7 @@ class Category implements TranslatableInterface
     private $name;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="string", length=255)
      * @Gedmo\Slug(fields={"name"}, unique=true)
@@ -43,7 +43,7 @@ class Category implements TranslatableInterface
     private $slug;
 
     /**
-     * @var Article[]
+     * @var Article[]|ArrayCollection
      *
      * @ORM\OneToMany(
      *     targetEntity="Harentius\BlogBundle\Entity\Article",
@@ -54,7 +54,7 @@ class Category implements TranslatableInterface
     private $articles;
 
     /**
-     * @var Category
+     * @var Category|null
      *
      * @Gedmo\TreeParent
      * @ORM\ManyToOne(
@@ -66,7 +66,7 @@ class Category implements TranslatableInterface
     private $parent;
 
     /**
-     * @var Category[]
+     * @var Category[]|ArrayCollection
      *
      * @ORM\OneToMany(
      *     targetEntity="Harentius\BlogBundle\Entity\Category",
@@ -88,24 +88,24 @@ class Category implements TranslatableInterface
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return (string) $this->name;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string $value
+     * @param string|null $value
      * @return $this
      */
-    public function setName($value)
+    public function setName(?string $value): self
     {
         $this->name = $value;
 
@@ -113,18 +113,18 @@ class Category implements TranslatableInterface
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getSlug()
+    public function getSlug(): ?string
     {
         return $this->slug;
     }
 
     /**
-     * @param string $value
+     * @param string|null $value
      * @return $this
      */
-    public function setSlug($value)
+    public function setSlug(?string $value): self
     {
         $this->slug = $value;
 
@@ -140,10 +140,10 @@ class Category implements TranslatableInterface
     }
 
     /**
-     * @param Article[] $value
+     * @param Article[]|ArrayCollection $value
      * @return $this
      */
-    public function setArticles($value)
+    public function setArticles($value): self
     {
         $this->articles = $value;
 
@@ -151,18 +151,18 @@ class Category implements TranslatableInterface
     }
 
     /**
-     * @return mixed
+     * @return Category|null
      */
-    public function getParent()
+    public function getParent(): ?Category
     {
         return $this->parent;
     }
 
     /**
-     * @param mixed $value
+     * @param Category|null $value
      * @return $this
      */
-    public function setParent($value)
+    public function setParent(?Category $value): self
     {
         $this->parent = $value;
 
@@ -170,7 +170,7 @@ class Category implements TranslatableInterface
     }
 
     /**
-     * @return Tag[]|ArrayCollection
+     * @return Category[]|ArrayCollection
      */
     public function getChildren()
     {
@@ -178,10 +178,10 @@ class Category implements TranslatableInterface
     }
 
     /**
-     * @param Tag[] $value
+     * @param Category[] $value
      * @return $this
      */
-    public function setChildren($value)
+    public function setChildren($value): self
     {
         $this->children = $value;
 
@@ -191,7 +191,7 @@ class Category implements TranslatableInterface
     /**
      * @return int
      */
-    public function getLeft()
+    public function getLeft(): ?int
     {
         return $this->left;
     }
@@ -200,7 +200,7 @@ class Category implements TranslatableInterface
      * @param int $value
      * @return $this
      */
-    public function setLeft($value)
+    public function setLeft(?int $value): self
     {
         $this->left = $value;
 
@@ -210,7 +210,7 @@ class Category implements TranslatableInterface
     /**
      * @return int
      */
-    public function getRight()
+    public function getRight(): ?int
     {
         return $this->right;
     }
@@ -219,7 +219,7 @@ class Category implements TranslatableInterface
      * @param int $value
      * @return $this
      */
-    public function setRight($value)
+    public function setRight(?int $value): self
     {
         $this->right = $value;
 
@@ -229,7 +229,7 @@ class Category implements TranslatableInterface
     /**
      * @return int
      */
-    public function getRoot()
+    public function getRoot(): ?int
     {
         return $this->root;
     }
@@ -238,7 +238,7 @@ class Category implements TranslatableInterface
      * @param int $value
      * @return $this
      */
-    public function setRoot($value)
+    public function setRoot(?int $value): self
     {
         $this->root = $value;
 

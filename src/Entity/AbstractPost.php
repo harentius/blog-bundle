@@ -40,7 +40,7 @@ abstract class AbstractPost
     protected $slug;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="text")
      * @Gedmo\Translatable()
@@ -50,7 +50,7 @@ abstract class AbstractPost
     protected $text;
 
     /**
-     * @var AdminUser
+     * @var AdminUser|null
      *
      * @ORM\ManyToOne(
      *     targetEntity="Harentius\BlogBundle\Entity\AdminUser"
@@ -67,7 +67,7 @@ abstract class AbstractPost
     protected $published;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      *
      * @ORM\Column(type="datetime", nullable=true)
      * @SymfonyConstraints\DateTime
@@ -75,9 +75,17 @@ abstract class AbstractPost
     protected $publishedAt;
 
     /**
+     *
+     */
+    public function __construct()
+    {
+        $this->published = false;
+    }
+
+    /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return (string) $this->title;
     }
@@ -102,7 +110,7 @@ abstract class AbstractPost
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getSlug(): ?string
     {
@@ -110,7 +118,7 @@ abstract class AbstractPost
     }
 
     /**
-     * @param string $value
+     * @param string|null $value
      * @return $this
      */
     public function setSlug(?string $value): self
@@ -121,18 +129,18 @@ abstract class AbstractPost
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getText()
+    public function getText(): ?string
     {
         return $this->text;
     }
 
     /**
-     * @param string $value
+     * @param string|null $value
      * @return $this
      */
-    public function setText($value)
+    public function setText(?string $value): self
     {
         $this->text = $value;
 
@@ -140,18 +148,18 @@ abstract class AbstractPost
     }
 
     /**
-     * @return AdminUser
+     * @return AdminUser|null
      */
-    public function getAuthor()
+    public function getAuthor(): ?AdminUser
     {
         return $this->author;
     }
 
     /**
-     * @param AdminUser $value
+     * @param AdminUser|null $value
      * @return $this
      */
-    public function setAuthor($value)
+    public function setAuthor(?AdminUser $value): self
     {
         $this->author = $value;
 
@@ -161,7 +169,7 @@ abstract class AbstractPost
     /**
      * @return bool
      */
-    public function isPublished()
+    public function isPublished(): bool
     {
         return $this->published;
     }
@@ -170,7 +178,7 @@ abstract class AbstractPost
      * @param bool $value
      * @return $this
      */
-    public function setPublished($value)
+    public function setPublished(bool $value): self
     {
         $this->published = $value;
 
@@ -178,18 +186,18 @@ abstract class AbstractPost
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime|null
      */
-    public function getPublishedAt()
+    public function getPublishedAt(): ?\DateTime
     {
         return $this->publishedAt;
     }
 
     /**
-     * @param \DateTime $value
+     * @param \DateTime|null $value
      * @return $this
      */
-    public function setPublishedAt($value)
+    public function setPublishedAt(?\DateTime $value): self
     {
         $this->publishedAt = $value;
 

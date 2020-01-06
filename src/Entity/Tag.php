@@ -15,21 +15,19 @@ class Tag
     use IdentifiableEntityTrait;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="string", length=255)
-     * @SymfonyConstraints\Type(type="string")
      * @SymfonyConstraints\Length(max=255)
      * @SymfonyConstraints\NotBlank()
      */
     private $name;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="string", length=255)
      * @Gedmo\Slug(fields={"name"}, unique=true)
-     * @SymfonyConstraints\Type(type="string")
      * @SymfonyConstraints\Length(max=255)
      */
     private $slug;
@@ -55,24 +53,24 @@ class Tag
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return (string) $this->name;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string $value
+     * @param string|null $value
      * @return $this
      */
-    public function setName($value)
+    public function setName(?string $value): self
     {
         $this->name = $value;
 
@@ -80,18 +78,18 @@ class Tag
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getSlug()
+    public function getSlug(): ?string
     {
         return $this->slug;
     }
 
     /**
-     * @param string $value
+     * @param string|null $value
      * @return $this
      */
-    public function setSlug($value)
+    public function setSlug(?string $value): self
     {
         $this->slug = $value;
 
@@ -107,10 +105,10 @@ class Tag
     }
 
     /**
-     * @param Article[] $value
+     * @param Article[]|ArrayCollection $value
      * @return $this
      */
-    public function setArticles($value)
+    public function setArticles($value): self
     {
         $this->articles = $value;
 

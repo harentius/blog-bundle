@@ -37,13 +37,15 @@ class Page extends AbstractPost
      */
     public function __construct()
     {
-        $this->published = false;
+        parent::__construct();
+        $this->showInMainMenu = false;
+        $this->order = 0;
     }
 
     /**
      * @return bool
      */
-    public function getShowInMainMenu()
+    public function getShowInMainMenu(): bool
     {
         return $this->showInMainMenu;
     }
@@ -52,7 +54,7 @@ class Page extends AbstractPost
      * @param bool $value
      * @return $this
      */
-    public function setShowInMainMenu($value)
+    public function setShowInMainMenu(bool $value): self
     {
         $this->showInMainMenu = $value;
 
@@ -62,7 +64,7 @@ class Page extends AbstractPost
     /**
      * @return int
      */
-    public function getOrder()
+    public function getOrder(): int
     {
         return $this->order;
     }
@@ -71,7 +73,7 @@ class Page extends AbstractPost
      * @param int $value
      * @return $this
      */
-    public function setOrder($value)
+    public function setOrder(int $value): self
     {
         $this->order = $value;
 

@@ -13,46 +13,43 @@ class Setting
     use IdentifiableEntityTrait;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="text", name="_key")
-     * @SymfonyConstraints\Type(type="string")
      * @SymfonyConstraints\Length(max=255)
      * @SymfonyConstraints\NotBlank()
      */
     private $key;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="text")
-     * @SymfonyConstraints\Type(type="string")
      * @SymfonyConstraints\Length(max=255)
      * @SymfonyConstraints\NotBlank()
      */
     private $name;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="text")
-     * @SymfonyConstraints\Type(type="string")
      */
     private $value;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getKey()
+    public function getKey(): ?string
     {
         return $this->key;
     }
 
     /**
-     * @param string $value
+     * @param string|null $value
      * @return $this
      */
-    public function setKey($value)
+    public function setKey(?string $value): self
     {
         $this->key = $value;
 
@@ -60,18 +57,18 @@ class Setting
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string $value
+     * @param string|null $value
      * @return $this
      */
-    public function setName($value)
+    public function setName(?string $value): self
     {
         $this->name = $value;
 
@@ -79,18 +76,18 @@ class Setting
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getValue()
+    public function getValue(): ?string
     {
         return $this->value;
     }
 
     /**
-     * @param string $value
+     * @param string|null $value
      * @return $this
      */
-    public function setValue($value)
+    public function setValue(?string $value): self
     {
         $this->value = $value;
 
