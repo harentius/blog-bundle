@@ -50,7 +50,6 @@ class Configuration implements ConfigurationInterface
             ->arrayNode('cache')
                 ->children()
                     ->scalarNode('apc_global_prefix')->defaultValue('harentius_blog')->end()
-                    ->integerNode('statistics_cache_lifetime')->defaultValue(86400)->end()
                 ->end()
             ->end()
             ->arrayNode('articles')

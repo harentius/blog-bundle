@@ -13,11 +13,6 @@ services:
         calls:
             - [ setNamespace, [ '%harentius_blog.cache.apc_global_prefix%_settings' ] ]
 
-    harentius_blog.statistics_cache:
-        class: Doctrine\Common\Cache\ApcuCache
-        calls:
-            - [ setNamespace, [ '%harentius_blog.cache.apc_global_prefix%_statistics' ] ]
-
     harentius_blog.rating_cache:
         class: Doctrine\Common\Cache\ApcuCache
         calls:

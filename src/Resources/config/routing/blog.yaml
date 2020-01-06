@@ -6,10 +6,6 @@ harentius_blog_feed:
     path: /feed
     defaults: { _controller: 'Harentius\BlogBundle\Controller\FeedController' }
 
-harentius_blog_page_about:
-    path: /about
-    defaults: { _controller: 'HarentiusBlogBundle:Page:about' }
-
 harentius_blog_category:
     path: /category/{slug}/
     defaults: { _controller: 'Harentius\BlogBundle\Controller\CategoryController' }

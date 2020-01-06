@@ -48,13 +48,6 @@ services:
              - '@Harentius\BlogBundle\Entity\SettingRepository'
              - '@harentius_blog.settings.cache'
 
-    harentius_blog.statistics:
-        class: Harentius\BlogBundle\Statistics
-        arguments:
-            - '@harentius_blog.statistics_cache'
-            - '%harentius_blog.cache.statistics_cache_lifetime%'
-            - '@Harentius\BlogBundle\Entity\ArticleRepository'
-
     Harentius\BlogBundle\FileManagement\Image\ImageOptimizer:
         arguments:
             - '@liip_imagine.cache.manager'

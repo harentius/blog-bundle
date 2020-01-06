@@ -59,16 +59,11 @@ class MenuBuilder
     /**
      * @return ItemInterface
      */
-    public function createMainMenu()
+    public function createMainMenu(): ItemInterface
     {
         $menu = $this->factory->createItem('root');
 
         $menu->setChildrenAttribute('class', 'navbar-nav');
-        $menu
-            ->addChild('About', ['route' => 'harentius_blog_page_about'])
-            ->setLinkAttribute('class', 'nav-link')
-        ;
-
         $pages = $this->pageRepository->findForMainMenu($this->homepageSlug);
         $locale = $this->requestStack->getCurrentRequest()->getLocale();
 

@@ -140,7 +140,6 @@ harentius_blog:
     # For avoiding internal apc cache conflicts if run multiple sites on one server.
     cache:
         apc_global_prefix: blog
-        statistics_cache_lifetime: 3600
 ```
 
 
