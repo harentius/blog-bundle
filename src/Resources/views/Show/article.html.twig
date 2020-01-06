@@ -45,7 +45,7 @@
     {{
         {
             "article_id": entity.id,
-            "article_url": publication_path(entity, constant('Symfony\\Component\\Routing\\Generator\\UrlGeneratorInterface::ABSOLUTE_URL')),
+            "article_url": publication_path(entity, app.request.locale, constant('Symfony\\Component\\Routing\\Generator\\UrlGeneratorInterface::ABSOLUTE_URL')),
             "page_identifier": app.request.locale ~ '/' ~ entity.slug,
             "discuss_user_name": discuss_user_name|default,
             "article_original_id": entity.attributes.original_id is defined ?: null

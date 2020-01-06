@@ -3,60 +3,46 @@
 namespace Harentius\BlogBundle\Router;
 
 use Harentius\BlogBundle\Entity\AbstractPost;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class PublicationUrlGenerator
 {
-    /**
-     * @var RequestStack
-     */
-    private $requestStack;
-
     /**
      * @var UrlGeneratorInterface
      */
     private $urlGenerator;
 
     /**
-     * @param RequestStack $requestStack
-     * @param UrlGeneratorInterface $urlGenerator
+     * @var string
      */
-    public function __construct(RequestStack $requestStack, UrlGeneratorInterface $urlGenerator)
+    private $primaryLocale;
+
+    /**
+     * @param UrlGeneratorInterface $urlGenerator
+     * @param string $primaryLocale
+     */
+    public function __construct(UrlGeneratorInterface $urlGenerator, string $primaryLocale)
     {
-        $this->requestStack = $requestStack;
         $this->urlGenerator = $urlGenerator;
+        $this->primaryLocale = $primaryLocale;
     }
 
     /**
      * @param AbstractPost $post
+     * @param string $locale
      * @param int $referenceType
      * @return string
      */
-    public function generateUrl(AbstractPost $post, $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH)
+    public function generateUrl(AbstractPost $post, string $locale, int $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH)
     {
-        return $this->generateUrlForSlug($post->getSlug(), $referenceType);
-    }
-
-    /**
-     * @param string $slug
-     * @param int $referenceType
-     * @return string
-     */
-    public function generateUrlForSlug($slug, $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH)
-    {
-        $request = $this->requestStack->getCurrentRequest();
-        $locale = $request->getLocale();
-        $defaultLocale = $request->getDefaultLocale();
-
-        if ($locale === $defaultLocale) {
+        if ($locale === $this->primaryLocale) {
             return $this->urlGenerator->generate('harentius_blog_show_default', [
-                'slug' => $slug,
+                'slug' => $post->getSlug(),
             ], $referenceType);
         }
 
         return $this->urlGenerator->generate('harentius_blog_show', [
-            'slug' => $slug,
+            'slug' => $post->getSlug(),
             '_locale' => $locale,
         ], $referenceType);
     }

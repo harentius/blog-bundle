@@ -81,12 +81,15 @@ services:
             - { name: doctrine.event_listener, event: prePersist }
             - { name: doctrine.event_listener, event: preUpdate }
 
-    Harentius\BlogBundle\Router\PublicationUrlGenerator: ~
-    Harentius\BlogBundle\BreadCrumbsManager: ~
-    Harentius\BlogBundle\ViewsCounter: ~
-    Harentius\BlogBundle\Sidebar\Archive: ~
-    Harentius\BlogBundle\FileManagement\FileManager: ~
+    Harentius\BlogBundle\Router\PublicationUrlGenerator:
+        arguments:
+            $primaryLocale: '%harentius_blog.primary_locale%'
 
     Harentius\BlogBundle\Paginator:
         arguments:
             $defaultPerPage: '%harentius_blog.list.posts_per_page%'
+
+    Harentius\BlogBundle\BreadCrumbsManager: ~
+    Harentius\BlogBundle\ViewsCounter: ~
+    Harentius\BlogBundle\Sidebar\Archive: ~
+    Harentius\BlogBundle\FileManagement\FileManager: ~

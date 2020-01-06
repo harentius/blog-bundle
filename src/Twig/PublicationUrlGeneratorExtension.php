@@ -28,7 +28,6 @@ class PublicationUrlGeneratorExtension extends AbstractExtension
     {
         return [
             new TwigFunction('publication_path', [$this->urlGenerator, 'generateUrl']),
-            new TwigFunction('publication_path_for_slug', [$this->urlGenerator, 'generateUrlForSlug']),
         ];
     }
 }
