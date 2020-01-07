@@ -1,6 +1,2 @@
 imports:
     - { resource: '@HarentiusBlogBundle/Resources/config/packages/*' }
-
-sonata_block:
-    default_contexts: ['sonata_page_bundle']
-    blocks: []
