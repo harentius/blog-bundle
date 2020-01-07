@@ -42,12 +42,6 @@ services:
         arguments:
             $webDir: '%kernel.project_dir%/public'
 
-    harentius_blog.settings_provider:
-        class: Harentius\BlogBundle\SettingsProvider
-        arguments:
-             - '@Harentius\BlogBundle\Entity\SettingRepository'
-             - '@harentius_blog.settings.cache'
-
     Harentius\BlogBundle\FileManagement\Image\ImageOptimizer:
         arguments:
             - '@liip_imagine.cache.manager'

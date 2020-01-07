@@ -7,13 +7,15 @@ services:
 
     Twig\Extensions\IntlExtension: ~
     Harentius\BlogBundle\Twig\PublicationUrlGeneratorExtension: ~
-
-    Harentius\BlogBundle\Twig\BlogExtension:
+    Harentius\BlogBundle\Twig\SettingsExtension: ~
+    Harentius\BlogBundle\Twig\ReadMoreExtension: ~
+    Harentius\BlogBundle\Twig\RatingExtension: ~
+    Harentius\BlogBundle\Twig\TranslationListExtension:
         arguments:
-            - '@twig.runtime.httpkernel'
-            - ~
-            - '@Harentius\BlogBundle\Rating'
-            - '@harentius_blog.settings_provider'
-            - '%harentius_blog.sidebar.cache_lifetime%'
-            - '@Harentius\BlogBundle\Entity\TranslationRepository'
-            - '%harentius_blog.primary_locale%'
+            $primaryLocale: '%harentius_blog.primary_locale%'
+
+    Harentius\BlogBundle\Twig\RenderCachedExtension:
+        arguments:
+            $httpKernelRuntime: "@twig.runtime.httpkernel"
+            $cache: ~
+            $sidebarCacheLifeTime: '%harentius_blog.sidebar.cache_lifetime%'
