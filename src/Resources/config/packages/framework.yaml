@@ -1,5 +1,5 @@
 framework:
-    translator: { fallbacks: ["%locale%"] }
+    translator: { fallbacks: ['%harentius_blog.primary_locale%'] }
     assets:
         packages:
             harentius_blog:
