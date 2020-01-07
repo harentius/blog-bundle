@@ -20,12 +20,6 @@ class SetTwigVariablesPass implements CompilerPassInterface
             )->addMethodCall(
                 'addGlobal',
                 ['default_locale', $container->getParameter('kernel.default_locale')]
-            )->addMethodCall(
-                'addGlobal',
-                ['sharethis_property', $container->getParameter('harentius_blog.articles.sharethis.property')]
-            )->addMethodCall(
-                'addGlobal',
-                ['sharethis_product', $container->getParameter('harentius_blog.articles.sharethis.product')]
             )
         ;
     }

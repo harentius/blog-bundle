@@ -28,14 +28,6 @@ figcaption {
   text-align: center;
 }
 
-.navbar {
-  margin-bottom: 0;
-}
-
-.display-none {
-  display: none;
-}
-
 .container {
   border-left: 1px solid #eeeeee;
   border-right: 1px solid #eeeeee;
@@ -69,14 +61,8 @@ figcaption {
   }
 }
 
-.social-and-shares-wrapper {
+.post-ratings-row {
   margin-top: 15px;
-
-  .social-wrapper {
-    div {
-      vertical-align: top;
-    }
-  }
 
   .likes-wrapper {
     font-size: 17px;
@@ -126,29 +112,6 @@ figcaption {
   p {
     margin: 0 0 3px;
   }
-}
-
-// Socials
-.b-share_theme_counter, .vk-like {
-  display: inline-block;
-}
-
-.b-share_theme_counter {
-  height: 22px;
-}
-
-.vk-like iframe {
-  margin-bottom: 1px;
-}
-
-.b-share_theme_counter .b-share {
-  // Need important, because plugin inlines styles
-  vertical-align: baseline !important;
-  padding: 0 !important;
-}
-
-.vk-comments {
-  margin-top: 20px;
 }
 
 // Mobile
@@ -216,10 +179,6 @@ figcaption {
   .likes-wrapper {
     margin-top: 5px;
   }
-}
-
-.comments-wrapper {
-  margin-top: 10px;
 }
 
 .languages-wrapper span {

@@ -6,13 +6,13 @@
         "/bundles/harentiusblog/build/common.162fcb83.js"
       ],
       "css": [
-        "/bundles/harentiusblog/build/common.a612a67c.css"
+        "/bundles/harentiusblog/build/common.1b85473a.css"
       ]
     },
     "article": {
       "js": [
         "/bundles/harentiusblog/build/runtime.6c1a13d3.js",
-        "/bundles/harentiusblog/build/article.55e2c48c.js"
+        "/bundles/harentiusblog/build/article.33e25e17.js"
       ]
     },
     "admin-article": {

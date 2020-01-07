@@ -44,7 +44,5 @@ class HarentiusBlogExtension extends Extension
         $container->setParameter('harentius_blog.articles.image_previews_base_uri', $config['articles']['image_previews_base_uri']);
         $container->setParameter('harentius_blog.locales', $config['locales']);
         $container->setParameter('harentius_blog.primary_locale', $config['primary_locale']);
-        $container->setParameter('harentius_blog.articles.sharethis.property', $config['articles']['sharethis']['property']);
-        $container->setParameter('harentius_blog.articles.sharethis.product', $config['articles']['sharethis']['product']);
     }
 }
