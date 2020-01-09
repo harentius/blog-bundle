@@ -12,17 +12,11 @@ class LocalesConfigPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        $defaultLocale = $container->getParameter('kernel.default_locale');
         $locales = $container->getParameter('harentius_blog.locales');
-        $supportedLocalesWithoutDefault = $locales;
-
-        if (($key = array_search($defaultLocale, $supportedLocalesWithoutDefault, true)) !== false) {
-            unset($supportedLocalesWithoutDefault[$key]);
-        }
 
         $container->setParameter(
-            'harentius_blog.supported_locales_without_default',
-            implode('|', $supportedLocalesWithoutDefault)
+            'harentius_blog.locales_requirement',
+            implode('|', $locales)
         );
     }
 }

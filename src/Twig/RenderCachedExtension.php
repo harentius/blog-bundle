@@ -42,7 +42,6 @@ class RenderCachedExtension extends AbstractExtension
         $this->sidebarCacheLifeTime = $sidebarCacheLifeTime;
     }
 
-
     /**
      * @return array
      */

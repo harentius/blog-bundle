@@ -33,8 +33,11 @@ class PublicationUrlGenerator
      * @param int $referenceType
      * @return string
      */
-    public function generateUrl(AbstractPost $post, string $locale, int $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH)
-    {
+    public function generateUrl(
+        AbstractPost $post,
+        string $locale,
+        int $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH
+    ): string {
         if ($locale === $this->primaryLocale) {
             return $this->urlGenerator->generate('harentius_blog_show_default', [
                 'slug' => $post->getSlug(),

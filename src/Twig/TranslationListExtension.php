@@ -51,5 +51,4 @@ class TranslationListExtension extends AbstractExtension
 
         return array_merge([$this->primaryLocale], $translations);
     }
-
 }

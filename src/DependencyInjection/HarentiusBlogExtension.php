@@ -2,7 +2,6 @@
 
 namespace Harentius\BlogBundle\DependencyInjection;
 
-use Harentius\BlogBundle\Twig\RatingExtension;
 use Harentius\BlogBundle\Twig\RenderCachedExtension;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
