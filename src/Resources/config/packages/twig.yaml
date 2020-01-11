@@ -1,0 +1,3 @@
+twig:
+    form_themes:
+        - '@SonataCore/Form/datepicker.html.twig'

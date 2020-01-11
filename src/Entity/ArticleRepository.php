@@ -99,6 +99,7 @@ class ArticleRepository extends EntityRepository
             ->where('a.published = :isPublished')
             ->setParameter(':isPublished', true)
             ->orderBy('a.publishedAt', 'DESC')
+            ->addOrderBy('a.id', 'DESC')
         ;
 
         if ($categorySlug) {

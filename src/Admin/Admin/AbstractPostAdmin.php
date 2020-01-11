@@ -46,6 +46,7 @@ class AbstractPostAdmin extends AbstractAdmin
         $query
             ->orderBy($alias . '.published', 'ASC')
             ->addOrderBy($alias . '.publishedAt', 'DESC')
+            ->addOrderBy($alias . '.id', 'DESC')
         ;
 
         return $query;
