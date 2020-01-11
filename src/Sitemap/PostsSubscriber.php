@@ -58,8 +58,8 @@ class PostsSubscriber implements EventSubscriberInterface
         $posts = $this->abstractPostRepository->findPublished();
 
         foreach ($posts as $post) {
-            $locales = $this->translationRepository->findTranslations($post);
             $this->addUrl($event, $post, $this->primaryLocale);
+            $locales = $this->translationRepository->findTranslations($post);
 
             foreach ($locales as $locale) {
                 $this->addUrl($event, $post, $locale);
