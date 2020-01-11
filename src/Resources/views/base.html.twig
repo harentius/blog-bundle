@@ -30,9 +30,6 @@
 
     {% block stylesheets %}{% endblock %}
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    {% if app.environment != 'dev' %}
-        {{ include('@HarentiusBlog/_google_analytics.html.twig') }}
-    {% endif %}
     {% block head_extra %}{% endblock %}
 </head>
 
