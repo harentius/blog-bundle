@@ -29,9 +29,9 @@ class RatingTest extends TestCase
 
         $article = new Article();
 
-        $this->assertSame(false, $rating->isRated($article));
+        $this->assertFalse($rating->isRated($article));
         $rating->rate($article, Rating::TYPE_LIKE);
-        $this->assertSame(true, $rating->isRated($article));
+        $this->assertTrue($rating->isRated($article));
     }
 
     public function testRateDisLike(): void
@@ -43,7 +43,6 @@ class RatingTest extends TestCase
         $rating->rate($article, Rating::TYPE_DISLIKE);
         $this->assertSame(1, $article->getDisLikesCount());
     }
-
 
     private function createRating(): Rating
     {
