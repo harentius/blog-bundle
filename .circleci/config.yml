@@ -12,11 +12,11 @@ jobs:
       - run: sudo composer self-update
       - restore_cache:
           keys:
-            - composer-bin-cs-fixer-v2-{{ checksum "vendor-bin/php-cs-fixer/composer.lock" }}
+            - composer-bin-cs-fixer-v2-{{ checksum "vendor-bin/php-cs-fixer/composer.json" }}
             - composer-bin-cs-fixer-v2-
       - run: (cd vendor-bin/php-cs-fixer && composer install --no-interaction)
       - save_cache:
-          key: composer-bin-cs-fixer-v2-{{ checksum "vendor-bin/php-cs-fixer/composer.lock" }}
+          key: composer-bin-cs-fixer-v2-{{ checksum "vendor-bin/php-cs-fixer/composer.json" }}
           paths:
             - vendor-bin/php-cs-fixer/vendor
       - run: composer cs-check
@@ -50,11 +50,11 @@ jobs:
       - run: sudo composer self-update
       - restore_cache:
           keys:
-            - composer-v1-{{ checksum "composer.lock" }}
+            - composer-v1-{{ checksum "composer.json" }}
             - composer-v1-
       - run: composer install --no-interaction --ignore-platform-reqs
       - save_cache:
-          key: composer-v1-{{ checksum "composer.lock" }}
+          key: composer-v1-{{ checksum "composer.json" }}
           paths:
             - vendor
       - run: composer phpstan
@@ -67,11 +67,11 @@ jobs:
       - run: sudo composer self-update
       - restore_cache:
          keys:
-           - composer-v1-{{ checksum "composer.lock" }}
+           - composer-v1-{{ checksum "composer.json" }}
            - composer-v1-
       - run: composer install --no-interaction --ignore-platform-reqs
       - save_cache:
-          key: composer-v1-{{ checksum "composer.lock" }}
+          key: composer-v1-{{ checksum "composer.json" }}
           paths:
             - vendor
       - run: composer phpunit-with-coverage
