@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 class RatingTest extends TestCase
 {
-    public function testRate(): void
+    public function testRateLike(): void
     {
         $rating = $this->createRating();
 
@@ -22,6 +22,28 @@ class RatingTest extends TestCase
         $rating->rate($article, Rating::TYPE_LIKE);
         $this->assertSame(1, $article->getLikesCount());
     }
+
+    public function testIsRated(): void
+    {
+        $rating = $this->createRating();
+
+        $article = new Article();
+
+        $this->assertSame(false, $rating->isRated($article));
+        $rating->rate($article, Rating::TYPE_LIKE);
+        $this->assertSame(true, $rating->isRated($article));
+    }
+
+    public function testRateDisLike(): void
+    {
+        $rating = $this->createRating();
+
+        $article = new Article();
+
+        $rating->rate($article, Rating::TYPE_DISLIKE);
+        $this->assertSame(1, $article->getDisLikesCount());
+    }
+
 
     private function createRating(): Rating
     {
