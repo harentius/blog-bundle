@@ -1,7 +1,7 @@
 version: 2.1
 
-#orbs:
-#  codecov: codecov/codecov@1.0.2
+orbs:
+  codecov: codecov/codecov@1.0.2
 
 jobs:
   lint-php:
@@ -44,7 +44,7 @@ jobs:
 
   phpstan:
     docker:
-      -   image: circleci/php:7.3-cli
+      - image: circleci/php:7.3-cli
     steps:
       - checkout
       - run: sudo composer self-update
@@ -59,9 +59,9 @@ jobs:
             - vendor
       - run: composer phpstan
 
-  unit-test:
+  unit-tests:
     docker:
-        -   image: circleci/php:7.3-cli
+        - image: circleci/php:7.3-cli
     steps:
       - checkout
       - run: sudo composer self-update
@@ -79,8 +79,8 @@ jobs:
           key: phpunit-v1
           paths:
             - .phpunit.result.cache
-#      - codecov/upload:
-#          file: coverage.xml
+      - codecov/upload:
+          file: coverage.xml
 
 workflows:
   version: 2
@@ -88,7 +88,7 @@ workflows:
     jobs:
       - lint-php
       - phpstan
-      - unit-test:
-        requires:
-          - lint-php
-          - phpstan
+      - unit-tests:
+          requires:
+            - lint-php
+            - phpstan
