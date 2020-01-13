@@ -11,10 +11,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 class Rating
 {
-    private const TIME_TO_REMEMBER_IP = 60;
+    public const TYPE_LIKE = 'like';
+    public const TYPE_DISLIKE = 'dislike';
 
-    private const TYPE_LIKE = 'like';
-    private const TYPE_DISLIKE = 'dislike';
+    private const TIME_TO_REMEMBER_IP = 60;
 
     /**
      * @var RequestStack
