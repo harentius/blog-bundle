@@ -69,6 +69,7 @@
     "cs-check": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix --dry-run --diff -v --diff-format=udiff --ansi",
     "cs-fix": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix --diff -v --diff-format=udiff --ansi",
     "phpstan": "vendor/bin/phpstan analyse -c phpstan.neon src --memory-limit=768M --level=2",
-    "phpunit": "vendor/bin/phpunit"
+    "phpunit": "vendor/bin/phpunit",
+    "phpunit-with-coverage": "vendor/bin/phpunit --coverage-clover=coverage.xml"
   }
 }

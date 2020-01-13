@@ -1,5 +1,8 @@
 version: 2
 
+orbs:
+    codecov: codecov/codecov@1.0.2
+
 jobs:
   lint-php:
     docker:
@@ -56,10 +59,36 @@ jobs:
               - vendor
       -   run: composer phpstan
 
+  unit-test:
+      docker:
+          -   image: circleci/php:7.3-cli
+      steps:
+          - checkout
+          - run: sudo composer self-update
+          - restore_cache:
+                keys:
+                    - composer-v1-{{ checksum "composer.lock" }}
+                    - composer-v1-
+          - run: composer install --no-interaction --ignore-platform-reqs
+          - save_cache:
+                key: composer-v1-{{ checksum "composer.lock" }}
+                paths:
+                    - vendor
+          - run: composer phpunit-with-coverage
+          - save_cache:
+                key: phpunit-v1
+                paths:
+                    - .phpunit.result.cache
+
 workflows:
-  version: 2
-  static:
-    jobs:
-      - lint-php
-      - lint-js
-      - phpstan
+    version: 2
+    default:
+        jobs:
+            - lint-php
+            - phpstan
+            - unit-test:
+                requires:
+                  - lint-php
+                  - phpstan
+            - codecov/upload:
+                  file: coverage.xml
