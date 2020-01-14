@@ -40,7 +40,7 @@ class AdminUserListener
     /**
      * @param LifecycleEventArgs $event
      */
-    public function processPasswordEncodingIfNeeded(LifecycleEventArgs $event)
+    private function processPasswordEncodingIfNeeded(LifecycleEventArgs $event)
     {
         $entity = $event->getEntity();
 
