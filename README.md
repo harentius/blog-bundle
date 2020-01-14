@@ -5,116 +5,87 @@ Symfony Blog Bundle
 [![Maintainability](https://api.codeclimate.com/v1/badges/8a118f94722e7ac4dc70/maintainability)](https://codeclimate.com/github/harentius/blog-bundle/maintainability)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/harentius/blog-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/harentius/blog-bundle/?branch=master)
 
-Engine for creating simple blog or adding one to the existing project
+Should be registered first
 
+Symfony Bundle for adding simple blog functionality to existing or new Symfony project.
 
-Symfony Bundle for simple blog. In active development now.
-
-This doc explains integration in existing project, which requires a lot of work. Currently I working on improvement and simplification of this process. You're welcome to report issues
-
-For quick and easy stand-alone installation please check [https://github.com/harentius/blog](https://github.com/harentius/blog)
+Requirements
+------------
+Version ^4.0 - Symfony ^4.0  
+Version ^3.0 - Symfony ^3.0  
+Version ^1.0|^2.0 - Symfony ^2.7   
 
 
 Installation
 ------------
 
-Version <= v1.1.9 tested on symfony 2.7 and 2.8.
-Version >= 2.0.0 supports symfony >= 3.0
-Can be used it in existing project, but depends of complexity of project integration/dependency problems can happen.
-Fill free to create issue/pull request with problem description
+### 1. With Symfony Flex
+TODO
 
-For stand-alone installation, install symfony >= 3.0 first:
-
-```bash
-composer.phar create-project symfony/framework-standard-edition test
-```
-
-For using in existing project skip this step.
-
-Than install bundle:
-
+### 2. Without Symfony Flex 
+1) Install bundle 
 ```bash
 $ composer.phar require harentius/blog-bundle
 ```
 
-
-2) Enable bundles in the kernel:
+2) Add bundles (in config/bundles.php or Kernel):
 
 ```php
 <?php
-// app/AppKernel.php
+// config/bundles.php
 
-public function registerBundles()
-{
-    $bundles = array(
-        // ...
-        new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-        new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
-        new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-        new WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle(),
-        new Sonata\CoreBundle\SonataCoreBundle(),
-        new Sonata\BlockBundle\SonataBlockBundle(),
-        new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
-        new Sonata\AdminBundle\SonataAdminBundle(),
-        new Sonata\TranslationBundle\SonataTranslationBundle(),
-        new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
-        new Presta\SitemapBundle\PrestaSitemapBundle(),
-        new Symfony\Cmf\Bundle\RoutingBundle\CmfRoutingBundle(),
-        new Eko\FeedBundle\EkoFeedBundle(),
-        new Liip\ImagineBundle\LiipImagineBundle(),
-        new Hautelook\AliceBundle\HautelookAliceBundle(),
-
-        new Harentius\BlogBundle\HarentiusBlogBundle(),
-    );
-
-    // ...
-}
+return [
+//...
+    Harentius\BlogBundle\HarentiusBlogBundle::class => ['all' => true],
+//...
+    Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle::class => ['all' => true],
+    Knp\Bundle\PaginatorBundle\KnpPaginatorBundle::class => ['all' => true],
+    Knp\Bundle\MenuBundle\KnpMenuBundle::class => ['all' => true],
+    WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle::class => ['all' => true],
+    Sonata\CoreBundle\SonataCoreBundle::class => ['all' => true],
+    Sonata\BlockBundle\SonataBlockBundle::class => ['all' => true],
+    Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle::class => ['all' => true],
+    Sonata\AdminBundle\SonataAdminBundle::class => ['all' => true],
+    Sonata\TranslationBundle\SonataTranslationBundle::class => ['all' => true],
+    Sonata\Doctrine\Bridge\Symfony\Bundle\SonataDoctrineBundle::class => ['all' => true],
+    FOS\JsRoutingBundle\FOSJsRoutingBundle::class => ['all' => true],
+    Presta\SitemapBundle\PrestaSitemapBundle::class => ['all' => true],
+    Eko\FeedBundle\EkoFeedBundle::class => ['all' => true],
+    Liip\ImagineBundle\LiipImagineBundle::class => ['all' => true],
+    Hautelook\AliceBundle\HautelookAliceBundle::class => ['all' => true],
+    Fidry\AliceDataFixtures\Bridge\Symfony\FidryAliceDataFixturesBundle::class => ['all' => true],
+    Nelmio\Alice\Bridge\Symfony\NelmioAliceBundle::class => ['all' => true],
+];
 ```
+Please note that HarentiusBlogBundle should be registered first of all bundles if you want to use default configuration.  
 
+It set ups container parameters for other Symfony bundles.
 
-3) Include configuration and routing:
-There are lot of predefined configuration, very basic. You can use you own, it is just examples.
-(Used to configure SonataAdminBundle and Security)
-
-### Configuration
-
-app/config/config.yml:
-
+3) Include routes:
 ```yml
-imports:
-...
-    - { resource: "@HarentiusBlogBundle/Resources/config/config.yml" }
-    - { resource: "@HarentiusBlogBundle/Resources/config/security.yml" }
-```
-
-You can use your own security configuration or predefined by HarentiusBlogBundle. In last case, you should remove:
-
-```yml
-imports:
-...
-    - { resource: security.yml }
-```
-
-(Because Symfony demands to store security configuration in one file.)
-
-### Routing:
-
-```yml
+# config/routes.yaml
 blog:
     resource: "@HarentiusBlogBundle/Resources/config/routing.yml"
-    prefix:   /
-
-admin:
-    resource: "@HarentiusBlogBundle/Resources/config/routing-admin.yml"
-    prefix:   /admin
+    prefix: /
 ```
 
-4) Configure:
+4) Include default configs:  
+*Note: this step can be skipped if you decide to configure bundles (i.e. DoctrineBundle, SecurityBundle, etc) yourself*
+
+```yml
+# config/packages/harentius_blog.yaml
+imports:
+    - { resource: '@HarentiusBlogBundle/Resources/config/config.yml' }
+```
+
+### Configuration
+Config reference:
 
 ```yml
 harentius_blog:
     # Localizations to be used by blog
-    locales: ['en', 'ua']
+    locales: ['en', 'uk']
+    primary_locale: 'en'
     articles:
         # Path where previews stored
         image_previews_base_uri: /assets/images/preview/
@@ -133,7 +104,7 @@ harentius_blog:
             # ~ - all
             category: ~
             # Last articles number
-            number: 6
+            number: 5
     list:
         posts_per_page: 20
     # For avoiding internal apc cache conflicts if run multiple sites on one server.
@@ -141,46 +112,27 @@ harentius_blog:
         apc_global_prefix: blog
 ```
 
-
-5) Create/Update your DB according to chosen installation type
-
+### Post Installation/Configuration actions
+1) Create/Update your DB according to chosen installation type
 ```bash
-bin/console doctrine:database:create
+bin/console doctrine:database:create # If fresh installation
 bin/console doctrine:schema:create
 ```
 
-or
-
+2) Install Assets
 ```bash
-bin/console doctrine:schema:update
+bin/console assets:install --symlink
 ```
 
-
-6) Populate initial DB values (admin user default credentials: admin/admin, homepage data, etc)
-
+3) Load fixtures (optional)
 ```bash
 bin/console hautelook_alice:doctrine:fixtures:load
 ```
 
-7) Install Assets
+Additional Resources
+====================
 
-```bash
-bin/console assets:dump
-bin/console assets:install
-```
+[https://folkprog.net](https://folkprog.net) - example of blog based on this bundle.
 
-Resources
----------
-
-[https://folkprog.net](https://folkprog.net) - example of blog (currently working project that uses this bundle)
-
-[https://github.com/harentius/folkprog](https://github.com/harentius/folkprog) - repository of this project
-
-
-TODO:
-
-    1) Remove VK dependency/make it optional, same for sharing buttons
-    
-    2) Improve file uploading
-    
-    3) Write tests
+[https://github.com/harentius/folkprog](https://github.com/harentius/folkprog) - repository of this project.
+harentius/blog-bundle is subsplit of it.
