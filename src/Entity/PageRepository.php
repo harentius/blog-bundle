@@ -32,4 +32,20 @@ class PageRepository extends EntityRepository
             ->getResult()
         ;
     }
+
+    /**
+     * @param string|null $slug
+     * @return Page|null
+     */
+    public function findOnePublishedBySlug(?string $slug): ?Page
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.slug = :slug')
+            ->andWhere('p.published = :published')
+            ->setParameter('slug', $slug)
+            ->setParameter('published', true)
+            ->getQuery()
+            ->getResult()
+         ;
+    }
 }

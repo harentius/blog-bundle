@@ -18,7 +18,8 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Harentius\\BlogBundle\\Tests\\": "tests/"
+      "Harentius\\BlogBundle\\Tests\\": "tests/",
+      "Harentius\\BlogBundle\\Test\\": "test/"
     }
   },
   "require": {

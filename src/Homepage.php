@@ -60,10 +60,7 @@ class Homepage
      */
     public function getPage(): ?Page
     {
-        return $this->pageRepository->findOneBy([
-            'slug' => $this->homepageSlug,
-            'published' => true,
-        ]);
+        return $this->pageRepository->findOnePublishedBySlug($this->homepageSlug);
     }
 
     /**
@@ -80,7 +77,7 @@ class Homepage
 
         $latestArticle = $this->articleRepository->findLatestPublishedByCategorySlug($this->categorySlug);
 
-        if ($latestArticle->getUpdatedAt() > $updatedAt) {
+        if ($latestArticle && $latestArticle->getUpdatedAt() > $updatedAt) {
             $updatedAt = $latestArticle->getUpdatedAt();
         }
 
