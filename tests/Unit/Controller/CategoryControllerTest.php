@@ -41,10 +41,10 @@ class CategoryControllerTest extends TestCase
             ->method('findOneBy')
             ->willReturn($category)
         ;
-        $archiveController = $this->createCategoryController($twig, $slidingPagination, $categoryRepository);
+        $categoryController = $this->createCategoryController($twig, $slidingPagination, $categoryRepository);
 
         $request = new Request();
-        $response = $archiveController($request, 'category-slug');
+        $response = $categoryController($request, 'category-slug');
 
         $this->assertInstanceOf(Response::class, $response);
     }
@@ -63,9 +63,9 @@ class CategoryControllerTest extends TestCase
             ->with(['slug' => 'child-slug'])
             ->willReturn($category)
         ;
-        $archiveController = $this->createCategoryController($twig, $slidingPagination, $categoryRepository);
+        $categoryController = $this->createCategoryController($twig, $slidingPagination, $categoryRepository);
         $request = new Request();
-        $archiveController($request, 'parent-slug/child-slug');
+        $categoryController($request, 'parent-slug/child-slug');
     }
 
     public function testInvokeNotFound(): void
@@ -74,10 +74,10 @@ class CategoryControllerTest extends TestCase
         $slidingPagination->setItemNumberPerPage(10);
         $twig = $this->createMock(Environment::class);
         $categoryRepository = $this->createMock(CategoryRepository::class);
-        $archiveController = $this->createCategoryController($twig, $slidingPagination, $categoryRepository);
+        $categoryController = $this->createCategoryController($twig, $slidingPagination, $categoryRepository);
         $request = new Request();
         $this->expectException(NotFoundHttpException::class);
-        $archiveController($request, 'parent-slug/child-slug');
+        $categoryController($request, 'parent-slug/child-slug');
     }
 
     private function createCategoryController(

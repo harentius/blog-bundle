@@ -22,7 +22,7 @@ class HomepageTest extends TestCase
             ->with('category_slug')
         ;
         $pageRepository = $this->createMock(PageRepository::class);
-        $homepage = $this->createHomepageMock($articleRepository, $pageRepository);
+        $homepage = $this->createHomepage($articleRepository, $pageRepository);
 
         $homepage->getFeedQueryBuilder();
     }
@@ -36,7 +36,7 @@ class HomepageTest extends TestCase
             ->method('findOnePublishedBySlug')
             ->with('homepage_slug')
         ;
-        $homepage = $this->createHomepageMock($articleRepository, $pageRepository);
+        $homepage = $this->createHomepage($articleRepository, $pageRepository);
 
         $homepage->getPage();
     }
@@ -51,7 +51,7 @@ class HomepageTest extends TestCase
             ->method('findOnePublishedBySlug')
             ->willReturn($page)
         ;
-        $homepage = $this->createHomepageMock($articleRepository, $pageRepository);
+        $homepage = $this->createHomepage($articleRepository, $pageRepository);
 
         $updatedAt = $homepage->getUpdatedAt();
         $this->assertEquals(new \DateTime('2018/12/21 00:00:00'), $updatedAt);
@@ -73,13 +73,13 @@ class HomepageTest extends TestCase
             ->method('findOnePublishedBySlug')
             ->willReturn($page)
         ;
-        $homepage = $this->createHomepageMock($articleRepository, $pageRepository);
+        $homepage = $this->createHomepage($articleRepository, $pageRepository);
 
         $updatedAt = $homepage->getUpdatedAt();
         $this->assertEquals(new \DateTime('2018/12/22 00:00:00'), $updatedAt);
     }
 
-    private function createHomepageMock(
+    private function createHomepage(
         ArticleRepository $articleRepository,
         PageRepository $pageRepository
     ): Homepage {
