@@ -1,0 +1,59 @@
+harentius_blog_homepage:
+    path: /
+    defaults: { _controller: 'Harentius\BlogBundle\Controller\HomepageController' }
+
+harentius_blog_feed:
+    path: /feed
+    defaults: { _controller: 'Harentius\BlogBundle\Controller\FeedController' }
+
+harentius_blog_category:
+    path: /category/{slug}/
+    defaults: { _controller: 'Harentius\BlogBundle\Controller\CategoryController' }
+    requirements:
+        slug: '.*'
+
+harentius_blog_tag:
+    path: /tag/{slug}/
+    defaults: { _controller: 'Harentius\BlogBundle\Controller\TagController' }
+
+harentius_blog_archive_year:
+    path: /{year}/
+    defaults: { _controller: 'Harentius\BlogBundle\Controller\ArchiveController' }
+    requirements:
+        year: '\d+'
+
+harentius_blog_archive_month:
+    path: /{year}/{month}/
+    defaults: { _controller: 'Harentius\BlogBundle\Controller\ArchiveController' }
+    requirements:
+        year: '\d+'
+        month: '\d+'
+
+harentius_blog_show_default:
+    path: /{slug}
+    defaults: { _controller: 'Harentius\BlogBundle\Controller\ShowController' }
+
+harentius_blog_show:
+    path: /{_locale}/{slug}
+    defaults: { _controller: 'Harentius\BlogBundle\Controller\ShowController', _locale: '%harentius_blog.primary_locale%' }
+    requirements:
+        _locale: "%harentius_blog.locales_requirement%"
+
+harentius_blog_rate:
+    path: /like/{article}/{type}
+    defaults: { _controller: 'Harentius\BlogBundle\Controller\RateController', type: 'like' }
+    methods:  [POST]
+    requirements:
+        type: like|dislike
+    options:
+        expose: true
+
+harentius_blog_resize:
+    path: '%harentius_blog.articles.image_previews_base_uri%{imageName}'
+    defaults: { _controller: 'Harentius\BlogBundle\Controller\ImageOptimizationController' }
+
+harentius_blog_view_count:
+    path: /view-count/{id}
+    defaults: { _controller: 'Harentius\BlogBundle\Controller\ViewCountController' }
+    options:
+        expose: true

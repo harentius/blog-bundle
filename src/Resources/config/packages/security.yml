@@ -1,0 +1,35 @@
+security:
+    encoders:
+        Harentius\BlogBundle\Entity\AdminUser: sha512
+
+    providers:
+        admin_users:
+            entity:
+                class: Harentius\BlogBundle\Entity\AdminUser
+                property: username
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt|error)|css|images|js)/
+            security: false
+
+        admin:
+            guard:
+                authenticators:
+                    - Harentius\BlogBundle\Admin\Security\LoginFormAuthenticator
+            form_login:
+                login_path: harentius_blog_admin_login
+                check_path: harentius_blog_admin_login_check
+                default_target_path: sonata_admin_dashboard
+            logout:
+                path: harentius_blog_admin_logout
+                target: harentius_blog_homepage
+            anonymous: true
+            remember_me:
+                secret: '%env(APP_SECRET)%'
+                lifetime: 31556926 # 1 year
+                path: /
+
+    access_control:
+         - { path: '^/admin/login$', role: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: '^/admin', role: ROLE_SONATA_ADMIN }

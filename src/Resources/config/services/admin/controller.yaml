@@ -1,0 +1,8 @@
+services:
+    _defaults:
+        public: true
+        autowire: true
+
+    Harentius\BlogBundle\Admin\Controller\FileUploadController: ~
+    Harentius\BlogBundle\Admin\Controller\FileBrowseController: ~
+    Harentius\BlogBundle\Admin\Controller\SecurityController: ~

@@ -5,22 +5,13 @@ namespace Harentius\BlogBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Eko\FeedBundle\Item\Writer\ItemInterface;
-use Gedmo\Mapping\Annotation as Gedmo;
-use Harentius\BlogBundle\Entity\Base\AbstractPost;
-use Harentius\BlogBundle\Entity\Base\ArticleChangeableFieldsEntityTrait;
-use Sonata\TranslationBundle\Model\Gedmo\TranslatableInterface;
-use Sonata\TranslationBundle\Traits\Gedmo\PersonalTranslatableTrait;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
 /**
  * @ORM\Entity(repositoryClass="Harentius\BlogBundle\Entity\ArticleRepository")
- * @Gedmo\TranslationEntity(class="Harentius\BlogBundle\Entity\Translation")
  */
-class Article extends AbstractPost implements ItemInterface, TranslatableInterface
+class Article extends AbstractPost implements ItemInterface
 {
-    use ArticleChangeableFieldsEntityTrait;
-    use PersonalTranslatableTrait;
-
     /**
      * @var int
      *
@@ -61,22 +52,32 @@ class Article extends AbstractPost implements ItemInterface, TranslatableInterfa
     protected $attributes;
 
     /**
-     * @var array
+     * @var Category|null
      *
-     * @ORM\OneToMany(
-     *     targetEntity="Harentius\BlogBundle\Entity\Translation",
-     *     mappedBy="object",
-     *     cascade={"persist", "remove"}
+     * @ORM\ManyToOne(
+     *     targetEntity="Harentius\BlogBundle\Entity\Category",
+     *     inversedBy="articles"
+     * )
+     * @SymfonyConstraints\NotNull()
+     */
+    private $category;
+
+    /**
+     * @var Tag[]
+     *
+     * @ORM\ManyToMany(
+     *     targetEntity="Harentius\BlogBundle\Entity\Tag",
+     *     inversedBy="articles"
      * )
      */
-    protected $translations;
+    private $tags;
 
     /**
      *
      */
     public function __construct()
     {
-        $this->published = false;
+        parent::__construct();
         $this->viewsCount = 0;
         $this->likesCount = 0;
         $this->disLikesCount = 0;
@@ -87,26 +88,15 @@ class Article extends AbstractPost implements ItemInterface, TranslatableInterfa
     /**
      * @return int
      */
-    public function getViewsCount()
+    public function getViewsCount(): int
     {
         return $this->viewsCount;
     }
 
     /**
-     * @param int $value
-     * @return $this
-     */
-    public function setViewsCount($value)
-    {
-        $this->viewsCount = $value;
-
-        return $this;
-    }
-
-    /**
      *
      */
-    public function increaseViewsCount()
+    public function increaseViewsCount(): void
     {
         $this->viewsCount = $this->getViewsCount() + 1;
     }
@@ -114,26 +104,15 @@ class Article extends AbstractPost implements ItemInterface, TranslatableInterfa
     /**
      * @return int
      */
-    public function getLikesCount()
+    public function getLikesCount(): int
     {
         return $this->likesCount;
     }
 
     /**
-     * @param int $value
-     * @return $this
-     */
-    public function setLikesCount($value)
-    {
-        $this->likesCount = $value;
-
-        return $this;
-    }
-
-    /**
      *
      */
-    public function increaseLikesCount()
+    public function increaseLikesCount(): void
     {
         $this->likesCount = $this->getLikesCount() + 1;
     }
@@ -141,26 +120,15 @@ class Article extends AbstractPost implements ItemInterface, TranslatableInterfa
     /**
      * @return int
      */
-    public function getDisLikesCount()
+    public function getDisLikesCount(): int
     {
         return $this->disLikesCount;
     }
 
     /**
-     * @param int $value
-     * @return $this
-     */
-    public function setDisLikesCount($value)
-    {
-        $this->disLikesCount = $value;
-
-        return $this;
-    }
-
-    /**
      *
      */
-    public function increaseDisLikesCount()
+    public function increaseDisLikesCount(): void
     {
         $this->disLikesCount = $this->getDisLikesCount() + 1;
     }
@@ -168,7 +136,7 @@ class Article extends AbstractPost implements ItemInterface, TranslatableInterfa
     /**
      * @return array
      */
-    public function getAttributes()
+    public function getAttributes(): array
     {
         return $this->attributes;
     }
@@ -177,9 +145,58 @@ class Article extends AbstractPost implements ItemInterface, TranslatableInterfa
      * @param array $value
      * @return $this
      */
-    public function setAttributes($value)
+    public function setAttributes(array $value): self
     {
         $this->attributes = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return Category|null
+     */
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param Category|null $value
+     * @return $this
+     */
+    public function setCategory(?Category $value): self
+    {
+        $this->category = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return Tag[]|ArrayCollection
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * @param Tag[]|ArrayCollection $value
+     * @return $this
+     */
+    public function setTags($value): self
+    {
+        $this->tags = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param Tag $value
+     * @return $this
+     */
+    public function addTag(Tag $value): self
+    {
+        $this->tags[] = $value;
 
         return $this;
     }
@@ -189,7 +206,7 @@ class Article extends AbstractPost implements ItemInterface, TranslatableInterfa
     /**
      * {@inheritdoc}
      */
-    public function getFeedItemTitle()
+    public function getFeedItemTitle(): ?string
     {
         return $this->getTitle();
     }
@@ -197,7 +214,7 @@ class Article extends AbstractPost implements ItemInterface, TranslatableInterfa
     /**
      * {@inheritdoc}
      */
-    public function getFeedItemDescription()
+    public function getFeedItemDescription(): ?string
     {
         return $this->getMetaDescription();
     }
@@ -205,7 +222,7 @@ class Article extends AbstractPost implements ItemInterface, TranslatableInterfa
     /**
      * {@inheritdoc}
      */
-    public function getFeedItemLink()
+    public function getFeedItemLink(): ?string
     {
         return $this->getSlug();
     }
@@ -213,27 +230,8 @@ class Article extends AbstractPost implements ItemInterface, TranslatableInterfa
     /**
      * {@inheritdoc}
      */
-    public function getFeedItemPubDate()
+    public function getFeedItemPubDate(): ?\DateTime
     {
         return $this->getPublishedAt();
-    }
-
-    /**
-     * @return array
-     */
-    public function getTranslations()
-    {
-        return $this->translations;
-    }
-
-    /**
-     * @param array $value
-     * @return $this
-     */
-    public function setTranslations($value)
-    {
-        $this->translations = $value;
-
-        return $this;
     }
 }

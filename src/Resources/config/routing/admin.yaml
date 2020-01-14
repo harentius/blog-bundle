@@ -1,0 +1,32 @@
+sonata_admin:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+
+harentius_blog_admin_file_upload:
+    path: /file-upload
+    defaults: { _controller: 'Harentius\BlogBundle\Admin\Controller\FileUploadController' }
+    options:
+        expose: true
+
+harentius_blog_admin_file_browse:
+    path: /file-browse/{type}
+    defaults: { _controller: 'Harentius\BlogBundle\Admin\Controller\FileBrowseController' }
+    requirements:
+        type: (image|audio)
+    options:
+        expose: true
+
+harentius_blog_admin_login:
+    path: /login
+    defaults: { _controller: 'Harentius\BlogBundle\Admin\Controller\SecurityController::login' }
+
+harentius_blog_admin_login_check:
+    path: /login-check
+    defaults: { _controller: 'Harentius\BlogBundle\Admin\Controller\SecurityController::loginCheck' }
+
+harentius_blog_admin_logout:
+    path: /logout
+    defaults: { _controller: 'Harentius\BlogBundle\Admin\Controller\SecurityController::logout' }

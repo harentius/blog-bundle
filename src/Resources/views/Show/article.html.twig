@@ -1,0 +1,49 @@
+{% extends '@HarentiusBlog/Show/page.html.twig' %}
+
+{% block after_breadcrumbs_content %}
+    {% include '@HarentiusBlog/Blog/_translations_list.html.twig' %}
+{% endblock %}
+
+{% block after_post_content %}
+    {% block post_info_row %}
+        {% include '@HarentiusBlog/Blog/_post_info_article.html.twig' with {'article': entity} %}
+    {% endblock %}
+
+    {% block post_ratings_row %}
+    <div class="row post-ratings-row" data-id="{{ entity.id }}">
+        <div class="col-lg-9">
+        {% block post_rating_left %}{% endblock %}
+        </div>
+
+        <div class="text-right col-lg-3 likes-wrapper">
+        {% block post_rating_right %}
+            <span class="like">
+                <i
+                    class="fa {% if is_article_liked(entity) %}fa-thumbs-up{% else %}fa-thumbs-o-up{% endif %}{% if(is_article_rated(entity)) %} disabled{% endif %}"
+                    id="like-action"
+                >
+                </i>
+                <span class="value">{{ entity.likesCount }}</span>
+            </span>
+
+            <span class="dislike">
+                <i
+                    class="fa {% if is_article_disliked(entity) %}fa-thumbs-down{% else %}fa-thumbs-o-down{% endif %}{% if(is_article_rated(entity)) %} disabled{% endif %}"
+                    id="dislike-action"
+                >
+                </i>
+                <span class="value">{{ entity.disLikesCount }}</span>
+            </span>
+        {% endblock %}
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block after_post_ratings_row %}{% endblock %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/harentiusblog/article.js', 'harentius_blog') }}"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+{% endblock javascripts %}

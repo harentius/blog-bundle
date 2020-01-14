@@ -1,0 +1,47 @@
+.sidebar {
+  font-size: 0.9rem;
+
+  .widget-title {
+    margin: 20px 0 0 0;
+    font-size: 21px;
+  }
+
+  .sidebar-block {
+    ul {
+      padding-left: 15px;
+    }
+
+    &.categories {
+      li:before {
+        margin-right: 5px;
+      }
+    }
+
+    &.tags {
+      font-size: 18px;
+      margin-bottom: 20px;
+
+      a {
+        margin-right: 10px;
+      }
+    }
+
+    &.archive {
+      > ul {
+        list-style: none;
+
+        ul {
+          padding-left: 35px;
+        }
+      }
+    }
+  }
+}
+
+.months-expander {
+  cursor: pointer;
+
+  &:hover {
+    color: #6ca4ab;
+  }
+}

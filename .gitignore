@@ -1,8 +1,5 @@
+/node_modules/
 /vendor/
-/node_modules/
-/.php_cs.cache
+/vendor-bin/**/vendor
 /composer.lock
-/node_modules/
-/tests/app/var
-/tests/app/web/bundles
-/behat.yml
+/.phpunit.result.cache

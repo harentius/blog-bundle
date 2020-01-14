@@ -1,0 +1,13 @@
+Harentius\BlogBundle\Entity\Setting:
+    setting1:
+        key: 'project_name'
+        name: 'Project Name'
+        value: 'Simple Symfony Blog'
+    setting2:
+        key: 'homepage_meta_description'
+        name: 'Homepage Meta Description'
+        value: 'Simple Symfony Blog description'
+    setting3:
+        key: 'homepage_meta_keywords'
+        name: 'Homepage Meta Keywords'
+        value: 'symfony blog'

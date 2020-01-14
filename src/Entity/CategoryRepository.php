@@ -6,6 +6,12 @@ use Doctrine\ORM\Query;
 use Gedmo\Translatable\Query\TreeWalker\TranslationWalker;
 use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 
+/**
+ * @method Category|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Category|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Category[] findAll()
+ * @method Category[] findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ */
 class CategoryRepository extends NestedTreeRepository
 {
     /**
@@ -22,9 +28,9 @@ class CategoryRepository extends NestedTreeRepository
             ->getQuery()
         ;
 
-        $qb = $this->_em->getRepository('HarentiusBlogBundle:Article')
-            ->createQueryBuilder('a')
-        ;
+        /** @var ArticleRepository $articleRepository */
+        $articleRepository = $this->_em->getRepository('HarentiusBlogBundle:Article');
+        $qb = $articleRepository->createQueryBuilder('a');
         $qb
             ->select('COUNT(a)')
             ->where($qb->expr()->in('a.category', $q1->getDQL()))
@@ -32,7 +38,7 @@ class CategoryRepository extends NestedTreeRepository
         ;
 
         $q2 = $this->createQueryBuilder('c')
-            ->select('c.slug, c.name, c.level, c.id')
+            ->addSelect('c.level')
             ->addSelect('(' . $qb->getDQL() . ') AS articles_number')
             ->orderBy('c.root, c.left', 'ASC')
             ->groupBy('c')
@@ -45,7 +51,7 @@ class CategoryRepository extends NestedTreeRepository
             )
         ;
 
-        return $this->buildTree($q2->getArrayResult(), $options);
+        return $this->buildTree($q2->getResult(), $options);
     }
 
     /**

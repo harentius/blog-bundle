@@ -1,0 +1,6 @@
+sonata_admin:
+    assets:
+        extra_stylesheets:
+            - 'bundles/sonatatranslation/css/sonata-translation.css'
+    dashboard:
+        blocks: []

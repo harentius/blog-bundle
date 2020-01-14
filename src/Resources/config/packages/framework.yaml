@@ -1,0 +1,6 @@
+framework:
+    translator: { fallbacks: ['%harentius_blog.primary_locale%'] }
+    assets:
+        packages:
+            harentius_blog:
+                json_manifest_path: '%kernel.project_dir%/public/bundles/harentiusblog/build/manifest.json'

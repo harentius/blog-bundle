@@ -1,0 +1,11 @@
+{% extends '@HarentiusBlog/Admin/ckeditor/ck_browser_popup_base.html.twig' %}
+
+{% block content %}
+    {% for uri, name in files %}
+        <div class="clickable pull-left" onclick="ckEditorChoose('{{ func_num }}', '{{ uri }}')">
+            <div class="audio-thumbnail"></div>
+            <p>{{ name }}</p>
+            <audio src="{{ uri }}" controls></audio>
+        </div>
+    {% endfor %}
+{% endblock %}

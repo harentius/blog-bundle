@@ -1,0 +1,23 @@
+{% extends '@HarentiusBlog/base.html.twig' %}
+
+{% block page_title %}
+    {{- entity.title -}}
+{% endblock %}
+
+{% block page_meta_description %}
+    {{- entity.metaDescription -}}
+{% endblock %}
+
+{% block page_meta_keywords %}
+    {{- entity.metaKeywords -}}
+{%- endblock %}
+
+{% block content %}
+    <div class="padded-content article-wrapper">
+        <article>
+            <h1>{{ entity.title }}</h1>
+            {{ entity.text|raw }}
+        </article>
+        {% block after_post_content%}{% endblock %}
+    </div>
+{% endblock %}

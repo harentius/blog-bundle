@@ -3,7 +3,6 @@
 namespace Harentius\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Harentius\BlogBundle\Entity\Base\IdentifiableEntityTrait;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
@@ -15,7 +14,7 @@ class AdminUser implements UserInterface, \Serializable
     use IdentifiableEntityTrait;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="string", length=50, unique=true)
      * @SymfonyConstraints\NotBlank()
@@ -25,7 +24,7 @@ class AdminUser implements UserInterface, \Serializable
     private $username;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @ORM\Column(type="string", length=255)
      * @SymfonyConstraints\NotBlank()
@@ -35,7 +34,7 @@ class AdminUser implements UserInterface, \Serializable
     private $password;
 
     /**
-     * @var string
+     * @var string|null
      *
      * @SymfonyConstraints\NotBlank()
      * @SymfonyConstraints\Length(max=255)
@@ -64,24 +63,24 @@ class AdminUser implements UserInterface, \Serializable
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        return $this->username;
+        return (string) $this->username;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getUsername()
+    public function getUsername(): ?string
     {
         return $this->username;
     }
 
     /**
-     * @param string $value
+     * @param string|null $value
      * @return $this
      */
-    public function setUsername($value)
+    public function setUsername(?string $value): self
     {
         $this->username = $value;
 
@@ -89,18 +88,18 @@ class AdminUser implements UserInterface, \Serializable
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getPassword()
+    public function getPassword(): ?string
     {
         return $this->password;
     }
 
     /**
-     * @param string $value
+     * @param string|null $value
      * @return $this
      */
-    public function setPassword($value)
+    public function setPassword(?string $value): self
     {
         $this->password = $value;
 
@@ -108,18 +107,18 @@ class AdminUser implements UserInterface, \Serializable
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getPlainPassword()
+    public function getPlainPassword(): ?string
     {
         return $this->plainPassword;
     }
 
     /**
-     * @param string $value
+     * @param string|null $value
      * @return $this
      */
-    public function setPlainPassword($value)
+    public function setPlainPassword(?string $value): self
     {
         $this->plainPassword = $value;
 
@@ -129,26 +128,15 @@ class AdminUser implements UserInterface, \Serializable
     /**
      * @return string
      */
-    public function getSalt()
+    public function getSalt(): string
     {
         return $this->salt;
     }
 
     /**
-     * @param string $value
-     * @return $this
-     */
-    public function setSalt($value)
-    {
-        $this->salt = $value;
-
-        return $this;
-    }
-
-    /**
      * {@inheritdoc}
      */
-    public function getRoles()
+    public function getRoles(): array
     {
         return ['ROLE_ADMIN', 'ROLE_SONATA_ADMIN'];
     }
@@ -156,32 +144,34 @@ class AdminUser implements UserInterface, \Serializable
     /**
      *
      */
-    public function eraseCredentials()
+    public function eraseCredentials(): void
     {
         $this->plainPassword = null;
     }
 
-    /** @see \Serializable::serialize() */
-    public function serialize()
+    /**
+     * {@inheritdoc}
+     */
+    public function serialize(): string
     {
         return serialize([
             $this->id,
             $this->username,
             $this->password,
-            // see section on salt below
-            // $this->salt,
+            $this->salt,
         ]);
     }
 
-    /** @see \Serializable::unserialize() */
-    public function unserialize($serialized)
+    /**
+     * {@inheritdoc}
+     */
+    public function unserialize($serialized): void
     {
-        list(
+        [
             $this->id,
             $this->username,
             $this->password,
-            // see section on salt below
-            // $this->salt
-            ) = unserialize($serialized);
+            $this->salt,
+        ] = unserialize($serialized);
     }
 }

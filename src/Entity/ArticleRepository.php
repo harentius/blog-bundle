@@ -4,7 +4,14 @@ namespace Harentius\BlogBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query;
+use Doctrine\ORM\QueryBuilder;
 
+/**
+ * @method Article|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Article|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Article[] findAll()
+ * @method Article[] findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ */
 class ArticleRepository extends EntityRepository
 {
     /**
@@ -81,10 +88,10 @@ class ArticleRepository extends EntityRepository
     }
 
     /**
-     * @param null $categorySlug
-     * @return Query
+     * @param string|null $categorySlug
+     * @return QueryBuilder
      */
-    public function findPublishedByCategorySlugLimitedQuery($categorySlug = null)
+    public function findPublishedByCategorySlugQueryBuilder(?string $categorySlug = null): QueryBuilder
     {
         $qb = $this->createQueryBuilder('a');
 
@@ -92,17 +99,33 @@ class ArticleRepository extends EntityRepository
             ->where('a.published = :isPublished')
             ->setParameter(':isPublished', true)
             ->orderBy('a.publishedAt', 'DESC')
+            ->addOrderBy('a.id', 'DESC')
         ;
 
-        if ($categorySlug !== null) {
+        if ($categorySlug) {
             $qb
                 ->join('a.category', 'c')
-                ->where('c.slug = :slug')
+                ->andWhere('c.slug = :slug')
                 ->setParameter(':slug', $categorySlug)
             ;
         }
 
-        return $qb->getQuery();
+        return $qb;
+    }
+
+    /**
+     * @param string|null $categorySlug
+     * @return Article|null
+     */
+    public function findLatestPublishedByCategorySlug(?string $categorySlug = null): ?Article
+    {
+        return $this
+            ->findPublishedByCategorySlugQueryBuilder($categorySlug)
+            ->orderBy('a.updatedAt', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
     }
 
     /**
@@ -116,69 +139,6 @@ class ArticleRepository extends EntityRepository
             ->orderBy('a.publishedAt', 'DESC')
             ->getQuery()
             ->execute()
-        ;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function findFirstArticlePublicationDate()
-    {
-        return $this->createQueryBuilder('a')
-            ->select('a.publishedAt')
-            ->where('a.published = :isPublished')
-            ->setParameter(':isPublished', true)
-            ->orderBy('a.publishedAt', 'ASC')
-            ->setMaxResults(1)
-            ->getQuery()
-            ->setHydrationMode(Query::HYDRATE_OBJECT)
-            ->getSingleScalarResult()
-        ;
-    }
-
-    /**
-     * @return array
-     */
-    public function findStatistics()
-    {
-        $q = $this->createQueryBuilder('a');
-        $q1 = $this->createQueryBuilder('ap');
-
-        return $q
-            ->select('COUNT(a.id) AS countPublished,
-                SUM(a.viewsCount) AS viewsCount,
-                SUM(a.likesCount) AS likesCount,
-                SUM(a.disLikesCount) as disLikesCount
-            ')
-            ->addSelect('(' .
-                $q1
-                    ->select('MIN(ap.publishedAt)')
-                    ->where('ap.published = :isPublished')
-                    ->setParameter(':isPublished', true)
-                    ->orderBy('ap.publishedAt', 'ASC')
-                    ->setMaxResults(1)
-                    ->getDQL()
-                . ')' . 'AS firstArticlePublicationDate'
-            )
-            ->where('a.published = :isPublished')
-            ->setParameter(':isPublished', true)
-            ->getQuery()
-            ->getSingleResult()
-        ;
-    }
-
-    /**
-     * @return Article
-     */
-    public function findMostPopular()
-    {
-        return $this->createQueryBuilder('a')
-            ->where('a.published = :isPublished')
-            ->setParameter(':isPublished', true)
-            ->orderBy('a.viewsCount', 'DESC')
-            ->setMaxResults(1)
-            ->getQuery()
-            ->getOneOrNullResult()
         ;
     }
 }

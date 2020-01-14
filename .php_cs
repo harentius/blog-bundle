@@ -2,6 +2,7 @@
 
 $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__ . '/src')
+    ->in(__DIR__ . '/tests')
 ;
 return PhpCsFixer\Config::create()
     ->setRiskyAllowed(true)
@@ -30,7 +31,7 @@ return PhpCsFixer\Config::create()
         'modernize_types_casting' => true,
         'no_php4_constructor' => true,
         'php_unit_construct' => true,
-        'php_unit_strict' => true,
+        'php_unit_strict' => false,
         'semicolon_after_instruction' => true,
         'doctrine_annotation_indentation' => true,
         'doctrine_annotation_spaces' => ['around_array_assignments' => false],

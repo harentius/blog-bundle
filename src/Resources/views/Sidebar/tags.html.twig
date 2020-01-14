@@ -1,7 +1,7 @@
 <div class="sidebar-block tags">
 {% for tag in tags %}
     <a class="tag"
-       href="{{ path('harentius_blog_list', {'filtrationType': 'tag', 'criteria': tag.slug}) }}"
+       href="{{ path('harentius_blog_tag', {'slug': tag.slug}) }}"
        style="font-size: {{ tag.percentage }}%"
        rel="tag"
     >

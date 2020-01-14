@@ -1,4 +1,4 @@
-<div class="languages-wrapper pull-right">
+<div class="languages-wrapper float-right">
     {% set translations = translations_list(entity) %}
     {% set currentLocale = app.request.locale %}
 
@@ -6,10 +6,8 @@
         {% for locale in translations %}
             {% if currentLocale == locale %}
                 <span>{{ locale }}</span>
-            {% elseif locale == default_locale %}
-                <a href="{{ path('harentius_blog_show_default', {'slug': entity.slug}) }}">{{ locale }}</a>
             {% else %}
-                <a href="{{ path('harentius_blog_show', {'slug': entity.slug, '_locale': locale}) }}">{{ locale }}</a>
+                <a href="{{ publication_path(entity, locale) }}">{{ locale }}</a>
             {% endif %}
         {% endfor %}
     {% endif %}

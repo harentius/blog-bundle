@@ -1,0 +1,8 @@
+liip_imagine:
+    resolvers:
+        default:
+            web_path:
+                cache_prefix: 'assets/images'
+    filter_sets:
+        preview:
+            filters: []
