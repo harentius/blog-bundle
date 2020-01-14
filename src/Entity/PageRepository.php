@@ -45,7 +45,7 @@ class PageRepository extends EntityRepository
             ->setParameter('slug', $slug)
             ->setParameter('published', true)
             ->getQuery()
-            ->getResult()
+            ->getOneOrNullResult()
          ;
     }
 }

@@ -65,7 +65,7 @@ class ArchiveController extends AbstractController
         return $this->render('@HarentiusBlog/Blog/list.html.twig', [
             'articles' => $paginator,
             'year' => $year,
-            'month' => $month,
+            'month' => $humanizedMonth,
             'noIndex' => true,
             'hasToPaginate' => $paginator->getPageCount() > 1,
         ]);
