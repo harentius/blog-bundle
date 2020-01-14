@@ -7,6 +7,7 @@ namespace Harentius\BlogBundle\Tests\Unit;
 use Harentius\BlogBundle\BreadCrumbsManager;
 use Harentius\BlogBundle\Entity\Article;
 use Harentius\BlogBundle\Entity\Category;
+use Harentius\BlogBundle\Entity\Page;
 use Harentius\BlogBundle\Entity\Tag;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -78,7 +79,7 @@ class BreadCrumbsManagerTest extends TestCase
         $this->assertEquals('April', $breadCrumbs[2]->text);
     }
 
-    public function testBuildPost(): void
+    public function testBuildArticle(): void
     {
         /** @var Breadcrumbs|SingleBreadcrumb[] $breadCrumbs */
         $breadCrumbs = new Breadcrumbs();
@@ -97,6 +98,21 @@ class BreadCrumbsManagerTest extends TestCase
         $this->assertEquals('Homepage', $breadCrumbs[0]->text);
         $this->assertEquals('Category Name', $breadCrumbs[1]->text);
         $this->assertEquals('Article Title', $breadCrumbs[2]->text);
+    }
+
+    public function testBuildPage(): void
+    {
+        /** @var Breadcrumbs|SingleBreadcrumb[] $breadCrumbs */
+        $breadCrumbs = new Breadcrumbs();
+        $breadCrumbsManager = $this->createBreadCrumbsManager($breadCrumbs);
+
+        $page = new Page();
+        $page->setTitle('Page Title');
+
+        $breadCrumbsManager->buildPost($page);
+
+        $this->assertEquals('Homepage', $breadCrumbs[0]->text);
+        $this->assertEquals('Page Title', $breadCrumbs[1]->text);
     }
 
     private function createBreadCrumbsManager(Breadcrumbs $breadcrumbs): BreadCrumbsManager
