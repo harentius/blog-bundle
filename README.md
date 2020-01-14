@@ -5,13 +5,11 @@ Symfony Blog Bundle
 [![Maintainability](https://api.codeclimate.com/v1/badges/8a118f94722e7ac4dc70/maintainability)](https://codeclimate.com/github/harentius/blog-bundle/maintainability)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/harentius/blog-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/harentius/blog-bundle/?branch=master)
 
-Should be registered first
-
 Symfony Bundle for adding simple blog functionality to existing or new Symfony project.
 
 Requirements
 ------------
-Version ^4.0 - Symfony ^4.0  
+Version ^4.0 - Symfony ^4.0, twig/twig:^2.0  
 Version ^3.0 - Symfony ^3.0  
 Version ^1.0|^2.0 - Symfony ^2.7   
 
@@ -57,9 +55,8 @@ return [
     Nelmio\Alice\Bridge\Symfony\NelmioAliceBundle::class => ['all' => true],
 ];
 ```
-Please note that HarentiusBlogBundle should be registered first of all bundles if you want to use default configuration.  
-
-It set ups container parameters for other Symfony bundles.
+*Please note that HarentiusBlogBundle can provide default configuration for other bundles.  
+To make this work, HarentiusBlogBundle should be registered before other bundles*
 
 3) Include routes:
 ```yml
