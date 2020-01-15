@@ -7,7 +7,7 @@ use Doctrine\ORM\QueryBuilder;
 use Harentius\BlogBundle\Entity\Article;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 
-class AbstractPostAdmin extends AbstractAdmin
+abstract class AbstractPostAdmin extends AbstractAdmin
 {
     /**
      * {@inheritdoc}
