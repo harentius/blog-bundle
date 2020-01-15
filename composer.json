@@ -1,9 +1,9 @@
 {
   "name" : "harentius/blog-bundle",
   "type": "symfony-bundle",
-  "description": "Simple Symfony blog/cms",
-  "keywords": ["blog", "bundle", "symfony", "cms"],
-  "homepage": "https://folkprog.net/symfony-blog-bundle/",
+  "description": "Symfony Bundle for adding simple blog functionality to existing or new Symfony project.",
+  "keywords": ["blog", "bundle", "symfony"],
+  "homepage": "https://github.com/harentius/blog-bundle",
   "license": "MIT",
   "prefer-stable": true,
   "authors": [
