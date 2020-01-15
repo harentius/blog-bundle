@@ -37,6 +37,7 @@ class ArticleAdmin extends AbstractPostAdmin
     }
 
     /**
+     * Called in bundle extension.
      * @param CacheProvider $controllersCache
      */
     public function setControllerCache(CacheProvider $controllersCache)
