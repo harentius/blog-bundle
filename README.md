@@ -56,7 +56,9 @@ return [
 ];
 ```
 *Please note that HarentiusBlogBundle can provide default configuration for other bundles.  
-To make this work, HarentiusBlogBundle should be registered before other bundles*
+To make this work, HarentiusBlogBundle should be registered before other bundles
+HarentiusBlogBundle also has default security config. So please make sure it does not conflict with your app config or skip using it*
+
 
 3) Include routes:
 ```yml
@@ -123,7 +125,7 @@ bin/console assets:install --symlink
 
 3) Load fixtures (optional)
 ```bash
-bin/console hautelook_alice:doctrine:fixtures:load
+bin/console hautelook:fixtures:load
 ```
 
 Additional Resources
