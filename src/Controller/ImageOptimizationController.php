@@ -6,7 +6,6 @@ namespace Harentius\BlogBundle\Controller;
 
 use Harentius\BlogBundle\FileManagement\Image\ImageOptimizer;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ImageOptimizationController
@@ -29,9 +28,9 @@ class ImageOptimizationController
      * Then BinaryFileResponse only once, when crete cache preview.
      *
      * @param string $imageName
-     * @return Response
+     * @return BinaryFileResponse
      */
-    public function __invoke($imageName): Response
+    public function __invoke($imageName): BinaryFileResponse
     {
         try {
             $imagePath = $this->imageOptimizer->createPreviewIfNotExists($imageName);
