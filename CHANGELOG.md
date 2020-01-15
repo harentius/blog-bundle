@@ -1,3 +1,13 @@
+4.0.0
+=====
+ - Symfony 4 support.
+ - Improve views count (use ajax on page load)
+ - Remove non generic features like social integrations, social comments, google analytics integration, statistics etc.
+ - Add unit tests
+ - Remove useless WYSIWYG options
+ - Fix translations issues
+ - Refactoring and clean code
+
 3.0.12
 ======
  - Fix bug with auto detect ckeditor locale (hardcoded English for now)
