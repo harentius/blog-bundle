@@ -116,7 +116,7 @@ bin/console doctrine:database:create # If fresh installation
 bin/console doctrine:schema:create
 ```
 
-2) Install Assets
+2) Install assets
 ```bash
 bin/console assets:install --symlink
 ```
@@ -131,5 +131,4 @@ Additional Resources
 
 [https://folkprog.net](https://folkprog.net) - example of blog based on this bundle.
 
-[https://github.com/harentius/folkprog](https://github.com/harentius/folkprog) - repository of this project.
-harentius/blog-bundle is subsplit of it.
+[https://github.com/harentius/folkprog](https://github.com/harentius/folkprog) - git repository with sources of this blog.
