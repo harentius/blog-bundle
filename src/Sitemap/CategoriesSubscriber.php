@@ -42,7 +42,7 @@ class CategoriesSubscriber implements EventSubscriberInterface
         foreach ($categories as $category) {
             $event->getGenerator()->addUrl(
                 new UrlConcrete(
-                    $this->urlGenerator->generate('harentius_blog_category', ['slug' => $category->getSlugWithParents()]),
+                    $this->urlGenerator->generate('harentius_blog_category', ['slug' => $category->getSlugWithParents()], UrlGeneratorInterface::ABSOLUTE_URL),
                     null,
                     UrlConcrete::CHANGEFREQ_MONTHLY,
                     1.0

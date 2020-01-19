@@ -1,3 +1,7 @@
+4.0.1
+=====
+ - Sitemap generation fix: use absolute urls instead of paths
+
 4.0.0
 =====
  - Symfony 4 support.
