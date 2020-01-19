@@ -39,7 +39,7 @@ class HomepageSubscriber implements EventSubscriberInterface
     {
         $event->getGenerator()->addUrl(
             new UrlConcrete(
-                $this->urlGenerator->generate('harentius_blog_homepage', [], true),
+                $this->urlGenerator->generate('harentius_blog_homepage', [], UrlGeneratorInterface::ABSOLUTE_URL),
                 $this->homepage->getUpdatedAt(),
                 UrlConcrete::CHANGEFREQ_WEEKLY,
                 1.0
