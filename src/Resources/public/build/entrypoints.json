@@ -2,32 +2,32 @@
   "entrypoints": {
     "common": {
       "js": [
-        "/bundles/harentiusblog/build/runtime.6c1a13d3.js",
-        "/bundles/harentiusblog/build/common.162fcb83.js"
+        "/bundles/harentiusblog/build/runtime.9cf0f3d7.js",
+        "/bundles/harentiusblog/build/common.2fbc238e.js"
       ],
       "css": [
-        "/bundles/harentiusblog/build/common.f2070042.css"
+        "/bundles/harentiusblog/build/common.3be661d9.css"
       ]
     },
     "article": {
       "js": [
-        "/bundles/harentiusblog/build/runtime.6c1a13d3.js",
-        "/bundles/harentiusblog/build/article.33e25e17.js"
+        "/bundles/harentiusblog/build/runtime.9cf0f3d7.js",
+        "/bundles/harentiusblog/build/article.7507eff0.js"
       ]
     },
     "admin-article": {
       "js": [
-        "/bundles/harentiusblog/build/runtime.6c1a13d3.js",
-        "/bundles/harentiusblog/build/admin-article.cbc41d58.js"
+        "/bundles/harentiusblog/build/runtime.9cf0f3d7.js",
+        "/bundles/harentiusblog/build/admin-article.d6c8d3e1.js"
       ]
     },
     "ckeditor-browse": {
       "js": [
-        "/bundles/harentiusblog/build/runtime.6c1a13d3.js",
-        "/bundles/harentiusblog/build/ckeditor-browse.04bae877.js"
+        "/bundles/harentiusblog/build/runtime.9cf0f3d7.js",
+        "/bundles/harentiusblog/build/ckeditor-browse.652a7bff.js"
       ],
       "css": [
-        "/bundles/harentiusblog/build/ckeditor-browse.40e350f9.css"
+        "/bundles/harentiusblog/build/ckeditor-browse.a42bd604.css"
       ]
     }
   }
