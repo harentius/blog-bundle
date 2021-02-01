@@ -6,17 +6,17 @@
 
 {% block page_meta_description %}
     {%- if page and page.metaDescription -%}
-        {{- page.metaDescription -}}
+        {{- page.metaDescription|raw -}}
     {% else %}
-        {{- get_setting('homepage_meta_description') -}}
+        {{- get_setting('homepage_meta_description')|raw -}}
     {%- endif -%}
 {% endblock %}
 
 {% block page_meta_keywords %}
     {%- if page and page.metaKeywords -%}
-        {{- page.metaKeywords -}}
+        {{- page.metaKeywords|raw -}}
     {%- else -%}
-        {{- get_setting('homepage_meta_keywords') -}}
+        {{- get_setting('homepage_meta_keywords')|raw -}}
     {%- endif -%}
 {% endblock %}
 
