@@ -51,7 +51,6 @@
     "beberlei/doctrineextensions": "^1.2",
     "friendsofsymfony/jsrouting-bundle": "^2.4",
     "presta/sitemap-bundle": "^1.7",
-    "eko/feedbundle": "^2.0",
     "liip/imagine-bundle": "^2.2",
     "monolog/monolog": "^1.22"
   },

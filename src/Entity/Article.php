@@ -4,13 +4,12 @@ namespace Harentius\BlogBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Eko\FeedBundle\Item\Writer\ItemInterface;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
 /**
  * @ORM\Entity(repositoryClass="Harentius\BlogBundle\Entity\ArticleRepository")
  */
-class Article extends AbstractPost implements ItemInterface
+class Article extends AbstractPost
 {
     /**
      * @var int

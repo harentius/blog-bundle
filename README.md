@@ -9,9 +9,9 @@ Symfony Bundle for adding simple blog functionality to existing or new Symfony p
 
 Requirements
 ------------
-Version ^4.0 - Symfony ^4.0, twig/twig:^2.0  
-Version ^3.0 - Symfony ^3.0  
-Version ^1.0|^2.0 - Symfony ^2.7   
+Version ^4.0 - Symfony ^4.0, twig/twig:^2.0
+Version ^3.0 - Symfony ^3.0
+Version ^1.0|^2.0 - Symfony ^2.7
 
 
 Installation
@@ -20,8 +20,8 @@ Installation
 ### 1. With Symfony Flex
 TODO
 
-### 2. Without Symfony Flex 
-1) Install bundle 
+### 2. Without Symfony Flex
+1) Install bundle
 ```bash
 $ composer.phar require harentius/blog-bundle
 ```
@@ -48,14 +48,13 @@ return [
     Sonata\Doctrine\Bridge\Symfony\Bundle\SonataDoctrineBundle::class => ['all' => true],
     FOS\JsRoutingBundle\FOSJsRoutingBundle::class => ['all' => true],
     Presta\SitemapBundle\PrestaSitemapBundle::class => ['all' => true],
-    Eko\FeedBundle\EkoFeedBundle::class => ['all' => true],
     Liip\ImagineBundle\LiipImagineBundle::class => ['all' => true],
     Hautelook\AliceBundle\HautelookAliceBundle::class => ['all' => true],
     Fidry\AliceDataFixtures\Bridge\Symfony\FidryAliceDataFixturesBundle::class => ['all' => true],
     Nelmio\Alice\Bridge\Symfony\NelmioAliceBundle::class => ['all' => true],
 ];
 ```
-*Please note that HarentiusBlogBundle can provide default configuration for other bundles.  
+*Please note that HarentiusBlogBundle can provide default configuration for other bundles.
 To make this work, HarentiusBlogBundle should be registered before other bundles*
 
 *HarentiusBlogBundle also has default security config. So please make sure it does not conflict with your app config or skip using it*
@@ -69,7 +68,7 @@ blog:
     prefix: /
 ```
 
-4) Include default configs:  
+4) Include default configs:
 *Note: this step can be skipped if you decide to configure bundles (i.e. DoctrineBundle, SecurityBundle, etc) yourself*
 
 ```yml
