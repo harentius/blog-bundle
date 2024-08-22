@@ -1,9 +1,0 @@
-eko_feed:
-    feeds:
-        article:
-            title: 'Articles'
-            description: 'New Articles'
-            link:
-                route_name: 'harentius_blog_homepage'
-            encoding: 'utf-8'
-            author: 'Harentius'
