@@ -2,31 +2,30 @@
 
 declare(strict_types=1);
 
-namespace Harentius\BlogBundle;
+namespace Harentius\BlogBundle\Breadcrumbs;
 
 use Harentius\BlogBundle\Entity\AbstractPost;
 use Harentius\BlogBundle\Entity\Article;
 use Harentius\BlogBundle\Entity\Category;
 use Harentius\BlogBundle\Entity\Tag;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use WhiteOctober\BreadcrumbsBundle\Model\Breadcrumbs;
 
 class BreadCrumbsManager
 {
     /**
-     * @var Breadcrumbs
+     * @var BreadcrumbItem[]
      */
-    private $breadcrumbs;
+    private $breadcrumbsItems;
 
     /**
      * @var UrlGeneratorInterface
      */
     private $urlGenerator;
 
-    public function __construct(Breadcrumbs $breadcrumbs, UrlGeneratorInterface $urlGenerator)
+    public function __construct(UrlGeneratorInterface $urlGenerator)
     {
         $this->urlGenerator = $urlGenerator;
-        $this->breadcrumbs = $breadcrumbs;
+        $this->breadcrumbsItems = [];
     }
 
     /**
@@ -34,14 +33,17 @@ class BreadCrumbsManager
      */
     public function buildCategory(Category $category): void
     {
+        $this->addHomepage();
+
+        $items = [];
         do {
-            $this->breadcrumbs->prependItem(
+            $items[] = new BreadcrumbItem(
                 $category->getName(),
                 $this->urlGenerator->generate('harentius_blog_category', ['slug' => $category->getSlugWithParents()], UrlGeneratorInterface::ABSOLUTE_URL)
             );
         } while ($category = $category->getParent());
 
-        $this->prependHomepage();
+        $this->breadcrumbsItems = array_merge($this->breadcrumbsItems, array_reverse($items));
     }
 
     /**
@@ -49,8 +51,8 @@ class BreadCrumbsManager
      */
     public function buildTag(Tag $tag): void
     {
-        $this->breadcrumbs->addItem($tag->getName());
-        $this->prependHomepage();
+        $this->addHomepage();
+        $this->breadcrumbsItems[] = new BreadcrumbItem($tag->getName());
     }
 
     /**
@@ -59,28 +61,38 @@ class BreadCrumbsManager
      */
     public function buildArchive(string $year, ?string $month = null): void
     {
-        $this->breadcrumbs->addItem($year, $this->urlGenerator->generate('harentius_blog_archive_year', ['year' => $year], UrlGeneratorInterface::ABSOLUTE_URL));
+        $this->addHomepage();
+        $this->breadcrumbsItems[] = new BreadcrumbItem(
+            $year,
+            $this->urlGenerator->generate('harentius_blog_archive_year', ['year' => $year], UrlGeneratorInterface::ABSOLUTE_URL),
+        );
 
         if ($month) {
-            $this->breadcrumbs->addItem($month);
+            $this->breadcrumbsItems[] = new BreadcrumbItem($month);
         }
-
-        $this->prependHomepage();
     }
 
     public function buildPost(AbstractPost $post)
     {
         if ($post instanceof Article && $post->getCategory()) {
             $this->buildCategory($post->getCategory());
-            $this->breadcrumbs->addItem($post->getTitle());
         } else {
-            $this->breadcrumbs->addItem($post->getTitle());
-            $this->prependHomepage();
+            $this->addHomepage();
         }
+
+        $this->breadcrumbsItems[] = new BreadcrumbItem($post->getTitle());
     }
 
-    private function prependHomepage(): void
+    private function addHomepage(): void
     {
-        $this->breadcrumbs->prependItem('Homepage', $this->urlGenerator->generate('harentius_blog_homepage', [], UrlGeneratorInterface::ABSOLUTE_URL));
+        $this->breadcrumbsItems[] = new BreadcrumbItem(
+            'Homepage',
+            $this->urlGenerator->generate('harentius_blog_homepage', [], UrlGeneratorInterface::ABSOLUTE_URL)
+        );
+    }
+
+    public function getBreadcrumbsItems(): array
+    {
+        return $this->breadcrumbsItems;
     }
 }

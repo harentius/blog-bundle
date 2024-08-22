@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Harentius\BlogBundle\Controller;
 
-use Harentius\BlogBundle\BreadCrumbsManager;
+use Harentius\BlogBundle\Breadcrumbs\BreadCrumbsManager;
 use Harentius\BlogBundle\Entity\ArticleRepository;
 use Harentius\BlogBundle\Entity\Tag;
 use Harentius\BlogBundle\Paginator;

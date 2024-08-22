@@ -47,7 +47,6 @@
     "knplabs/knp-paginator-bundle": "^4.1 || ^5.0",
     "hautelook/alice-bundle": "^2.5",
     "knplabs/knp-menu-bundle": "^2.3",
-    "mhujer/breadcrumbs-bundle": "^1.5",
     "beberlei/doctrineextensions": "^1.2",
     "friendsofsymfony/jsrouting-bundle": "^2.4",
     "presta/sitemap-bundle": "^1.7",

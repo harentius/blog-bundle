@@ -65,7 +65,11 @@ services:
         arguments:
             $defaultPerPage: '%harentius_blog.list.posts_per_page%'
 
-    Harentius\BlogBundle\BreadCrumbsManager: ~
+    Harentius\BlogBundle\Breadcrumbs\BreadCrumbsManager: ~
+    Harentius\BlogBundle\Breadcrumbs\BreadcrumbsTwigExtension:
+        tags:
+            - { name: twig.extension }
+    Harentius\BlogBundle\Twig\RatingExtension: ~
     Harentius\BlogBundle\ViewsCounter: ~
     Harentius\BlogBundle\Sidebar\Archive: ~
     Harentius\BlogBundle\FileManagement\FileManager: ~

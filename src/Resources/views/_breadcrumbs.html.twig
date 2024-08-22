@@ -1,0 +1,18 @@
+{%- apply spaceless -%}
+    <ol id="breadcrumb" class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+        {% for b in get_breadcrumbs_items() %}
+            <li class="breadcrumb-item" citemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                {% if b.url and not loop.last %}
+                <a href="{{ b.url }}" itemprop="item">
+                    {% endif %}
+                    <span itemprop="name">{{- b.text -}}</span>
+                    {% if b.url and not loop.last %}
+                </a>
+            {% elseif b.url %}
+                <meta itemprop="item" content="{{ b.url }}" />
+                {% endif %}
+                <meta itemprop="position" content="{{ loop.index }}" />
+            </li>
+        {% endfor %}
+    </ol>
+{% endapply %}
