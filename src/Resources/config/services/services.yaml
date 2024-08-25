@@ -68,7 +68,6 @@ services:
     Harentius\BlogBundle\Breadcrumbs\BreadcrumbsTwigExtension:
         tags:
             - { name: twig.extension }
-    Harentius\BlogBundle\Twig\RatingExtension: ~
     Harentius\BlogBundle\ViewsCounter: ~
     Harentius\BlogBundle\Sidebar\Archive: ~
     Harentius\BlogBundle\FileManagement\FileManager: ~
