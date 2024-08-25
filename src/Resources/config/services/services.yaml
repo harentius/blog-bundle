@@ -16,10 +16,9 @@ services:
         arguments:
             $homepageSlug: '%harentius_blog.homepage.page_slug%'
 
-    Knp\Menu\MenuItem:
-        factory: ['@Harentius\BlogBundle\Menu\MenuBuilder', 'createMainMenu']
+    Harentius\BlogBundle\Menu\MenuTwigExtension:
         tags:
-            - { name: knp_menu.menu, alias: main }
+            - { name: twig.extension }
 
     harentius_blog.array_cache:
         class: Doctrine\Common\Cache\ArrayCache

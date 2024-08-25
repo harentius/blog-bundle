@@ -1,8 +1,8 @@
 <?php
 
-namespace Harentius\BlogBundle\Breadcrumbs;
+namespace Harentius\BlogBundle\Menu;
 
-class BreadcrumbItem
+class MenuItem
 {
     /**
      * @var string
@@ -14,7 +14,7 @@ class BreadcrumbItem
      */
     private $url;
 
-    public function __construct(string $text, ?string $url = null)
+    public function __construct(string $text, string $url)
     {
         $this->text = $text;
         $this->url = $url;

@@ -2,7 +2,13 @@
     <nav class="main-menu navbar navbar-expand-lg navbar-light bg-light p-2">
         {% block brand %}{% endblock %}
 
-        {{ knp_menu_render('main') }}
+        <ul class="navbar-nav">
+            {% for item in get_main_menu_items() %}
+                <li class="navbar-list-item">
+                    <a href="{{ item.url }}">{{ item.text }}</a>
+                </li>
+            {% endfor %}
+        </ul>
 
         <div class="main-menu-icons navbar-nav">
             <button

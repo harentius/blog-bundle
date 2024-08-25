@@ -12,9 +12,9 @@ class BreadcrumbsTwigExtension extends AbstractExtension
      */
     private $breadCrumbsManager;
 
-    public function __construct(BreadCrumbsManager $rating)
+    public function __construct(BreadCrumbsManager $breadCrumbsManager)
     {
-        $this->breadCrumbsManager = $rating;
+        $this->breadCrumbsManager = $breadCrumbsManager;
     }
 
     /**
