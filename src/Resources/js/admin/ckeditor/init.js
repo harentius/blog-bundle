@@ -22,9 +22,9 @@ const init = (selector) => {
       wordcount: {
         showParagraphs: false,
       },
-      filebrowserUploadUrl: window.Routing.generate('harentius_blog_admin_file_upload'),
-      filebrowserBrowseUrl: window.Routing.generate('harentius_blog_admin_file_browse', { type: 'image' }),
-      filebrowserAudioBrowseUrl: window.Routing.generate('harentius_blog_admin_file_browse', { type: 'audio' }),
+      filebrowserUploadUrl: '/admin/file-upload',
+      filebrowserBrowseUrl: '/admin/file-browse/image',
+      filebrowserAudioBrowseUrl: '/admin/file-browse/audio',
     });
   });
 };

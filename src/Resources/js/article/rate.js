@@ -12,7 +12,8 @@ const processRateChange = (button, type, changeClassFrom, changeClassTo) => {
     return;
   }
 
-  fetch(window.Routing.generate('harentius_blog_rate', { article: articleId, type }), {
+  const url = `/like/${articleId}/${type}`;
+  fetch(url, {
     method: 'POST',
   }).then((response) => {
     if (!response.ok) {

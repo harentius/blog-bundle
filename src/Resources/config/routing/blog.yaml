@@ -38,11 +38,9 @@ harentius_blog_show:
 harentius_blog_rate:
     path: /like/{article}/{type}
     defaults: { _controller: 'Harentius\BlogBundle\Controller\RateController', type: 'like' }
-    methods:  [POST]
+    methods: [POST]
     requirements:
         type: like|dislike
-    options:
-        expose: true
 
 harentius_blog_resize:
     path: '%harentius_blog.articles.image_previews_base_uri%{imageName}'
@@ -51,5 +49,3 @@ harentius_blog_resize:
 harentius_blog_view_count:
     path: /view-count/{id}
     defaults: { _controller: 'Harentius\BlogBundle\Controller\ViewCountController' }
-    options:
-        expose: true

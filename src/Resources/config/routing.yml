@@ -5,9 +5,6 @@ harentius_blog_admin:
 harentius_blog_blog:
     resource: '@HarentiusBlogBundle/Resources/config/routing/blog.yaml'
 
-fos_js_routing:
-    resource: '@FOSJsRoutingBundle/Resources/config/routing/routing.xml'
-
 PrestaSitemapBundle:
     resource: '@PrestaSitemapBundle/Resources/config/routing.yml'
 
