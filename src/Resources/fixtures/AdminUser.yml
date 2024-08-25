@@ -1,4 +1,0 @@
-Harentius\BlogBundle\Entity\AdminUser:
-    admin_user:
-        username: admin
-        plainPassword: admin

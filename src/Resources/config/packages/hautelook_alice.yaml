@@ -1,4 +1,0 @@
-hautelook_alice:
-    fixtures_path: 'Resources/fixtures'
-    root_dirs:
-        - '%kernel.project_dir%'

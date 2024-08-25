@@ -45,7 +45,6 @@
     "doctrine/doctrine-bundle": "^1.12 || ^2.0",
     "sensio/framework-extra-bundle": "^5.5",
     "knplabs/knp-paginator-bundle": "^4.1 || ^5.0",
-    "hautelook/alice-bundle": "^2.5",
     "knplabs/knp-menu-bundle": "^2.3",
     "beberlei/doctrineextensions": "^1.2",
     "friendsofsymfony/jsrouting-bundle": "^2.4",
