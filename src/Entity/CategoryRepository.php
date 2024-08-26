@@ -3,7 +3,6 @@
 namespace Harentius\BlogBundle\Entity;
 
 use Doctrine\ORM\Query;
-use Gedmo\Translatable\Query\TreeWalker\TranslationWalker;
 use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 
 /**
@@ -45,10 +44,6 @@ class CategoryRepository extends NestedTreeRepository
             ->having('articles_number > 0')
             ->setParameter(':isPublished', true)
             ->getQuery()
-            ->setHint(
-                Query::HINT_CUSTOM_OUTPUT_WALKER,
-                TranslationWalker::class
-            )
         ;
 
         return $this->buildTree($q2->getResult(), $options);

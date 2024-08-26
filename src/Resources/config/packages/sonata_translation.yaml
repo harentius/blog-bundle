@@ -1,6 +1,0 @@
-sonata_translation:
-    locales: '%harentius_blog.locales%'
-    default_locale: '%harentius_blog.primary_locale%'
-    locale_switcher_show_country_flags: false
-    gedmo:
-        enabled: true

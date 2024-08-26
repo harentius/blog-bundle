@@ -1,9 +1,5 @@
 {% extends '@HarentiusBlog/Show/page.html.twig' %}
 
-{% block after_breadcrumbs_content %}
-    {% include '@HarentiusBlog/Blog/_translations_list.html.twig' %}
-{% endblock %}
-
 {% block after_post_content %}
     {% block post_info_row %}
         {% include '@HarentiusBlog/Blog/_post_info_article.html.twig' with {'article': entity} %}

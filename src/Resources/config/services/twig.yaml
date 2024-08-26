@@ -5,14 +5,11 @@ services:
         tags:
             - { name: twig.extension }
 
-    Twig\Extensions\IntlExtension: ~
+   # Twig\Extensions\IntlExtension: ~
     Harentius\BlogBundle\Twig\PublicationUrlGeneratorExtension: ~
     Harentius\BlogBundle\Twig\SettingsExtension: ~
     Harentius\BlogBundle\Twig\ReadMoreExtension: ~
     Harentius\BlogBundle\Twig\RatingExtension: ~
-    Harentius\BlogBundle\Twig\TranslationListExtension:
-        arguments:
-            $primaryLocale: '%harentius_blog.primary_locale%'
 
     Harentius\BlogBundle\Twig\RenderCachedExtension:
         arguments:

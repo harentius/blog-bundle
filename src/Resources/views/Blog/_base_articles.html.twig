@@ -1,7 +1,6 @@
 {% for article in articles %}
     <div class="padded-content post-preview-wrapper{% if not loop.last or hasToPaginate %} bordered{% endif %}">
         <article class="clearfix">
-            {% include '@HarentiusBlog/Blog/_translations_list.html.twig' with { 'entity': article } %}
             <h2><a href="{{ publication_path(article, app.request.locale) }}">{{ article.title }}</a></h2>
             <div>{{ article.text|read_more }}</div>
         </article>
