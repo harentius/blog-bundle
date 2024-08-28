@@ -5,33 +5,29 @@ services:
 
     Harentius\BlogBundle\Entity\ArticleRepository:
         factory: ['@doctrine.orm.entity_manager', getRepository]
-        arguments: [ HarentiusBlogBundle:Article ]
+        arguments: [ Harentius\BlogBundle\Entity\Article ]
 
     Harentius\BlogBundle\Entity\PageRepository:
         class: Harentius\BlogBundle\Entity\PageRepository
         factory: ['@doctrine.orm.entity_manager', getRepository]
-        arguments: [ HarentiusBlogBundle:Page ]
+        arguments: [ Harentius\BlogBundle\Entity\Page ]
 
     Harentius\BlogBundle\Entity\CategoryRepository:
         factory: ['@doctrine.orm.entity_manager', getRepository]
-        arguments: [ HarentiusBlogBundle:Category ]
+        arguments: [ Harentius\BlogBundle\Entity\Category ]
 
     Harentius\BlogBundle\Entity\TagRepository:
         factory: ['@doctrine.orm.entity_manager', getRepository]
-        arguments: [ HarentiusBlogBundle:Tag ]
+        arguments: [ Harentius\BlogBundle\Entity\Tag ]
 
     Harentius\BlogBundle\Entity\SettingRepository:
         factory: ['@doctrine.orm.entity_manager', getRepository]
-        arguments: [ HarentiusBlogBundle:Setting ]
-
-    Harentius\BlogBundle\Entity\TranslationRepository:
-        factory: ['@doctrine.orm.entity_manager', getRepository]
-        arguments: [ HarentiusBlogBundle:Translation ]
+        arguments: [ Harentius\BlogBundle\Entity\Setting ]
 
     Harentius\BlogBundle\Entity\AbstractPostRepository:
         factory: ['@doctrine.orm.entity_manager', getRepository]
-        arguments: [ HarentiusBlogBundle:AbstractPost ]
+        arguments: [ Harentius\BlogBundle\Entity\AbstractPost ]
 
     Harentius\BlogBundle\Entity\AdminUserRepository:
         factory: ['@doctrine.orm.entity_manager', getRepository]
-        arguments: [ HarentiusBlogBundle:AdminUser ]
+        arguments: [ Harentius\BlogBundle\Entity\AdminUser ]

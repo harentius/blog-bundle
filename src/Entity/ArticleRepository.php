@@ -24,7 +24,7 @@ class ArticleRepository extends EntityRepository
 
         return $qb
             ->where('a.category IN
-                (SELECT c FROM HarentiusBlogBundle:Category c
+                (SELECT c FROM Harentius\BlogBundle\Entity\Category c
                  WHERE c.left >= :left AND c.right <= :right AND c.root = :root)'
             )
             ->andWhere('a.published = :isPublished')

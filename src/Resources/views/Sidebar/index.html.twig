@@ -1,6 +1,6 @@
 <div class="widget-title">{{ 'Categories'|trans }}</div>
-{{ render_cached(controller('Harentius\\BlogBundle\\Controller\\SidebarController::categories')) }}
+{{ render(controller('Harentius\\BlogBundle\\Controller\\SidebarController::categories')) }}
 <div class="widget-title">{{ 'Archive'|trans }}</div>
-{{ render_cached(controller('Harentius\\BlogBundle\\Controller\\SidebarController::archive')) }}
+{{ render(controller('Harentius\\BlogBundle\\Controller\\SidebarController::archive')) }}
 <div class="widget-title">{{ 'Tags Cloud'|trans }}</div>
-{{ render_cached(controller('Harentius\\BlogBundle\\Controller\\SidebarController::tags')) }}
+{{ render(controller('Harentius\\BlogBundle\\Controller\\SidebarController::tags')) }}

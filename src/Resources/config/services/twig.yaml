@@ -10,9 +10,3 @@ services:
     Harentius\BlogBundle\Twig\SettingsExtension: ~
     Harentius\BlogBundle\Twig\ReadMoreExtension: ~
     Harentius\BlogBundle\Twig\RatingExtension: ~
-
-    Harentius\BlogBundle\Twig\RenderCachedExtension:
-        arguments:
-            $httpKernelRuntime: "@twig.runtime.httpkernel"
-            $cache: ~
-            $sidebarCacheLifeTime: '%harentius_blog.sidebar.cache_lifetime%'

@@ -6,7 +6,6 @@ namespace Harentius\BlogBundle\Sitemap;
 
 use Harentius\BlogBundle\Entity\AbstractPost;
 use Harentius\BlogBundle\Entity\AbstractPostRepository;
-use Harentius\BlogBundle\Entity\TranslationRepository;
 use Harentius\BlogBundle\Router\PublicationUrlGenerator;
 use Presta\SitemapBundle\Event\SitemapPopulateEvent;
 use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;
@@ -25,10 +24,6 @@ class PostsSubscriber implements EventSubscriberInterface
      */
     private $publicationUrlGenerator;
 
-    /**
-     * @var TranslationRepository
-     */
-    private $translationRepository;
 
     /**
      * @var string
@@ -38,18 +33,15 @@ class PostsSubscriber implements EventSubscriberInterface
     /**
      * @param AbstractPostRepository $abstractPostRepository
      * @param PublicationUrlGenerator $publicationUrlGenerator
-     * @param TranslationRepository $translationRepository
      * @param string $primaryLocale
      */
     public function __construct(
         AbstractPostRepository $abstractPostRepository,
         PublicationUrlGenerator $publicationUrlGenerator,
-        TranslationRepository $translationRepository,
         string $primaryLocale
     ) {
         $this->abstractPostRepository = $abstractPostRepository;
         $this->publicationUrlGenerator = $publicationUrlGenerator;
-        $this->translationRepository = $translationRepository;
         $this->primaryLocale = $primaryLocale;
     }
 
@@ -62,11 +54,6 @@ class PostsSubscriber implements EventSubscriberInterface
 
         foreach ($posts as $post) {
             $this->addUrl($event, $post, $this->primaryLocale);
-            $locales = $this->translationRepository->findTranslations($post);
-
-            foreach ($locales as $locale) {
-                $this->addUrl($event, $post, $locale);
-            }
         }
     }
 

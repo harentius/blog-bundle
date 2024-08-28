@@ -12,10 +12,3 @@ doctrine:
             datetime_functions:
                 year: 'DoctrineExtensions\Query\Mysql\Year'
                 month: 'DoctrineExtensions\Query\Mysql\Month'
-        mappings:
-            translatable:
-                type: 'annotation'
-                is_bundle: false
-                prefix: 'Gedmo\Translatable\Entity'
-                dir: "%kernel.project_dir%/vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
-                alias: 'GedmoTranslatable'

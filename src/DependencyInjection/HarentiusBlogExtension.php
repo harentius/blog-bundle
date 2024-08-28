@@ -2,7 +2,6 @@
 
 namespace Harentius\BlogBundle\DependencyInjection;
 
-use Harentius\BlogBundle\Twig\RenderCachedExtension;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
@@ -20,17 +19,6 @@ class HarentiusBlogExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services/services.yaml');
-
-        $twigExtensionDefinition = $container->getDefinition(RenderCachedExtension::class);
-        $cacheService = ($config['sidebar']['cache_lifetime'] === null)
-            ? 'harentius_blog.array_cache'
-            : 'harentius_blog.sidebar.cache'
-        ;
-        $cacheServiceDefinition = $container->getDefinition($cacheService);
-
-        $twigExtensionDefinition->replaceArgument('$cache', $cacheServiceDefinition);
-        $articleAdminDefinition = $container->getDefinition('harentius_blog.admin.article');
-        $articleAdminDefinition->addMethodCall('setControllerCache', [$cacheServiceDefinition]);
 
         $container->setParameter('harentius_blog.sidebar.tags_limit', $config['sidebar']['tags_limit']);
         $container->setParameter('harentius_blog.sidebar.tag_sizes', $config['sidebar']['tag_sizes']);

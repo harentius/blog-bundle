@@ -3,7 +3,6 @@ imports:
     - { resource: 'twig.yaml' }
     - { resource: 'controller.yaml' }
     - { resource: 'command.yaml' }
-    - { resource: 'cache.yaml' }
     - { resource: 'repositories.yaml' }
     - { resource: 'sitemap.yaml' }
 
@@ -20,9 +19,6 @@ services:
         tags:
             - { name: twig.extension }
 
-    harentius_blog.array_cache:
-        class: Doctrine\Common\Cache\ArrayCache
-
     Harentius\BlogBundle\Sidebar\Tags:
         arguments:
             $sidebarTagsLimit: '%harentius_blog.sidebar.tags_limit%'
@@ -33,10 +29,7 @@ services:
             $categorySlug: '%harentius_blog.homepage.feed.category%'
             $homepageSlug: '%harentius_blog.homepage.page_slug%'
 
-    Harentius\BlogBundle\Rating:
-        arguments:
-            $cache: '@harentius_blog.rating_cache'
-
+    Harentius\BlogBundle\Rating: ~
     Harentius\BlogBundle\FileManagement\FilePathResolver:
         arguments:
             $webDir: '%kernel.project_dir%/public'

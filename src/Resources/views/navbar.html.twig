@@ -19,6 +19,6 @@
     </nav>
 
     <div class="categories-menu d-none">
-        {{ render_cached(controller('Harentius\\BlogBundle\\Controller\\SidebarController::categories', { showNumber: false })) }}
+        {{ render(controller('Harentius\\BlogBundle\\Controller\\SidebarController::categories', { showNumber: false })) }}
     </div>
 </div>

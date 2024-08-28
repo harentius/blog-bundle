@@ -28,7 +28,7 @@ class CategoryRepository extends NestedTreeRepository
         ;
 
         /** @var ArticleRepository $articleRepository */
-        $articleRepository = $this->_em->getRepository('HarentiusBlogBundle:Article');
+        $articleRepository = $this->_em->getRepository(Article::class);
         $qb = $articleRepository->createQueryBuilder('a');
         $qb
             ->select('COUNT(a)')
@@ -55,9 +55,9 @@ class CategoryRepository extends NestedTreeRepository
     public function findWithPublishedArticles()
     {
         return $this->createQueryBuilder('c')
-            ->from('HarentiusBlogBundle:Article', 'a')
+            ->from(Article::class, 'a')
             ->where('a.category IN
-                    (SELECT cc FROM HarentiusBlogBundle:Category cc
+                    (SELECT cc FROM Harentius\BlogBundle\Entity\Category cc
                      WHERE cc.left >= c.left AND cc.right <= c.right AND cc.root = c.root)'
             )
             ->andWhere('a.published = :isPublished')
