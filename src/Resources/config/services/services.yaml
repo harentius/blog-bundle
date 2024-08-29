@@ -42,13 +42,6 @@ services:
             - '@Harentius\BlogBundle\FileManagement\FilePathResolver'
             - '%harentius_blog.articles.image_previews_base_uri%'
 
-    Harentius\BlogBundle\EventListener\AdminUserListener:
-        arguments:
-            - '@security.password_encoder'
-        tags:
-            - { name: doctrine.event_listener, event: prePersist }
-            - { name: doctrine.event_listener, event: preUpdate }
-
     Harentius\BlogBundle\Router\PublicationUrlGenerator:
         arguments:
             $primaryLocale: '%harentius_blog.primary_locale%'

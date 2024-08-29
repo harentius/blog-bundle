@@ -174,4 +174,9 @@ class AdminUser implements UserInterface, \Serializable
             $this->salt,
         ] = unserialize($serialized);
     }
+
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->getId();
+    }
 }
