@@ -37,7 +37,7 @@ class SidebarControllerTest extends TestCase
             ->expects($this->once())
             ->method('render')
             ->with('@HarentiusBlog/Sidebar/archive.html.twig', [
-                'archivesList' => 'list',
+                'archivesList' => ['list'],
             ])
         ;
         $sidebarController = $this->createSidebarController($twig);
@@ -70,7 +70,7 @@ class SidebarControllerTest extends TestCase
         $archive = $this->createMock(Archive::class);
         $archive
             ->method('getList')
-            ->willReturn('list')
+            ->willReturn(['list'])
         ;
         $tags = $this->createMock(Tags::class);
         $tags
