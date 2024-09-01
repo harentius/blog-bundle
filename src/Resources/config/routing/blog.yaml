@@ -29,12 +29,6 @@ harentius_blog_show_default:
     path: /{slug}
     defaults: { _controller: 'Harentius\BlogBundle\Controller\ShowController' }
 
-harentius_blog_show:
-    path: /{_locale}/{slug}
-    defaults: { _controller: 'Harentius\BlogBundle\Controller\ShowController', _locale: '%harentius_blog.primary_locale%' }
-    requirements:
-        _locale: "%harentius_blog.locales_requirement%"
-
 harentius_blog_rate:
     path: /like/{article}/{type}
     defaults: { _controller: 'Harentius\BlogBundle\Controller\RateController', type: 'like' }

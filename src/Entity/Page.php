@@ -5,27 +5,23 @@ namespace Harentius\BlogBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
-/**
- * @ORM\Entity(repositoryClass="Harentius\BlogBundle\Entity\PageRepository")
- */
+#[ORM\Entity(repositoryClass: \Harentius\BlogBundle\Entity\PageRepository::class)]
 class Page extends AbstractPost
 {
     /**
      * @var bool
-     *
-     * @ORM\Column(type="boolean")
-     * @SymfonyConstraints\NotNull()
-     * @SymfonyConstraints\Type(type="bool")
      */
-    private $showInMainMenu;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::BOOLEAN)]
+    #[SymfonyConstraints\NotNull]
+    #[SymfonyConstraints\Type(type: 'bool')]
+    private ?bool $showInMainMenu = null;
 
     /**
      * @var int
-     *
-     * @ORM\Column(type="integer", nullable=true, name="_order")
-     * @SymfonyConstraints\Type(type="integer")
      */
-    private $order;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::INTEGER, nullable: true, name: '_order')]
+    #[SymfonyConstraints\Type(type: 'integer')]
+    private ?int $order = null;
 
     /**
      *

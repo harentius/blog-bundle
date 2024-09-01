@@ -63,7 +63,7 @@ class PostsSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            SitemapPopulateEvent::ON_SITEMAP_POPULATE => 'populate',
+         //   SitemapPopulateEvent::ON_SITEMAP_POPULATE => 'populate',
         ];
     }
 

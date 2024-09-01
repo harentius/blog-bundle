@@ -7,40 +7,32 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
-/**
- * @ORM\Entity(repositoryClass="Harentius\BlogBundle\Entity\TagRepository")
- */
+#[ORM\Entity(repositoryClass: \Harentius\BlogBundle\Entity\TagRepository::class)]
 class Tag
 {
     use IdentifiableEntityTrait;
 
     /**
      * @var string|null
-     *
-     * @ORM\Column(type="string", length=255)
-     * @SymfonyConstraints\Length(max=255)
-     * @SymfonyConstraints\NotBlank()
      */
-    private $name;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 255)]
+    #[SymfonyConstraints\Length(max: 255)]
+    #[SymfonyConstraints\NotBlank]
+    private ?string $name = null;
 
     /**
      * @var string|null
-     *
-     * @ORM\Column(type="string", length=255)
-     * @Gedmo\Slug(fields={"name"}, unique=true)
-     * @SymfonyConstraints\Length(max=255)
      */
-    private $slug;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 255)]
+    #[SymfonyConstraints\Length(max: 255)]
+    #[Gedmo\Slug(fields: ['name'], unique: true)]
+    private ?string $slug = null;
 
     /**
-     * @var Article[]
-     *
-     * @ORM\ManyToMany(
-     *     targetEntity="Harentius\BlogBundle\Entity\Article",
-     *     mappedBy="tags",
-     * )
+     * @var \Doctrine\Common\Collections\Collection<int, \Harentius\BlogBundle\Entity\Article>
      */
-    private $articles;
+    #[ORM\ManyToMany(targetEntity: \Harentius\BlogBundle\Entity\Article::class, mappedBy: 'tags')]
+    private \Doctrine\Common\Collections\Collection $articles;
 
     /**
      *
@@ -105,7 +97,7 @@ class Tag
     }
 
     /**
-     * @param Article[]|ArrayCollection $value
+     * @param \Doctrine\Common\Collections\Collection<int, \Harentius\BlogBundle\Entity\Article> $value
      * @return $this
      */
     public function setArticles($value): self

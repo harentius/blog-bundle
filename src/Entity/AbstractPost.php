@@ -6,15 +6,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
-/**
- * @ORM\Entity(repositoryClass="Harentius\BlogBundle\Entity\AbstractPostRepository")
- * @ORM\InheritanceType("SINGLE_TABLE")
- * @ORM\DiscriminatorColumn(name="type", type="integer")
- * @ORM\DiscriminatorMap({
- *     0 = "Harentius\BlogBundle\Entity\Article",
- *     1 = "Harentius\BlogBundle\Entity\Page",
- * })
- */
+#[ORM\Entity(repositoryClass: \Harentius\BlogBundle\Entity\AbstractPostRepository::class)]
+#[ORM\InheritanceType('SINGLE_TABLE')]
+#[ORM\DiscriminatorColumn(name: 'type', type: 'integer')]
+#[ORM\DiscriminatorMap([0 => 'Harentius\BlogBundle\Entity\Article', 1 => 'Harentius\BlogBundle\Entity\Page'])]
 abstract class AbstractPost
 {
     use IdentifiableEntityTrait;
@@ -23,54 +18,46 @@ abstract class AbstractPost
 
     /**
      * @var string|null
-     *
-     * @ORM\Column(type="string", length=1000)
-     * @SymfonyConstraints\Length(max=1000)
-     * @SymfonyConstraints\NotBlank()
      */
-    protected $title;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 1000)]
+    #[SymfonyConstraints\Length(max: 1000)]
+    #[SymfonyConstraints\NotBlank]
+    protected ?string $title = null;
 
     /**
      * @var string|null
-     *
-     * @ORM\Column(type="string", length=1000)
-     * @Gedmo\Slug(fields={"title"}, unique=true, updatable=false)
      */
-    protected $slug;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 1000)]
+    #[Gedmo\Slug(fields: ['title'], unique: true, updatable: false)]
+    protected ?string $slug = null;
 
     /**
      * @var string|null
-     *
-     * @ORM\Column(type="text")
-     * @SymfonyConstraints\Type(type="string")
-     * @SymfonyConstraints\NotBlank()
      */
-    protected $text;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::TEXT)]
+    #[SymfonyConstraints\Type(type: 'string')]
+    #[SymfonyConstraints\NotBlank]
+    protected ?string $text = null;
 
     /**
      * @var AdminUser|null
-     *
-     * @ORM\ManyToOne(
-     *     targetEntity="Harentius\BlogBundle\Entity\AdminUser"
-     * )
-     * @SymfonyConstraints\NotNull()
      */
-    protected $author;
+    #[ORM\ManyToOne(targetEntity: \Harentius\BlogBundle\Entity\AdminUser::class)]
+    #[SymfonyConstraints\NotNull]
+    protected ?\Harentius\BlogBundle\Entity\AdminUser $author = null;
 
     /**
      * @var bool
-     *
-     * @ORM\Column(type="boolean"))
      */
-    protected $published;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::BOOLEAN)]
+    protected ?bool $published = null;
 
     /**
-     * @var \DateTime|null
-     *
-     * @ORM\Column(type="datetime", nullable=true)
-     * @SymfonyConstraints\DateTime
+     * @var \DateTimeInterface|null
      */
-    protected $publishedAt;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::DATETIME_MUTABLE, nullable: true)]
+    #[SymfonyConstraints\DateTime]
+    protected ?\DateTimeInterface $publishedAt = null;
 
     /**
      *

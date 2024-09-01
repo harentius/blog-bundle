@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace Harentius\BlogBundle\Controller;
 
 use Harentius\BlogBundle\Breadcrumbs\BreadCrumbsManager;
-use Harentius\BlogBundle\Entity\AbstractPost;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Harentius\BlogBundle\Entity\AbstractPostRepository;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ShowController extends AbstractController
 {
@@ -19,17 +20,22 @@ class ShowController extends AbstractController
     /**
      * @param BreadCrumbsManager $breadCrumbsManager
      */
-    public function __construct(BreadCrumbsManager $breadCrumbsManager)
+    public function __construct(
+        BreadCrumbsManager $breadCrumbsManager,
+        readonly private AbstractPostRepository $abstractPostRepository,
+    )
     {
         $this->breadCrumbsManager = $breadCrumbsManager;
     }
 
-    /**
-     * @param AbstractPost $post
-     * @return Response
-     */
-    public function __invoke(AbstractPost $post): Response
+    public function __invoke(string $slug): Response
     {
+        $post = $this->abstractPostRepository->findOneBy(['slug' => $slug]);
+
+        if (!$post) {
+            throw new NotFoundHttpException();
+        }
+
         $this->breadCrumbsManager->buildPost($post);
         $class = get_class($post);
         $type = strtolower(substr($class, strrpos($class, '\\') + 1));

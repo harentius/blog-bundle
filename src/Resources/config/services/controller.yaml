@@ -3,7 +3,6 @@ services:
         public: true
         autowire: true
 
-    Harentius\BlogBundle\Controller\FeedController: ~
     Harentius\BlogBundle\Controller\CategoryController: ~
     Harentius\BlogBundle\Controller\TagController: ~
     Harentius\BlogBundle\Controller\ArchiveController: ~

@@ -8,10 +8,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Tree\Traits\NestedSetEntity;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
-/**
- * @Gedmo\Tree(type="nested")
- * @ORM\Entity(repositoryClass="Harentius\BlogBundle\Entity\CategoryRepository")
- */
+#[ORM\Entity(repositoryClass: \Harentius\BlogBundle\Entity\CategoryRepository::class)]
+#[Gedmo\Tree(type: 'nested')]
 class Category
 {
     use IdentifiableEntityTrait;
@@ -20,57 +18,42 @@ class Category
 
     /**
      * @var string|null
-     *
-     * @ORM\Column(type="string", length=255)
-     * @SymfonyConstraints\Type(type="string")
-     * @SymfonyConstraints\Length(max=255)
-     * @SymfonyConstraints\NotBlank()
      */
-    private $name;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 255)]
+    #[SymfonyConstraints\Type(type: 'string')]
+    #[SymfonyConstraints\Length(max: 255)]
+    #[SymfonyConstraints\NotBlank]
+    private ?string $name = null;
 
     /**
      * @var string|null
-     *
-     * @ORM\Column(type="string", length=255)
-     * @Gedmo\Slug(fields={"name"}, unique=true)
-     * @SymfonyConstraints\Type(type="string")
-     * @SymfonyConstraints\Length(max=255)
      */
-    private $slug;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 255)]
+    #[SymfonyConstraints\Type(type: 'string')]
+    #[SymfonyConstraints\Length(max: 255)]
+    #[Gedmo\Slug(fields: ['name'], unique: true)]
+    private ?string $slug = null;
 
     /**
-     * @var Article[]|ArrayCollection
-     *
-     * @ORM\OneToMany(
-     *     targetEntity="Harentius\BlogBundle\Entity\Article",
-     *     mappedBy="category",
-     *     cascade={"remove"},
-     * )
+     * @var \Doctrine\Common\Collections\Collection<int, \Harentius\BlogBundle\Entity\Article>
      */
-    private $articles;
+    #[ORM\OneToMany(targetEntity: \Harentius\BlogBundle\Entity\Article::class, mappedBy: 'category', cascade: ['remove'])]
+    private \Doctrine\Common\Collections\Collection $articles;
 
     /**
      * @var Category|null
-     *
-     * @Gedmo\TreeParent
-     * @ORM\ManyToOne(
-     *     targetEntity="Harentius\BlogBundle\Entity\Category",
-     *     inversedBy="children"
-     * )
-     * @ORM\JoinColumn(referencedColumnName="id", onDelete="CASCADE")
      */
-    private $parent;
+    #[ORM\JoinColumn(referencedColumnName: 'id', onDelete: 'CASCADE')]
+    #[ORM\ManyToOne(targetEntity: \Harentius\BlogBundle\Entity\Category::class, inversedBy: 'children')]
+    #[Gedmo\TreeParent]
+    private ?\Harentius\BlogBundle\Entity\Category $parent = null;
 
     /**
-     * @var Category[]|ArrayCollection
-     *
-     * @ORM\OneToMany(
-     *     targetEntity="Harentius\BlogBundle\Entity\Category",
-     *     mappedBy="parent"
-     * )
-     * @ORM\OrderBy({"left" = "ASC"})
+     * @var \Doctrine\Common\Collections\Collection<int, \Harentius\BlogBundle\Entity\Category>
      */
-    private $children;
+    #[ORM\OneToMany(targetEntity: \Harentius\BlogBundle\Entity\Category::class, mappedBy: 'parent')]
+    #[ORM\OrderBy(['left' => \Doctrine\Common\Collections\Criteria::ASC])]
+    private \Doctrine\Common\Collections\Collection $children;
 
     /**
      *
@@ -136,7 +119,7 @@ class Category
     }
 
     /**
-     * @param Article[]|ArrayCollection $value
+     * @param \Doctrine\Common\Collections\Collection<int, \Harentius\BlogBundle\Entity\Article> $value
      * @return $this
      */
     public function setArticles($value): self
@@ -174,7 +157,7 @@ class Category
     }
 
     /**
-     * @param Category[] $value
+     * @param \Doctrine\Common\Collections\Collection<int, \Harentius\BlogBundle\Entity\Category> $value
      * @return $this
      */
     public function setChildren($value): self

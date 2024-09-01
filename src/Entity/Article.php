@@ -6,70 +6,56 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
-/**
- * @ORM\Entity(repositoryClass="Harentius\BlogBundle\Entity\ArticleRepository")
- */
+#[ORM\Entity(repositoryClass: \Harentius\BlogBundle\Entity\ArticleRepository::class)]
 class Article extends AbstractPost
 {
     /**
      * @var int
-     *
-     * @ORM\Column(type="integer")
-     * @SymfonyConstraints\Type(type="integer")
-     * @SymfonyConstraints\Range(min=0)
-     * @SymfonyConstraints\NotNull()
      */
-    protected $viewsCount;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::INTEGER)]
+    #[SymfonyConstraints\Type(type: 'integer')]
+    #[SymfonyConstraints\Range(min: 0)]
+    #[SymfonyConstraints\NotNull]
+    protected ?int $viewsCount = null;
 
     /**
      * @var int
-     *
-     * @ORM\Column(type="integer")
-     * @SymfonyConstraints\Type(type="integer")
-     * @SymfonyConstraints\Range(min=0)
-     * @SymfonyConstraints\NotNull()
      */
-    protected $likesCount;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::INTEGER)]
+    #[SymfonyConstraints\Type(type: 'integer')]
+    #[SymfonyConstraints\Range(min: 0)]
+    #[SymfonyConstraints\NotNull]
+    protected ?int $likesCount = null;
 
     /**
      * @var int
-     *
-     * @ORM\Column(type="integer")
-     * @SymfonyConstraints\Type(type="integer")
-     * @SymfonyConstraints\Range(min=0)
-     * @SymfonyConstraints\NotNull()
      */
-    protected $disLikesCount;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::INTEGER)]
+    #[SymfonyConstraints\Type(type: 'integer')]
+    #[SymfonyConstraints\Range(min: 0)]
+    #[SymfonyConstraints\NotNull]
+    protected ?int $disLikesCount = null;
 
     /**
      * @var array
-     *
-     * @ORM\Column(type="array", nullable=false)
-     * @SymfonyConstraints\Type(type="array")
-     * @SymfonyConstraints\NotNull()
      */
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::ARRAY, nullable: false)]
+    #[SymfonyConstraints\Type(type: 'array')]
+    #[SymfonyConstraints\NotNull]
     protected $attributes;
 
     /**
      * @var Category|null
-     *
-     * @ORM\ManyToOne(
-     *     targetEntity="Harentius\BlogBundle\Entity\Category",
-     *     inversedBy="articles"
-     * )
-     * @SymfonyConstraints\NotNull()
      */
-    private $category;
+    #[ORM\ManyToOne(targetEntity: \Harentius\BlogBundle\Entity\Category::class, inversedBy: 'articles')]
+    #[SymfonyConstraints\NotNull]
+    private ?\Harentius\BlogBundle\Entity\Category $category = null;
 
     /**
-     * @var Tag[]
-     *
-     * @ORM\ManyToMany(
-     *     targetEntity="Harentius\BlogBundle\Entity\Tag",
-     *     inversedBy="articles"
-     * )
+     * @var \Doctrine\Common\Collections\Collection<int, \Harentius\BlogBundle\Entity\Tag>
      */
-    private $tags;
+    #[ORM\ManyToMany(targetEntity: \Harentius\BlogBundle\Entity\Tag::class, inversedBy: 'articles')]
+    private \Doctrine\Common\Collections\Collection $tags;
 
     /**
      *
@@ -179,7 +165,7 @@ class Article extends AbstractPost
     }
 
     /**
-     * @param Tag[]|ArrayCollection $value
+     * @param \Doctrine\Common\Collections\Collection<int, \Harentius\BlogBundle\Entity\Tag> $value
      * @return $this
      */
     public function setTags($value): self

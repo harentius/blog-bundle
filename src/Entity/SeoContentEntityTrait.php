@@ -9,21 +9,19 @@ trait SeoContentEntityTrait
 {
     /**
      * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @SymfonyConstraints\Type(type="string")
-     * @SymfonyConstraints\Length(max=255)
      */
-    protected $metaDescription;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 255, nullable: true)]
+    #[SymfonyConstraints\Type(type: 'string')]
+    #[SymfonyConstraints\Length(max: 255)]
+    protected ?string $metaDescription = null;
 
     /**
      * @var string
-     *
-     * @ORM\Column(type="string", length=1000, nullable=true)
-     * @SymfonyConstraints\Type(type="string")
-     * @SymfonyConstraints\Length(max=1000)
      */
-    protected $metaKeywords;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 1000, nullable: true)]
+    #[SymfonyConstraints\Type(type: 'string')]
+    #[SymfonyConstraints\Length(max: 1000)]
+    protected ?string $metaKeywords = null;
 
     /**
      * @return string

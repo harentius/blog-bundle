@@ -6,51 +6,45 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
-/**
- * @ORM\Entity(repositoryClass="Harentius\BlogBundle\Entity\AdminUserRepository")
- */
+#[ORM\Entity(repositoryClass: \Harentius\BlogBundle\Entity\AdminUserRepository::class)]
 class AdminUser implements UserInterface, \Serializable
 {
     use IdentifiableEntityTrait;
 
     /**
      * @var string|null
-     *
-     * @ORM\Column(type="string", length=50, unique=true)
-     * @SymfonyConstraints\NotBlank()
-     * @SymfonyConstraints\Length(max=50)
-     * @SymfonyConstraints\Type("string")
      */
-    private $username;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 50, unique: true)]
+    #[SymfonyConstraints\NotBlank]
+    #[SymfonyConstraints\Length(max: 50)]
+    #[SymfonyConstraints\Type('string')]
+    private ?string $username = null;
 
     /**
      * @var string|null
-     *
-     * @ORM\Column(type="string", length=255)
-     * @SymfonyConstraints\NotBlank()
-     * @SymfonyConstraints\Length(max=255)
-     * @SymfonyConstraints\Type("string")
      */
-    private $password;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 255)]
+    #[SymfonyConstraints\NotBlank]
+    #[SymfonyConstraints\Length(max: 255)]
+    #[SymfonyConstraints\Type('string')]
+    private ?string $password = null;
 
     /**
      * @var string|null
-     *
-     * @SymfonyConstraints\NotBlank()
-     * @SymfonyConstraints\Length(max=255)
-     * @SymfonyConstraints\Type("string")
      */
+    #[SymfonyConstraints\NotBlank]
+    #[SymfonyConstraints\Length(max: 255)]
+    #[SymfonyConstraints\Type('string')]
     private $plainPassword;
 
     /**
      * @var string
-     *
-     * @ORM\Column(type="string", length=255)
-     * @SymfonyConstraints\NotBlank()
-     * @SymfonyConstraints\Length(max=255)
-     * @SymfonyConstraints\Type("string")
      */
-    private $salt;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 255)]
+    #[SymfonyConstraints\NotBlank]
+    #[SymfonyConstraints\Length(max: 255)]
+    #[SymfonyConstraints\Type('string')]
+    private ?string $salt = null;
 
     /**
      *

@@ -1,7 +1,3 @@
-harentius_blog_admin:
-    resource: '@HarentiusBlogBundle/Resources/config/routing/admin.yaml'
-    prefix:   /admin
-
 harentius_blog_blog:
     resource: '@HarentiusBlogBundle/Resources/config/routing/blog.yaml'
 

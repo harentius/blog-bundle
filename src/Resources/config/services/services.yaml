@@ -1,5 +1,4 @@
 imports:
-    - { resource: 'admin/*' }
     - { resource: 'twig.yaml' }
     - { resource: 'controller.yaml' }
     - { resource: 'command.yaml' }

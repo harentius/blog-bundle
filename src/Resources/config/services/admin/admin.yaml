@@ -1,6 +1,0 @@
-services:
-    _defaults:
-        public: false
-        autowire: true
-
-    Harentius\BlogBundle\Admin\Security\LoginFormAuthenticator: ~
