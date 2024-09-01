@@ -8,15 +8,9 @@
     "@symfony/webpack-encore": "^0.28",
     "autoprefixer": "^9.7.3",
     "bootstrap": "^4.4.1",
-    "ckeditor-audio-plugin": "^1.0.0",
-    "ckeditor-more-plugin": "^1.0.1",
-    "ckeditor-wordcount-plugin": "^1.17.2",
-    "ckeditor-youtube-plugin": "^2.1.14",
-    "ckeditor4": "^4.13.1",
     "copy-webpack-plugin": "^5.1.1",
     "font-awesome": "^4.7.0",
-    "highlight.js": "^9.16.2",
-    "raw-loader": "^4.0.0"
+    "highlight.js": "^9.16.2"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.7.4",

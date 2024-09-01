@@ -40,7 +40,7 @@ class CategoriesSubscriber implements EventSubscriberInterface
         $categories = $this->categoryRepository->findWithPublishedArticles();
 
         foreach ($categories as $category) {
-            $event->getGenerator()->addUrl(
+            $event->getUrlContainer()->addUrl(
                 new UrlConcrete(
                     $this->urlGenerator->generate('harentius_blog_category', ['slug' => $category->getSlugWithParents()], UrlGeneratorInterface::ABSOLUTE_URL),
                     null,
@@ -58,7 +58,7 @@ class CategoriesSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            // SitemapPopulateEvent::ON_SITEMAP_POPULATE => 'populate',
+            SitemapPopulateEvent::class => 'populate',
         ];
     }
 }

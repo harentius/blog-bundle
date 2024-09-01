@@ -37,7 +37,7 @@ class HomepageSubscriber implements EventSubscriberInterface
      */
     public function populate(SitemapPopulateEvent $event): void
     {
-        $event->getGenerator()->addUrl(
+        $event->getUrlContainer()->addUrl(
             new UrlConcrete(
                 $this->urlGenerator->generate('harentius_blog_homepage', [], UrlGeneratorInterface::ABSOLUTE_URL),
                 $this->homepage->getUpdatedAt(),
@@ -54,7 +54,7 @@ class HomepageSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            // SitemapPopulateEvent::ON_SITEMAP_POPULATE => 'populate',
+            SitemapPopulateEvent::class => 'populate',
         ];
     }
 }

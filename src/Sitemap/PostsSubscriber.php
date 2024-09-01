@@ -29,11 +29,6 @@ class PostsSubscriber implements EventSubscriberInterface
      */
     private $primaryLocale;
 
-    /**
-     * @param AbstractPostRepository $abstractPostRepository
-     * @param PublicationUrlGenerator $publicationUrlGenerator
-     * @param string $primaryLocale
-     */
     public function __construct(
         AbstractPostRepository $abstractPostRepository,
         PublicationUrlGenerator $publicationUrlGenerator,
@@ -62,7 +57,7 @@ class PostsSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            //   SitemapPopulateEvent::ON_SITEMAP_POPULATE => 'populate',
+            SitemapPopulateEvent::class => 'populate',
         ];
     }
 
@@ -73,7 +68,7 @@ class PostsSubscriber implements EventSubscriberInterface
      */
     private function addUrl(SitemapPopulateEvent $event, AbstractPost $post, string $locale): void
     {
-        $event->getGenerator()->addUrl(
+        $event->getUrlContainer()->addUrl(
             new UrlConcrete(
                 $this->publicationUrlGenerator->generateUrl($post, $locale, UrlGeneratorInterface::ABSOLUTE_URL),
                 $post->getUpdatedAt(),
