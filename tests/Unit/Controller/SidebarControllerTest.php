@@ -9,8 +9,8 @@ use Harentius\BlogBundle\Entity\CategoryRepository;
 use Harentius\BlogBundle\Sidebar\Archive;
 use Harentius\BlogBundle\Sidebar\Tags;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Environment;
 
 class SidebarControllerTest extends TestCase
@@ -78,10 +78,8 @@ class SidebarControllerTest extends TestCase
             ->willReturn('list')
         ;
 
-        $controller = new SidebarController($categoryRepository, $archive, $tags);
-        $container = new Container();
-        $container->set('twig', $twig);
-        $controller->setContainer($container);
+        $urlGenerator = $this->createMock(UrlGeneratorInterface::class);
+        $controller = new SidebarController($categoryRepository, $archive, $tags, $twig, $urlGenerator);
 
         return $controller;
     }

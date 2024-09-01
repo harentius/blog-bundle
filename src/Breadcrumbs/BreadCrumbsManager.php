@@ -83,16 +83,16 @@ class BreadCrumbsManager
         $this->breadcrumbsItems[] = new BreadcrumbItem($post->getTitle());
     }
 
+    public function getBreadcrumbsItems(): array
+    {
+        return $this->breadcrumbsItems;
+    }
+
     private function addHomepage(): void
     {
         $this->breadcrumbsItems[] = new BreadcrumbItem(
             'Homepage',
             $this->urlGenerator->generate('harentius_blog_homepage', [], UrlGeneratorInterface::ABSOLUTE_URL)
         );
-    }
-
-    public function getBreadcrumbsItems(): array
-    {
-        return $this->breadcrumbsItems;
     }
 }

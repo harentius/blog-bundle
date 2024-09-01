@@ -44,6 +44,6 @@ class PageRepository extends EntityRepository
             ->setParameter('published', true)
             ->getQuery()
             ->getOneOrNullResult()
-         ;
+        ;
     }
 }

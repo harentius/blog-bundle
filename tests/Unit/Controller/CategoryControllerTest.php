@@ -13,7 +13,6 @@ use Harentius\BlogBundle\Paginator;
 use Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination;
 use Knp\Component\Pager\PaginatorInterface;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -83,7 +82,7 @@ class CategoryControllerTest extends TestCase
     private function createCategoryController(
         Environment $twig,
         SlidingPagination $slidingPagination,
-        CategoryRepository $categoryRepository
+        CategoryRepository $categoryRepository,
     ): CategoryController {
         $articleRepository = $this->createMock(ArticleRepository::class);
         $breadCrumbsManager = $this->createMock(BreadCrumbsManager::class);
@@ -95,10 +94,7 @@ class CategoryControllerTest extends TestCase
 
         $paginator = new Paginator($knpPaginator, 123);
 
-        $controller = new CategoryController($articleRepository, $categoryRepository, $breadCrumbsManager, $paginator);
-        $container = new Container();
-        $container->set('twig', $twig);
-        $controller->setContainer($container);
+        $controller = new CategoryController($articleRepository, $categoryRepository, $breadCrumbsManager, $paginator, $twig);
 
         return $controller;
     }

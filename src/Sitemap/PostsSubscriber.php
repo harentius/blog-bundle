@@ -24,7 +24,6 @@ class PostsSubscriber implements EventSubscriberInterface
      */
     private $publicationUrlGenerator;
 
-
     /**
      * @var string
      */
@@ -38,7 +37,7 @@ class PostsSubscriber implements EventSubscriberInterface
     public function __construct(
         AbstractPostRepository $abstractPostRepository,
         PublicationUrlGenerator $publicationUrlGenerator,
-        string $primaryLocale
+        string $primaryLocale,
     ) {
         $this->abstractPostRepository = $abstractPostRepository;
         $this->publicationUrlGenerator = $publicationUrlGenerator;
@@ -63,7 +62,7 @@ class PostsSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-         //   SitemapPopulateEvent::ON_SITEMAP_POPULATE => 'populate',
+            //   SitemapPopulateEvent::ON_SITEMAP_POPULATE => 'populate',
         ];
     }
 

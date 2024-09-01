@@ -31,14 +31,14 @@ class HomepageController
      * @param Homepage $homepage
      * @param Paginator $paginator
      * @param int $homepageFeedPostsCount
+     * @param Environment $twig
      */
     public function __construct(
         Homepage $homepage,
         Paginator $paginator,
         int $homepageFeedPostsCount,
         private readonly Environment $twig,
-    )
-    {
+    ) {
         $this->homepage = $homepage;
         $this->paginator = $paginator;
         $this->homepageFeedPostsCount = $homepageFeedPostsCount;

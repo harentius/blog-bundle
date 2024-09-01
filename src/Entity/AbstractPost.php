@@ -6,15 +6,15 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
-#[ORM\Entity(repositoryClass: \Harentius\BlogBundle\Entity\AbstractPostRepository::class)]
+#[ORM\Entity(repositoryClass: AbstractPostRepository::class)]
 #[ORM\InheritanceType('SINGLE_TABLE')]
 #[ORM\DiscriminatorColumn(name: 'type', type: 'integer')]
 #[ORM\DiscriminatorMap([0 => 'Harentius\BlogBundle\Entity\Article', 1 => 'Harentius\BlogBundle\Entity\Page'])]
 abstract class AbstractPost
 {
     use IdentifiableEntityTrait;
-    use TimestampableEntityTrait;
     use SeoContentEntityTrait;
+    use TimestampableEntityTrait;
 
     /**
      * @var string|null
@@ -42,9 +42,9 @@ abstract class AbstractPost
     /**
      * @var AdminUser|null
      */
-    #[ORM\ManyToOne(targetEntity: \Harentius\BlogBundle\Entity\AdminUser::class)]
+    #[ORM\ManyToOne(targetEntity: AdminUser::class)]
     #[SymfonyConstraints\NotNull]
-    protected ?\Harentius\BlogBundle\Entity\AdminUser $author = null;
+    protected ?AdminUser $author = null;
 
     /**
      * @var bool

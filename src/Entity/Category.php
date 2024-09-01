@@ -37,21 +37,21 @@ class Category
     /**
      * @var \Doctrine\Common\Collections\Collection<int, \Harentius\BlogBundle\Entity\Article>
      */
-    #[ORM\OneToMany(targetEntity: \Harentius\BlogBundle\Entity\Article::class, mappedBy: 'category', cascade: ['remove'])]
+    #[ORM\OneToMany(targetEntity: Article::class, mappedBy: 'category', cascade: ['remove'])]
     private \Doctrine\Common\Collections\Collection $articles;
 
     /**
      * @var Category|null
      */
     #[ORM\JoinColumn(referencedColumnName: 'id', onDelete: 'CASCADE')]
-    #[ORM\ManyToOne(targetEntity: \Harentius\BlogBundle\Entity\Category::class, inversedBy: 'children')]
+    #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'children')]
     #[Gedmo\TreeParent]
-    private ?\Harentius\BlogBundle\Entity\Category $parent = null;
+    private ?Category $parent = null;
 
     /**
      * @var \Doctrine\Common\Collections\Collection<int, \Harentius\BlogBundle\Entity\Category>
      */
-    #[ORM\OneToMany(targetEntity: \Harentius\BlogBundle\Entity\Category::class, mappedBy: 'parent')]
+    #[ORM\OneToMany(targetEntity: Category::class, mappedBy: 'parent')]
     #[ORM\OrderBy(['left' => \Doctrine\Common\Collections\Criteria::ASC])]
     private \Doctrine\Common\Collections\Collection $children;
 

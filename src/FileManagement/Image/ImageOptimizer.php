@@ -47,7 +47,7 @@ class ImageOptimizer
         FilterManager $filterManager,
         DataManager $dataManager,
         FilePathResolver $assetsResolver,
-        $targetBasePath
+        $targetBasePath,
     ) {
         $this->cacheManager = $cacheManager;
         $this->filterManager = $filterManager;

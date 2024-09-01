@@ -33,6 +33,8 @@ class SidebarController
      * @param CategoryRepository $categoryRepository
      * @param Archive $archive
      * @param Tags $tags
+     * @param Environment $twig
+     * @param UrlGeneratorInterface $urlGenerator
      */
     public function __construct(
         CategoryRepository $categoryRepository,

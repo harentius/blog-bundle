@@ -32,7 +32,7 @@ class MenuBuilder
         PageRepository $pageRepository,
         PublicationUrlGenerator $publicationUrlGenerator,
         RequestStack $requestStack,
-        ?string $homepageSlug
+        ?string $homepageSlug,
     ) {
         $this->publicationUrlGenerator = $publicationUrlGenerator;
         $this->pageRepository = $pageRepository;

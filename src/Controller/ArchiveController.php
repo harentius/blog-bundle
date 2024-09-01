@@ -32,6 +32,7 @@ class ArchiveController
      * @param ArticleRepository $articleRepository
      * @param BreadCrumbsManager $breadCrumbsManager
      * @param Paginator $paginator
+     * @param Environment $twig
      */
     public function __construct(
         ArticleRepository $articleRepository,

@@ -5,7 +5,7 @@ namespace Harentius\BlogBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
-#[ORM\Entity(repositoryClass: \Harentius\BlogBundle\Entity\PageRepository::class)]
+#[ORM\Entity(repositoryClass: PageRepository::class)]
 class Page extends AbstractPost
 {
     /**

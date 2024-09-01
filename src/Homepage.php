@@ -39,7 +39,7 @@ class Homepage
         ArticleRepository $articleRepository,
         PageRepository $pageRepository,
         ?string $categorySlug = null,
-        ?string $homepageSlug = null
+        ?string $homepageSlug = null,
     ) {
         $this->articleRepository = $articleRepository;
         $this->categorySlug = $categorySlug;

@@ -30,6 +30,7 @@ class ImageOptimizationControllerTest extends TestCase
     public function testInvokeWithException(): void
     {
         $imageOptimizer = $this->createMock(ImageOptimizer::class);
+        $imageOptimizer->method('createPreviewIfNotExists')->willReturn('/path/to-file');
         $imageOptimizationController = $this->createImageOptimizationController($imageOptimizer);
 
         $this->expectException(NotFoundHttpException::class);

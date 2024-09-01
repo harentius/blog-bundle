@@ -19,7 +19,7 @@ class ContainerBuilderTestCase extends TestCase
         $passesClasses = [];
 
         foreach ($passes as $pass) {
-            $passesClasses[get_class($pass)] = true;
+            $passesClasses[$pass::class] = true;
         }
 
         $this->assertArrayHasKey($passInstance, $passesClasses);

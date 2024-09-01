@@ -81,7 +81,7 @@ class HomepageTest extends TestCase
 
     private function createHomepage(
         ArticleRepository $articleRepository,
-        PageRepository $pageRepository
+        PageRepository $pageRepository,
     ): Homepage {
         return new Homepage($articleRepository, $pageRepository, 'category_slug', 'homepage_slug');
     }

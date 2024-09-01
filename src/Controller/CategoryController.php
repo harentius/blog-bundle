@@ -40,6 +40,7 @@ class CategoryController
      * @param CategoryRepository $categoryRepository
      * @param BreadCrumbsManager $breadCrumbsManager
      * @param Paginator $paginator
+     * @param Environment $twig
      */
     public function __construct(
         ArticleRepository $articleRepository,

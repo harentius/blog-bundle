@@ -34,6 +34,8 @@ class TagController
      * @param ArticleRepository $articleRepository
      * @param BreadCrumbsManager $breadCrumbsManager
      * @param Paginator $paginator
+     * @param TagRepository $tagRepository
+     * @param Environment $twig
      */
     public function __construct(
         ArticleRepository $articleRepository,

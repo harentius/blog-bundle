@@ -62,7 +62,7 @@ class FilePathResolver
     {
         $prefix = "{$this->webDir}/{$this->assetsDir}/";
 
-        if (strpos($path, $prefix) === 0) {
+        if (str_starts_with($path, $prefix)) {
             return substr($path, strlen($this->webDir));
         }
 

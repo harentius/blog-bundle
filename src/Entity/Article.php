@@ -6,7 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
-#[ORM\Entity(repositoryClass: \Harentius\BlogBundle\Entity\ArticleRepository::class)]
+#[ORM\Entity(repositoryClass: ArticleRepository::class)]
 class Article extends AbstractPost
 {
     /**
@@ -47,14 +47,14 @@ class Article extends AbstractPost
     /**
      * @var Category|null
      */
-    #[ORM\ManyToOne(targetEntity: \Harentius\BlogBundle\Entity\Category::class, inversedBy: 'articles')]
+    #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'articles')]
     #[SymfonyConstraints\NotNull]
-    private ?\Harentius\BlogBundle\Entity\Category $category = null;
+    private ?Category $category = null;
 
     /**
      * @var \Doctrine\Common\Collections\Collection<int, \Harentius\BlogBundle\Entity\Tag>
      */
-    #[ORM\ManyToMany(targetEntity: \Harentius\BlogBundle\Entity\Tag::class, inversedBy: 'articles')]
+    #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'articles')]
     private \Doctrine\Common\Collections\Collection $tags;
 
     /**

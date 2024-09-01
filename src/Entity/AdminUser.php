@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
-#[ORM\Entity(repositoryClass: \Harentius\BlogBundle\Entity\AdminUserRepository::class)]
+#[ORM\Entity(repositoryClass: AdminUserRepository::class)]
 class AdminUser implements UserInterface, \Serializable
 {
     use IdentifiableEntityTrait;

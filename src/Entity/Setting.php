@@ -5,7 +5,7 @@ namespace Harentius\BlogBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
-#[ORM\Entity(repositoryClass: \Harentius\BlogBundle\Entity\SettingRepository::class)]
+#[ORM\Entity(repositoryClass: SettingRepository::class)]
 class Setting
 {
     use IdentifiableEntityTrait;

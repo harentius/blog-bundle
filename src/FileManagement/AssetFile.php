@@ -6,9 +6,9 @@ use Symfony\Component\HttpFoundation\File\File;
 
 class AssetFile
 {
-    const TYPE_IMAGE = 'image';
-    const TYPE_AUDIO = 'audio';
-    const TYPE_OTHER = 'file';
+    public const TYPE_IMAGE = 'image';
+    public const TYPE_AUDIO = 'audio';
+    public const TYPE_OTHER = 'file';
 
     /**
      * @var File
@@ -58,7 +58,7 @@ class AssetFile
      * @param string $uri
      * @param int|null $fallbackType
      */
-    public function __construct(File $file = null, $uri = null, $fallbackType = null)
+    public function __construct(?File $file = null, $uri = null, $fallbackType = null)
     {
         if ($fallbackType !== null && !in_array($fallbackType, [self::TYPE_AUDIO, self::TYPE_IMAGE], true)) {
             throw new \InvalidArgumentException(sprintf("Unsupported '\$fallbackType' value '%s'", $fallbackType));
@@ -72,7 +72,7 @@ class AssetFile
      * @param File $value
      * @param int|null $fallbackType
      */
-    public function setFile(File $value = null, $fallbackType = null)
+    public function setFile(?File $value = null, $fallbackType = null)
     {
         $this->file = $value;
 

@@ -26,7 +26,7 @@ class FileManager
      * @param array $options
      * @return AssetFile
      */
-    public function handleUpload(UploadedFile $uploadedFile = null, array $options = [])
+    public function handleUpload(?UploadedFile $uploadedFile = null, array $options = [])
     {
         $resolver = new OptionsResolver();
         $resolver
@@ -44,12 +44,9 @@ class FileManager
 
         if (
             !($uploadedFile instanceof UploadedFile)
-                ||
-            !$uploadedFile->isValid()
-                ||
-            !($assetFile = new AssetFile($uploadedFile, null, $options['fallbackType']))
-                ||
-            $assetFile->getType() === null
+            || !$uploadedFile->isValid()
+            || !($assetFile = new AssetFile($uploadedFile, null, $options['fallbackType']))
+            || $assetFile->getType() === null
         ) {
             throw new \RuntimeException('Invalid uploaded file');
         }
@@ -110,9 +107,9 @@ class FileManager
         while ($fs->exists("{$uploadsDir}/{$targetName}")) {
             $targetName = sprintf(
                 '%s_%s.%s',
-                pathinfo($originalFileName, PATHINFO_FILENAME),
+                pathinfo($originalFileName, \PATHINFO_FILENAME),
                 $i++,
-                pathinfo($originalFileName, PATHINFO_EXTENSION)
+                pathinfo($originalFileName, \PATHINFO_EXTENSION)
             );
         }
 

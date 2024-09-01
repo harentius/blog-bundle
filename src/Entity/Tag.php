@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
-#[ORM\Entity(repositoryClass: \Harentius\BlogBundle\Entity\TagRepository::class)]
+#[ORM\Entity(repositoryClass: TagRepository::class)]
 class Tag
 {
     use IdentifiableEntityTrait;
@@ -31,7 +31,7 @@ class Tag
     /**
      * @var \Doctrine\Common\Collections\Collection<int, \Harentius\BlogBundle\Entity\Article>
      */
-    #[ORM\ManyToMany(targetEntity: \Harentius\BlogBundle\Entity\Article::class, mappedBy: 'tags')]
+    #[ORM\ManyToMany(targetEntity: Article::class, mappedBy: 'tags')]
     private \Doctrine\Common\Collections\Collection $articles;
 
     /**
