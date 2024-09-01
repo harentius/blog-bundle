@@ -8,36 +8,8 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 class MenuBuilder
 {
-    /**
-     * @var PageRepository
-     */
-    private $pageRepository;
-
-    /**
-     * @var string|null
-     */
-    private $homepageSlug;
-
-    /**
-     * @var PublicationUrlGenerator
-     */
-    private $publicationUrlGenerator;
-
-    /**
-     * @var RequestStack
-     */
-    private $requestStack;
-
-    public function __construct(
-        PageRepository $pageRepository,
-        PublicationUrlGenerator $publicationUrlGenerator,
-        RequestStack $requestStack,
-        ?string $homepageSlug,
-    ) {
-        $this->publicationUrlGenerator = $publicationUrlGenerator;
-        $this->pageRepository = $pageRepository;
-        $this->requestStack = $requestStack;
-        $this->homepageSlug = $homepageSlug;
+    public function __construct(private readonly PageRepository $pageRepository, private readonly PublicationUrlGenerator $publicationUrlGenerator, private readonly RequestStack $requestStack, private readonly ?string $homepageSlug)
+    {
     }
 
     public function getMainMenuItems(): array

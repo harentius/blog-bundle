@@ -10,41 +10,13 @@ use Harentius\BlogBundle\Entity\PageRepository;
 class Homepage
 {
     /**
-     * @var ArticleRepository
-     */
-    private $articleRepository;
-
-    /**
-     * @var PageRepository
-     */
-    private $pageRepository;
-
-    /**
-     * @var string
-     */
-    private $categorySlug;
-
-    /**
-     * @var string
-     */
-    private $homepageSlug;
-
-    /**
      * @param ArticleRepository $articleRepository
      * @param PageRepository $pageRepository
      * @param string $categorySlug
      * @param string $homepageSlug
      */
-    public function __construct(
-        ArticleRepository $articleRepository,
-        PageRepository $pageRepository,
-        ?string $categorySlug = null,
-        ?string $homepageSlug = null,
-    ) {
-        $this->articleRepository = $articleRepository;
-        $this->categorySlug = $categorySlug;
-        $this->homepageSlug = $homepageSlug;
-        $this->pageRepository = $pageRepository;
+    public function __construct(private readonly ArticleRepository $articleRepository, private readonly PageRepository $pageRepository, private readonly ?string $categorySlug = null, private readonly ?string $homepageSlug = null)
+    {
     }
 
     /**

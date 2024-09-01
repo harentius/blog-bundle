@@ -11,16 +11,10 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class ImageOptimizationController
 {
     /**
-     * @var ImageOptimizer
-     */
-    private $imageOptimizer;
-
-    /**
      * @param ImageOptimizer $imageOptimizer
      */
-    public function __construct(ImageOptimizer $imageOptimizer)
+    public function __construct(private readonly ImageOptimizer $imageOptimizer)
     {
-        $this->imageOptimizer = $imageOptimizer;
     }
 
     /**
@@ -36,7 +30,7 @@ class ImageOptimizationController
             $imagePath = $this->imageOptimizer->createPreviewIfNotExists($imageName);
 
             return new BinaryFileResponse($imagePath);
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             throw new NotFoundHttpException(sprintf('File %s not found', $imageName));
         }
     }

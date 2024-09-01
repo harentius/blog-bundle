@@ -16,11 +16,6 @@ class AssetFile
     private $file;
 
     /**
-     * @var string
-     */
-    private $uri;
-
-    /**
      * @var int
      */
     private $type;
@@ -58,14 +53,13 @@ class AssetFile
      * @param string $uri
      * @param int|null $fallbackType
      */
-    public function __construct(?File $file = null, $uri = null, $fallbackType = null)
+    public function __construct(?File $file = null, private $uri = null, $fallbackType = null)
     {
         if ($fallbackType !== null && !in_array($fallbackType, [self::TYPE_AUDIO, self::TYPE_IMAGE], true)) {
             throw new \InvalidArgumentException(sprintf("Unsupported '\$fallbackType' value '%s'", $fallbackType));
         }
 
         $this->setFile($file, $fallbackType);
-        $this->uri = $uri;
     }
 
     /**

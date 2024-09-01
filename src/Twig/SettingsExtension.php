@@ -11,16 +11,10 @@ use Twig\TwigFunction;
 class SettingsExtension extends AbstractExtension
 {
     /**
-     * @var SettingRepository
-     */
-    private $settingRepository;
-
-    /**
      * @param SettingRepository $settingRepository
      */
-    public function __construct(SettingRepository $settingRepository)
+    public function __construct(private readonly SettingRepository $settingRepository)
     {
-        $this->settingRepository = $settingRepository;
     }
 
     /**
@@ -29,7 +23,7 @@ class SettingsExtension extends AbstractExtension
     public function getFunctions()
     {
         return [
-            new TwigFunction('get_setting', [$this, 'getSetting']),
+            new TwigFunction('get_setting', $this->getSetting(...)),
         ];
     }
 

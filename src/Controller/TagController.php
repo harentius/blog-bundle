@@ -16,37 +16,14 @@ use Twig\Environment;
 class TagController
 {
     /**
-     * @var ArticleRepository
-     */
-    private $articleRepository;
-
-    /**
-     * @var BreadCrumbsManager
-     */
-    private $breadCrumbsManager;
-
-    /**
-     * @var Paginator
-     */
-    private $paginator;
-
-    /**
      * @param ArticleRepository $articleRepository
      * @param BreadCrumbsManager $breadCrumbsManager
      * @param Paginator $paginator
      * @param TagRepository $tagRepository
      * @param Environment $twig
      */
-    public function __construct(
-        ArticleRepository $articleRepository,
-        BreadCrumbsManager $breadCrumbsManager,
-        private readonly TagRepository $tagRepository,
-        Paginator $paginator,
-        private readonly Environment $twig,
-    ) {
-        $this->articleRepository = $articleRepository;
-        $this->breadCrumbsManager = $breadCrumbsManager;
-        $this->paginator = $paginator;
+    public function __construct(private readonly ArticleRepository $articleRepository, private readonly BreadCrumbsManager $breadCrumbsManager, private readonly TagRepository $tagRepository, private readonly Paginator $paginator, private readonly Environment $twig)
+    {
     }
 
     public function __invoke(Request $request, string $slug): Response

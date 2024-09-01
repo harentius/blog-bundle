@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 #[Gedmo\Tree(type: 'nested')]
-class Category
+class Category implements \Stringable
 {
     use IdentifiableEntityTrait;
     use NestedSetEntity;

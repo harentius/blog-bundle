@@ -4,20 +4,8 @@ namespace Harentius\BlogBundle\Menu;
 
 class MenuItem
 {
-    /**
-     * @var string
-     */
-    private $text;
-
-    /**
-     * @var string|null
-     */
-    private $url;
-
-    public function __construct(string $text, string $url)
+    public function __construct(private readonly string $text, private readonly string $url)
     {
-        $this->text = $text;
-        $this->url = $url;
     }
 
     public function getText(): string

@@ -14,16 +14,10 @@ class Rating
     public const TYPE_DISLIKE = 'dislike';
 
     /**
-     * @var RequestStack
-     */
-    private $requestStack;
-
-    /**
      * @param RequestStack $requestStack
      */
-    public function __construct(RequestStack $requestStack)
+    public function __construct(private readonly RequestStack $requestStack)
     {
-        $this->requestStack = $requestStack;
     }
 
     /**

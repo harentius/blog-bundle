@@ -13,21 +13,12 @@ use Twig\Environment;
 class ShowController
 {
     /**
-     * @var BreadCrumbsManager
-     */
-    private $breadCrumbsManager;
-
-    /**
      * @param BreadCrumbsManager $breadCrumbsManager
      * @param AbstractPostRepository $abstractPostRepository
      * @param Environment $twig
      */
-    public function __construct(
-        BreadCrumbsManager $breadCrumbsManager,
-        private readonly AbstractPostRepository $abstractPostRepository,
-        private readonly Environment $twig,
-    ) {
-        $this->breadCrumbsManager = $breadCrumbsManager;
+    public function __construct(private readonly BreadCrumbsManager $breadCrumbsManager, private readonly AbstractPostRepository $abstractPostRepository, private readonly Environment $twig)
+    {
     }
 
     public function __invoke(string $slug): Response

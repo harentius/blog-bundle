@@ -12,33 +12,21 @@ use Symfony\Component\HttpFoundation\Request;
 class Paginator
 {
     /**
-     * @var PaginatorInterface
-     */
-    private $paginator;
-
-    /**
-     * @var int
-     */
-    private $defaultPerPage;
-
-    /**
      * @param PaginatorInterface $paginator
      * @param int $defaultPerPage
      */
-    public function __construct(PaginatorInterface $paginator, int $defaultPerPage)
+    public function __construct(private readonly PaginatorInterface $paginator, private int $defaultPerPage)
     {
-        $this->paginator = $paginator;
-        $this->defaultPerPage = $defaultPerPage;
     }
 
     /**
      * @param Request $request
-     * @param mixed $target
      * @param array $options
      * @param int|null $perPage
+     * @param mixed $target
      * @return SlidingPagination
      */
-    public function paginate(Request $request, $target, array $options = [], ?int $perPage = null): AbstractPagination
+    public function paginate(Request $request, mixed $target, array $options = [], ?int $perPage = null): AbstractPagination
     {
         if ($perPage === null) {
             $perPage = $this->defaultPerPage;

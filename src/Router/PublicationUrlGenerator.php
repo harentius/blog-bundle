@@ -8,23 +8,11 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 class PublicationUrlGenerator
 {
     /**
-     * @var UrlGeneratorInterface
-     */
-    private $urlGenerator;
-
-    /**
-     * @var string
-     */
-    private $primaryLocale;
-
-    /**
      * @param UrlGeneratorInterface $urlGenerator
      * @param string $primaryLocale
      */
-    public function __construct(UrlGeneratorInterface $urlGenerator, string $primaryLocale)
+    public function __construct(private readonly UrlGeneratorInterface $urlGenerator, private readonly string $primaryLocale)
     {
-        $this->urlGenerator = $urlGenerator;
-        $this->primaryLocale = $primaryLocale;
     }
 
     /**

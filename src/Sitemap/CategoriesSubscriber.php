@@ -13,23 +13,11 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 class CategoriesSubscriber implements EventSubscriberInterface
 {
     /**
-     * @var UrlGeneratorInterface
-     */
-    private $urlGenerator;
-
-    /**
-     * @var CategoryRepository
-     */
-    private $categoryRepository;
-
-    /**
      * @param UrlGeneratorInterface $urlGenerator
      * @param CategoryRepository $categoryRepository
      */
-    public function __construct(UrlGeneratorInterface $urlGenerator, CategoryRepository $categoryRepository)
+    public function __construct(private readonly UrlGeneratorInterface $urlGenerator, private readonly CategoryRepository $categoryRepository)
     {
-        $this->urlGenerator = $urlGenerator;
-        $this->categoryRepository = $categoryRepository;
     }
 
     /**

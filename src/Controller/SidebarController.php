@@ -15,37 +15,14 @@ use Twig\Environment;
 class SidebarController
 {
     /**
-     * @var CategoryRepository
-     */
-    private $categoryRepository;
-
-    /**
-     * @var Archive
-     */
-    private $archive;
-
-    /**
-     * @var Tags
-     */
-    private $tags;
-
-    /**
      * @param CategoryRepository $categoryRepository
      * @param Archive $archive
      * @param Tags $tags
      * @param Environment $twig
      * @param UrlGeneratorInterface $urlGenerator
      */
-    public function __construct(
-        CategoryRepository $categoryRepository,
-        Archive $archive,
-        Tags $tags,
-        private readonly Environment $twig,
-        private readonly UrlGeneratorInterface $urlGenerator,
-    ) {
-        $this->categoryRepository = $categoryRepository;
-        $this->archive = $archive;
-        $this->tags = $tags;
+    public function __construct(private readonly CategoryRepository $categoryRepository, private readonly Archive $archive, private readonly Tags $tags, private readonly Environment $twig, private readonly UrlGeneratorInterface $urlGenerator)
+    {
     }
 
     /**

@@ -11,49 +11,14 @@ use Liip\ImagineBundle\Imagine\Filter\FilterManager;
 class ImageOptimizer
 {
     /**
-     * @var CacheManager
-     */
-    private $cacheManager;
-
-    /**
-     * @var FilterManager
-     */
-    private $filterManager;
-
-    /**
-     * @var DataManager
-     */
-    private $dataManager;
-
-    /**
-     * @var FilePathResolver
-     */
-    private $assetsResolver;
-
-    /**
-     * @var string
-     */
-    private $targetBasePath;
-
-    /**
      * @param CacheManager $cacheManager
      * @param FilterManager $filterManager
      * @param DataManager $dataManager
      * @param FilePathResolver $assetsResolver
      * @param string $targetBasePath
      */
-    public function __construct(
-        CacheManager $cacheManager,
-        FilterManager $filterManager,
-        DataManager $dataManager,
-        FilePathResolver $assetsResolver,
-        $targetBasePath,
-    ) {
-        $this->cacheManager = $cacheManager;
-        $this->filterManager = $filterManager;
-        $this->dataManager = $dataManager;
-        $this->assetsResolver = $assetsResolver;
-        $this->targetBasePath = $targetBasePath;
+    public function __construct(private readonly CacheManager $cacheManager, private readonly FilterManager $filterManager, private readonly DataManager $dataManager, private readonly FilePathResolver $assetsResolver, private $targetBasePath)
+    {
     }
 
     /**

@@ -8,16 +8,10 @@ use Harentius\BlogBundle\Entity\ArticleRepository;
 class Archive
 {
     /**
-     * @var ArticleRepository
-     */
-    private $articleRepository;
-
-    /**
      * @param ArticleRepository $articleRepository
      */
-    public function __construct(ArticleRepository $articleRepository)
+    public function __construct(private readonly ArticleRepository $articleRepository)
     {
-        $this->articleRepository = $articleRepository;
     }
 
     /**

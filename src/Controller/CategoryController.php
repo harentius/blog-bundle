@@ -16,43 +16,14 @@ use Twig\Environment;
 class CategoryController
 {
     /**
-     * @var ArticleRepository
-     */
-    private $articleRepository;
-
-    /**
-     * @var BreadCrumbsManager
-     */
-    private $breadCrumbsManager;
-
-    /**
-     * @var Paginator
-     */
-    private $paginator;
-
-    /**
-     * @var CategoryRepository
-     */
-    private $categoryRepository;
-
-    /**
      * @param ArticleRepository $articleRepository
      * @param CategoryRepository $categoryRepository
      * @param BreadCrumbsManager $breadCrumbsManager
      * @param Paginator $paginator
      * @param Environment $twig
      */
-    public function __construct(
-        ArticleRepository $articleRepository,
-        CategoryRepository $categoryRepository,
-        BreadCrumbsManager $breadCrumbsManager,
-        Paginator $paginator,
-        private readonly Environment $twig,
-    ) {
-        $this->articleRepository = $articleRepository;
-        $this->breadCrumbsManager = $breadCrumbsManager;
-        $this->paginator = $paginator;
-        $this->categoryRepository = $categoryRepository;
+    public function __construct(private readonly ArticleRepository $articleRepository, private readonly CategoryRepository $categoryRepository, private readonly BreadCrumbsManager $breadCrumbsManager, private readonly Paginator $paginator, private readonly Environment $twig)
+    {
     }
 
     /**

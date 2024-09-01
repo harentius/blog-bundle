@@ -7,14 +7,8 @@ use Twig\TwigFunction;
 
 class MenuTwigExtension extends AbstractExtension
 {
-    /**
-     * @var MenuBuilder
-     */
-    private $menuBuilder;
-
-    public function __construct(MenuBuilder $menuBuilder)
+    public function __construct(private readonly MenuBuilder $menuBuilder)
     {
-        $this->menuBuilder = $menuBuilder;
     }
 
     /**
@@ -23,7 +17,7 @@ class MenuTwigExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('get_main_menu_items', [$this->menuBuilder, 'getMainMenuItems']),
+            new TwigFunction('get_main_menu_items', $this->menuBuilder->getMainMenuItems(...)),
         ];
     }
 }

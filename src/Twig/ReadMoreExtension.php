@@ -15,7 +15,7 @@ class ReadMoreExtension extends AbstractExtension
     public function getFilters()
     {
         return [
-            new TwigFilter('read_more', [$this, 'readMore'], ['is_safe' => ['html']]),
+            new TwigFilter('read_more', $this->readMore(...), ['is_safe' => ['html']]),
         ];
     }
 

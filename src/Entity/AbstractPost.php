@@ -9,8 +9,8 @@ use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 #[ORM\Entity(repositoryClass: AbstractPostRepository::class)]
 #[ORM\InheritanceType('SINGLE_TABLE')]
 #[ORM\DiscriminatorColumn(name: 'type', type: 'integer')]
-#[ORM\DiscriminatorMap([0 => 'Harentius\BlogBundle\Entity\Article', 1 => 'Harentius\BlogBundle\Entity\Page'])]
-abstract class AbstractPost
+#[ORM\DiscriminatorMap([0 => Article::class, 1 => Page::class])]
+abstract class AbstractPost implements \Stringable
 {
     use IdentifiableEntityTrait;
     use SeoContentEntityTrait;

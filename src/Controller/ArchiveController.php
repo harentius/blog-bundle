@@ -14,35 +14,13 @@ use Twig\Environment;
 class ArchiveController
 {
     /**
-     * @var ArticleRepository
-     */
-    private $articleRepository;
-
-    /**
-     * @var Paginator
-     */
-    private $paginator;
-
-    /**
-     * @var BreadCrumbsManager
-     */
-    private $breadCrumbsManager;
-
-    /**
      * @param ArticleRepository $articleRepository
      * @param BreadCrumbsManager $breadCrumbsManager
      * @param Paginator $paginator
      * @param Environment $twig
      */
-    public function __construct(
-        ArticleRepository $articleRepository,
-        BreadCrumbsManager $breadCrumbsManager,
-        Paginator $paginator,
-        private readonly Environment $twig,
-    ) {
-        $this->articleRepository = $articleRepository;
-        $this->breadCrumbsManager = $breadCrumbsManager;
-        $this->paginator = $paginator;
+    public function __construct(private readonly ArticleRepository $articleRepository, private readonly BreadCrumbsManager $breadCrumbsManager, private readonly Paginator $paginator, private readonly Environment $twig)
+    {
     }
 
     /**

@@ -13,23 +13,11 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 class HomepageSubscriber implements EventSubscriberInterface
 {
     /**
-     * @var UrlGeneratorInterface
-     */
-    private $urlGenerator;
-
-    /**
-     * @var Homepage
-     */
-    private $homepage;
-
-    /**
      * @param UrlGeneratorInterface $urlGenerator
      * @param Homepage $homepage
      */
-    public function __construct(UrlGeneratorInterface $urlGenerator, Homepage $homepage)
+    public function __construct(private readonly UrlGeneratorInterface $urlGenerator, private readonly Homepage $homepage)
     {
-        $this->urlGenerator = $urlGenerator;
-        $this->homepage = $homepage;
     }
 
     /**

@@ -13,23 +13,11 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 class RateController
 {
     /**
-     * @var Rating
-     */
-    private $rating;
-
-    /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
-
-    /**
      * @param Rating $rating
      * @param EntityManagerInterface $entityManager
      */
-    public function __construct(Rating $rating, EntityManagerInterface $entityManager)
+    public function __construct(private readonly Rating $rating, private readonly EntityManagerInterface $entityManager)
     {
-        $this->rating = $rating;
-        $this->entityManager = $entityManager;
     }
 
     /**

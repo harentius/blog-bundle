@@ -9,16 +9,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class FileManager
 {
     /**
-     * @var FilePathResolver
-     */
-    private $assetsResolver;
-
-    /**
      * @param FilePathResolver $assetsResolver
      */
-    public function __construct(FilePathResolver $assetsResolver)
+    public function __construct(private readonly FilePathResolver $assetsResolver)
     {
-        $this->assetsResolver = $assetsResolver;
     }
 
     /**

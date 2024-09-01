@@ -13,35 +13,13 @@ use Twig\Environment;
 class HomepageController
 {
     /**
-     * @var Homepage
-     */
-    private $homepage;
-
-    /**
-     * @var Paginator
-     */
-    private $paginator;
-
-    /**
-     * @var int
-     */
-    private $homepageFeedPostsCount;
-
-    /**
      * @param Homepage $homepage
      * @param Paginator $paginator
      * @param int $homepageFeedPostsCount
      * @param Environment $twig
      */
-    public function __construct(
-        Homepage $homepage,
-        Paginator $paginator,
-        int $homepageFeedPostsCount,
-        private readonly Environment $twig,
-    ) {
-        $this->homepage = $homepage;
-        $this->paginator = $paginator;
-        $this->homepageFeedPostsCount = $homepageFeedPostsCount;
+    public function __construct(private readonly Homepage $homepage, private readonly Paginator $paginator, private readonly int $homepageFeedPostsCount, private readonly Environment $twig)
+    {
     }
 
     /**

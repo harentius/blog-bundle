@@ -14,29 +14,8 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class PostsSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @var AbstractPostRepository
-     */
-    private $abstractPostRepository;
-
-    /**
-     * @var PublicationUrlGenerator
-     */
-    private $publicationUrlGenerator;
-
-    /**
-     * @var string
-     */
-    private $primaryLocale;
-
-    public function __construct(
-        AbstractPostRepository $abstractPostRepository,
-        PublicationUrlGenerator $publicationUrlGenerator,
-        string $primaryLocale,
-    ) {
-        $this->abstractPostRepository = $abstractPostRepository;
-        $this->publicationUrlGenerator = $publicationUrlGenerator;
-        $this->primaryLocale = $primaryLocale;
+    public function __construct(private readonly AbstractPostRepository $abstractPostRepository, private readonly PublicationUrlGenerator $publicationUrlGenerator, private readonly string $primaryLocale)
+    {
     }
 
     /**

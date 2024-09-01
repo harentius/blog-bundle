@@ -7,7 +7,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
 #[ORM\Entity(repositoryClass: AdminUserRepository::class)]
-class AdminUser implements UserInterface, \Serializable
+class AdminUser implements UserInterface, \Serializable, \Stringable
 {
     use IdentifiableEntityTrait;
 
@@ -51,7 +51,7 @@ class AdminUser implements UserInterface, \Serializable
      */
     public function __construct()
     {
-        $this->salt = md5(uniqid(null, true));
+        $this->salt = md5(uniqid('', true));
     }
 
     /**

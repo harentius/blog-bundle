@@ -7,30 +7,12 @@ use Harentius\BlogBundle\Entity\TagRepository;
 class Tags
 {
     /**
-     * @var TagRepository
-     */
-    private $tagRepository;
-
-    /**
-     * @var int
-     */
-    private $sidebarTagsLimit;
-
-    /**
-     * @var array
-     */
-    private $sidebarTagSizes;
-
-    /**
      * @param TagRepository $tagRepository
      * @param int $sidebarTagsLimit
      * @param array $sidebarTagSizes
      */
-    public function __construct(TagRepository $tagRepository, int $sidebarTagsLimit, array $sidebarTagSizes)
+    public function __construct(private readonly TagRepository $tagRepository, private readonly int $sidebarTagsLimit, private readonly array $sidebarTagSizes)
     {
-        $this->tagRepository = $tagRepository;
-        $this->sidebarTagsLimit = $sidebarTagsLimit;
-        $this->sidebarTagSizes = $sidebarTagSizes;
     }
 
     /**
