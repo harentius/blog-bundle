@@ -11,10 +11,6 @@ use Liip\ImagineBundle\Imagine\Filter\FilterManager;
 class ImageOptimizer
 {
     /**
-     * @param CacheManager $cacheManager
-     * @param FilterManager $filterManager
-     * @param DataManager $dataManager
-     * @param FilePathResolver $assetsResolver
      * @param string $targetBasePath
      */
     public function __construct(private readonly CacheManager $cacheManager, private readonly FilterManager $filterManager, private readonly DataManager $dataManager, private readonly FilePathResolver $assetsResolver, private $targetBasePath)
@@ -33,7 +29,6 @@ class ImageOptimizer
     }
 
     /**
-     * @param ImagePreview $imagePreviewData
      * @return string
      */
     private function resize(ImagePreview $imagePreviewData)
@@ -59,9 +54,8 @@ class ImageOptimizer
 
     /**
      * @param string $imageName
-     * @return ImagePreview
      */
-    private function extractPreviewData($imageName)
+    private function extractPreviewData($imageName): ImagePreview
     {
         // example: name_500x300.png
         $regexp = '/(?<name>[^\/]*?)(_(?<width>\d+)x(?<height>\d+))?(\.(?<extension>[0-9a-z]+))$/i';

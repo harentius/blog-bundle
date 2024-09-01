@@ -7,17 +7,11 @@ use Harentius\BlogBundle\Entity\ArticleRepository;
 
 class Archive
 {
-    /**
-     * @param ArticleRepository $articleRepository
-     */
     public function __construct(private readonly ArticleRepository $articleRepository)
     {
     }
 
-    /**
-     * @return array
-     */
-    public function getList()
+    public function getList(): array
     {
         /** @var Article[] $articles */
         $articles = $this->articleRepository->findBy(['published' => true], ['publishedAt' => 'DESC']);

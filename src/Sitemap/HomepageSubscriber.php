@@ -12,17 +12,10 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class HomepageSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @param UrlGeneratorInterface $urlGenerator
-     * @param Homepage $homepage
-     */
     public function __construct(private readonly UrlGeneratorInterface $urlGenerator, private readonly Homepage $homepage)
     {
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function populate(SitemapPopulateEvent $event): void
     {
         $event->getUrlContainer()->addUrl(
@@ -36,9 +29,6 @@ class HomepageSubscriber implements EventSubscriberInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function getSubscribedEvents()
     {
         return [

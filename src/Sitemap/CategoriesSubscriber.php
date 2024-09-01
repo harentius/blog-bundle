@@ -12,18 +12,11 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class CategoriesSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @param UrlGeneratorInterface $urlGenerator
-     * @param CategoryRepository $categoryRepository
-     */
     public function __construct(private readonly UrlGeneratorInterface $urlGenerator, private readonly CategoryRepository $categoryRepository)
     {
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function populate(SitemapPopulateEvent $event)
+    public function populate(SitemapPopulateEvent $event): void
     {
         $categories = $this->categoryRepository->findWithPublishedArticles();
 
@@ -40,9 +33,6 @@ class CategoriesSubscriber implements EventSubscriberInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function getSubscribedEvents()
     {
         return [

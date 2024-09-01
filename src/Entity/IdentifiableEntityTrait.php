@@ -6,9 +6,6 @@ use Doctrine\ORM\Mapping as ORM;
 
 trait IdentifiableEntityTrait
 {
-    /**
-     * @var int
-     */
     #[ORM\Id]
     #[ORM\Column(type: \Doctrine\DBAL\Types\Types::INTEGER)]
     #[ORM\GeneratedValue(strategy: 'AUTO')]

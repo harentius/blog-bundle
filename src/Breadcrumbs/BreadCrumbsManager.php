@@ -15,16 +15,13 @@ class BreadCrumbsManager
     /**
      * @var BreadcrumbItem[]
      */
-    private $breadcrumbsItems;
+    private array $breadcrumbsItems;
 
     public function __construct(private readonly UrlGeneratorInterface $urlGenerator)
     {
         $this->breadcrumbsItems = [];
     }
 
-    /**
-     * @param Category $category
-     */
     public function buildCategory(Category $category): void
     {
         $this->addHomepage();
@@ -40,19 +37,12 @@ class BreadCrumbsManager
         $this->breadcrumbsItems = array_merge($this->breadcrumbsItems, array_reverse($items));
     }
 
-    /**
-     * @param Tag $tag
-     */
     public function buildTag(Tag $tag): void
     {
         $this->addHomepage();
         $this->breadcrumbsItems[] = new BreadcrumbItem($tag->getName());
     }
 
-    /**
-     * @param string $year
-     * @param string|null $month
-     */
     public function buildArchive(string $year, ?string $month = null): void
     {
         $this->addHomepage();
@@ -66,7 +56,7 @@ class BreadCrumbsManager
         }
     }
 
-    public function buildPost(AbstractPost $post)
+    public function buildPost(AbstractPost $post): void
     {
         if ($post instanceof Article && $post->getCategory()) {
             $this->buildCategory($post->getCategory());

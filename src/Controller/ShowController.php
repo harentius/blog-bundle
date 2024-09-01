@@ -12,11 +12,6 @@ use Twig\Environment;
 
 class ShowController
 {
-    /**
-     * @param BreadCrumbsManager $breadCrumbsManager
-     * @param AbstractPostRepository $abstractPostRepository
-     * @param Environment $twig
-     */
     public function __construct(private readonly BreadCrumbsManager $breadCrumbsManager, private readonly AbstractPostRepository $abstractPostRepository, private readonly Environment $twig)
     {
     }

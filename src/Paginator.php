@@ -11,19 +11,11 @@ use Symfony\Component\HttpFoundation\Request;
 
 class Paginator
 {
-    /**
-     * @param PaginatorInterface $paginator
-     * @param int $defaultPerPage
-     */
     public function __construct(private readonly PaginatorInterface $paginator, private int $defaultPerPage)
     {
     }
 
     /**
-     * @param Request $request
-     * @param array $options
-     * @param int|null $perPage
-     * @param mixed $target
      * @return SlidingPagination
      */
     public function paginate(Request $request, mixed $target, array $options = [], ?int $perPage = null): AbstractPagination

@@ -9,11 +9,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class ContainerBuilderTestCase extends TestCase
 {
-    /**
-     * @param ContainerBuilder $containerBuilder
-     * @param string $passInstance
-     */
-    public function assertBuilderHasPass(ContainerBuilder $containerBuilder, string $passInstance)
+    public function assertBuilderHasPass(ContainerBuilder $containerBuilder, string $passInstance): void
     {
         $passes = $containerBuilder->getCompiler()->getPassConfig()->getPasses();
         $passesClasses = [];

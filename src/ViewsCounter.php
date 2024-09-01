@@ -11,10 +11,7 @@ class ViewsCounter
     {
     }
 
-    /**
-     * @param Article $article
-     */
-    public function processArticle(Article $article)
+    public function processArticle(Article $article): void
     {
         $viewedArticles = $this->requestStack->getSession()->get('viewedArticles', []);
         $articleId = $article->getId();

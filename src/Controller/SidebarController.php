@@ -14,20 +14,12 @@ use Twig\Environment;
 
 class SidebarController
 {
-    /**
-     * @param CategoryRepository $categoryRepository
-     * @param Archive $archive
-     * @param Tags $tags
-     * @param Environment $twig
-     * @param UrlGeneratorInterface $urlGenerator
-     */
     public function __construct(private readonly CategoryRepository $categoryRepository, private readonly Archive $archive, private readonly Tags $tags, private readonly Environment $twig, private readonly UrlGeneratorInterface $urlGenerator)
     {
     }
 
     /**
      * @param bool $showNumber
-     * @return Response
      */
     public function categories($showNumber = true): Response
     {
@@ -36,7 +28,7 @@ class SidebarController
                 'decorate' => true,
                 'representationField' => 'slug',
                 'html' => true,
-                'nodeDecorator' => function ($node) use ($showNumber) {
+                'nodeDecorator' => function (array $node) use ($showNumber): string {
                     /** @var Category $category */
                     $category = $node[0];
 
@@ -50,9 +42,6 @@ class SidebarController
         ]));
     }
 
-    /**
-     * @return Response
-     */
     public function archive(): Response
     {
         return new Response($this->twig->render('@HarentiusBlog/Sidebar/archive.html.twig', [
@@ -60,9 +49,6 @@ class SidebarController
         ]));
     }
 
-    /**
-     * @return Response
-     */
     public function tags(): Response
     {
         return new Response($this->twig->render('@HarentiusBlog/Sidebar/tags.html.twig', [

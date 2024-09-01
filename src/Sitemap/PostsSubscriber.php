@@ -18,10 +18,7 @@ class PostsSubscriber implements EventSubscriberInterface
     {
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function populate(SitemapPopulateEvent $event)
+    public function populate(SitemapPopulateEvent $event): void
     {
         $posts = $this->abstractPostRepository->findPublished();
 
@@ -30,9 +27,6 @@ class PostsSubscriber implements EventSubscriberInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function getSubscribedEvents()
     {
         return [
@@ -40,11 +34,6 @@ class PostsSubscriber implements EventSubscriberInterface
         ];
     }
 
-    /**
-     * @param SitemapPopulateEvent $event
-     * @param AbstractPost $post
-     * @param string $locale
-     */
     private function addUrl(SitemapPopulateEvent $event, AbstractPost $post, string $locale): void
     {
         $event->getUrlContainer()->addUrl(

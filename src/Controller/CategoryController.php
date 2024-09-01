@@ -15,22 +15,10 @@ use Twig\Environment;
 
 class CategoryController
 {
-    /**
-     * @param ArticleRepository $articleRepository
-     * @param CategoryRepository $categoryRepository
-     * @param BreadCrumbsManager $breadCrumbsManager
-     * @param Paginator $paginator
-     * @param Environment $twig
-     */
     public function __construct(private readonly ArticleRepository $articleRepository, private readonly CategoryRepository $categoryRepository, private readonly BreadCrumbsManager $breadCrumbsManager, private readonly Paginator $paginator, private readonly Environment $twig)
     {
     }
 
-    /**
-     * @param Request $request
-     * @param string $slug
-     * @return Response
-     */
     public function __invoke(Request $request, string $slug): Response
     {
         $explodedSlug = explode('/', $slug);

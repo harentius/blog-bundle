@@ -13,22 +13,10 @@ use Twig\Environment;
 
 class ArchiveController
 {
-    /**
-     * @param ArticleRepository $articleRepository
-     * @param BreadCrumbsManager $breadCrumbsManager
-     * @param Paginator $paginator
-     * @param Environment $twig
-     */
     public function __construct(private readonly ArticleRepository $articleRepository, private readonly BreadCrumbsManager $breadCrumbsManager, private readonly Paginator $paginator, private readonly Environment $twig)
     {
     }
 
-    /**
-     * @param Request $request
-     * @param string $year
-     * @param null|string $month
-     * @return Response
-     */
     public function __invoke(Request $request, string $year, ?string $month = null): Response
     {
         $humanizedMonth = null;
@@ -51,11 +39,7 @@ class ArchiveController
         ]));
     }
 
-    /**
-     * @param string $number
-     * @return string
-     */
-    private function numberToMonth($number): string
+    private function numberToMonth(string $number): string
     {
         $dateTime = \DateTime::createFromFormat('!m', $number);
 

@@ -12,18 +12,12 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class RateController
 {
-    /**
-     * @param Rating $rating
-     * @param EntityManagerInterface $entityManager
-     */
     public function __construct(private readonly Rating $rating, private readonly EntityManagerInterface $entityManager)
     {
     }
 
     /**
-     * @param Article $article
      * @param string $type
-     * @return Response
      */
     public function __invoke(Article $article, $type = 'like'): Response
     {

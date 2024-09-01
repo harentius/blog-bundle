@@ -11,18 +11,10 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ViewCountController
 {
-    /**
-     * @param ViewsCounter $viewsCounter
-     * @param EntityManagerInterface $entityManager
-     */
     public function __construct(private readonly ViewsCounter $viewsCounter, private readonly EntityManagerInterface $entityManager)
     {
     }
 
-    /**
-     * @param Article $article
-     * @return JsonResponse
-     */
     public function __invoke(Article $article): JsonResponse
     {
         $this->viewsCounter->processArticle($article);

@@ -13,17 +13,12 @@ class Rating
     public const TYPE_LIKE = 'like';
     public const TYPE_DISLIKE = 'dislike';
 
-    /**
-     * @param RequestStack $requestStack
-     */
     public function __construct(private readonly RequestStack $requestStack)
     {
     }
 
     /**
-     * @param Article $article
      * @param string $type
-     * @return Response
      */
     public function rate(Article $article, $type = self::TYPE_LIKE): Response
     {
@@ -40,28 +35,16 @@ class Rating
         return $response;
     }
 
-    /**
-     * @param Article $article
-     * @return bool
-     */
     public function isLiked(Article $article): bool
     {
         return in_array($article->getId(), $this->getCookie('harentius_blog_articles_like'), true);
     }
 
-    /**
-     * @param Article $article
-     * @return bool
-     */
     public function isDisLiked(Article $article): bool
     {
         return in_array($article->getId(), $this->getCookie('harentius_blog_articles_dislike'), true);
     }
 
-    /**
-     * @param Article $article
-     * @return bool
-     */
     public function isRated(Article $article): bool
     {
         return $this->isLiked($article)
@@ -70,8 +53,6 @@ class Rating
     }
 
     /**
-     * @param Response $response
-     * @param Article $article
      * @param string $type
      */
     private function addToRated(Response $response, Article $article, $type): void
@@ -86,18 +67,11 @@ class Rating
         }
     }
 
-    /**
-     * @return Request
-     */
     private function getRequest(): Request
     {
         return $this->requestStack->getCurrentRequest();
     }
 
-    /**
-     * @param string $key
-     * @return array
-     */
     private function getCookie(string $key): array
     {
         return json_decode($this->getRequest()->cookies->get($key, '[]'));

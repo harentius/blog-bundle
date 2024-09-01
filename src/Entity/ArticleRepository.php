@@ -14,11 +14,7 @@ use Doctrine\ORM\QueryBuilder;
  */
 class ArticleRepository extends EntityRepository
 {
-    /**
-     * @param Category $category
-     * @return Query
-     */
-    public function findPublishedByCategoryQuery(Category $category)
+    public function findPublishedByCategoryQuery(Category $category): Query
     {
         $qb = $this->createQueryBuilder('a');
 
@@ -37,11 +33,7 @@ class ArticleRepository extends EntityRepository
         ;
     }
 
-    /**
-     * @param Tag $tag
-     * @return Query
-     */
-    public function findPublishedByTagQuery(Tag $tag)
+    public function findPublishedByTagQuery(Tag $tag): Query
     {
         return $this->createQueryBuilder('a')
             ->join('a.tags', 't')
@@ -57,9 +49,8 @@ class ArticleRepository extends EntityRepository
     /**
      * @param string $year
      * @param string $month
-     * @return Query
      */
-    public function findPublishedByYearMonthQuery($year, $month = null)
+    public function findPublishedByYearMonthQuery($year, $month = null): Query
     {
         $qb = $this->createQueryBuilder('a');
 
@@ -81,10 +72,6 @@ class ArticleRepository extends EntityRepository
         return $qb->getQuery();
     }
 
-    /**
-     * @param string|null $categorySlug
-     * @return QueryBuilder
-     */
     public function findPublishedByCategorySlugQueryBuilder(?string $categorySlug = null): QueryBuilder
     {
         $qb = $this->createQueryBuilder('a');
@@ -107,10 +94,6 @@ class ArticleRepository extends EntityRepository
         return $qb;
     }
 
-    /**
-     * @param string|null $categorySlug
-     * @return Article|null
-     */
     public function findLatestPublishedByCategorySlug(?string $categorySlug = null): ?Article
     {
         return $this

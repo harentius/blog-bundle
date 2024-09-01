@@ -12,17 +12,11 @@ class Tag implements \Stringable
 {
     use IdentifiableEntityTrait;
 
-    /**
-     * @var string|null
-     */
     #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 255)]
     #[SymfonyConstraints\Length(max: 255)]
     #[SymfonyConstraints\NotBlank]
     private ?string $name = null;
 
-    /**
-     * @var string|null
-     */
     #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 255)]
     #[SymfonyConstraints\Length(max: 255)]
     #[Gedmo\Slug(fields: ['name'], unique: true)]
@@ -34,32 +28,22 @@ class Tag implements \Stringable
     #[ORM\ManyToMany(targetEntity: Article::class, mappedBy: 'tags')]
     private \Doctrine\Common\Collections\Collection $articles;
 
-    /**
-     *
-     */
     public function __construct()
     {
         $this->articles = new ArrayCollection();
     }
 
-    /**
-     * @return string
-     */
     public function __toString(): string
     {
         return (string) $this->name;
     }
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string|null $value
      * @return $this
      */
     public function setName(?string $value): self
@@ -69,16 +53,12 @@ class Tag implements \Stringable
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getSlug(): ?string
     {
         return $this->slug;
     }
 
     /**
-     * @param string|null $value
      * @return $this
      */
     public function setSlug(?string $value): self
@@ -91,7 +71,7 @@ class Tag implements \Stringable
     /**
      * @return Article[]|ArrayCollection
      */
-    public function getArticles()
+    public function getArticles(): \Doctrine\Common\Collections\Collection
     {
         return $this->articles;
     }
@@ -100,7 +80,7 @@ class Tag implements \Stringable
      * @param \Doctrine\Common\Collections\Collection<int, \Harentius\BlogBundle\Entity\Article> $value
      * @return $this
      */
-    public function setArticles($value): self
+    public function setArticles(\Doctrine\Common\Collections\Collection $value): self
     {
         $this->articles = $value;
 

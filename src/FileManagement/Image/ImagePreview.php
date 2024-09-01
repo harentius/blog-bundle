@@ -36,7 +36,7 @@ class ImagePreview
      * @param string $value
      * @return $this
      */
-    public function setSourceUri($value)
+    public function setSourceUri($value): static
     {
         $this->sourceUri = $value;
 
@@ -55,7 +55,7 @@ class ImagePreview
      * @param string $value
      * @return $this
      */
-    public function setTargetName($value)
+    public function setTargetName($value): static
     {
         $this->targetName = $value;
 
@@ -74,7 +74,7 @@ class ImagePreview
      * @param int $value
      * @return $this
      */
-    public function setWidth($value)
+    public function setWidth($value): static
     {
         $this->width = $value;
 
@@ -93,7 +93,7 @@ class ImagePreview
      * @param int $value
      * @return $this
      */
-    public function setHeight($value)
+    public function setHeight($value): static
     {
         $this->height = $value;
 

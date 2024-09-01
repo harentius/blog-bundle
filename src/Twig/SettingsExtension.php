@@ -10,9 +10,6 @@ use Twig\TwigFunction;
 
 class SettingsExtension extends AbstractExtension
 {
-    /**
-     * @param SettingRepository $settingRepository
-     */
     public function __construct(private readonly SettingRepository $settingRepository)
     {
     }
@@ -27,10 +24,6 @@ class SettingsExtension extends AbstractExtension
         ];
     }
 
-    /**
-     * @param string $key
-     * @return string|null
-     */
     public function getSetting(string $key): ?string
     {
         $setting = $this->settingRepository->findOneBy(['key' => $key]);

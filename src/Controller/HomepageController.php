@@ -12,20 +12,10 @@ use Twig\Environment;
 
 class HomepageController
 {
-    /**
-     * @param Homepage $homepage
-     * @param Paginator $paginator
-     * @param int $homepageFeedPostsCount
-     * @param Environment $twig
-     */
     public function __construct(private readonly Homepage $homepage, private readonly Paginator $paginator, private readonly int $homepageFeedPostsCount, private readonly Environment $twig)
     {
     }
 
-    /**
-     * @param Request $request
-     * @return Response
-     */
     public function __invoke(Request $request): Response
     {
         $paginator = $this->paginator->paginate($request, $this->homepage->getFeedQueryBuilder(), [], $this->homepageFeedPostsCount);

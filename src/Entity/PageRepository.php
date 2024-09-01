@@ -13,7 +13,6 @@ use Doctrine\ORM\EntityRepository;
 class PageRepository extends EntityRepository
 {
     /**
-     * @param string|null $slug
      * @return Page[]
      */
     public function findForMainMenu(?string $slug)
@@ -31,10 +30,6 @@ class PageRepository extends EntityRepository
         ;
     }
 
-    /**
-     * @param string|null $slug
-     * @return Page|null
-     */
     public function findOnePublishedBySlug(?string $slug): ?Page
     {
         return $this->createQueryBuilder('p')

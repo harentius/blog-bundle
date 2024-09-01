@@ -10,10 +10,7 @@ class AssetFile
     public const TYPE_AUDIO = 'audio';
     public const TYPE_OTHER = 'file';
 
-    /**
-     * @var File
-     */
-    private $file;
+    private ?File $file = null;
 
     /**
      * @var int
@@ -25,10 +22,7 @@ class AssetFile
      */
     private $originalName;
 
-    /**
-     * @var array
-     */
-    private static $assetsTypesMap = [
+    private static array $assetsTypesMap = [
         self::TYPE_IMAGE => [
             'image/jpeg' => ['jpeg', 'jpg', 'jpe'],
             'image/png' => ['png'],
@@ -49,7 +43,6 @@ class AssetFile
     ];
 
     /**
-     * @param File $file
      * @param string $uri
      * @param int|null $fallbackType
      */
@@ -63,10 +56,9 @@ class AssetFile
     }
 
     /**
-     * @param File $value
      * @param int|null $fallbackType
      */
-    public function setFile(?File $value = null, $fallbackType = null)
+    public function setFile(?File $value = null, $fallbackType = null): void
     {
         $this->file = $value;
 
@@ -103,7 +95,7 @@ class AssetFile
     /**
      * @param string $value
      */
-    public function setUri($value)
+    public function setUri($value): void
     {
         $this->uri = $value;
     }
@@ -128,7 +120,7 @@ class AssetFile
      * @param string $value
      * @return $this
      */
-    public function setOriginalName($value)
+    public function setOriginalName($value): static
     {
         $this->originalName = $value;
 
@@ -143,10 +135,7 @@ class AssetFile
         return $this->originalName;
     }
 
-    /**
-     * @return bool
-     */
-    public function isExtensionValid()
+    public function isExtensionValid(): bool
     {
         return $this->file && in_array(
             $this->file->getExtension(),

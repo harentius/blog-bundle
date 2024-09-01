@@ -11,9 +11,6 @@ class MenuTwigExtension extends AbstractExtension
     {
     }
 
-    /**
-     * @return array
-     */
     public function getFunctions(): array
     {
         return [

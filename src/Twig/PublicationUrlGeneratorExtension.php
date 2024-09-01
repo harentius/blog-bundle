@@ -8,9 +8,6 @@ use Twig\TwigFunction;
 
 class PublicationUrlGeneratorExtension extends AbstractExtension
 {
-    /**
-     * @param PublicationUrlGenerator $urlGenerator
-     */
     public function __construct(private readonly PublicationUrlGenerator $urlGenerator)
     {
     }

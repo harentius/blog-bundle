@@ -7,20 +7,10 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class PublicationUrlGenerator
 {
-    /**
-     * @param UrlGeneratorInterface $urlGenerator
-     * @param string $primaryLocale
-     */
     public function __construct(private readonly UrlGeneratorInterface $urlGenerator, private readonly string $primaryLocale)
     {
     }
 
-    /**
-     * @param AbstractPost $post
-     * @param string $locale
-     * @param int $referenceType
-     * @return string
-     */
     public function generateUrl(
         AbstractPost $post,
         string $locale,

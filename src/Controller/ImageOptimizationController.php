@@ -10,9 +10,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ImageOptimizationController
 {
-    /**
-     * @param ImageOptimizer $imageOptimizer
-     */
     public function __construct(private readonly ImageOptimizer $imageOptimizer)
     {
     }
@@ -20,9 +17,6 @@ class ImageOptimizationController
     /**
      * For optimization, try_files should be set in nginx
      * Then BinaryFileResponse only once, when crete cache preview.
-     *
-     * @param string $imageName
-     * @return BinaryFileResponse
      */
     public function __invoke(string $imageName): BinaryFileResponse
     {

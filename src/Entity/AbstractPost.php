@@ -16,75 +16,47 @@ abstract class AbstractPost implements \Stringable
     use SeoContentEntityTrait;
     use TimestampableEntityTrait;
 
-    /**
-     * @var string|null
-     */
     #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 1000)]
     #[SymfonyConstraints\Length(max: 1000)]
     #[SymfonyConstraints\NotBlank]
     protected ?string $title = null;
 
-    /**
-     * @var string|null
-     */
     #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 1000)]
     #[Gedmo\Slug(fields: ['title'], unique: true, updatable: false)]
     protected ?string $slug = null;
 
-    /**
-     * @var string|null
-     */
     #[ORM\Column(type: \Doctrine\DBAL\Types\Types::TEXT)]
     #[SymfonyConstraints\Type(type: 'string')]
     #[SymfonyConstraints\NotBlank]
     protected ?string $text = null;
 
-    /**
-     * @var AdminUser|null
-     */
     #[ORM\ManyToOne(targetEntity: AdminUser::class)]
     #[SymfonyConstraints\NotNull]
     protected ?AdminUser $author = null;
 
-    /**
-     * @var bool
-     */
     #[ORM\Column(type: \Doctrine\DBAL\Types\Types::BOOLEAN)]
     protected ?bool $published = null;
 
-    /**
-     * @var \DateTimeInterface|null
-     */
     #[ORM\Column(type: \Doctrine\DBAL\Types\Types::DATETIME_MUTABLE, nullable: true)]
     #[SymfonyConstraints\DateTime]
     protected ?\DateTimeInterface $publishedAt = null;
 
-    /**
-     *
-     */
     public function __construct()
     {
         $this->published = false;
     }
 
-    /**
-     * @return string
-     */
     public function __toString(): string
     {
         return (string) $this->title;
     }
 
-    /**
-     * @return string|null
-     */
     public function getTitle(): ?string
     {
         return $this->title;
     }
 
     /**
-     * @param string|null $value
      * @return $this
      */
     public function setTitle(?string $value): self
@@ -94,16 +66,12 @@ abstract class AbstractPost implements \Stringable
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getSlug(): ?string
     {
         return $this->slug;
     }
 
     /**
-     * @param string|null $value
      * @return $this
      */
     public function setSlug(?string $value): self
@@ -113,16 +81,12 @@ abstract class AbstractPost implements \Stringable
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getText(): ?string
     {
         return $this->text;
     }
 
     /**
-     * @param string|null $value
      * @return $this
      */
     public function setText(?string $value): self
@@ -132,16 +96,12 @@ abstract class AbstractPost implements \Stringable
         return $this;
     }
 
-    /**
-     * @return AdminUser|null
-     */
     public function getAuthor(): ?AdminUser
     {
         return $this->author;
     }
 
     /**
-     * @param AdminUser|null $value
      * @return $this
      */
     public function setAuthor(?AdminUser $value): self
@@ -151,16 +111,12 @@ abstract class AbstractPost implements \Stringable
         return $this;
     }
 
-    /**
-     * @return bool
-     */
     public function isPublished(): bool
     {
         return $this->published;
     }
 
     /**
-     * @param bool $value
      * @return $this
      */
     public function setPublished(bool $value): self
@@ -170,16 +126,12 @@ abstract class AbstractPost implements \Stringable
         return $this;
     }
 
-    /**
-     * @return \DateTime|null
-     */
     public function getPublishedAt(): ?\DateTime
     {
         return $this->publishedAt;
     }
 
     /**
-     * @param \DateTime|null $value
      * @return $this
      */
     public function setPublishedAt(?\DateTime $value): self

@@ -9,9 +9,6 @@ use Twig\TwigFilter;
 
 class ReadMoreExtension extends AbstractExtension
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getFilters()
     {
         return [
@@ -19,11 +16,6 @@ class ReadMoreExtension extends AbstractExtension
         ];
     }
 
-    /**
-     * @param string $content
-     * @param string|null $url
-     * @return string
-     */
     public function readMore(string $content, ?string $url = null): string
     {
         if (($length = strpos($content, '<!--more-->')) !== false) {

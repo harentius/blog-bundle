@@ -8,16 +8,11 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class FileManager
 {
-    /**
-     * @param FilePathResolver $assetsResolver
-     */
     public function __construct(private readonly FilePathResolver $assetsResolver)
     {
     }
 
     /**
-     * @param UploadedFile|null $uploadedFile
-     * @param array $options
      * @return AssetFile
      */
     public function handleUpload(?UploadedFile $uploadedFile = null, array $options = [])
@@ -74,10 +69,9 @@ class FileManager
     }
 
     /**
-     * @param AssetFile $assetFile
      * @param string $type
      */
-    private function validateAssetFileType(AssetFile $assetFile, $type)
+    private function validateAssetFileType(AssetFile $assetFile, $type): void
     {
         $typesMap = ['image' => AssetFile::TYPE_IMAGE, 'audio' => AssetFile::TYPE_AUDIO];
         $fileType = $assetFile->getType();
@@ -88,11 +82,9 @@ class FileManager
     }
 
     /**
-     * @param string $originalFileName
      * @param string $uploadsDir
-     * @return string
      */
-    private function getTargetFileName($originalFileName, $uploadsDir)
+    private function getTargetFileName(string $originalFileName, $uploadsDir): string
     {
         $fs = new Filesystem();
         $targetName = $originalFileName;

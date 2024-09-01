@@ -16,18 +16,12 @@ class Category implements \Stringable
     use NestedSetEntity;
     use SeoContentEntityTrait;
 
-    /**
-     * @var string|null
-     */
     #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 255)]
     #[SymfonyConstraints\Type(type: 'string')]
     #[SymfonyConstraints\Length(max: 255)]
     #[SymfonyConstraints\NotBlank]
     private ?string $name = null;
 
-    /**
-     * @var string|null
-     */
     #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 255)]
     #[SymfonyConstraints\Type(type: 'string')]
     #[SymfonyConstraints\Length(max: 255)]
@@ -40,9 +34,6 @@ class Category implements \Stringable
     #[ORM\OneToMany(targetEntity: Article::class, mappedBy: 'category', cascade: ['remove'])]
     private \Doctrine\Common\Collections\Collection $articles;
 
-    /**
-     * @var Category|null
-     */
     #[ORM\JoinColumn(referencedColumnName: 'id', onDelete: 'CASCADE')]
     #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'children')]
     #[Gedmo\TreeParent]
@@ -55,33 +46,23 @@ class Category implements \Stringable
     #[ORM\OrderBy(['left' => \Doctrine\Common\Collections\Criteria::ASC])]
     private \Doctrine\Common\Collections\Collection $children;
 
-    /**
-     *
-     */
     public function __construct()
     {
         $this->articles = new ArrayCollection();
         $this->children = new ArrayCollection();
     }
 
-    /**
-     * @return string
-     */
     public function __toString(): string
     {
         return (string) $this->name;
     }
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string|null $value
      * @return $this
      */
     public function setName(?string $value): self
@@ -91,16 +72,12 @@ class Category implements \Stringable
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getSlug(): ?string
     {
         return $this->slug;
     }
 
     /**
-     * @param string|null $value
      * @return $this
      */
     public function setSlug(?string $value): self
@@ -113,7 +90,7 @@ class Category implements \Stringable
     /**
      * @return Article[]|ArrayCollection
      */
-    public function getArticles()
+    public function getArticles(): \Doctrine\Common\Collections\Collection
     {
         return $this->articles;
     }
@@ -122,23 +99,19 @@ class Category implements \Stringable
      * @param \Doctrine\Common\Collections\Collection<int, \Harentius\BlogBundle\Entity\Article> $value
      * @return $this
      */
-    public function setArticles($value): self
+    public function setArticles(\Doctrine\Common\Collections\Collection $value): self
     {
         $this->articles = $value;
 
         return $this;
     }
 
-    /**
-     * @return Category|null
-     */
     public function getParent(): ?Category
     {
         return $this->parent;
     }
 
     /**
-     * @param Category|null $value
      * @return $this
      */
     public function setParent(?Category $value): self
@@ -151,7 +124,7 @@ class Category implements \Stringable
     /**
      * @return Category[]|ArrayCollection
      */
-    public function getChildren()
+    public function getChildren(): \Doctrine\Common\Collections\Collection
     {
         return $this->children;
     }
@@ -160,23 +133,19 @@ class Category implements \Stringable
      * @param \Doctrine\Common\Collections\Collection<int, \Harentius\BlogBundle\Entity\Category> $value
      * @return $this
      */
-    public function setChildren($value): self
+    public function setChildren(\Doctrine\Common\Collections\Collection $value): self
     {
         $this->children = $value;
 
         return $this;
     }
 
-    /**
-     * @return int
-     */
     public function getLeft(): ?int
     {
         return $this->left;
     }
 
     /**
-     * @param int $value
      * @return $this
      */
     public function setLeft(?int $value): self
@@ -186,16 +155,12 @@ class Category implements \Stringable
         return $this;
     }
 
-    /**
-     * @return int
-     */
     public function getRight(): ?int
     {
         return $this->right;
     }
 
     /**
-     * @param int $value
      * @return $this
      */
     public function setRight(?int $value): self
@@ -205,16 +170,12 @@ class Category implements \Stringable
         return $this;
     }
 
-    /**
-     * @return int
-     */
     public function getRoot(): ?int
     {
         return $this->root;
     }
 
     /**
-     * @param int $value
      * @return $this
      */
     public function setRoot(?int $value): self
@@ -224,9 +185,6 @@ class Category implements \Stringable
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getSlugWithParents(): string
     {
         $slugs = [];

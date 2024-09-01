@@ -7,17 +7,11 @@ use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
 trait SeoContentEntityTrait
 {
-    /**
-     * @var string
-     */
     #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 255, nullable: true)]
     #[SymfonyConstraints\Type(type: 'string')]
     #[SymfonyConstraints\Length(max: 255)]
     protected ?string $metaDescription = null;
 
-    /**
-     * @var string
-     */
     #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 1000, nullable: true)]
     #[SymfonyConstraints\Type(type: 'string')]
     #[SymfonyConstraints\Length(max: 1000)]

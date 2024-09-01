@@ -9,10 +9,7 @@ class FilePathResolver
      */
     private $webDir;
 
-    /**
-     * @var string
-     */
-    private $assetsDir;
+    private readonly string $assetsDir;
 
     /**
      * @param string $webDir
@@ -38,27 +35,24 @@ class FilePathResolver
 
     /**
      * @param string $type
-     * @return string
      */
-    public function assetUri($type)
+    public function assetUri($type): string
     {
         return "/{$this->assetsDir}/{$type}s";
     }
 
     /**
      * @param string $uri
-     * @return string
      */
-    public function uriToPath($uri)
+    public function uriToPath($uri): string
     {
         return "{$this->webDir}{$uri}";
     }
 
     /**
      * @param string $path
-     * @return string|null
      */
-    public function pathToUri($path)
+    public function pathToUri($path): ?string
     {
         $prefix = "{$this->webDir}/{$this->assetsDir}/";
 

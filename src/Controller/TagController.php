@@ -15,13 +15,6 @@ use Twig\Environment;
 
 class TagController
 {
-    /**
-     * @param ArticleRepository $articleRepository
-     * @param BreadCrumbsManager $breadCrumbsManager
-     * @param Paginator $paginator
-     * @param TagRepository $tagRepository
-     * @param Environment $twig
-     */
     public function __construct(private readonly ArticleRepository $articleRepository, private readonly BreadCrumbsManager $breadCrumbsManager, private readonly TagRepository $tagRepository, private readonly Paginator $paginator, private readonly Environment $twig)
     {
     }

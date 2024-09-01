@@ -14,7 +14,6 @@ use Doctrine\ORM\Query;
 class TagRepository extends EntityRepository
 {
     /**
-     * @param int|null $limit
      * @return array
      */
     public function findMostPopularLimited(?int $limit)
