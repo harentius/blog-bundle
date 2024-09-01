@@ -7,11 +7,10 @@ namespace Harentius\BlogBundle\Controller;
 use Doctrine\ORM\EntityManagerInterface;
 use Harentius\BlogBundle\Entity\Article;
 use Harentius\BlogBundle\Rating;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
-class RateController extends AbstractController
+class RateController
 {
     /**
      * @var Rating

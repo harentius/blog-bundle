@@ -8,10 +8,11 @@ use Harentius\BlogBundle\Entity\Category;
 use Harentius\BlogBundle\Entity\CategoryRepository;
 use Harentius\BlogBundle\Sidebar\Archive;
 use Harentius\BlogBundle\Sidebar\Tags;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Twig\Environment;
 
-class SidebarController extends AbstractController
+class SidebarController
 {
     /**
      * @var CategoryRepository
@@ -36,7 +37,9 @@ class SidebarController extends AbstractController
     public function __construct(
         CategoryRepository $categoryRepository,
         Archive $archive,
-        Tags $tags
+        Tags $tags,
+        private readonly Environment $twig,
+        private readonly UrlGeneratorInterface $urlGenerator,
     ) {
         $this->categoryRepository = $categoryRepository;
         $this->archive = $archive;
@@ -49,7 +52,7 @@ class SidebarController extends AbstractController
      */
     public function categories($showNumber = true): Response
     {
-        return $this->render('@HarentiusBlog/Sidebar/categories.html.twig', [
+        return new Response($this->twig->render('@HarentiusBlog/Sidebar/categories.html.twig', [
             'categories' => $this->categoryRepository->notEmptyChildrenHierarchy([
                 'decorate' => true,
                 'representationField' => 'slug',
@@ -59,13 +62,13 @@ class SidebarController extends AbstractController
                     $category = $node[0];
 
                     return sprintf('<a href="%s">%s</a>' . ($showNumber ? ' (%d)' : ''),
-                        $this->generateUrl('harentius_blog_category', ['slug' => $category->getSlugWithParents()]),
+                        $this->urlGenerator->generate('harentius_blog_category', ['slug' => $category->getSlugWithParents()]),
                         $category->getName(),
                         $node['articles_number']
                     );
                 },
             ]),
-        ]);
+        ]));
     }
 
     /**
@@ -73,9 +76,9 @@ class SidebarController extends AbstractController
      */
     public function archive(): Response
     {
-        return $this->render('@HarentiusBlog/Sidebar/archive.html.twig', [
+        return new Response($this->twig->render('@HarentiusBlog/Sidebar/archive.html.twig', [
             'archivesList' => $this->archive->getList(),
-        ]);
+        ]));
     }
 
     /**
@@ -83,8 +86,8 @@ class SidebarController extends AbstractController
      */
     public function tags(): Response
     {
-        return $this->render('@HarentiusBlog/Sidebar/tags.html.twig', [
+        return new Response($this->twig->render('@HarentiusBlog/Sidebar/tags.html.twig', [
             'tags' => $this->tags->getList(),
-        ]);
+        ]));
     }
 }

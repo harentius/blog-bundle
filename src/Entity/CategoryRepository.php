@@ -4,6 +4,7 @@ namespace Harentius\BlogBundle\Entity;
 
 use Doctrine\ORM\Query;
 use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @method Category|null find($id, $lockMode = null, $lockVersion = null)
@@ -28,7 +29,7 @@ class CategoryRepository extends NestedTreeRepository
         ;
 
         /** @var ArticleRepository $articleRepository */
-        $articleRepository = $this->_em->getRepository(Article::class);
+        $articleRepository = $this->getEntityManager()->getRepository(Article::class);
         $qb = $articleRepository->createQueryBuilder('a');
         $qb
             ->select('COUNT(a)')

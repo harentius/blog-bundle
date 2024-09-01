@@ -28,12 +28,10 @@ class ArticleRepository extends EntityRepository
                  WHERE c.left >= :left AND c.right <= :right AND c.root = :root)'
             )
             ->andWhere('a.published = :isPublished')
-            ->setParameters([
-                ':left' => $category->getLeft(),
-                ':right' => $category->getRight(),
-                ':root' => $category->getRoot(),
-                ':isPublished' => true,
-            ])
+            ->setParameter(':left', $category->getLeft())
+            ->setParameter(':right', $category->getRight())
+            ->setParameter(':root', $category->getRoot())
+            ->setParameter(':isPublished', true)
             ->orderBy('a.publishedAt', 'DESC')
             ->getQuery()
         ;
@@ -49,10 +47,8 @@ class ArticleRepository extends EntityRepository
             ->join('a.tags', 't')
             ->where('t = :tag')
             ->andWhere('a.published = :isPublished')
-            ->setParameters([
-                ':tag' => $tag,
-                ':isPublished' => true,
-            ])
+            ->setParameter(':tag', $tag)
+            ->setParameter(':isPublished', true)
             ->orderBy('a.publishedAt', 'DESC')
             ->getQuery()
         ;
@@ -70,10 +66,8 @@ class ArticleRepository extends EntityRepository
         $qb
             ->where('YEAR(a.publishedAt) = :year')
             ->andWhere('a.published = :isPublished')
-            ->setParameters([
-                ':year' => $year,
-                ':isPublished' => true,
-            ])
+            ->setParameter(':year', $year)
+            ->setParameter(':isPublished', true)
             ->orderBy('a.publishedAt', 'DESC')
         ;
 

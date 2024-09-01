@@ -8,7 +8,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Tree\Traits\NestedSetEntity;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
-#[ORM\Entity(repositoryClass: \Harentius\BlogBundle\Entity\CategoryRepository::class)]
+#[ORM\Entity(repositoryClass: CategoryRepository::class)]
 #[Gedmo\Tree(type: 'nested')]
 class Category
 {

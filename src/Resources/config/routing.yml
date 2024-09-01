@@ -1,8 +1,8 @@
 harentius_blog_blog:
     resource: '@HarentiusBlogBundle/Resources/config/routing/blog.yaml'
 
-PrestaSitemapBundle:
-    resource: '@PrestaSitemapBundle/Resources/config/routing.yml'
+#PrestaSitemapBundle:
+#    resource: '@PrestaSitemapBundle/Resources/config/routing.yml'
 
 _liip_imagine:
     resource: "@LiipImagineBundle/Resources/config/routing.yaml"

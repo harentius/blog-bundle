@@ -3,21 +3,20 @@
 namespace Harentius\BlogBundle;
 
 use Harentius\BlogBundle\Entity\Article;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class ViewsCounter
 {
     /**
-     * @var SessionInterface
+     * @var RequestStack
      */
-    private $session;
+    private $requestStack;
 
-    /**
-     * @param SessionInterface $session
-     */
-    public function __construct(SessionInterface $session)
+    public function __construct(RequestStack $requestStack)
     {
-        $this->session = $session;
+        $this->requestStack = $requestStack;
     }
 
     /**
@@ -25,7 +24,7 @@ class ViewsCounter
      */
     public function processArticle(Article $article)
     {
-        $viewedArticles = $this->session->get('viewedArticles', []);
+        $viewedArticles = $this->requestStack->getSession()->get('viewedArticles', []);
         $articleId = $article->getId();
 
         if (isset($viewedArticles[$articleId])) {
@@ -34,6 +33,6 @@ class ViewsCounter
 
         $viewedArticles[$articleId] = true;
         $article->increaseViewsCount();
-        $this->session->set('viewedArticles', $viewedArticles);
+        $this->requestStack->getSession()->set('viewedArticles', $viewedArticles);
     }
 }

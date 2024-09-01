@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Harentius\BlogBundle\Controller;
 
 use Harentius\BlogBundle\Breadcrumbs\BreadCrumbsManager;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Harentius\BlogBundle\Entity\AbstractPostRepository;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Twig\Environment;
 
-class ShowController extends AbstractController
+class ShowController
 {
     /**
      * @var BreadCrumbsManager
@@ -22,7 +22,8 @@ class ShowController extends AbstractController
      */
     public function __construct(
         BreadCrumbsManager $breadCrumbsManager,
-        readonly private AbstractPostRepository $abstractPostRepository,
+        private readonly AbstractPostRepository $abstractPostRepository,
+        private readonly Environment $twig,
     )
     {
         $this->breadCrumbsManager = $breadCrumbsManager;
@@ -40,8 +41,8 @@ class ShowController extends AbstractController
         $class = get_class($post);
         $type = strtolower(substr($class, strrpos($class, '\\') + 1));
 
-        return $this->render(sprintf('@HarentiusBlog/Show/%s.html.twig', $type), [
+        return new Response($this->twig->render(sprintf('@HarentiusBlog/Show/%s.html.twig', $type), [
             'entity' => $post,
-        ]);
+        ]));
     }
 }

@@ -7,11 +7,11 @@ namespace Harentius\BlogBundle\Controller;
 use Harentius\BlogBundle\Breadcrumbs\BreadCrumbsManager;
 use Harentius\BlogBundle\Entity\ArticleRepository;
 use Harentius\BlogBundle\Paginator;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Twig\Environment;
 
-class ArchiveController extends AbstractController
+class ArchiveController
 {
     /**
      * @var ArticleRepository
@@ -36,7 +36,8 @@ class ArchiveController extends AbstractController
     public function __construct(
         ArticleRepository $articleRepository,
         BreadCrumbsManager $breadCrumbsManager,
-        Paginator $paginator
+        Paginator $paginator,
+        private readonly Environment $twig,
     ) {
         $this->articleRepository = $articleRepository;
         $this->breadCrumbsManager = $breadCrumbsManager;
@@ -54,7 +55,7 @@ class ArchiveController extends AbstractController
         $humanizedMonth = null;
 
         if ($month) {
-            $humanizedMonth = $this->numberToMonth($month, $request->getLocale());
+            $humanizedMonth = $this->numberToMonth($month);
         }
 
         $this->breadCrumbsManager->buildArchive($year, $humanizedMonth);
@@ -62,32 +63,23 @@ class ArchiveController extends AbstractController
         $articlesQuery = $this->articleRepository->findPublishedByYearMonthQuery($year, $month);
         $paginator = $this->paginator->paginate($request, $articlesQuery);
 
-        return $this->render('@HarentiusBlog/Blog/list.html.twig', [
+        return new Response($this->twig->render('@HarentiusBlog/Blog/list.html.twig', [
             'articles' => $paginator,
             'year' => $year,
             'month' => $humanizedMonth,
             'noIndex' => true,
             'hasToPaginate' => $paginator->getPageCount() > 1,
-        ]);
+        ]));
     }
 
     /**
      * @param string $number
-     * @param string $locale
      * @return string
      */
-    private function numberToMonth($number, $locale): string
+    private function numberToMonth($number): string
     {
         $dateTime = \DateTime::createFromFormat('!m', $number);
-        $formatter = \IntlDateFormatter::create(
-            $locale,
-            \IntlDateFormatter::NONE,
-            \IntlDateFormatter::NONE,
-            $dateTime->getTimezone()->getName(),
-            null,
-            'LLLL'
-        );
 
-        return mb_convert_case($formatter->format($dateTime), MB_CASE_TITLE, 'UTF-8');
+        return $dateTime->format('F');
     }
 }

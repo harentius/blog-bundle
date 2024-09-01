@@ -22,11 +22,9 @@ class PageRepository extends EntityRepository
             ->where('p.published = :isPublished')
             ->andWhere('p.showInMainMenu = :showInMainMenu')
             ->andWhere('p.slug <> :slug')
-            ->setParameters([
-                ':isPublished' => true,
-                ':showInMainMenu' => true,
-                ':slug' => $slug,
-            ])
+            ->setParameter(':isPublished', true)
+            ->setParameter(':showInMainMenu', true)
+            ->setParameter(':slug', $slug)
             ->orderBy('p.order', 'ASC')
             ->getQuery()
             ->getResult()

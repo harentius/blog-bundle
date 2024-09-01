@@ -3,13 +3,14 @@ services:
         public: true
         autowire: true
 
-    Harentius\BlogBundle\Controller\CategoryController: ~
-    Harentius\BlogBundle\Controller\TagController: ~
-    Harentius\BlogBundle\Controller\ArchiveController: ~
-    Harentius\BlogBundle\Controller\RateController: ~
+    Harentius\BlogBundle\Controller\CategoryController:
+    Harentius\BlogBundle\Controller\TagController:
+    Harentius\BlogBundle\Controller\ArchiveController:
+    Harentius\BlogBundle\Controller\RateController:
     Harentius\BlogBundle\Controller\ImageOptimizationController: ~
-    Harentius\BlogBundle\Controller\ShowController: ~
-    Harentius\BlogBundle\Controller\SidebarController: ~
+    Harentius\BlogBundle\Controller\ShowController:
+    Harentius\BlogBundle\Controller\SidebarController:
     Harentius\BlogBundle\Controller\ViewCountController: ~
     Harentius\BlogBundle\Controller\HomepageController:
-        $homepageFeedPostsCount: '%harentius_blog.homepage.feed.number%'
+        arguments:
+            $homepageFeedPostsCount: '%harentius_blog.homepage.feed.number%'

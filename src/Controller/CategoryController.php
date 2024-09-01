@@ -8,11 +8,12 @@ use Harentius\BlogBundle\Breadcrumbs\BreadCrumbsManager;
 use Harentius\BlogBundle\Entity\ArticleRepository;
 use Harentius\BlogBundle\Entity\CategoryRepository;
 use Harentius\BlogBundle\Paginator;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Twig\Environment;
 
-class CategoryController extends AbstractController
+class CategoryController
 {
     /**
      * @var ArticleRepository
@@ -44,7 +45,8 @@ class CategoryController extends AbstractController
         ArticleRepository $articleRepository,
         CategoryRepository $categoryRepository,
         BreadCrumbsManager $breadCrumbsManager,
-        Paginator $paginator
+        Paginator $paginator,
+        private readonly Environment $twig,
     ) {
         $this->articleRepository = $articleRepository;
         $this->breadCrumbsManager = $breadCrumbsManager;
@@ -64,17 +66,17 @@ class CategoryController extends AbstractController
         $category = $this->categoryRepository->findOneBy(['slug' => $categorySlug]);
 
         if (!$category) {
-            throw $this->createNotFoundException('Category not found');
+            throw new NotFoundHttpException();
         }
 
         $this->breadCrumbsManager->buildCategory($category);
         $articlesQuery = $this->articleRepository->findPublishedByCategoryQuery($category);
         $paginator = $this->paginator->paginate($request, $articlesQuery);
 
-        return $this->render('@HarentiusBlog/Blog/list.html.twig', [
+        return new Response($this->twig->render('@HarentiusBlog/Blog/list.html.twig', [
             'articles' => $paginator,
             'parent' => $category,
             'hasToPaginate' => $paginator->getPageCount() > 1,
-        ]);
+        ]));
     }
 }
