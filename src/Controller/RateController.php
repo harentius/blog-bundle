@@ -12,8 +12,10 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class RateController
 {
-    public function __construct(private readonly Rating $rating, private readonly EntityManagerInterface $entityManager)
-    {
+    public function __construct(
+        private readonly Rating $rating,
+        private readonly EntityManagerInterface $entityManager,
+    ) {
     }
 
     /**

@@ -12,8 +12,10 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class HomepageSubscriber implements EventSubscriberInterface
 {
-    public function __construct(private readonly UrlGeneratorInterface $urlGenerator, private readonly Homepage $homepage)
-    {
+    public function __construct(
+        private readonly UrlGeneratorInterface $urlGenerator,
+        private readonly Homepage $homepage,
+    ) {
     }
 
     public function populate(SitemapPopulateEvent $event): void

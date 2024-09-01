@@ -15,8 +15,13 @@ use Twig\Environment;
 
 class CategoryController
 {
-    public function __construct(private readonly ArticleRepository $articleRepository, private readonly CategoryRepository $categoryRepository, private readonly BreadCrumbsManager $breadCrumbsManager, private readonly Paginator $paginator, private readonly Environment $twig)
-    {
+    public function __construct(
+        private readonly ArticleRepository $articleRepository,
+        private readonly CategoryRepository $categoryRepository,
+        private readonly BreadCrumbsManager $breadCrumbsManager,
+        private readonly Paginator $paginator,
+        private readonly Environment $twig,
+    ) {
     }
 
     public function __invoke(Request $request, string $slug): Response

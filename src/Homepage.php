@@ -9,8 +9,12 @@ use Harentius\BlogBundle\Entity\PageRepository;
 
 class Homepage
 {
-    public function __construct(private readonly ArticleRepository $articleRepository, private readonly PageRepository $pageRepository, private readonly ?string $categorySlug = null, private readonly ?string $homepageSlug = null)
-    {
+    public function __construct(
+        private readonly ArticleRepository $articleRepository,
+        private readonly PageRepository $pageRepository,
+        private readonly ?string $categorySlug = null,
+        private readonly ?string $homepageSlug = null,
+    ) {
     }
 
     public function getFeedQueryBuilder(): QueryBuilder

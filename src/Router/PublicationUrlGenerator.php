@@ -7,8 +7,10 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class PublicationUrlGenerator
 {
-    public function __construct(private readonly UrlGeneratorInterface $urlGenerator, private readonly string $primaryLocale)
-    {
+    public function __construct(
+        private readonly UrlGeneratorInterface $urlGenerator,
+        private readonly string $primaryLocale,
+    ) {
     }
 
     public function generateUrl(

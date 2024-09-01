@@ -12,8 +12,11 @@ use Twig\Environment;
 
 class ShowController
 {
-    public function __construct(private readonly BreadCrumbsManager $breadCrumbsManager, private readonly AbstractPostRepository $abstractPostRepository, private readonly Environment $twig)
-    {
+    public function __construct(
+        private readonly BreadCrumbsManager $breadCrumbsManager,
+        private readonly AbstractPostRepository $abstractPostRepository,
+        private readonly Environment $twig,
+    ) {
     }
 
     public function __invoke(string $slug): Response

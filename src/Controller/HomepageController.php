@@ -12,13 +12,22 @@ use Twig\Environment;
 
 class HomepageController
 {
-    public function __construct(private readonly Homepage $homepage, private readonly Paginator $paginator, private readonly int $homepageFeedPostsCount, private readonly Environment $twig)
-    {
+    public function __construct(
+        private readonly Homepage $homepage,
+        private readonly Paginator $paginator,
+        private readonly int $homepageFeedPostsCount,
+        private readonly Environment $twig,
+    ) {
     }
 
     public function __invoke(Request $request): Response
     {
-        $paginator = $this->paginator->paginate($request, $this->homepage->getFeedQueryBuilder(), [], $this->homepageFeedPostsCount);
+        $paginator = $this->paginator->paginate(
+            $request,
+            $this->homepage->getFeedQueryBuilder(),
+            [],
+            $this->homepageFeedPostsCount,
+        );
         $currentPageNumber = $paginator->getCurrentPageNumber();
 
         return new Response($this->twig->render('@HarentiusBlog/Blog/index.html.twig', [

@@ -13,8 +13,13 @@ class ImageOptimizer
     /**
      * @param string $targetBasePath
      */
-    public function __construct(private readonly CacheManager $cacheManager, private readonly FilterManager $filterManager, private readonly DataManager $dataManager, private readonly FilePathResolver $assetsResolver, private $targetBasePath)
-    {
+    public function __construct(
+        private readonly CacheManager $cacheManager,
+        private readonly FilterManager $filterManager,
+        private readonly DataManager $dataManager,
+        private readonly FilePathResolver $assetsResolver,
+        private $targetBasePath,
+    ) {
     }
 
     /**

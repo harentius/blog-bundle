@@ -13,8 +13,12 @@ use Twig\Environment;
 
 class ArchiveController
 {
-    public function __construct(private readonly ArticleRepository $articleRepository, private readonly BreadCrumbsManager $breadCrumbsManager, private readonly Paginator $paginator, private readonly Environment $twig)
-    {
+    public function __construct(
+        private readonly ArticleRepository $articleRepository,
+        private readonly BreadCrumbsManager $breadCrumbsManager,
+        private readonly Paginator $paginator,
+        private readonly Environment $twig,
+    ) {
     }
 
     public function __invoke(Request $request, string $year, ?string $month = null): Response

@@ -14,8 +14,11 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class PostsSubscriber implements EventSubscriberInterface
 {
-    public function __construct(private readonly AbstractPostRepository $abstractPostRepository, private readonly PublicationUrlGenerator $publicationUrlGenerator, private readonly string $primaryLocale)
-    {
+    public function __construct(
+        private readonly AbstractPostRepository $abstractPostRepository,
+        private readonly PublicationUrlGenerator $publicationUrlGenerator,
+        private readonly string $primaryLocale
+    ) {
     }
 
     public function populate(SitemapPopulateEvent $event): void

@@ -15,8 +15,13 @@ use Twig\Environment;
 
 class TagController
 {
-    public function __construct(private readonly ArticleRepository $articleRepository, private readonly BreadCrumbsManager $breadCrumbsManager, private readonly TagRepository $tagRepository, private readonly Paginator $paginator, private readonly Environment $twig)
-    {
+    public function __construct(
+        private readonly ArticleRepository $articleRepository,
+        private readonly BreadCrumbsManager $breadCrumbsManager,
+        private readonly TagRepository $tagRepository,
+        private readonly Paginator $paginator,
+        private readonly Environment $twig,
+    ) {
     }
 
     public function __invoke(Request $request, string $slug): Response

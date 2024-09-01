@@ -12,8 +12,10 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class CategoriesSubscriber implements EventSubscriberInterface
 {
-    public function __construct(private readonly UrlGeneratorInterface $urlGenerator, private readonly CategoryRepository $categoryRepository)
-    {
+    public function __construct(
+        private readonly UrlGeneratorInterface $urlGenerator,
+        private readonly CategoryRepository $categoryRepository,
+    ) {
     }
 
     public function populate(SitemapPopulateEvent $event): void
@@ -23,7 +25,11 @@ class CategoriesSubscriber implements EventSubscriberInterface
         foreach ($categories as $category) {
             $event->getUrlContainer()->addUrl(
                 new UrlConcrete(
-                    $this->urlGenerator->generate('harentius_blog_category', ['slug' => $category->getSlugWithParents()], UrlGeneratorInterface::ABSOLUTE_URL),
+                    $this->urlGenerator->generate(
+                        'harentius_blog_category',
+                        ['slug' => $category->getSlugWithParents()],
+                        UrlGeneratorInterface::ABSOLUTE_URL,
+                    ),
                     null,
                     UrlConcrete::CHANGEFREQ_MONTHLY,
                     1.0

@@ -30,7 +30,11 @@ class BreadCrumbsManager
         do {
             $items[] = new BreadcrumbItem(
                 $category->getName(),
-                $this->urlGenerator->generate('harentius_blog_category', ['slug' => $category->getSlugWithParents()], UrlGeneratorInterface::ABSOLUTE_URL)
+                $this->urlGenerator->generate(
+                    'harentius_blog_category',
+                    ['slug' => $category->getSlugWithParents()],
+                    UrlGeneratorInterface::ABSOLUTE_URL,
+                )
             );
         } while ($category = $category->getParent());
 
@@ -48,7 +52,11 @@ class BreadCrumbsManager
         $this->addHomepage();
         $this->breadcrumbsItems[] = new BreadcrumbItem(
             $year,
-            $this->urlGenerator->generate('harentius_blog_archive_year', ['year' => $year], UrlGeneratorInterface::ABSOLUTE_URL),
+            $this->urlGenerator->generate(
+                'harentius_blog_archive_year',
+                ['year' => $year],
+                UrlGeneratorInterface::ABSOLUTE_URL,
+            ),
         );
 
         if ($month) {
