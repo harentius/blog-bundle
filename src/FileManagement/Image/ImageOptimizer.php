@@ -36,7 +36,7 @@ class ImageOptimizer
     /**
      * @return string
      */
-    private function resize(ImagePreview $imagePreviewData)
+    private function resize(ImagePreview $imagePreviewData): string
     {
         $filter = 'preview';
 

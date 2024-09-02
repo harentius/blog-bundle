@@ -28,7 +28,7 @@ class FilePathResolver
      * @param string $type
      * @return string
      */
-    public function assetPath($type)
+    public function assetPath($type): string
     {
         return $this->uriToPath($this->assetUri($type));
     }
