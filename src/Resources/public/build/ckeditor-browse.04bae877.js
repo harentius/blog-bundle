@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([["ckeditor-browse"],{dxOt:function(n,o,w){}},[["dxOt","runtime"]]]);

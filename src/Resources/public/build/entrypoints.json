@@ -12,22 +12,7 @@
     "article": {
       "js": [
         "/bundles/harentiusblog/build/runtime.6c1a13d3.js",
-        "/bundles/harentiusblog/build/article.0adab117.js"
-      ]
-    },
-    "admin-article": {
-      "js": [
-        "/bundles/harentiusblog/build/runtime.6c1a13d3.js",
-        "/bundles/harentiusblog/build/admin-article.0bb08961.js"
-      ]
-    },
-    "ckeditor-browse": {
-      "js": [
-        "/bundles/harentiusblog/build/runtime.6c1a13d3.js",
-        "/bundles/harentiusblog/build/ckeditor-browse.04bae877.js"
-      ],
-      "css": [
-        "/bundles/harentiusblog/build/ckeditor-browse.40e350f9.css"
+        "/bundles/harentiusblog/build/article.af85adbf.js"
       ]
     }
   }
