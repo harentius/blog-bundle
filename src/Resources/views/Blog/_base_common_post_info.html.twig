@@ -5,13 +5,6 @@
             {{ article.publishedAt|date('d/m/Y') }}
         </span>
 
-        {% block author_name %}
-        <span>
-            <i class="fa fa-user"></i>
-            {{ article.author.username }}
-        </span>
-        {% endblock %}
-
         <span>
             <i class="fa fa-folder"></i>
             <a href="{{ path('harentius_blog_category', { 'slug': article.category.slugWithParents }) }}">
