@@ -30,10 +30,6 @@ abstract class AbstractPost implements \Stringable
     #[SymfonyConstraints\NotBlank]
     protected ?string $text = null;
 
-    #[ORM\ManyToOne(targetEntity: AdminUser::class)]
-    #[SymfonyConstraints\NotNull]
-    protected ?AdminUser $author = null;
-
     #[ORM\Column(type: \Doctrine\DBAL\Types\Types::BOOLEAN)]
     protected ?bool $published = null;
 
@@ -92,21 +88,6 @@ abstract class AbstractPost implements \Stringable
     public function setText(?string $value): self
     {
         $this->text = $value;
-
-        return $this;
-    }
-
-    public function getAuthor(): ?AdminUser
-    {
-        return $this->author;
-    }
-
-    /**
-     * @return $this
-     */
-    public function setAuthor(?AdminUser $value): self
-    {
-        $this->author = $value;
 
         return $this;
     }

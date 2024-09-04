@@ -4,7 +4,6 @@ namespace Harentius\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
 trait TimestampableEntityTrait
 {
@@ -12,7 +11,6 @@ trait TimestampableEntityTrait
      * @var \DateTime
      */
     #[ORM\Column(type: \Doctrine\DBAL\Types\Types::DATETIME_MUTABLE)]
-    #[SymfonyConstraints\DateTime]
     #[Gedmo\Timestampable(on: 'create')]
     protected ?\DateTimeInterface $createdAt = null;
 
@@ -20,7 +18,6 @@ trait TimestampableEntityTrait
      * @var \DateTime
      */
     #[ORM\Column(type: \Doctrine\DBAL\Types\Types::DATETIME_MUTABLE)]
-    #[SymfonyConstraints\DateTime]
     #[Gedmo\Timestampable(on: 'update')]
     protected ?\DateTimeInterface $updatedAt = null;
 

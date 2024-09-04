@@ -33,10 +33,8 @@
     "stof/doctrine-extensions-bundle": "^1.3",
     "symfony/asset": "^6.4 || ^7.0",
     "symfony/console": "^6.4 || ^7.0",
-    "symfony/dotenv": "^6.4 || ^7.0",
     "symfony/framework-bundle": "^6.4 || ^7.0",
     "symfony/monolog-bundle": "^3.10",
-    "symfony/security-bundle": "^6.4 || ^7.0",
     "symfony/translation": "^6.4 || ^7.0",
     "symfony/twig-bundle": "^6.4 || ^7.0",
     "symfony/validator": "^6.4 || ^7.0",
@@ -46,10 +44,7 @@
     "friendsofphp/php-cs-fixer": "^3.64",
     "phpstan/phpstan": "^1.12",
     "phpstan/phpstan-phpunit": "^1.4",
-    "phpunit/phpunit": "^11.3",
-    "rector/rector": "^1.2",
-    "symfony/debug-bundle": "^6.4 || ^7.1",
-    "symfony/web-profiler-bundle": "^6.4 || ^7.0"
+    "phpunit/phpunit": "^11.3"
   },
   "config": {
     "sort-packages": true

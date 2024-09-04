@@ -165,4 +165,24 @@ class Article extends AbstractPost
     {
         return $this->getPublishedAt();
     }
+
+    public function update(
+        string $title,
+        string $slug,
+        string $text,
+        Category $category,
+        string $metaDescription = '',
+        string $metaKeywords = '',
+        ?\DateTime $publishedAt = new \DateTime(),
+    ): self {
+        $this->title = $title;
+        $this->slug = $slug;
+        $this->text = $text;
+        $this->category = $category;
+        $this->metaDescription = $metaDescription;
+        $this->metaKeywords = $metaKeywords;
+        $this->publishedAt = $publishedAt;
+
+        return $this;
+    }
 }

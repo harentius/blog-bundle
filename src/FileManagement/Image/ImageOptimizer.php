@@ -33,9 +33,6 @@ class ImageOptimizer
         return $this->resize($imagePreviewData);
     }
 
-    /**
-     * @return string
-     */
     private function resize(ImagePreview $imagePreviewData): string
     {
         $filter = 'preview';

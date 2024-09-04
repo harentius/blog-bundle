@@ -15,7 +15,7 @@ class HarentiusBlogExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
-        $loader->load('services/services.yaml');
+        $loader->load('services.yaml');
 
         $container->setParameter('harentius_blog.sidebar.tags_limit', $config['sidebar']['tags_limit']);
         $container->setParameter('harentius_blog.sidebar.tag_sizes', $config['sidebar']['tag_sizes']);

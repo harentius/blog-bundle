@@ -84,10 +84,7 @@ class AssetFile
         }
     }
 
-    /**
-     * @return File
-     */
-    public function getFile(): ?\Symfony\Component\HttpFoundation\File\File
+    public function getFile(): ?File
     {
         return $this->file;
     }

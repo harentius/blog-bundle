@@ -1,6 +1,10 @@
 harentius_blog_blog:
     resource: '@HarentiusBlogBundle/Resources/config/routing/blog.yaml'
 
+harentius_blog_api:
+    prefix: /api/v1
+    resource: '@HarentiusBlogBundle/Resources/config/routing/api.yaml'
+
 #PrestaSitemapBundle:
 #    resource: '@PrestaSitemapBundle/Resources/config/routing.yml'
 

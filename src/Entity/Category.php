@@ -196,4 +196,12 @@ class Category implements \Stringable
 
         return implode('/', $slugs);
     }
+
+    public static function create(string $name): self
+    {
+        $instance = new self();
+        $instance->name = $name;
+
+        return $instance;
+    }
 }

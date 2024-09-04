@@ -28,6 +28,6 @@ services:
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments: [ Harentius\BlogBundle\Entity\AbstractPost ]
 
-    Harentius\BlogBundle\Entity\AdminUserRepository:
+    Harentius\BlogBundle\Entity\ApiKeyRepository:
         factory: ['@doctrine.orm.entity_manager', getRepository]
-        arguments: [ Harentius\BlogBundle\Entity\AdminUser ]
+        arguments: [ Harentius\BlogBundle\Entity\ApiKey ]

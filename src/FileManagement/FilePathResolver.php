@@ -26,7 +26,6 @@ class FilePathResolver
 
     /**
      * @param string $type
-     * @return string
      */
     public function assetPath($type): string
     {

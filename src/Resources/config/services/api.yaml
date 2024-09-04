@@ -1,0 +1,14 @@
+services:
+    _defaults:
+        public: false
+        autowire: true
+
+    Harentius\BlogBundle\API\APIKeyGenerateCommand:
+        public: true
+        tags:
+            - { name: 'console.command' }
+
+    Harentius\BlogBundle\API\ArticleController:
+        public: true
+    Harentius\BlogBundle\API\CategoryManager: ~
+    Harentius\BlogBundle\API\Security: ~
