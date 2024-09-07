@@ -4,6 +4,6 @@ harentius_blog_api_article_upsert:
     controller: Harentius\BlogBundle\API\ArticleController::upsert
 
 harentius_blog_api_article_delete:
-    path: /article/create-update
+    path: /article/delete
     methods: [DELETE]
     controller: Harentius\BlogBundle\API\ArticleController::delete
