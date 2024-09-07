@@ -26,6 +26,7 @@ class APIKeyGenerateCommand extends Command
         $this->entityManager->persist($apiKey);
         $this->entityManager->flush();
         $output->writeln(sprintf('Created API key <info>%s</info> with secret <info>%s</info>', $key, $secret));
+        $output->writeln(sprintf('api-token: <info>%s</info>', base64_encode("$key:$secret")));
 
         return Command::SUCCESS;
     }
