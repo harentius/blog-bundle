@@ -10,5 +10,10 @@ services:
 
     Harentius\BlogBundle\API\ArticleController:
         public: true
+    Harentius\BlogBundle\API\FileController:
+        public: true
     Harentius\BlogBundle\API\CategoryManager: ~
     Harentius\BlogBundle\API\Security: ~
+    Harentius\BlogBundle\API\FileManager:
+        arguments:
+            $targetDir: '%kernel.project_dir%/public/assets'

@@ -7,7 +7,6 @@ services:
     Harentius\BlogBundle\Controller\TagController:
     Harentius\BlogBundle\Controller\ArchiveController:
     Harentius\BlogBundle\Controller\RateController:
-    Harentius\BlogBundle\Controller\ImageOptimizationController: ~
     Harentius\BlogBundle\Controller\ShowController:
     Harentius\BlogBundle\Controller\SidebarController:
     Harentius\BlogBundle\Controller\ViewCountController: ~

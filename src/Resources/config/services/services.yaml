@@ -22,17 +22,6 @@ services:
             $homepageSlug: '%harentius_blog.homepage.page_slug%'
 
     Harentius\BlogBundle\Rating: ~
-    Harentius\BlogBundle\FileManagement\FilePathResolver:
-        arguments:
-            $webDir: '%kernel.project_dir%/public'
-
-    Harentius\BlogBundle\FileManagement\Image\ImageOptimizer:
-        arguments:
-            - '@liip_imagine.cache.manager'
-            - '@liip_imagine.filter.manager'
-            - '@liip_imagine.data.manager'
-            - '@Harentius\BlogBundle\FileManagement\FilePathResolver'
-            - '%harentius_blog.articles.image_previews_base_uri%'
 
     Harentius\BlogBundle\Router\PublicationUrlGenerator:
         arguments:
@@ -48,4 +37,3 @@ services:
             - { name: twig.extension }
     Harentius\BlogBundle\ViewsCounter: ~
     Harentius\BlogBundle\Sidebar\Archive: ~
-    Harentius\BlogBundle\FileManagement\FileManager: ~

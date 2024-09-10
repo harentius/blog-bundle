@@ -36,10 +36,6 @@ harentius_blog_rate:
     requirements:
         type: like|dislike
 
-harentius_blog_resize:
-    path: '%harentius_blog.articles.image_previews_base_uri%{imageName}'
-    defaults: { _controller: 'Harentius\BlogBundle\Controller\ImageOptimizationController' }
-
 harentius_blog_view_count:
     path: /view-count/{id}
     defaults: { _controller: 'Harentius\BlogBundle\Controller\ViewCountController' }
