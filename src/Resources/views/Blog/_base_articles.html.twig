@@ -1,8 +1,14 @@
 {% for article in articles %}
     <div class="padded-content post-preview-wrapper{% if not loop.last or hasToPaginate %} bordered{% endif %}">
-        <article class="clearfix">
-            <h2><a href="{{ publication_path(article, app.request.locale) }}">{{ article.title }}</a></h2>
-            <div>{{ article.text|read_more }}</div>
+        <article class="row">
+            <div class="col-md-3">
+                <img src="{{ cover_image_path(article.slug) }}?width=150" alt="{{ article.title }} preview"/>
+            </div>
+
+            <div class="col-md-9">
+                <h2><a href="{{ publication_path(article, app.request.locale) }}">{{ article.title }}</a></h2>
+                <div>{{ article.metaDescription }}</div>
+            </div>
         </article>
 
         {% block post_info %}

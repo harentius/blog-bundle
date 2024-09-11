@@ -7,6 +7,6 @@ services:
 
    # Twig\Extensions\IntlExtension: ~
     Harentius\BlogBundle\Twig\PublicationUrlGeneratorExtension: ~
+    Harentius\BlogBundle\Twig\CoverImageExtension: ~
     Harentius\BlogBundle\Twig\SettingsExtension: ~
-    Harentius\BlogBundle\Twig\ReadMoreExtension: ~
     Harentius\BlogBundle\Twig\RatingExtension: ~
