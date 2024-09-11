@@ -12,3 +12,8 @@ harentius_blog_api_file_upload:
     path: /file/upload
     methods: [POST]
     controller: Harentius\BlogBundle\API\FileController::upload
+
+harentius_blog_api_file_delete:
+    path: /file/delete
+    methods: [DELETE]
+    controller: Harentius\BlogBundle\API\FileController::delete

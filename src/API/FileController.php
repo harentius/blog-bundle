@@ -2,7 +2,6 @@
 
 namespace Harentius\BlogBundle\API;
 
-use Gedmo\Mapping\Annotation\Uploadable;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -40,5 +39,24 @@ class FileController
         $this->fileManager->create($file, $filePath);
 
         return new JsonResponse(null, Response::HTTP_CREATED);
+    }
+
+    public function delete(Request $request): JsonResponse
+    {
+        if (!$request->headers->has('api-token')
+            || !$this->security->isApiTokenValid($request->headers->get('api-token'))
+        ) {
+            return new JsonResponse(null, Response::HTTP_UNAUTHORIZED);
+        }
+
+        $content = json_decode($request->getContent(), true);
+
+        if (!$content || !isset($content['path'])) {
+            return new JsonResponse(null, Response::HTTP_BAD_REQUEST);
+        }
+
+        $this->fileManager->delete($content['path']);
+
+        return new JsonResponse(null, Response::HTTP_OK);
     }
 }

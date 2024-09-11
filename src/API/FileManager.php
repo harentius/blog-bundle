@@ -2,6 +2,7 @@
 
 namespace Harentius\BlogBundle\API;
 
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class FileManager
@@ -17,5 +18,13 @@ class FileManager
         $dir = dirname($targetPath);
         $fileName = basename($targetPath);
         $uploadedFile->move($dir, $fileName);
+    }
+
+    public function delete(string $path): void
+    {
+        $filesystem = new Filesystem();
+        $targetPath = $this->targetDir . '/' . $path;
+
+        $filesystem->remove($targetPath);
     }
 }
