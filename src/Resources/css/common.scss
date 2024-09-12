@@ -192,6 +192,10 @@ pre {
   font-size: 0.9rem;
 }
 
+.breadcrumb {
+  margin-bottom: 0;
+}
+
 .breadcrumb-item+.breadcrumb-item:before {
   display: inline-block;
   padding-right: .5rem;
