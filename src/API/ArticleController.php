@@ -65,11 +65,19 @@ class ArticleController
 
     public function delete(Request $request): JsonResponse
     {
-        $slug = $request->query->get('slug');
+        $content = json_decode($request->getContent(), true);
+
+        if (!isset($content['slug'])) {
+            return new JsonResponse(null, Response::HTTP_BAD_REQUEST);
+        }
+
+        $slug = $content['slug'];
         $article = $this->articleRepository->findOneBy(['slug' => $slug]);
 
         if (!$article) {
-            return new JsonResponse(null, Response::HTTP_NOT_MODIFIED);
+            return new JsonResponse([
+                'message' => "Article with slug {$slug} is not found.",
+            ], Response::HTTP_NOT_MODIFIED);
         }
 
         $this->entityManager->remove($article);
