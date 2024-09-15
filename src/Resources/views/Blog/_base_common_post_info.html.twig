@@ -19,14 +19,14 @@
 
         {% block after_post_info %}{% endblock %}
     </div>
-    <div class="post-tags col-lg-4 col-md-4 col-sm-12 col-xs-12 text-lg-right text-md-right">
-        {% for tag in article.tags %}
-            {% apply spaceless %}
-        <span>
-            <i class="fa fa-tag"></i>
-            <a href="{{ path('harentius_blog_tag', { 'slug': tag.slug }) }}" rel="tag">{{ tag.name }}</a>
-        </span>
-            {% endapply %}
-        {% endfor %}
-    </div>
+{#    <div class="post-tags col-lg-4 col-md-4 col-sm-12 col-xs-12 text-lg-right text-md-right">#}
+{#        {% for tag in article.tags %}#}
+{#            {% apply spaceless %}#}
+{#        <span>#}
+{#            <i class="fa fa-tag"></i>#}
+{#            <a href="{{ path('harentius_blog_tag', { 'slug': tag.slug }) }}" rel="tag">{{ tag.name }}</a>#}
+{#        </span>#}
+{#            {% endapply %}#}
+{#        {% endfor %}#}
+{#    </div>#}
 </div>
