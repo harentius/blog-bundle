@@ -25,6 +25,6 @@ class CoverImageExtension extends AbstractExtension
 
     public function getImagePath(string $articleSlug): ?string
     {
-        return 'assets/' . $articleSlug . '/cover.png';
+        return '/assets/' . $articleSlug . '/cover.png';
     }
 }
