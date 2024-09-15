@@ -7,6 +7,8 @@ services:
 
    # Twig\Extensions\IntlExtension: ~
     Harentius\BlogBundle\Twig\PublicationUrlGeneratorExtension: ~
-    Harentius\BlogBundle\Twig\CoverImageExtension: ~
+    Harentius\BlogBundle\Twig\CoverImageExtension:
+        arguments:
+            $targetDir: '%kernel.project_dir%/public/assets'
     Harentius\BlogBundle\Twig\SettingsExtension: ~
     Harentius\BlogBundle\Twig\RatingExtension: ~
