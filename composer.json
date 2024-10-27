@@ -9,8 +9,7 @@
   "authors": [
     {
       "name": "Yaroslav Osypenko",
-      "email": "yaroslav.osypenko@gmail.com",
-      "homepage": "https://folkprog.net"
+      "email": "yaroslav.osypenko@gmail.com"
     }
   ],
   "autoload" : {

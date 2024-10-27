@@ -121,7 +121,4 @@ bin/console hautelook:fixtures:load
 
 Additional Resources
 ====================
-
-[https://folkprog.net](https://folkprog.net) - example of blog based on this bundle.
-
-[https://github.com/harentius/folkprog](https://github.com/harentius/folkprog) - git repository with sources of this blog.
+[https://github.com/harentius/blog](https://github.com/harentius/blog) - git repository with sources of this blog.
