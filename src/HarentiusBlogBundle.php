@@ -2,7 +2,6 @@
 
 namespace Harentius\BlogBundle;
 
-use Harentius\BlogBundle\DependencyInjection\CompilerPass\LocalesConfigPass;
 use Harentius\BlogBundle\DependencyInjection\CompilerPass\SetTwigVariablesPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -15,7 +14,6 @@ class HarentiusBlogBundle extends Bundle
 
         $container
             ->addCompilerPass(new SetTwigVariablesPass())
-            ->addCompilerPass(new LocalesConfigPass())
         ;
     }
 }

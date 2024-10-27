@@ -82,12 +82,6 @@ Config reference:
 
 ```yml
 harentius_blog:
-    # Localizations to be used by blog
-    locales: ['en', 'uk']
-    primary_locale: 'en'
-    articles:
-        # Path where previews stored
-        image_previews_base_uri: /assets/images/preview/
     sidebar:
         # ~ - no cache, 0 - unlimited cache
         cache_lifetime: 3600
@@ -106,9 +100,6 @@ harentius_blog:
             number: 5
     list:
         posts_per_page: 20
-    # For avoiding internal apc cache conflicts if run multiple sites on one server.
-    cache:
-        apc_global_prefix: blog
 ```
 
 ### Post Installation/Configuration actions

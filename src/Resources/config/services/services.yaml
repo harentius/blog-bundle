@@ -24,8 +24,6 @@ services:
     Harentius\BlogBundle\Rating: ~
 
     Harentius\BlogBundle\Router\PublicationUrlGenerator:
-        arguments:
-            $primaryLocale: '%harentius_blog.primary_locale%'
 
     Harentius\BlogBundle\Paginator:
         arguments:

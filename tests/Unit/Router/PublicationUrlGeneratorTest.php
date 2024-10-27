@@ -46,7 +46,7 @@ class PublicationUrlGeneratorTest extends TestCase
 
     private function createPublicationUrlGenerator(UrlGeneratorInterface $urlGenerator): PublicationUrlGenerator
     {
-        return new PublicationUrlGenerator($urlGenerator, 'uk');
+        return new PublicationUrlGenerator($urlGenerator);
     }
 
     /**

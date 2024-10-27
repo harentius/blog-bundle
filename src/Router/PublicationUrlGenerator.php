@@ -9,7 +9,6 @@ class PublicationUrlGenerator
 {
     public function __construct(
         private readonly UrlGeneratorInterface $urlGenerator,
-        private readonly string $primaryLocale,
     ) {
     }
 
@@ -18,15 +17,8 @@ class PublicationUrlGenerator
         string $locale,
         int $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH,
     ): string {
-        if ($locale === $this->primaryLocale) {
-            return $this->urlGenerator->generate('harentius_blog_show_default', [
-                'slug' => $post->getSlug(),
-            ], $referenceType);
-        }
-
-        return $this->urlGenerator->generate('harentius_blog_show', [
+        return $this->urlGenerator->generate('harentius_blog_show_default', [
             'slug' => $post->getSlug(),
-            '_locale' => $locale,
         ], $referenceType);
     }
 }

@@ -1,5 +1,4 @@
 stof_doctrine_extensions:
-    default_locale: '%harentius_blog.primary_locale%'
     orm:
         default:
             timestampable: true
