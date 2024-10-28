@@ -2,6 +2,7 @@
 
 namespace Harentius\BlogBundle\DependencyInjection;
 
+use Harentius\BlogBundle\Twig\GlobalsExtension;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
@@ -16,6 +17,9 @@ class HarentiusBlogExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yaml');
+
+        $globalsExtension = $container->getDefinition(GlobalsExtension::class);
+        $globalsExtension->addMethodCall('addGlobal', ['harentius_blog_title', $config['title']]);
 
         $container->setParameter('harentius_blog.sidebar.tags_limit', $config['sidebar']['tags_limit']);
         $container->setParameter('harentius_blog.sidebar.tag_sizes', $config['sidebar']['tag_sizes']);

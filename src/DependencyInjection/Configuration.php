@@ -14,6 +14,9 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+                ->scalarNode('title')
+                    ->defaultValue('')
+                ->end()
                 ->arrayNode('sidebar')
                     ->addDefaultsIfNotSet()
                     ->children()

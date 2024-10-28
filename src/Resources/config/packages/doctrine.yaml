@@ -1,6 +1,10 @@
+parameters:
+    database_url: '%env(string:DATABASE_URL)%'
+
 doctrine:
     dbal:
-        url: '%env(resolve:DATABASE_URL)%'
+        server_version: '8.0.31'
+        url: '%database_url%'
         charset: utf8mb4
         default_table_options:
             collate: utf8mb4_unicode_ci

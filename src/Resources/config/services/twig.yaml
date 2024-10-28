@@ -12,3 +12,4 @@ services:
             $targetDir: '%kernel.project_dir%/public/assets'
     Harentius\BlogBundle\Twig\SettingsExtension: ~
     Harentius\BlogBundle\Twig\RatingExtension: ~
+    Harentius\BlogBundle\Twig\GlobalsExtension: ~
