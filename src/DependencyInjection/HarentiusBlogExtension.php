@@ -21,6 +21,7 @@ class HarentiusBlogExtension extends Extension
         $globalsExtension = $container->getDefinition(GlobalsExtension::class);
         $globalsExtension->addMethodCall('addGlobal', ['harentius_blog_title', $config['title']]);
         $globalsExtension->addMethodCall('addGlobal', ['harentius_blog_theme', $config['theme']]);
+        $globalsExtension->addMethodCall('addGlobal', ['harentius_blog_highlight_code', $config['highlight_code']]);
 
         $container->setParameter('harentius_blog.sidebar.tags_limit', $config['sidebar']['tags_limit']);
         $container->setParameter('harentius_blog.sidebar.tag_sizes', $config['sidebar']['tag_sizes']);

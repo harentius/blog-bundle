@@ -24,6 +24,11 @@
 
     {% block meta_extra %}{% endblock %}
 
+    {% if harentius_blog_highlight_code %}
+        {% set highlight_js_theme = harentius_blog_theme == 'dark' ? 'atom-one-dark' : 'default' %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/{{ highlight_js_theme }}.min.css">
+    {% endif %}
+
     {% block common_stylesheets %}
         <link href="{{ asset('bundles/harentiusblog/common.css', 'harentius_blog') }}" media="all" rel="stylesheet" type="text/css" />
     {% endblock %}
