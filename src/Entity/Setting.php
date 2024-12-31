@@ -5,48 +5,30 @@ namespace Harentius\BlogBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
-/**
- * @ORM\Entity(repositoryClass="Harentius\BlogBundle\Entity\SettingRepository")
- */
+#[ORM\Entity(repositoryClass: SettingRepository::class)]
 class Setting
 {
     use IdentifiableEntityTrait;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="text", name="_key")
-     * @SymfonyConstraints\Length(max=255)
-     * @SymfonyConstraints\NotBlank()
-     */
-    private $key;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::TEXT, name: '_key')]
+    #[SymfonyConstraints\Length(max: 255)]
+    #[SymfonyConstraints\NotBlank]
+    private ?string $key = null;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="text")
-     * @SymfonyConstraints\Length(max=255)
-     * @SymfonyConstraints\NotBlank()
-     */
-    private $name;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::TEXT)]
+    #[SymfonyConstraints\Length(max: 255)]
+    #[SymfonyConstraints\NotBlank]
+    private ?string $name = null;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="text")
-     */
-    private $value;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::TEXT)]
+    private ?string $value = null;
 
-    /**
-     * @return string|null
-     */
     public function getKey(): ?string
     {
         return $this->key;
     }
 
     /**
-     * @param string|null $value
      * @return $this
      */
     public function setKey(?string $value): self
@@ -56,16 +38,12 @@ class Setting
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string|null $value
      * @return $this
      */
     public function setName(?string $value): self
@@ -75,16 +53,12 @@ class Setting
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getValue(): ?string
     {
         return $this->value;
     }
 
     /**
-     * @param string|null $value
      * @return $this
      */
     public function setValue(?string $value): self

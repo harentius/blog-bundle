@@ -8,7 +8,7 @@
         {% for month, monthName in months %}
                 <li>
                     <a href="{{ path('harentius_blog_archive_month', {'year': year, 'month': month }) }}">
-                        {{ monthName|localizeddate('none', 'none', app.request.locale, null, 'LLLL')|capitalize }}
+                        {{ monthName|capitalize }}
                     </a>
                 </li>
         {% endfor %}

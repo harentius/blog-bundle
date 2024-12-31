@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app.request.locale }}">
+<html class="theme-{{ harentius_blog_theme }}" lang="{{ app.request.locale }}">
 <head>
     <title>
         {%- block raw_title -%}
@@ -24,6 +24,11 @@
 
     {% block meta_extra %}{% endblock %}
 
+    {% if harentius_blog_highlight_code %}
+        {% set highlight_js_theme = harentius_blog_theme == 'dark' ? 'atom-one-dark' : 'default' %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/{{ highlight_js_theme }}.min.css">
+    {% endif %}
+
     {% block common_stylesheets %}
         <link href="{{ asset('bundles/harentiusblog/common.css', 'harentius_blog') }}" media="all" rel="stylesheet" type="text/css" />
     {% endblock %}
@@ -42,7 +47,7 @@
     <div class="row">
         <div class="col-lg-9 col-xs-12 page-content">
             <div>
-                {{ wo_render_breadcrumbs() }}{% block after_breadcrumbs_content %}{% endblock %}
+                {{ include('@HarentiusBlog/_breadcrumbs.html.twig') }}{% block after_breadcrumbs_content %}{% endblock %}
             </div>
 
             {% block content %}{% endblock %}
@@ -56,13 +61,7 @@
         </aside>
     </div>
 
-    {% block footer %}
-        <footer class="padded-content footer clearfix">
-            {% block footer_content %}All right reserved. {% endblock %}
-            {% block footer_after_content %}{% endblock %}
-        </footer>
-    {% endblock %}
-    {% block last_container_content %}{% endblock %}
+    {% block footer %}{% endblock %}
 </div>
 
 {% block last_body_content %}{% endblock %}

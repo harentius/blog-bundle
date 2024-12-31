@@ -3,7 +3,6 @@
 namespace Harentius\BlogBundle\Entity;
 
 use Doctrine\ORM\Query;
-use Gedmo\Translatable\Query\TreeWalker\TranslationWalker;
 use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 
 /**
@@ -15,7 +14,6 @@ use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 class CategoryRepository extends NestedTreeRepository
 {
     /**
-     * @param array $options
      * @return Category[]
      */
     public function notEmptyChildrenHierarchy(array $options = [])
@@ -29,7 +27,7 @@ class CategoryRepository extends NestedTreeRepository
         ;
 
         /** @var ArticleRepository $articleRepository */
-        $articleRepository = $this->_em->getRepository('HarentiusBlogBundle:Article');
+        $articleRepository = $this->getEntityManager()->getRepository(Article::class);
         $qb = $articleRepository->createQueryBuilder('a');
         $qb
             ->select('COUNT(a)')
@@ -45,10 +43,6 @@ class CategoryRepository extends NestedTreeRepository
             ->having('articles_number > 0')
             ->setParameter(':isPublished', true)
             ->getQuery()
-            ->setHint(
-                Query::HINT_CUSTOM_OUTPUT_WALKER,
-                TranslationWalker::class
-            )
         ;
 
         return $this->buildTree($q2->getResult(), $options);
@@ -60,9 +54,9 @@ class CategoryRepository extends NestedTreeRepository
     public function findWithPublishedArticles()
     {
         return $this->createQueryBuilder('c')
-            ->from('HarentiusBlogBundle:Article', 'a')
+            ->from(Article::class, 'a')
             ->where('a.category IN
-                    (SELECT cc FROM HarentiusBlogBundle:Category cc
+                    (SELECT cc FROM Harentius\BlogBundle\Entity\Category cc
                      WHERE cc.left >= c.left AND cc.right <= c.right AND cc.root = c.root)'
             )
             ->andWhere('a.published = :isPublished')

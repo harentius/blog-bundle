@@ -8,17 +8,8 @@ use Twig\TwigFunction;
 
 class PublicationUrlGeneratorExtension extends AbstractExtension
 {
-    /**
-     * @var PublicationUrlGenerator
-     */
-    private $urlGenerator;
-
-    /**
-     * @param PublicationUrlGenerator $urlGenerator
-     */
-    public function __construct(PublicationUrlGenerator $urlGenerator)
+    public function __construct(private readonly PublicationUrlGenerator $urlGenerator)
     {
-        $this->urlGenerator = $urlGenerator;
     }
 
     /**
@@ -27,7 +18,7 @@ class PublicationUrlGeneratorExtension extends AbstractExtension
     public function getFunctions()
     {
         return [
-            new TwigFunction('publication_path', [$this->urlGenerator, 'generateUrl']),
+            new TwigFunction('publication_path', $this->urlGenerator->generateUrl(...)),
         ];
     }
 }

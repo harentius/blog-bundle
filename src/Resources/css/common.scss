@@ -1,9 +1,9 @@
-@import "vendor/bootstrap";
 @import "vendor/font-awesome";
 @import "twbs-extension";
 @import "main-menu";
 @import "article";
 @import "sidebar";
+@import "theme-dark";
 
 .clickable {
   cursor: pointer;
@@ -190,4 +190,28 @@ figcaption {
 
 pre {
   font-size: 0.9rem;
+}
+
+.breadcrumb {
+  margin-bottom: 0;
+}
+
+.breadcrumb-item+.breadcrumb-item:before {
+  display: inline-block;
+  padding-right: .5rem;
+  color: #6c757d !important;;
+  content: "/";
+}
+
+.navbar-nav {
+  flex-direction: row;
+  display: -webkit-box;
+  display: flex;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.navbar-list-item {
+  margin-right: 5px;
 }

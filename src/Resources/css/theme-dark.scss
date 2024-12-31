@@ -1,0 +1,65 @@
+.theme-dark {
+  body {
+    background: #202124;
+    color: #ebebeb;
+  }
+
+  a {
+    color: #32a2ff;
+  }
+
+  a:hover {
+    color: #007bff;
+  }
+
+  .container {
+    background: #252527;
+    border-color: #373d49;
+  }
+
+  .navbar {
+    background-color: #2d2d31 !important;
+  }
+
+  .navbar-wrapper .main-menu-button {
+    color: #ebebeb;
+  }
+
+  .navbar-wrapper .categories-menu ul {
+    background: #28282c;
+  }
+
+  .navbar-wrapper .categories-menu ul li a {
+    border-bottom: 1px solid #4b4e58;
+  }
+
+  .navbar-wrapper .categories-menu ul li a:hover {
+    background: #262628;
+    color: #008bff;
+  }
+
+  .post-info {
+    color: #8c9dae;
+  }
+
+  .page-link {
+    background-color: #2b2c32;
+    border: 1px solid #52565f;
+  }
+
+  .page-link:hover {
+    color: #e1f0ff !important;
+    background-color: #444b53;
+    border-color: #5f6e84;
+  }
+
+  .page-item.disabled .page-link {
+    color: #6f8da7;
+    background-color: #2f3036;
+    border-color: #656566;
+  }
+
+  .breadcrumb {
+    background: none;
+  }
+}

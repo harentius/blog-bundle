@@ -8,6 +8,7 @@ use Harentius\BlogBundle\Entity\Article;
 use Harentius\BlogBundle\ViewsCounter;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class ViewsCounterTest extends TestCase
@@ -20,7 +21,9 @@ class ViewsCounterTest extends TestCase
             ->method('set')
             ->with('viewedArticles', [123 => true])
         ;
-        $viewsCounter = new ViewsCounter($session);
+        $requestStack = $this->createMock(RequestStack::class);
+        $requestStack->method('getSession')->willReturn($session);
+        $viewsCounter = new ViewsCounter($requestStack);
         $article = $this->createArticle();
 
         $viewsCounter->processArticle($article);
@@ -35,7 +38,9 @@ class ViewsCounterTest extends TestCase
             ->method('get')
             ->willReturn([123 => true])
         ;
-        $viewsCounter = new ViewsCounter($session);
+        $requestStack = $this->createMock(RequestStack::class);
+        $requestStack->method('getSession')->willReturn($session);
+        $viewsCounter = new ViewsCounter($requestStack);
         $article = $this->createArticle();
 
         $viewsCounter->processArticle($article);

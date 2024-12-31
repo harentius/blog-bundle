@@ -14,45 +14,33 @@ use Doctrine\ORM\QueryBuilder;
  */
 class ArticleRepository extends EntityRepository
 {
-    /**
-     * @param Category $category
-     * @return Query
-     */
-    public function findPublishedByCategoryQuery(Category $category)
+    public function findPublishedByCategoryQuery(Category $category): Query
     {
         $qb = $this->createQueryBuilder('a');
 
         return $qb
             ->where('a.category IN
-                (SELECT c FROM HarentiusBlogBundle:Category c
+                (SELECT c FROM Harentius\BlogBundle\Entity\Category c
                  WHERE c.left >= :left AND c.right <= :right AND c.root = :root)'
             )
             ->andWhere('a.published = :isPublished')
-            ->setParameters([
-                ':left' => $category->getLeft(),
-                ':right' => $category->getRight(),
-                ':root' => $category->getRoot(),
-                ':isPublished' => true,
-            ])
+            ->setParameter(':left', $category->getLeft())
+            ->setParameter(':right', $category->getRight())
+            ->setParameter(':root', $category->getRoot())
+            ->setParameter(':isPublished', true)
             ->orderBy('a.publishedAt', 'DESC')
             ->getQuery()
         ;
     }
 
-    /**
-     * @param Tag $tag
-     * @return Query
-     */
-    public function findPublishedByTagQuery(Tag $tag)
+    public function findPublishedByTagQuery(Tag $tag): Query
     {
         return $this->createQueryBuilder('a')
             ->join('a.tags', 't')
             ->where('t = :tag')
             ->andWhere('a.published = :isPublished')
-            ->setParameters([
-                ':tag' => $tag,
-                ':isPublished' => true,
-            ])
+            ->setParameter(':tag', $tag)
+            ->setParameter(':isPublished', true)
             ->orderBy('a.publishedAt', 'DESC')
             ->getQuery()
         ;
@@ -61,19 +49,16 @@ class ArticleRepository extends EntityRepository
     /**
      * @param string $year
      * @param string $month
-     * @return Query
      */
-    public function findPublishedByYearMonthQuery($year, $month = null)
+    public function findPublishedByYearMonthQuery($year, $month = null): Query
     {
         $qb = $this->createQueryBuilder('a');
 
         $qb
             ->where('YEAR(a.publishedAt) = :year')
             ->andWhere('a.published = :isPublished')
-            ->setParameters([
-                ':year' => $year,
-                ':isPublished' => true,
-            ])
+            ->setParameter(':year', $year)
+            ->setParameter(':isPublished', true)
             ->orderBy('a.publishedAt', 'DESC')
         ;
 
@@ -87,10 +72,6 @@ class ArticleRepository extends EntityRepository
         return $qb->getQuery();
     }
 
-    /**
-     * @param string|null $categorySlug
-     * @return QueryBuilder
-     */
     public function findPublishedByCategorySlugQueryBuilder(?string $categorySlug = null): QueryBuilder
     {
         $qb = $this->createQueryBuilder('a');
@@ -113,10 +94,6 @@ class ArticleRepository extends EntityRepository
         return $qb;
     }
 
-    /**
-     * @param string|null $categorySlug
-     * @return Article|null
-     */
     public function findLatestPublishedByCategorySlug(?string $categorySlug = null): ?Article
     {
         return $this

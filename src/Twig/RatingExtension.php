@@ -9,17 +9,8 @@ use Twig\TwigFunction;
 
 class RatingExtension extends AbstractExtension
 {
-    /**
-     * @var Rating
-     */
-    private $rating;
-
-    /**
-     * @param Rating $rating
-     */
-    public function __construct(Rating $rating)
+    public function __construct(private readonly Rating $rating)
     {
-        $this->rating = $rating;
     }
 
     /**
@@ -28,35 +19,23 @@ class RatingExtension extends AbstractExtension
     public function getFunctions()
     {
         return [
-            new TwigFunction('is_article_liked', [$this, 'isArticleLiked']),
-            new TwigFunction('is_article_disliked', [$this, 'isArticleDisLiked']),
-            new TwigFunction('is_article_rated', [$this, 'isArticleRated']),
+            new TwigFunction('is_article_liked', $this->isArticleLiked(...)),
+            new TwigFunction('is_article_disliked', $this->isArticleDisLiked(...)),
+            new TwigFunction('is_article_rated', $this->isArticleRated(...)),
         ];
     }
 
-    /**
-     * @param Article $article
-     * @return bool
-     */
-    public function isArticleLiked(Article $article)
+    public function isArticleLiked(Article $article): bool
     {
         return $this->rating->isLiked($article);
     }
 
-    /**
-     * @param Article $article
-     * @return bool
-     */
-    public function isArticleDisLiked(Article $article)
+    public function isArticleDisLiked(Article $article): bool
     {
         return $this->rating->isDisLiked($article);
     }
 
-    /**
-     * @param Article $article
-     * @return bool
-     */
-    public function isArticleRated(Article $article)
+    public function isArticleRated(Article $article): bool
     {
         return $this->rating->isRated($article);
     }

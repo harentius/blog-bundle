@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Harentius\BlogBundle\Tests\Unit\Controller;
 
-use Harentius\BlogBundle\BreadCrumbsManager;
+use Harentius\BlogBundle\Breadcrumbs\BreadCrumbsManager;
 use Harentius\BlogBundle\Controller\ArchiveController;
 use Harentius\BlogBundle\Entity\ArticleRepository;
 use Harentius\BlogBundle\Paginator;
 use Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination;
 use Knp\Component\Pager\PaginatorInterface;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
@@ -55,10 +54,7 @@ class ArchiveControllerTest extends TestCase
 
         $paginator = new Paginator($knpPaginator, 123);
 
-        $controller = new ArchiveController($articleRepository, $breadCrumbsManager, $paginator);
-        $container = new Container();
-        $container->set('twig', $twig);
-        $controller->setContainer($container);
+        $controller = new ArchiveController($articleRepository, $breadCrumbsManager, $paginator, $twig);
 
         return $controller;
     }

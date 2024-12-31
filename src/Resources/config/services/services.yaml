@@ -1,12 +1,3 @@
-imports:
-    - { resource: 'admin/*' }
-    - { resource: 'twig.yaml' }
-    - { resource: 'controller.yaml' }
-    - { resource: 'command.yaml' }
-    - { resource: 'cache.yaml' }
-    - { resource: 'repositories.yaml' }
-    - { resource: 'sitemap.yaml' }
-
 services:
     _defaults:
         public: false
@@ -16,13 +7,9 @@ services:
         arguments:
             $homepageSlug: '%harentius_blog.homepage.page_slug%'
 
-    Knp\Menu\MenuItem:
-        factory: ['@Harentius\BlogBundle\Menu\MenuBuilder', 'createMainMenu']
+    Harentius\BlogBundle\Menu\MenuTwigExtension:
         tags:
-            - { name: knp_menu.menu, alias: main }
-
-    harentius_blog.array_cache:
-        class: Doctrine\Common\Cache\ArrayCache
+            - { name: twig.extension }
 
     Harentius\BlogBundle\Sidebar\Tags:
         arguments:
@@ -34,38 +21,17 @@ services:
             $categorySlug: '%harentius_blog.homepage.feed.category%'
             $homepageSlug: '%harentius_blog.homepage.page_slug%'
 
-    Harentius\BlogBundle\Rating:
-        arguments:
-            $cache: '@harentius_blog.rating_cache'
-
-    Harentius\BlogBundle\FileManagement\FilePathResolver:
-        arguments:
-            $webDir: '%kernel.project_dir%/public'
-
-    Harentius\BlogBundle\FileManagement\Image\ImageOptimizer:
-        arguments:
-            - '@liip_imagine.cache.manager'
-            - '@liip_imagine.filter.manager'
-            - '@liip_imagine.data.manager'
-            - '@Harentius\BlogBundle\FileManagement\FilePathResolver'
-            - '%harentius_blog.articles.image_previews_base_uri%'
-
-    Harentius\BlogBundle\EventListener\AdminUserListener:
-        arguments:
-            - '@security.password_encoder'
-        tags:
-            - { name: doctrine.event_listener, event: prePersist }
-            - { name: doctrine.event_listener, event: preUpdate }
+    Harentius\BlogBundle\Rating: ~
 
     Harentius\BlogBundle\Router\PublicationUrlGenerator:
-        arguments:
-            $primaryLocale: '%harentius_blog.primary_locale%'
 
     Harentius\BlogBundle\Paginator:
         arguments:
             $defaultPerPage: '%harentius_blog.list.posts_per_page%'
 
-    Harentius\BlogBundle\BreadCrumbsManager: ~
+    Harentius\BlogBundle\Breadcrumbs\BreadCrumbsManager: ~
+    Harentius\BlogBundle\Breadcrumbs\BreadcrumbsTwigExtension:
+        tags:
+            - { name: twig.extension }
     Harentius\BlogBundle\ViewsCounter: ~
     Harentius\BlogBundle\Sidebar\Archive: ~
-    Harentius\BlogBundle\FileManagement\FileManager: ~

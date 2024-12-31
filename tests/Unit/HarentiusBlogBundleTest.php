@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Harentius\BlogBundle\Tests\Unit;
 
-use Harentius\BlogBundle\DependencyInjection\CompilerPass\LocalesConfigPass;
 use Harentius\BlogBundle\DependencyInjection\CompilerPass\SetTwigVariablesPass;
 use Harentius\BlogBundle\HarentiusBlogBundle;
 use Harentius\BlogBundle\Test\ContainerBuilderTestCase;
@@ -20,6 +19,5 @@ class HarentiusBlogBundleTest extends ContainerBuilderTestCase
         $harentiusBlogBundle->build($containerBuilder);
 
         $this->assertBuilderHasPass($containerBuilder, SetTwigVariablesPass::class);
-        $this->assertBuilderHasPass($containerBuilder, LocalesConfigPass::class);
     }
 }

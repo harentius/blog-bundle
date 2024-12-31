@@ -1,3 +1,8 @@
+# 5.0.0
+* Added support of Symfony 6 and Symfony 7
+* Removed Sonata Admin and other dependencies
+* Created an API to manage blogs
+
 4.0.1
 =====
  - Sitemap generation fix: use absolute urls instead of paths

@@ -9,8 +9,8 @@ use Harentius\BlogBundle\Entity\CategoryRepository;
 use Harentius\BlogBundle\Sidebar\Archive;
 use Harentius\BlogBundle\Sidebar\Tags;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Twig\Environment;
 
 class SidebarControllerTest extends TestCase
@@ -37,7 +37,7 @@ class SidebarControllerTest extends TestCase
             ->expects($this->once())
             ->method('render')
             ->with('@HarentiusBlog/Sidebar/archive.html.twig', [
-                'archivesList' => 'list',
+                'archivesList' => ['list'],
             ])
         ;
         $sidebarController = $this->createSidebarController($twig);
@@ -70,7 +70,7 @@ class SidebarControllerTest extends TestCase
         $archive = $this->createMock(Archive::class);
         $archive
             ->method('getList')
-            ->willReturn('list')
+            ->willReturn(['list'])
         ;
         $tags = $this->createMock(Tags::class);
         $tags
@@ -78,10 +78,8 @@ class SidebarControllerTest extends TestCase
             ->willReturn('list')
         ;
 
-        $controller = new SidebarController($categoryRepository, $archive, $tags);
-        $container = new Container();
-        $container->set('twig', $twig);
-        $controller->setContainer($container);
+        $urlGenerator = $this->createMock(UrlGeneratorInterface::class);
+        $controller = new SidebarController($categoryRepository, $archive, $tags, $twig, $urlGenerator);
 
         return $controller;
     }

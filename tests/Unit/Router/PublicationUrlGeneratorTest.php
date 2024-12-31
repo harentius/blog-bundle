@@ -34,7 +34,7 @@ class PublicationUrlGeneratorTest extends TestCase
         $urlGenerator
             ->expects($this->once())
             ->method('generate')
-            ->with('harentius_blog_show', ['slug' => 'article_slug', '_locale' => 'en'])
+            ->with('harentius_blog_show_default', ['slug' => 'article_slug'])
         ;
 
         $publicationUrlGenerator = $this->createPublicationUrlGenerator($urlGenerator);
@@ -46,7 +46,7 @@ class PublicationUrlGeneratorTest extends TestCase
 
     private function createPublicationUrlGenerator(UrlGeneratorInterface $urlGenerator): PublicationUrlGenerator
     {
-        return new PublicationUrlGenerator($urlGenerator, 'uk');
+        return new PublicationUrlGenerator($urlGenerator);
     }
 
     /**

@@ -1,14 +1,16 @@
 <div class="navbar-wrapper">
     <nav class="main-menu navbar navbar-expand-lg navbar-light bg-light p-2">
-        {% block brand %}{% endblock %}
+        <b>{{ harentius_blog_title }}</b>
 
-        {{ knp_menu_render('main') }}
+        <ul class="navbar-nav">
+            {% for item in get_main_menu_items() %}
+                <li class="navbar-list-item">
+                    <a href="{{ item.url }}">{{ item.text }}</a>
+                </li>
+            {% endfor %}
+        </ul>
 
         <div class="main-menu-icons navbar-nav">
-            <a href="{{ path('harentius_blog_feed') }}" class="nav-link main-menu-button main-menu-button-rss-feed" target="_blank">
-                <i class="fa fa-feed"></i>
-            </a>
-
             <button
                 type="button"
                 class="main-menu-button fa fa-bars categories-menu-button d-lg-none"
@@ -17,6 +19,6 @@
     </nav>
 
     <div class="categories-menu d-none">
-        {{ render_cached(controller('Harentius\\BlogBundle\\Controller\\SidebarController::categories', { showNumber: false })) }}
+        {{ render(controller('Harentius\\BlogBundle\\Controller\\SidebarController::categories', { showNumber: false })) }}
     </div>
 </div>

@@ -7,67 +7,43 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as SymfonyConstraints;
 
-/**
- * @ORM\Entity(repositoryClass="Harentius\BlogBundle\Entity\TagRepository")
- */
-class Tag
+#[ORM\Entity(repositoryClass: TagRepository::class)]
+class Tag implements \Stringable
 {
     use IdentifiableEntityTrait;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="string", length=255)
-     * @SymfonyConstraints\Length(max=255)
-     * @SymfonyConstraints\NotBlank()
-     */
-    private $name;
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 255)]
+    #[SymfonyConstraints\Length(max: 255)]
+    #[SymfonyConstraints\NotBlank]
+    private ?string $name = null;
+
+    #[ORM\Column(type: \Doctrine\DBAL\Types\Types::STRING, length: 255)]
+    #[SymfonyConstraints\Length(max: 255)]
+    #[Gedmo\Slug(fields: ['name'], unique: true)]
+    private ?string $slug = null;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(type="string", length=255)
-     * @Gedmo\Slug(fields={"name"}, unique=true)
-     * @SymfonyConstraints\Length(max=255)
+     * @var \Doctrine\Common\Collections\Collection<int, \Harentius\BlogBundle\Entity\Article>
      */
-    private $slug;
+    #[ORM\ManyToMany(targetEntity: Article::class, mappedBy: 'tags')]
+    private \Doctrine\Common\Collections\Collection $articles;
 
-    /**
-     * @var Article[]
-     *
-     * @ORM\ManyToMany(
-     *     targetEntity="Harentius\BlogBundle\Entity\Article",
-     *     mappedBy="tags",
-     * )
-     */
-    private $articles;
-
-    /**
-     *
-     */
     public function __construct()
     {
         $this->articles = new ArrayCollection();
     }
 
-    /**
-     * @return string
-     */
     public function __toString(): string
     {
         return (string) $this->name;
     }
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string|null $value
      * @return $this
      */
     public function setName(?string $value): self
@@ -77,16 +53,12 @@ class Tag
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getSlug(): ?string
     {
         return $this->slug;
     }
 
     /**
-     * @param string|null $value
      * @return $this
      */
     public function setSlug(?string $value): self
@@ -99,16 +71,16 @@ class Tag
     /**
      * @return Article[]|ArrayCollection
      */
-    public function getArticles()
+    public function getArticles(): \Doctrine\Common\Collections\Collection
     {
         return $this->articles;
     }
 
     /**
-     * @param Article[]|ArrayCollection $value
+     * @param \Doctrine\Common\Collections\Collection<int, \Harentius\BlogBundle\Entity\Article> $value
      * @return $this
      */
-    public function setArticles($value): self
+    public function setArticles(\Doctrine\Common\Collections\Collection $value): self
     {
         $this->articles = $value;
 

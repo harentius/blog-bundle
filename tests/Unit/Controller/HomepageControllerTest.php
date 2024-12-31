@@ -13,7 +13,6 @@ use Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination;
 use Knp\Component\Pager\PaginatorInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
@@ -58,10 +57,7 @@ class HomepageControllerTest extends TestCase
 
         $paginator = new Paginator($knpPaginator, 123);
 
-        $controller = new HomepageController($homepage, $paginator, 5);
-        $container = new Container();
-        $container->set('twig', $twig);
-        $controller->setContainer($container);
+        $controller = new HomepageController($homepage, $paginator, 5, $twig);
 
         return $controller;
     }

@@ -13,7 +13,6 @@ use Doctrine\ORM\EntityRepository;
 class PageRepository extends EntityRepository
 {
     /**
-     * @param string|null $slug
      * @return Page[]
      */
     public function findForMainMenu(?string $slug)
@@ -22,21 +21,15 @@ class PageRepository extends EntityRepository
             ->where('p.published = :isPublished')
             ->andWhere('p.showInMainMenu = :showInMainMenu')
             ->andWhere('p.slug <> :slug')
-            ->setParameters([
-                ':isPublished' => true,
-                ':showInMainMenu' => true,
-                ':slug' => $slug,
-            ])
+            ->setParameter(':isPublished', true)
+            ->setParameter(':showInMainMenu', true)
+            ->setParameter(':slug', $slug)
             ->orderBy('p.order', 'ASC')
             ->getQuery()
             ->getResult()
         ;
     }
 
-    /**
-     * @param string|null $slug
-     * @return Page|null
-     */
     public function findOnePublishedBySlug(?string $slug): ?Page
     {
         return $this->createQueryBuilder('p')
@@ -46,6 +39,6 @@ class PageRepository extends EntityRepository
             ->setParameter('published', true)
             ->getQuery()
             ->getOneOrNullResult()
-         ;
+        ;
     }
 }
